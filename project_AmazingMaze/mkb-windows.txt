@@ -1,0 +1,1 @@
+VC12;build_amazingmaze_vc12;

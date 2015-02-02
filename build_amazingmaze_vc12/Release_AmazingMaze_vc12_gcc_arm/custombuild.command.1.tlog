@@ -1,0 +1,2 @@
+^D:\SCHOOL\CS115\AMAZINGMAZE\AMAZINGMAZE.MKB
+"C:\Marmalade\7.5\s3e\python\python.exe" "C:\Marmalade\7.5\s3e\makefile_builder\mkb.py" "d:/School/cs115/AmazingMaze/AmazingMaze.mkb" "--buildenv=VC12" "--default-buildenv=vc12" --msvc-project

@@ -1,0 +1,6 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  AmazingMaze.cpp
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(133): error C2664: 'void Iw2DFillRect(CIwFVec2,CIwFVec2)' : cannot convert argument 1 from 'CIwSVec2' to 'CIwFVec2'
+1>          No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+

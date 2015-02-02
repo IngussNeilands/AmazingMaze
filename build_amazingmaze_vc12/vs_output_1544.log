@@ -1,0 +1,5 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  AmazingMaze.cpp
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(23): error C2661: 'Iw2DSetColour' : no overloaded function takes 4 arguments
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
