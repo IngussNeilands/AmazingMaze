@@ -1,0 +1,83 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  Performing Custom Build Tools
+1>  msg: option 'default-buildenv' overridden by command line
+1>  C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --default-buildenv=vc12 --msvc-project
+1>  Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+1>  done
+1>  AmazingMaze.cpp
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(41): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(72): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(73): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(74): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(75): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(78): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(79): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(80): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(82): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(84): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(85): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(86): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(87): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(88): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(91): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(92): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(93): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(94): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(95): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(96): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(98): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(99): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(100): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(105): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(105): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(106): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(106): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(107): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(107): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(110): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(110): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(111): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(111): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(112): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(112): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(114): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(114): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(115): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(115): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(116): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(116): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(118): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(118): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(119): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(119): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(120): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(120): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(122): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(122): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(123): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(123): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(124): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(124): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(126): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(126): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(127): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(127): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(128): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(128): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(130): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(130): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(131): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(131): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(132): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(132): warning C4305: 'argument' : truncation from 'double' to 'float'
+1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+1>AmazingMaze.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+1>LIBCMTD.lib(strtoq.obj) : warning LNK4006: _strtof already defined in s3e_d.lib(iwcrt_common.obj); second definition ignored
+1>LIBCMTD.lib(sscanf.obj) : warning LNK4006: _vsscanf already defined in s3e_d.lib(iwcrt_win32.obj); second definition ignored
+1>     Creating library Debug_AmazingMaze_vc12_x86\AmazingMaze.lib and object Debug_AmazingMaze_vc12_x86\AmazingMaze.exp
+1>AmazingMaze.obj : error LNK2019: unresolved external symbol "public: __thiscall Input::Input(void)" (??0Input@@QAE@XZ) referenced in function _main
+1>AmazingMaze.obj : error LNK2019: unresolved external symbol "public: void __thiscall Input::Update(void)" (?Update@Input@@QAEXXZ) referenced in function _main
+1>AmazingMaze.obj : error LNK2001: unresolved external symbol "class Input * g_pInput" (?g_pInput@@3PAVInput@@A)
+1>Debug_AmazingMaze_vc12_x86\AmazingMaze.s86 : fatal error LNK1120: 3 unresolved externals
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+

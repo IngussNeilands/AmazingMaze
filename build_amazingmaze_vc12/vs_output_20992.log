@@ -1,0 +1,5 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+1>LINK : fatal error LNK1104: cannot open file 'Debug_AmazingMaze_vc12_x86\AmazingMaze.s86'
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
