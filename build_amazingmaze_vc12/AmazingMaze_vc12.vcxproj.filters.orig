@@ -719,8 +719,17 @@
     <ClInclude Include="c:/marmalade/7.5/s3e/h/MarmaladeVersion.h">
       <Filter>'Marmalade System (S3E)'</Filter>
     </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/MazeDrawer.h">
+      <Filter></Filter>
+    </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/MazeGenerator.h">
+      <Filter></Filter>
+    </ClInclude>
     <ClInclude Include="c:/marmalade/7.5/extensions/pvrtextool/h/PVRTexTool.h">
       <Filter>Extensions\PVRTexTool</Filter>
+    </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/PlayerMovement.h">
+      <Filter></Filter>
     </ClInclude>
     <ClInclude Include="c:/marmalade/7.5/s3e/h/std/alloca.h">
       <Filter>'Marmalade System (S3E)'\stdc headers</Filter>
@@ -1264,8 +1273,17 @@
     <ClCompile Include="c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp">
       <Filter>(iwtween)</Filter>
     </ClCompile>
+    <ClCompile Include="..\MazeDrawer.cpp">
+      <Filter></Filter>
+    </ClCompile>
+    <ClCompile Include="..\MazeGenerator.cpp">
+      <Filter></Filter>
+    </ClCompile>
     <ClCompile Include="c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp">
       <Filter>Extensions\PVRTexTool\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PlayerMovement.cpp">
+      <Filter></Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

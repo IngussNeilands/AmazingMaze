@@ -1,0 +1,6 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86
+1>  C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86"
+1>  "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86" 
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+

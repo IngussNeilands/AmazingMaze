@@ -1,0 +1,10 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  Performing Custom Build Tools
+1>  msg: option 'default-buildenv' overridden by command line
+1>  C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --default-buildenv=vc12 --msvc-project
+1>  Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+1>  done
+1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+1>LINK : fatal error LNK1104: cannot open file 'Debug_AmazingMaze_vc12_x86\AmazingMaze.s86'
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+

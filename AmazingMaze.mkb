@@ -2,6 +2,12 @@
 files
 {
     AmazingMaze.cpp
+	MazeGenerator.cpp
+	MazeGenerator.h
+	MazeDrawer.cpp
+	MazeDrawer.h
+	PlayerMovement.cpp
+	PlayerMovement.h
 }
 
 subprojects

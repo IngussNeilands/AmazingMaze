@@ -1,0 +1,12 @@
+# comments and whitespace stripped by deployment tool
+[S3E]
+MemSize=10485760
+MemSizeDebug=30720000
+[GX]
+VertCacheSize=8000
+DataCacheSize=80000
+[2D]
+MaxBatch = 2000
+[s3e]
+SysAppVersion=0.0.1
+SysAppCaption="AmazingMaze"

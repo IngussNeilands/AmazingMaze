@@ -1,0 +1,70 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Release Win32 ------
+1>  Performing Custom Build Tools
+1>  msg: option 'default-buildenv' overridden by command line
+1>  C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --default-buildenv=vc12 --msvc-project
+1>  Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+1>  done
+1>  AmazingMaze.cpp
+1>  Iw2DSceneGraph.cpp
+1>  Iw2DSceneGraphCore.cpp
+1>  IwTween.cpp
+1>  MazeDrawer.cpp
+1>  MazeGenerator.cpp
+1>  PVRTexTool_interface.cpp
+1>..\MazeDrawer.cpp(40): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(46): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(47): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(48): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(51): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(52): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(53): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(59): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(65): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(66): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(67): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(68): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(69): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(70): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(71): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(78): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(79): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(80): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(81): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(84): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(85): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(86): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\AmazingMaze.cpp(135): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>..\AmazingMaze.cpp(180): warning C4101: 'Maxlvl' : unreferenced local variable
+1>..\MazeGenerator.cpp(49): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(52): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(65): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(68): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(69): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(75): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(81): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(88): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(95): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(97): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(126): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(135): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(137): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(148): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(151): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(174): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(176): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(177): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(180): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>MazeDrawer.obj : warning LNK4006: "float (* level)[20][15]" (?level@@3PAY1BE@P@MA) already defined in AmazingMaze.obj; second definition ignored
+1>MazeDrawer.obj : warning LNK4006: "int MaxLevel" (?MaxLevel@@3HA) already defined in AmazingMaze.obj; second definition ignored
+1>LIBCMTD.lib(strtoq.obj) : warning LNK4006: _strtof already defined in s3e.lib(iwcrt_common.obj); second definition ignored
+1>LIBCMTD.lib(sscanf.obj) : warning LNK4006: _vsscanf already defined in s3e.lib(iwcrt_win32.obj); second definition ignored
+1>     Creating library Release_AmazingMaze_vc12_x86\AmazingMaze.lib and object Release_AmazingMaze_vc12_x86\AmazingMaze.exp
+1>Release_AmazingMaze_vc12_x86\AmazingMaze.s86 : warning LNK4088: image being generated due to /FORCE option; image may not run
+1>  AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_x86\AmazingMaze.s86
+1>  C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_x86\AmazingMaze.s86"
+1>  "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_x86\AmazingMaze.s86" 
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+

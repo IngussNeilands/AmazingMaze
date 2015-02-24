@@ -15,4 +15,18 @@
 #
 # Some conditional operations are also permitted, see the
 # S3E documentation for details.
+[S3E]
+MemSize=212992000
+MemSizeDebug=212992000
+MemMgrMaxAllocWarning=0
 
+[GX]
+VertCacheSize=80000
+DataCacheSize=80000
+
+[2D]
+MaxBatch = 2000
+
+[GL]
+EGL_DEPTH_SIZE = 24
+EGL_BUFFER_SIZE  = 2000

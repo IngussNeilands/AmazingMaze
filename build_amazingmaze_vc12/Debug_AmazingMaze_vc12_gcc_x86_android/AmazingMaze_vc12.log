@@ -1,0 +1,38 @@
+﻿Build started 2/22/2015 9:56:01 PM.
+     1>Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" on node 2 (Build target(s)).
+     1>CustomBuild:
+         Performing Custom Build Tools
+         msg: option 'default-buildenv' overridden by command line
+         C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --android-x86 --default-buildenv=vc12 --msvc-project
+         Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+         done
+       ClCompile:
+         C:\Marmalade\7.5\s3e\bin\CL.exe /c /Ic:/marmalade/7.5/modules/iwutil/h /Ic:/marmalade/7.5/modules/third_party/libjpeg/h /Ic:/marmalade/7.5/modules/third_party/zlib/h /Ic:/marmalade/7.5/modules/third_party/libpng/h /Ic:/marmalade/7.5/modules/iw2dscenegraphcore/h /Ic:/marmalade/7.5/modules/iw2dscenegraph/h /Ic:/marmalade/7.5/modules/iw2d/h /Ic:/marmalade/7.5/modules/iwgx/h /Ic:/marmalade/7.5/modules/iwgl/h /Ic:/marmalade/7.5/modules/iwgeom/h /Ic:/marmalade/7.5/modules/iwresmanager/h /Ic:/marmalade/7.5/extensions/pvrtextool/h /Ic:/marmalade/7.5/modules/iwgxfont/h /Ic:/marmalade/7.5/modules/third_party/tiniconv/source /Ic:/marmalade/7.5/modules/iwtween/h /Ic:/marmalade/7.5/s3e/h /Ic:/marmalade/7.5/s3e/h/ext /Ic:/marmalade/7.5/s3e/h/std /Ic:/marmalade/7.5/s3e/h/std/c++ /Ic:/marmalade/7.5/s3e/h/ext_legacy /Ic:/marmalade/7.5/s3e/h/legacy /I. /Z7 /nologo /W3 /WX- /MP /Od /Oy- /X /Gm- /EHsc /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug_AmazingMaze_vc12_gcc_x86_android\\" /Fd"Debug_AmazingMaze_vc12_gcc_x86_android\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /S3Eproject /J /Fe"s3e-custom-tool='c:/marmalade/7.5/tools/gcc/x86/android_windows/bin/i686-linux-android-gcc.exe' tooltype=gcc_x86_android_compiler -funsigned-char -fno-strict-aliasing -fno-stack-protector -fno-short-enums -fshort-wchar -Wall -fmessage-length=0 -Wno-unused -Wno-parentheses -save-temps -m32 -fasynchronous-unwind-tables -fPIC -Wno-switch -fvisibility=hidden -nostdinc --cppflag=-Wno-reorder --cppflag=-fvisibility-inlines-hidden --cppflag=-fno-exceptions --cppflag=-frtti --cppflag=-nostdinc++ -g -O0" /FD  /FI"d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\temp_defines_debug.h" ..\AmazingMaze.cpp c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp
+         GCC_X86_ANDROID Compiling(GCC) d:\School\cs115\AmazingMaze\AmazingMaze.cpp ...
+         GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp ...
+         GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp ...
+         GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp ...
+         GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ...
+       Link:
+         C:\Marmalade\7.5\s3e\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug_AmazingMaze_vc12_gcc_x86_android\AmazingMaze.so" /INCREMENTAL /NOLOGO /LIBPATH:c:/marmalade/7.5/modules/iwutil/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/third_party/libjpeg/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/third_party/zlib/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/third_party/libpng/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/iw2d/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/iwgx/atitools /LIBPATH:c:/marmalade/7.5/modules/iwgx/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/iwgl/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/iwgeom/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/iwresmanager/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/iwgxfont/lib/x86/android /LIBPATH:c:/marmalade/7.5/modules/third_party/tiniconv/lib/x86/android /LIBPATH:c:/marmalade/7.5/s3e/lib/x86/android /NODEFAULTLIB:libcmt /MANIFEST:NO /PDB:"Debug_AmazingMaze_vc12_gcc_x86_android\AmazingMaze.pdb" /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug_AmazingMaze_vc12_gcc_x86_android\AmazingMaze.lib" /MACHINE:X86  /include:_IwMain /include:_raise /include:_DllEntryPoint@12 /force:multiple /COMMENT:"s3e-custom-tool='c:/marmalade/7.5/tools/gcc/x86/android_windows/bin/i686-linux-android-g++.exe' tooltype=gcc_x86_android_linker -Wl,--as-needed -m32 --sysroot=c:/marmalade/7.5/s3e\..\tools\gcc\x86\android_windows/android-14/arch-x86 -Wl,--no-undefined -shared -static-libgcc -nostdlib -fuse-ld=bfd -Wl,-Tandroid_x86_linker_script -Wl,-init -Wl,iwcrt_android_x86_init -Wl,-fini -Wl,iwcrt_android_x86_fini -frtti -Wl,-u_IwAppEntry -Wl,-u_IwAppVersionMajor -Wl,-u_IwAppVersionMinor -Wl,--entry=_IwAppEntry -Wl,-Map='Debug_AmazingMaze_vc12_gcc_x86_android\/AmazingMaze.map' -Wl,--start-group -liwutil_d -ljpeg_d -lz_d -lpng_d -liw2d_d -liwgx_d -liwgl_d -liwgeom_d -liwresmanager_d -liwgxfont_d -ltiniconv_d -ls3e_cpp_d -ls3e_d -ls3e_api_iwgl -lstdc++ -lc -lm -lgcc -Wl,--end-group --plink:-l" /DLL Debug_AmazingMaze_vc12_gcc_x86_android\AmazingMaze.obj
+         Debug_AmazingMaze_vc12_gcc_x86_android\Iw2DSceneGraph.obj
+         Debug_AmazingMaze_vc12_gcc_x86_android\Iw2DSceneGraphCore.obj
+         Debug_AmazingMaze_vc12_gcc_x86_android\IwTween.obj
+         Debug_AmazingMaze_vc12_gcc_x86_android\PVRTexTool_interface.obj
+         ARM Linking(GCC) ...
+         Debug_AmazingMaze_vc12_gcc_x86_android/AmazingMaze.obj: In function `main':
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:182: undefined reference to `MazeInitializer()'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:183: undefined reference to `setDifficulity(int)'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:184: undefined reference to `DoorGenerator()'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:185: undefined reference to `printall()'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:189: undefined reference to `MazeInitializer()'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:190: undefined reference to `setDifficulity(int)'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:191: undefined reference to `DoorGenerator()'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:192: undefined reference to `printall()'
+         d:/School/cs115/AmazingMaze/AmazingMaze.cpp:289: undefined reference to `DrawMaze(int)'
+     1>collect2.exe : error : ld returned 1 exit status
+     1>Done Building Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:05.84

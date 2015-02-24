@@ -1,0 +1,25 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: GCC X86 ANDROID Debug Win32 ------
+1>  Performing Custom Build Tools
+1>  msg: option 'default-buildenv' overridden by command line
+1>  C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --android-x86 --default-buildenv=vc12 --msvc-project
+1>  Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+1>  done
+1>  GCC_X86_ANDROID Compiling(GCC) d:\School\cs115\AmazingMaze\AmazingMaze.cpp ...
+1>  GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp ...
+1>  GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp ...
+1>  GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp ...
+1>  GCC_X86_ANDROID Compiling(GCC) c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ...
+1>  ARM Linking(GCC) ...
+1>  Debug_AmazingMaze_vc12_gcc_x86_android/AmazingMaze.obj: In function `main':
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:182: undefined reference to `MazeInitializer()'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:183: undefined reference to `setDifficulity(int)'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:184: undefined reference to `DoorGenerator()'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:185: undefined reference to `printall()'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:189: undefined reference to `MazeInitializer()'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:190: undefined reference to `setDifficulity(int)'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:191: undefined reference to `DoorGenerator()'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:192: undefined reference to `printall()'
+1>  d:/School/cs115/AmazingMaze/AmazingMaze.cpp:289: undefined reference to `DrawMaze(int)'
+1>collect2.exe : error : ld returned 1 exit status
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+

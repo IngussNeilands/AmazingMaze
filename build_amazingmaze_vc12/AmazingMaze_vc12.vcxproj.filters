@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="(libpng)">
@@ -91,12 +91,10 @@
       <Filter>'Marmalade System (S3E)'\stdc headers\c++</Filter>
     </None>
     <None Include="d:/School/cs115/AmazingMaze/data/app.config.txt">
-      <Filter>
-      </Filter>
+      <Filter></Filter>
     </None>
     <None Include="d:/School/cs115/AmazingMaze/data/app.icf">
-      <Filter>
-      </Filter>
+      <Filter></Filter>
     </None>
     <None Include="c:/marmalade/7.5/s3e/h/std/c++/bitset">
       <Filter>'Marmalade System (S3E)'\stdc headers\c++</Filter>
@@ -353,6 +351,9 @@
     <None Include="c:/marmalade/7.5/modules/third_party/zlib/zlib.mkf">
       <Filter>(zlib)</Filter>
     </None>
+    <CustomBuild Include="d:/School/cs115/AmazingMaze/AmazingMaze.mkb">
+      <Filter></Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="c:/marmalade/7.5/s3e/h/AirplayVersion.h">
@@ -718,8 +719,17 @@
     <ClInclude Include="c:/marmalade/7.5/s3e/h/MarmaladeVersion.h">
       <Filter>'Marmalade System (S3E)'</Filter>
     </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/MazeDrawer.h">
+      <Filter></Filter>
+    </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/MazeGenerator.h">
+      <Filter></Filter>
+    </ClInclude>
     <ClInclude Include="c:/marmalade/7.5/extensions/pvrtextool/h/PVRTexTool.h">
       <Filter>Extensions\PVRTexTool</Filter>
+    </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/PlayerMovement.h">
+      <Filter></Filter>
     </ClInclude>
     <ClInclude Include="c:/marmalade/7.5/s3e/h/std/alloca.h">
       <Filter>'Marmalade System (S3E)'\stdc headers</Filter>
@@ -1252,8 +1262,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\AmazingMaze.cpp">
-      <Filter>
-      </Filter>
+      <Filter></Filter>
     </ClCompile>
     <ClCompile Include="c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp">
       <Filter>'Marmalade Studio'\iw2dscenegraph</Filter>
@@ -1264,28 +1273,17 @@
     <ClCompile Include="c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp">
       <Filter>(iwtween)</Filter>
     </ClCompile>
+    <ClCompile Include="..\MazeDrawer.cpp">
+      <Filter></Filter>
+    </ClCompile>
+    <ClCompile Include="..\MazeGenerator.cpp">
+      <Filter></Filter>
+    </ClCompile>
     <ClCompile Include="c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp">
       <Filter>Extensions\PVRTexTool\interface</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\AmazingMaze.mkb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\data\textures\gem1.png" />
-    <Image Include="..\data\textures\menubg.jpg" />
-    <Image Include="..\data\textures\menubg.png" />
-    <Image Include="..\data\textures\playbt.jpg" />
-    <Image Include="..\data\textures\playbt.png" />
-    <Image Include="..\data\textures\rainbowbg.jpg" />
-    <Image Include="..\data\textures\rainbowbg.png" />
-    <Image Include="..\data\textures\touchscreenMoveDown.bmp" />
-    <Image Include="..\data\textures\touchscreenMoveDown.png" />
-    <Image Include="..\data\textures\touchscreenMoveL.bmp" />
-    <Image Include="..\data\textures\touchscreenMoveL.png" />
-    <Image Include="..\data\textures\touchscreenMoveR.bmp" />
-    <Image Include="..\data\textures\touchscreenMoveR.png" />
-    <Image Include="..\data\textures\touchscreenMoveUp.bmp" />
-    <Image Include="..\data\textures\touchscreenMoveUp.png" />
+    <ClCompile Include="..\PlayerMovement.cpp">
+      <Filter></Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

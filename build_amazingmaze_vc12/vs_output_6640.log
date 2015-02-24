@@ -1,0 +1,11 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+1>AmazingMaze.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+1>LIBCMTD.lib(strtoq.obj) : warning LNK4006: _strtof already defined in s3e_d.lib(iwcrt_common.obj); second definition ignored
+1>LIBCMTD.lib(sscanf.obj) : warning LNK4006: _vsscanf already defined in s3e_d.lib(iwcrt_win32.obj); second definition ignored
+1>     Creating library Debug_AmazingMaze_vc12_x86\AmazingMaze.lib and object Debug_AmazingMaze_vc12_x86\AmazingMaze.exp
+1>AmazingMaze.obj : error LNK2019: unresolved external symbol "int __cdecl DoorGenerator(void)" (?DoorGenerator@@YAHXZ) referenced in function _main
+1>AmazingMaze.obj : error LNK2019: unresolved external symbol "int __cdecl setDifficulity(int)" (?setDifficulity@@YAHH@Z) referenced in function _main
+1>Debug_AmazingMaze_vc12_x86\AmazingMaze.s86 : fatal error LNK1120: 2 unresolved externals
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
