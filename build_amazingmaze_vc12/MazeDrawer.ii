@@ -35737,6 +35737,7 @@ using namespace _STL;
 extern float level[9][20][15];
 extern int MaxLevel;
 
+
 void MazeInitializer();
 int setDifficulity(int difficulity);
 int DoorGenerator();
@@ -35773,15 +35774,17 @@ void DrawMaze(int curLevel){
   float avgWidth = drawWidth / levelamount;
   float radius = avgWidth * leveler;
 
-  Iw2DSetColour(0xff59ff4d);
-  Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius, radius), 0, 2 * 3.141592653589793f);
-  Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius + 1, radius + 1), 0, 2 * 3.141592653589793f);
-  Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius - 1, radius - 1), 0, 2 * 3.141592653589793f);
-  if (leveler == curLevel && leveler!=MaxLevel){
+  Iw2DSetColour(0xff66ff66);
+  if (leveler <= MaxLevel){
+   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius, radius), 0, 2 * 3.141592653589793f);
+   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius + 1, radius + 1), 0, 2 * 3.141592653589793f);
+   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius - 1, radius - 1), 0, 2 * 3.141592653589793f);
+  }
+  if (leveler == curLevel && leveler<MaxLevel){
    radius = avgWidth * (leveler + 1);
-   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius, radius), 0, 2 * 3.141592653589793f);
-   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius + 1, radius + 1), 0, 2 * 3.141592653589793f);
-   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius - 1, radius - 1), 0, 2 * 3.141592653589793f);
+   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius, radius), 0, 2 * 3.141592653589793f);
+   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius + 1, radius + 1), 0, 2 * 3.141592653589793f);
+   Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius - 1, radius - 1), 0, 2 * 3.141592653589793f);
   }
  }
  for (int leveler = 1; leveler <= curLevel; leveler++){
@@ -35792,7 +35795,7 @@ void DrawMaze(int curLevel){
   float avgWidth = drawWidth / levelamount;
   float radius = avgWidth * leveler;
   float radius2 = avgWidth * (leveler + 1);
-  float doorsize;
+  float doorsize = 0.3;
   if (leveler == 1) doorsize = 0.3;
   if (leveler == 2) doorsize = 0.2;
   if (leveler == 3) doorsize = 0.1333;
@@ -35811,18 +35814,18 @@ void DrawMaze(int curLevel){
     float pt2x = radius2 * sin(level[leveler][door][2]);
     float pt2y = radius2 * cos(level[leveler][door][2]);
 
-    Iw2DSetColour(0xffff8080);
-    Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius, radius), leftpt, leftpt + doorsize);
-    Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius + 1, radius + 1), leftpt, leftpt + doorsize);
-    Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height - surface_width / 2 - 30), CIwFVec2(radius - 1, radius - 1), leftpt, leftpt + doorsize);
+    Iw2DSetColour(0xff000000);
+    Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius, radius), leftpt, leftpt + doorsize);
+    Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius + 1, radius + 1), leftpt, leftpt + doorsize);
+    Iw2DDrawArc(CIwFVec2(surface_width / 2, surface_height / 2), CIwFVec2(radius - 1, radius - 1), leftpt, leftpt + doorsize);
     if (leveler != MaxLevel){
-     Iw2DSetColour(0xff59ff4d);
-     Iw2DDrawLine(CIwFVec2(surface_width / 2 + pt1x, surface_height - surface_width / 2 - 30 - pt1y), CIwFVec2(surface_width / 2 + pt2x, surface_height - surface_width / 2 - 30 - pt2y));
+     Iw2DSetColour(0xff66ff66);
+     Iw2DDrawLine(CIwFVec2(surface_width / 2 + pt1x, surface_height / 2 - pt1y), CIwFVec2(surface_width / 2 + pt2x, surface_height / 2 - pt2y));
     }
    }
   }
  }
 
- Iw2DSurfaceShow();
+
 
 }

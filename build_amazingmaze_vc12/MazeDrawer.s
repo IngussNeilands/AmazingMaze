@@ -377,14 +377,14 @@ _Z8DrawMazei:
 	mov	r3, #1
 	str	r3, [sp, #268]
 	b	.L15
-.L19:
+.L20:
 .LBB10:
 	.loc 2 38 0
 	ldr	r3, [sp, #20]
 	add	r3, r3, #1
 	str	r3, [sp, #264]
 	.loc 2 39 0
-	ldr	r3, .L37
+	ldr	r3, .L38
 .LPIC10:
 	add	r3, pc, r3
 	ldr	r3, [r3]
@@ -406,7 +406,7 @@ _Z8DrawMazei:
 	mov	r3, r0
 	str	r3, [sp, #260]	@ float
 	.loc 2 41 0
-	ldr	r3, .L37+4
+	ldr	r3, .L38+4
 .LPIC11:
 	add	r3, pc, r3
 	ldr	r3, [r3]
@@ -415,7 +415,7 @@ _Z8DrawMazei:
 	bne	.L17
 	.loc 2 41 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #260]	@ float
-	ldr	r1, .L37+8
+	ldr	r1, .L38+8
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #260]	@ float
@@ -439,9 +439,17 @@ _Z8DrawMazei:
 	mov	r3, r0
 	str	r3, [sp, #224]	@ float
 	.loc 2 45 0
-	ldr	r0, .L37+12
+	ldr	r0, .L38+12
 	bl	_Z13Iw2DSetColourj(PLT)
 	.loc 2 46 0
+	ldr	r3, .L38+16
+.LPIC12:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	ldr	r2, [sp, #268]
+	cmp	r2, r3
+	bgt	.L18
+	.loc 2 47 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -449,13 +457,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -471,7 +476,7 @@ _Z8DrawMazei:
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	mov	r3, #0
 	str	r3, [sp]	@ float
-	ldr	r3, .L37+16
+	ldr	r3, .L38+20
 	str	r3, [sp, #4]	@ float
 	mov	r3, #0
 	str	r3, [sp, #8]
@@ -480,7 +485,7 @@ _Z8DrawMazei:
 	add	r3, sp, #36
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 47 0
+	.loc 2 48 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -488,13 +493,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -519,7 +521,7 @@ _Z8DrawMazei:
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	mov	r3, #0
 	str	r3, [sp]	@ float
-	ldr	r3, .L37+16
+	ldr	r3, .L38+20
 	str	r3, [sp, #4]	@ float
 	mov	r3, #0
 	str	r3, [sp, #8]
@@ -528,7 +530,7 @@ _Z8DrawMazei:
 	add	r3, sp, #52
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 48 0
+	.loc 2 49 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -536,13 +538,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -567,7 +566,7 @@ _Z8DrawMazei:
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	mov	r3, #0
 	str	r3, [sp]	@ float
-	ldr	r3, .L37+16
+	ldr	r3, .L38+20
 	str	r3, [sp, #4]	@ float
 	mov	r3, #0
 	str	r3, [sp, #8]
@@ -576,20 +575,21 @@ _Z8DrawMazei:
 	add	r3, sp, #68
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 49 0
+.L18:
+	.loc 2 51 0
 	ldr	r2, [sp, #268]
 	ldr	r3, [sp, #20]
 	cmp	r2, r3
-	bne	.L18
-	.loc 2 49 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+20
-.LPIC12:
+	bne	.L19
+	.loc 2 51 0 is_stmt 0 discriminator 1
+	ldr	r3, .L38+24
+.LPIC13:
 	add	r3, pc, r3
 	ldr	r3, [r3]
 	ldr	r2, [sp, #268]
 	cmp	r2, r3
-	beq	.L18
-	.loc 2 50 0 is_stmt 1
+	bge	.L19
+	.loc 2 52 0 is_stmt 1
 	ldr	r3, [sp, #268]
 	add	r3, r3, #1
 	mov	r0, r3
@@ -600,7 +600,7 @@ _Z8DrawMazei:
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	str	r3, [sp, #224]	@ float
-	.loc 2 51 0
+	.loc 2 53 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -608,13 +608,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -630,7 +627,7 @@ _Z8DrawMazei:
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	mov	r3, #0
 	str	r3, [sp]	@ float
-	ldr	r3, .L37+16
+	ldr	r3, .L38+20
 	str	r3, [sp, #4]	@ float
 	mov	r3, #0
 	str	r3, [sp, #8]
@@ -639,7 +636,7 @@ _Z8DrawMazei:
 	add	r3, sp, #84
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 52 0
+	.loc 2 54 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -647,13 +644,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -678,7 +672,7 @@ _Z8DrawMazei:
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	mov	r3, #0
 	str	r3, [sp]	@ float
-	ldr	r3, .L37+16
+	ldr	r3, .L38+20
 	str	r3, [sp, #4]	@ float
 	mov	r3, #0
 	str	r3, [sp, #8]
@@ -687,7 +681,7 @@ _Z8DrawMazei:
 	add	r3, sp, #100
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 53 0
+	.loc 2 55 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -695,13 +689,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -726,7 +717,7 @@ _Z8DrawMazei:
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	mov	r3, #0
 	str	r3, [sp]	@ float
-	ldr	r3, .L37+16
+	ldr	r3, .L38+20
 	str	r3, [sp, #4]	@ float
 	mov	r3, #0
 	str	r3, [sp, #8]
@@ -735,7 +726,7 @@ _Z8DrawMazei:
 	add	r3, sp, #116
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-.L18:
+.L19:
 .LBE10:
 	.loc 2 37 0
 	ldr	r3, [sp, #268]
@@ -746,32 +737,32 @@ _Z8DrawMazei:
 	ldr	r2, [sp, #268]
 	ldr	r3, [sp, #20]
 	cmp	r2, r3
-	ble	.L19
+	ble	.L20
 .LBE9:
 .LBB11:
-	.loc 2 56 0 is_stmt 1
+	.loc 2 58 0 is_stmt 1
 	mov	r3, #1
 	str	r3, [sp, #256]
-	b	.L20
-.L35:
+	b	.L21
+.L36:
 .LBB12:
-	.loc 2 57 0
+	.loc 2 59 0
 	ldr	r3, [sp, #20]
 	add	r3, r3, #1
 	str	r3, [sp, #252]
-	.loc 2 58 0
-	ldr	r3, .L37+24
-.LPIC13:
+	.loc 2 60 0
+	ldr	r3, .L38+28
+.LPIC14:
 	add	r3, pc, r3
 	ldr	r3, [r3]
 	ldr	r2, [sp, #20]
 	cmp	r2, r3
-	bne	.L21
-	.loc 2 58 0 is_stmt 0 discriminator 1
+	bne	.L22
+	.loc 2 60 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #20]
 	str	r3, [sp, #252]
-.L21:
-	.loc 2 59 0 is_stmt 1
+.L22:
+	.loc 2 61 0 is_stmt 1
 	ldr	r3, [sp, #236]
 	sub	r3, r3, #30
 	mov	r2, r3, lsr #31
@@ -781,22 +772,22 @@ _Z8DrawMazei:
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #248]	@ float
-	.loc 2 60 0
-	ldr	r3, .L37+28
-.LPIC14:
+	.loc 2 62 0
+	ldr	r3, .L38+32
+.LPIC15:
 	add	r3, pc, r3
 	ldr	r3, [r3]
 	ldr	r2, [sp, #20]
 	cmp	r2, r3
-	bne	.L22
-	.loc 2 60 0 is_stmt 0 discriminator 1
+	bne	.L23
+	.loc 2 62 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #248]	@ float
-	ldr	r1, .L37+8
+	ldr	r1, .L38+8
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #248]	@ float
-.L22:
-	.loc 2 61 0 is_stmt 1
+.L23:
+	.loc 2 63 0 is_stmt 1
 	ldr	r0, [sp, #252]
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -805,7 +796,7 @@ _Z8DrawMazei:
 	bl	__aeabi_fdiv(PLT)
 	mov	r3, r0
 	str	r3, [sp, #220]	@ float
-	.loc 2 62 0
+	.loc 2 64 0
 	ldr	r0, [sp, #256]
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -814,7 +805,7 @@ _Z8DrawMazei:
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	str	r3, [sp, #216]	@ float
-	.loc 2 63 0
+	.loc 2 65 0
 	ldr	r3, [sp, #256]
 	add	r3, r3, #1
 	mov	r0, r3
@@ -825,72 +816,75 @@ _Z8DrawMazei:
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	str	r3, [sp, #212]	@ float
-	.loc 2 65 0
+	.loc 2 66 0
+	ldr	r3, .L38+36
+	str	r3, [sp, #244]	@ float
+	.loc 2 67 0
 	ldr	r3, [sp, #256]
 	cmp	r3, #1
-	bne	.L23
-	.loc 2 65 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+32
-	str	r3, [sp, #244]	@ float
-.L23:
-	.loc 2 66 0 is_stmt 1
-	ldr	r3, [sp, #256]
-	cmp	r3, #2
 	bne	.L24
-	.loc 2 66 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+36
+	.loc 2 67 0 is_stmt 0 discriminator 1
+	ldr	r3, .L38+36
 	str	r3, [sp, #244]	@ float
 .L24:
-	.loc 2 67 0 is_stmt 1
-	ldr	r3, [sp, #256]
-	cmp	r3, #3
-	bne	.L25
-	.loc 2 67 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+40
-	str	r3, [sp, #244]	@ float
-.L25:
 	.loc 2 68 0 is_stmt 1
 	ldr	r3, [sp, #256]
-	cmp	r3, #4
-	bne	.L26
+	cmp	r3, #2
+	bne	.L25
 	.loc 2 68 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+44
+	ldr	r3, .L38+40
 	str	r3, [sp, #244]	@ float
-.L26:
+.L25:
 	.loc 2 69 0 is_stmt 1
 	ldr	r3, [sp, #256]
-	cmp	r3, #5
-	bne	.L27
+	cmp	r3, #3
+	bne	.L26
 	.loc 2 69 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+48
+	ldr	r3, .L38+44
 	str	r3, [sp, #244]	@ float
-.L27:
+.L26:
 	.loc 2 70 0 is_stmt 1
 	ldr	r3, [sp, #256]
-	cmp	r3, #6
-	bne	.L28
+	cmp	r3, #4
+	bne	.L27
 	.loc 2 70 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+52
+	ldr	r3, .L38+48
 	str	r3, [sp, #244]	@ float
-.L28:
+.L27:
 	.loc 2 71 0 is_stmt 1
 	ldr	r3, [sp, #256]
-	cmp	r3, #7
-	bne	.L29
+	cmp	r3, #5
+	bne	.L28
 	.loc 2 71 0 is_stmt 0 discriminator 1
-	ldr	r3, .L37+56
+	ldr	r3, .L38+52
+	str	r3, [sp, #244]	@ float
+.L28:
+	.loc 2 72 0 is_stmt 1
+	ldr	r3, [sp, #256]
+	cmp	r3, #6
+	bne	.L29
+	.loc 2 72 0 is_stmt 0 discriminator 1
+	ldr	r3, .L38+56
 	str	r3, [sp, #244]	@ float
 .L29:
+	.loc 2 73 0 is_stmt 1
+	ldr	r3, [sp, #256]
+	cmp	r3, #7
+	bne	.L30
+	.loc 2 73 0 is_stmt 0 discriminator 1
+	ldr	r3, .L38+60
+	str	r3, [sp, #244]	@ float
+.L30:
 .LBB13:
-	.loc 2 72 0 is_stmt 1
+	.loc 2 74 0 is_stmt 1
 	mov	r3, #0
 	str	r3, [sp, #240]
-	b	.L30
-.L34:
+	b	.L31
+.L35:
 .LBB14:
-	.loc 2 73 0
-	ldr	r0, .L37+60
-.LPIC15:
+	.loc 2 75 0
+	ldr	r0, .L38+64
+.LPIC16:
 	add	r0, pc, r0
 	ldr	r2, [sp, #240]
 	ldr	ip, [sp, #256]
@@ -906,9 +900,9 @@ _Z8DrawMazei:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #208]	@ float
-	.loc 2 74 0
-	ldr	r0, .L37+64
-.LPIC16:
+	.loc 2 76 0
+	ldr	r0, .L38+68
+.LPIC17:
 	add	r0, pc, r0
 	ldr	r2, [sp, #240]
 	ldr	ip, [sp, #256]
@@ -925,21 +919,21 @@ _Z8DrawMazei:
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #204]	@ float
 .LBB15:
-	.loc 2 75 0
+	.loc 2 77 0
 	ldr	r0, [sp, #204]	@ float
-	ldr	r1, .L37+68
+	ldr	r1, .L38+72
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
-	beq	.L31
+	beq	.L32
 .LBB16:
-	.loc 2 78 0
+	.loc 2 80 0
 	ldr	r0, [sp, #216]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r4, r0
 	mov	r5, r1
-	ldr	r0, .L37+72
-.LPIC17:
+	ldr	r0, .L38+76
+.LPIC18:
 	add	r0, pc, r0
 	ldr	r2, [sp, #240]
 	ldr	ip, [sp, #256]
@@ -973,13 +967,13 @@ _Z8DrawMazei:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #200]	@ float
-	.loc 2 79 0
+	.loc 2 81 0
 	ldr	r0, [sp, #216]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r4, r0
 	mov	r5, r1
-	ldr	r0, .L37+76
-.LPIC18:
+	ldr	r0, .L38+80
+.LPIC19:
 	add	r0, pc, r0
 	ldr	r2, [sp, #240]
 	ldr	ip, [sp, #256]
@@ -1013,13 +1007,13 @@ _Z8DrawMazei:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #196]	@ float
-	.loc 2 80 0
+	.loc 2 82 0
 	ldr	r0, [sp, #212]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r4, r0
 	mov	r5, r1
-	ldr	r0, .L37+80
-.LPIC19:
+	ldr	r0, .L38+84
+.LPIC20:
 	add	r0, pc, r0
 	ldr	r2, [sp, #240]
 	ldr	ip, [sp, #256]
@@ -1053,13 +1047,13 @@ _Z8DrawMazei:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #192]	@ float
-	.loc 2 81 0
+	.loc 2 83 0
 	ldr	r0, [sp, #212]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r4, r0
 	mov	r5, r1
-	ldr	r0, .L37+84
-.LPIC20:
+	ldr	r0, .L38+88
+.LPIC21:
 	add	r0, pc, r0
 	ldr	r2, [sp, #240]
 	ldr	ip, [sp, #256]
@@ -1093,10 +1087,10 @@ _Z8DrawMazei:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #188]	@ float
-	.loc 2 83 0
-	ldr	r0, .L37+88
+	.loc 2 85 0
+	mov	r0, #-16777216
 	bl	_Z13Iw2DSetColourj(PLT)
-	.loc 2 84 0
+	.loc 2 86 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -1104,13 +1098,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -1138,7 +1129,7 @@ _Z8DrawMazei:
 	add	r3, sp, #132
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 85 0
+	.loc 2 87 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -1146,13 +1137,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -1189,7 +1177,7 @@ _Z8DrawMazei:
 	add	r3, sp, #148
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 86 0
+	.loc 2 88 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -1197,13 +1185,10 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -1240,18 +1225,18 @@ _Z8DrawMazei:
 	add	r3, sp, #164
 	ldmia	r3, {r2, r3}
 	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 87 0
-	ldr	r3, .L37+92
-.LPIC21:
+	.loc 2 89 0
+	ldr	r3, .L38+92
+.LPIC22:
 	add	r3, pc, r3
 	ldr	r3, [r3]
 	ldr	r2, [sp, #256]
 	cmp	r2, r3
-	beq	.L33
-	.loc 2 88 0
-	ldr	r0, .L37+12
+	beq	.L34
+	.loc 2 90 0
+	ldr	r0, .L38+12
 	bl	_Z13Iw2DSetColourj(PLT)
-	.loc 2 89 0
+	.loc 2 91 0
 	ldr	r3, [sp, #236]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -1264,13 +1249,10 @@ _Z8DrawMazei:
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r4, r3
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -1295,13 +1277,10 @@ _Z8DrawMazei:
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r4, r3
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #232]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
-	ldr	r2, [sp, #232]
-	rsb	r3, r3, r2
-	sub	r3, r3, #30
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
@@ -1319,51 +1298,50 @@ _Z8DrawMazei:
 	add	r3, sp, #180
 	ldmia	r3, {r2, r3}
 	bl	_Z12Iw2DDrawLine8CIwFVec2S_(PLT)
-.L33:
-.L31:
+.L34:
+.L32:
 .LBE16:
 .LBE15:
 .LBE14:
-	.loc 2 72 0
+	.loc 2 74 0
 	ldr	r3, [sp, #240]
 	add	r3, r3, #1
 	str	r3, [sp, #240]
-.L30:
-	.loc 2 72 0 is_stmt 0 discriminator 1
+.L31:
+	.loc 2 74 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #240]
 	cmp	r3, #19
-	ble	.L34
+	ble	.L35
 .LBE13:
 .LBE12:
-	.loc 2 56 0 is_stmt 1
+	.loc 2 58 0 is_stmt 1
 	ldr	r3, [sp, #256]
 	add	r3, r3, #1
 	str	r3, [sp, #256]
-.L20:
-	.loc 2 56 0 is_stmt 0 discriminator 1
+.L21:
+	.loc 2 58 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp, #256]
 	ldr	r3, [sp, #20]
 	cmp	r2, r3
-	ble	.L35
+	ble	.L36
 .LBE11:
-	.loc 2 95 0 is_stmt 1
-	bl	_Z15Iw2DSurfaceShowv(PLT)
 .LBE8:
-	.loc 2 97 0
+	.loc 2 99 0 is_stmt 1
 	add	sp, sp, #276
 	@ sp needed
 	ldmfd	sp!, {r4, r5, pc}
-.L38:
+.L39:
 	.align	2
-.L37:
+.L38:
 	.word	MaxLevel-(.LPIC10+8)
 	.word	MaxLevel-(.LPIC11+8)
 	.word	1106247680
-	.word	-10879155
-	.word	1086918619
+	.word	-10027162
 	.word	MaxLevel-(.LPIC12+8)
+	.word	1086918619
 	.word	MaxLevel-(.LPIC13+8)
 	.word	MaxLevel-(.LPIC14+8)
+	.word	MaxLevel-(.LPIC15+8)
 	.word	1050253722
 	.word	1045220557
 	.word	1040744396
@@ -1371,15 +1349,14 @@ _Z8DrawMazei:
 	.word	1030924758
 	.word	1025623695
 	.word	1025758986
-	.word	level-(.LPIC15+8)
 	.word	level-(.LPIC16+8)
-	.word	-1082130432
 	.word	level-(.LPIC17+8)
+	.word	-1082130432
 	.word	level-(.LPIC18+8)
 	.word	level-(.LPIC19+8)
 	.word	level-(.LPIC20+8)
-	.word	-32640
-	.word	MaxLevel-(.LPIC21+8)
+	.word	level-(.LPIC21+8)
+	.word	MaxLevel-(.LPIC22+8)
 	.cfi_endproc
 .LFE2966:
 	.size	_Z8DrawMazei, .-_Z8DrawMazei
@@ -1388,7 +1365,7 @@ _Z8DrawMazei:
 	.type	_Z41__static_initialization_and_destruction_0ii, %function
 _Z41__static_initialization_and_destruction_0ii:
 .LFB3276:
-	.loc 2 97 0
+	.loc 2 99 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1402,73 +1379,73 @@ _Z41__static_initialization_and_destruction_0ii:
 	.cfi_def_cfa_offset 16
 	str	r0, [sp, #4]
 	str	r1, [sp]
-	ldr	r4, .L41
-.LPIC24:
+	ldr	r4, .L42
+.LPIC25:
 	add	r4, pc, r4
-	.loc 2 97 0
+	.loc 2 99 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
-	bne	.L39
-	.loc 2 97 0 is_stmt 0 discriminator 1
+	bne	.L40
+	.loc 2 99 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp]
-	ldr	r3, .L41+4
+	ldr	r3, .L42+4
 	cmp	r2, r3
-	bne	.L39
+	bne	.L40
 	.file 3 "c:/marmalade/7.5/s3e/h/std/c++/iostream"
 	.loc 3 69 0 is_stmt 1
-	ldr	r3, .L41+8
-.LPIC22:
-	add	r3, pc, r3
-	mov	r0, r3
-	bl	_ZN4_STL8ios_base9_Loc_initC1Ev(PLT)
-	ldr	r3, .L41+12
+	ldr	r3, .L42+8
 .LPIC23:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r3, .L41+16
+	bl	_ZN4_STL8ios_base9_Loc_initC1Ev(PLT)
+	ldr	r3, .L42+12
+.LPIC24:
+	add	r3, pc, r3
+	mov	r0, r3
+	ldr	r3, .L42+16
 	ldr	r3, [r4, r3]
 	mov	r1, r3
-	ldr	r3, .L41+20
-.LPIC25:
+	ldr	r3, .L42+20
+.LPIC26:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 	.loc 3 75 0
-	ldr	r3, .L41+24
-.LPIC26:
-	add	r3, pc, r3
-	mov	r0, r3
-	bl	_ZN4_STL8ios_base4InitC1Ev(PLT)
-	ldr	r3, .L41+28
+	ldr	r3, .L42+24
 .LPIC27:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r3, .L41+32
+	bl	_ZN4_STL8ios_base4InitC1Ev(PLT)
+	ldr	r3, .L42+28
+.LPIC28:
+	add	r3, pc, r3
+	mov	r0, r3
+	ldr	r3, .L42+32
 	ldr	r3, [r4, r3]
 	mov	r1, r3
-	ldr	r3, .L41+36
-.LPIC28:
+	ldr	r3, .L42+36
+.LPIC29:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
-.L39:
-	.loc 2 97 0
+.L40:
+	.loc 2 99 0
 	add	sp, sp, #8
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
-.L42:
+.L43:
 	.align	2
-.L41:
-	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC24+8)
+.L42:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC25+8)
 	.word	65535
-	.word	_ZN4_STLL8_LocInitE-(.LPIC22+8)
 	.word	_ZN4_STLL8_LocInitE-(.LPIC23+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC24+8)
 	.word	_ZN4_STL8ios_base9_Loc_initD1Ev(GOT)
-	.word	__dso_handle-(.LPIC25+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC26+8)
+	.word	__dso_handle-(.LPIC26+8)
 	.word	_ZN4_STLL8_IosInitE-(.LPIC27+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC28+8)
 	.word	_ZN4_STL8ios_base4InitD1Ev(GOT)
-	.word	__dso_handle-(.LPIC28+8)
+	.word	__dso_handle-(.LPIC29+8)
 	.cfi_endproc
 .LFE3276:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
@@ -1477,7 +1454,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	.type	_GLOBAL__sub_I_MazeDrawer.cpp, %function
 _GLOBAL__sub_I_MazeDrawer.cpp:
 .LFB3277:
-	.loc 2 97 0
+	.loc 2 99 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1486,14 +1463,14 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 3, -8
 	.cfi_offset 14, -4
-	.loc 2 97 0
+	.loc 2 99 0
 	mov	r0, #1
-	ldr	r1, .L44
+	ldr	r1, .L45
 	bl	_Z41__static_initialization_and_destruction_0ii(PLT)
 	ldmfd	sp!, {r3, pc}
-.L45:
+.L46:
 	.align	2
-.L44:
+.L45:
 	.word	65535
 	.cfi_endproc
 .LFE3277:
@@ -13302,7 +13279,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF928
 	.byte	0x2
-	.byte	0x38
+	.byte	0x3a
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13313,7 +13290,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF936
 	.byte	0x2
-	.byte	0x39
+	.byte	0x3b
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13321,7 +13298,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF937
 	.byte	0x2
-	.byte	0x3b
+	.byte	0x3d
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13329,7 +13306,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF938
 	.byte	0x2
-	.byte	0x3d
+	.byte	0x3f
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13337,7 +13314,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF939
 	.byte	0x2
-	.byte	0x3e
+	.byte	0x40
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13345,7 +13322,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF940
 	.byte	0x2
-	.byte	0x3f
+	.byte	0x41
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13353,7 +13330,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF941
 	.byte	0x2
-	.byte	0x40
+	.byte	0x42
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13364,7 +13341,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF929
 	.byte	0x2
-	.byte	0x48
+	.byte	0x4a
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13375,7 +13352,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF942
 	.byte	0x2
-	.byte	0x49
+	.byte	0x4b
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13383,7 +13360,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF930
 	.byte	0x2
-	.byte	0x4a
+	.byte	0x4c
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13394,7 +13371,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF943
 	.byte	0x2
-	.byte	0x4e
+	.byte	0x50
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13402,7 +13379,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF944
 	.byte	0x2
-	.byte	0x4f
+	.byte	0x51
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13410,7 +13387,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF945
 	.byte	0x2
-	.byte	0x50
+	.byte	0x52
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13418,7 +13395,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5d
 	.4byte	.LASF946
 	.byte	0x2
-	.byte	0x51
+	.byte	0x53
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -13441,7 +13418,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5e
 	.4byte	.LASF948
 	.byte	0x2
-	.byte	0x61
+	.byte	0x63
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13449,7 +13426,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x5e
 	.4byte	.LASF949
 	.byte	0x2
-	.byte	0x61
+	.byte	0x63
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91

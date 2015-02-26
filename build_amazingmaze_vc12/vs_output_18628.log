@@ -1,0 +1,17 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+1>AmazingMaze.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+1>MazeDrawer.obj : warning LNK4006: "float (* level)[20][15]" (?level@@3PAY1BE@P@MA) already defined in AmazingMaze.obj; second definition ignored
+1>MazeDrawer.obj : warning LNK4006: "int MaxLevel" (?MaxLevel@@3HA) already defined in AmazingMaze.obj; second definition ignored
+1>PlayerMovement.obj : warning LNK4006: "float (* level)[20][15]" (?level@@3PAY1BE@P@MA) already defined in AmazingMaze.obj; second definition ignored
+1>PlayerMovement.obj : warning LNK4006: "int MaxLevel" (?MaxLevel@@3HA) already defined in AmazingMaze.obj; second definition ignored
+1>menu.obj : warning LNK4006: "int MaxLevel" (?MaxLevel@@3HA) already defined in AmazingMaze.obj; second definition ignored
+1>LIBCMTD.lib(strtoq.obj) : warning LNK4006: _strtof already defined in s3e_d.lib(iwcrt_common.obj); second definition ignored
+1>LIBCMTD.lib(sscanf.obj) : warning LNK4006: _vsscanf already defined in s3e_d.lib(iwcrt_win32.obj); second definition ignored
+1>     Creating library Debug_AmazingMaze_vc12_x86\AmazingMaze.lib and object Debug_AmazingMaze_vc12_x86\AmazingMaze.exp
+1>Debug_AmazingMaze_vc12_x86\AmazingMaze.s86 : warning LNK4088: image being generated due to /FORCE option; image may not run
+1>  AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86
+1>  C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86"
+1>  "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86" 
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+

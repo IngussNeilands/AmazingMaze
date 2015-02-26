@@ -74,13 +74,6 @@ level:
 	.size	MaxLevel, 4
 MaxLevel:
 	.space	4
-	.hidden	g_SceneRoot
-	.global	g_SceneRoot
-	.align	2
-	.type	g_SceneRoot, %object
-	.size	g_SceneRoot, 4
-g_SceneRoot:
-	.space	4
 	.hidden	screenWidth
 	.global	screenWidth
 	.align	2
@@ -102,56 +95,91 @@ screenHeight:
 	.size	screenPitch, 4
 screenPitch:
 	.space	4
-	.hidden	left
-	.global	left
-	.align	2
-	.type	left, %object
-	.size	left, 28
-left:
-	.space	28
-	.hidden	right
-	.global	right
-	.align	2
-	.type	right, %object
-	.size	right, 28
-right:
-	.space	28
-	.hidden	printed
-	.global	printed
-	.align	2
-	.type	printed, %object
-	.size	printed, 4
-printed:
-	.space	4
 	.section	.rodata
 	.align	2
 .LC0:
-	.ascii	"textures/gem1.png\000"
-	.align	2
-.LC1:
 	.ascii	"textures/menubg.png\000"
 	.align	2
-.LC2:
+.LC1:
 	.ascii	"textures/playbt.png\000"
 	.align	2
+.LC2:
+	.ascii	"textures/playbtclicked.png\000"
+	.align	2
 .LC3:
-	.ascii	"textures/rainbowbg.png\000"
+	.ascii	"textures/title.png\000"
 	.align	2
 .LC4:
-	.ascii	"textures/touchscreenMoveUp.png\000"
+	.ascii	"textures/chooselevel.png\000"
 	.align	2
 .LC5:
-	.ascii	"textures/touchscreenMoveL.png\000"
+	.ascii	"textures/backbt.png\000"
 	.align	2
 .LC6:
-	.ascii	"textures/touchscreenMoveDown.png\000"
+	.ascii	"textures/backbtclicked.png\000"
 	.align	2
 .LC7:
-	.ascii	"textures/touchscreenMoveR.png\000"
+	.ascii	"textures/easybt.png\000"
+	.align	2
+.LC8:
+	.ascii	"textures/easybtclicked.png\000"
+	.align	2
+.LC9:
+	.ascii	"textures/mediumbt.png\000"
+	.align	2
+.LC10:
+	.ascii	"textures/mediumbtclicked.png\000"
+	.align	2
+.LC11:
+	.ascii	"textures/hardbt.png\000"
+	.align	2
+.LC12:
+	.ascii	"textures/hardbtclicked.png\000"
+	.align	2
+.LC13:
+	.ascii	"textures/gem1.png\000"
+	.align	2
+.LC14:
+	.ascii	"textures/inbt.png\000"
+	.align	2
+.LC15:
+	.ascii	"textures/inbtclicked.png\000"
+	.align	2
+.LC16:
+	.ascii	"textures/outbt.png\000"
+	.align	2
+.LC17:
+	.ascii	"textures/outbtclicked.png\000"
+	.align	2
+.LC18:
+	.ascii	"textures/pausebt.png\000"
+	.align	2
+.LC19:
+	.ascii	"textures/pausebtclicked.png\000"
+	.align	2
+.LC20:
+	.ascii	"textures/pausedtitle.png\000"
+	.align	2
+.LC21:
+	.ascii	"textures/resumebt.png\000"
+	.align	2
+.LC22:
+	.ascii	"textures/resumebtclicked.png\000"
+	.align	2
+.LC23:
+	.ascii	"textures/startoverbt.png\000"
+	.align	2
+.LC24:
+	.ascii	"textures/startoverbtclicked.png\000"
+	.align	2
+.LC25:
+	.ascii	"textures/changelevelbt.png\000"
+	.align	2
+.LC26:
+	.ascii	"textures/changelevelbtclicked.png\000"
 	.global	__aeabi_i2d
 	.global	__aeabi_dsub
 	.global	__aeabi_d2f
-	.global	__aeabi_idiv
 	.section	.text.main,"ax",%progbits
 	.align	2
 	.global	main
@@ -160,89 +188,235 @@ printed:
 main:
 .LFB2965:
 	.file 2 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp"
-	.loc 2 116 0
+	.loc 2 35 0
 	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 104
+	@ args = 0, pretend = 0, frame = 152
 	@ frame_needed = 0, uses_anonymous_args = 0
 	stmfd	sp!, {r4, lr}
 .LCFI1:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #112
+	sub	sp, sp, #176
 .LCFI2:
-	.cfi_def_cfa_offset 120
+	.cfi_def_cfa_offset 184
 .LBB3:
-	.loc 2 118 0
+	.loc 2 37 0
 	bl	_Z8Iw2DInitv(PLT)
-	.loc 2 121 0
+	.loc 2 40 0
 	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
-	str	r0, [sp, #104]
-	.loc 2 122 0
+	str	r0, [sp, #160]
+	.loc 2 41 0
 	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
-	str	r0, [sp, #100]
-	.loc 2 125 0
+	str	r0, [sp, #156]
+	.loc 2 42 0
+	mov	r3, #1
+	str	r3, [sp, #172]
+	.loc 2 45 0
 	ldr	r3, .L13
 .LPIC0:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	str	r0, [sp, #96]
-	.loc 2 126 0
+	str	r0, [sp, #152]
+	.loc 2 46 0
 	ldr	r3, .L13+4
 .LPIC1:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	str	r0, [sp, #92]
-	.loc 2 127 0
+	str	r0, [sp, #148]
+	.loc 2 47 0
 	ldr	r3, .L13+8
 .LPIC2:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	str	r0, [sp, #88]
-	.loc 2 128 0
+	str	r0, [sp, #144]
+	.loc 2 48 0
 	ldr	r3, .L13+12
 .LPIC3:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	str	r0, [sp, #84]
-	.loc 2 130 0
+	str	r0, [sp, #140]
+	.loc 2 50 0
 	ldr	r3, .L13+16
 .LPIC4:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	mov	r3, r0
-	str	r3, [sp, #16]
-	.loc 2 131 0
+	str	r0, [sp, #136]
+	.loc 2 51 0
 	ldr	r3, .L13+20
 .LPIC5:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	mov	r3, r0
-	str	r3, [sp, #20]
-	.loc 2 132 0
+	str	r0, [sp, #132]
+	.loc 2 52 0
 	ldr	r3, .L13+24
 .LPIC6:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	mov	r3, r0
-	str	r3, [sp, #24]
-	.loc 2 133 0
+	str	r0, [sp, #128]
+	.loc 2 53 0
 	ldr	r3, .L13+28
 .LPIC7:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_Z15Iw2DCreateImagePKc(PLT)
-	mov	r3, r0
-	str	r3, [sp, #28]
-	.loc 2 135 0
-	ldr	r3, [sp, #104]
+	str	r0, [sp, #124]
+	.loc 2 54 0
+	ldr	r3, .L13+32
+.LPIC8:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #120]
+	.loc 2 55 0
+	ldr	r3, .L13+36
+.LPIC9:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #116]
+	.loc 2 56 0
+	ldr	r3, .L13+40
+.LPIC10:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #112]
+	.loc 2 57 0
+	ldr	r3, .L13+44
+.LPIC11:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #108]
+	.loc 2 58 0
+	ldr	r3, .L13+48
+.LPIC12:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #104]
+	.loc 2 59 0
+	ldr	r3, .L13+52
+.LPIC13:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #100]
+	.loc 2 61 0
+	ldr	r3, .L13+56
+.LPIC14:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #96]
+	.loc 2 62 0
+	ldr	r3, .L13+60
+.LPIC15:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #92]
+	.loc 2 63 0
+	ldr	r3, .L13+64
+.LPIC16:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #88]
+	.loc 2 64 0
+	ldr	r3, .L13+68
+.LPIC17:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #84]
+	.loc 2 65 0
+	ldr	r3, .L13+72
+.LPIC18:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #80]
+	.loc 2 66 0
+	ldr	r3, .L13+76
+.LPIC19:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #76]
+	.loc 2 67 0
+	ldr	r3, .L13+80
+.LPIC20:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #72]
+	.loc 2 69 0
+	ldr	r3, .L13+84
+.LPIC21:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #68]
+	.loc 2 70 0
+	ldr	r3, .L13+88
+.LPIC22:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #64]
+	.loc 2 71 0
+	ldr	r3, .L13+92
+.LPIC23:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #60]
+	.loc 2 72 0
+	ldr	r3, .L13+96
+.LPIC24:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #56]
+	.loc 2 73 0
+	ldr	r3, .L13+100
+.LPIC25:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #52]
+	.loc 2 74 0
+	ldr	r3, .L13+104
+.LPIC26:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #48]
+	.loc 2 75 0
+	ldr	r3, .L13+108
+.LPIC27:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #44]
+	.loc 2 76 0
+	ldr	r3, .L13+112
+.LPIC28:
+	add	r3, pc, r3
+	mov	r0, r3
+	bl	_Z15Iw2DCreateImagePKc(PLT)
+	str	r0, [sp, #40]
+	.loc 2 78 0
+	ldr	r3, [sp, #160]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
@@ -253,7 +427,7 @@ main:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L13+32
+	ldr	r3, .L13+116
 	bl	__aeabi_dsub(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -261,7 +435,7 @@ main:
 	mov	r1, r3
 	bl	__aeabi_d2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #100]
+	ldr	r3, [sp, #156]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
@@ -272,7 +446,7 @@ main:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L13+32
+	ldr	r3, .L13+116
 	bl	__aeabi_dsub(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -280,180 +454,158 @@ main:
 	mov	r1, r3
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
-	add	r2, sp, #8
+	add	r2, sp, #28
 	mov	r0, r2
 	mov	r1, r4
 	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	.loc 2 136 0
+	.loc 2 79 0
 	bl	s3eTimerGetMs(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r3, r2
-	str	r3, [sp, #80]
-	.loc 2 138 0
+	str	r3, [sp, #36]
+	.loc 2 80 0
 	mov	r3, #0
-	str	r3, [sp, #108]
-	.loc 2 144 0
+	str	r3, [sp, #168]
+	.loc 2 81 0
+	ldr	r3, .L13+120
+	str	r3, [sp, #164]	@ float
+	.loc 2 82 0
 	b	.L5
 .L11:
-.LBB4:
-	.loc 2 149 0
+	.loc 2 85 0
 	bl	s3eKeyboardUpdate(PLT)
-	.loc 2 150 0
+	.loc 2 86 0
 	bl	s3ePointerUpdate(PLT)
-	.loc 2 153 0
-	ldr	r0, .L13+36
-	bl	_Z16Iw2DSurfaceClearj(PLT)
-.LBB5:
-	.loc 2 168 0
-	ldr	r3, [sp, #108]
+	.loc 2 92 0
+	ldr	r3, [sp, #168]
 	cmp	r3, #0
 	bne	.L6
-.LBB6:
-	.loc 2 169 0
-	add	r3, sp, #32
-	mov	r0, r3
-	mov	r1, #0
-	mov	r2, #0
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #40
-	mov	r0, r3
-	ldr	r1, .L13+40
-	ldr	r2, .L13+44
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #44]
-	str	r3, [sp]
-	ldr	r3, [sp, #40]
-	ldr	r0, [sp, #92]
-	add	r2, sp, #32
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 170 0
-	add	r3, sp, #48
-	mov	r0, r3
-	ldr	r1, .L13+48
-	ldr	r2, .L13+52
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #56
-	mov	r0, r3
-	ldr	r1, .L13+56
-	ldr	r2, .L13+60
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #60]
-	str	r3, [sp]
-	ldr	r3, [sp, #56]
-	ldr	r0, [sp, #88]
-	add	r2, sp, #48
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-.LBB7:
-	.loc 2 172 0
-	mov	r0, #0
-	bl	s3ePointerGetState(PLT)
-	mov	r3, r0
-	and	r3, r3, #1
-	cmp	r3, #0
-	moveq	r3, #0
-	movne	r3, #1
-	uxtb	r3, r3
-	cmp	r3, #0
-	beq	.L7
-.LBB8:
-	.loc 2 176 0
-	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
-	str	r0, [sp, #76]
-	.loc 2 177 0
-	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
-	str	r0, [sp, #72]
-	.loc 2 178 0
-	bl	s3ePointerGetX(PLT)
-	mov	r3, r0
-	mov	r3, r3, asl #2
-	mov	r0, r3
-	ldr	r1, [sp, #76]
-	bl	__aeabi_idiv(PLT)
-	mov	r3, r0
-	str	r3, [sp, #68]
-	.loc 2 179 0
-	bl	s3ePointerGetY(PLT)
-	mov	r3, r0
-	mov	r3, r3, asl #2
-	mov	r0, r3
-	ldr	r1, [sp, #72]
-	bl	__aeabi_idiv(PLT)
-	mov	r3, r0
-	str	r3, [sp, #64]
-	.loc 2 181 0
-	ldr	r3, [sp, #68]
-	cmp	r3, #1
-	bne	.L8
-	.loc 2 181 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #64]
-	cmp	r3, #2
-	bne	.L8
-	.loc 2 182 0 is_stmt 1
-	bl	_Z15MazeInitializerv(PLT)
-	.loc 2 183 0
-	mov	r0, #3
-	bl	_Z14setDifficulityi(PLT)
-	.loc 2 184 0
-	bl	_Z13DoorGeneratorv(PLT)
-	.loc 2 185 0
-	bl	_Z8printallv(PLT)
-	.loc 2 186 0
-	mov	r3, #1
-	str	r3, [sp, #108]
-.L8:
-	.loc 2 188 0
-	ldr	r3, [sp, #68]
-	cmp	r3, #2
-	bne	.L9
-	.loc 2 188 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #64]
-	cmp	r3, #2
-	bne	.L9
-	.loc 2 189 0 is_stmt 1
-	bl	_Z15MazeInitializerv(PLT)
-	.loc 2 190 0
-	mov	r0, #3
-	bl	_Z14setDifficulityi(PLT)
-	.loc 2 191 0
-	bl	_Z13DoorGeneratorv(PLT)
-	.loc 2 192 0
-	bl	_Z8printallv(PLT)
-	.loc 2 193 0
-	mov	r3, #1
-	str	r3, [sp, #108]
-.L9:
-.L7:
-.L6:
-.LBE8:
-.LBE7:
-.LBE6:
-.LBE5:
-	.loc 2 198 0
-	ldr	r3, [sp, #108]
-	cmp	r3, #1
-	bne	.L10
-	.loc 2 200 0
-	ldr	r0, .L13+64
-	bl	_Z13Iw2DSetColourj(PLT)
-	.loc 2 280 0
-	ldr	r0, .L13+68
-	bl	_Z13Iw2DSetColourj(PLT)
-	.loc 2 289 0
-	mov	r0, #6
-	bl	_Z8DrawMazei(PLT)
-.L10:
-	.loc 2 402 0
+	.loc 2 93 0
+	ldr	r0, [sp, #152]
+	ldr	r1, [sp, #148]
+	ldr	r2, [sp, #144]
+	ldr	r3, [sp, #140]
+	bl	_Z6StartMP10CIw2DImageS0_S0_S0_(PLT)
+	str	r0, [sp, #168]
+	.loc 2 94 0
 	bl	_Z15Iw2DSurfaceShowv(PLT)
-	.loc 2 405 0
+.L6:
+	.loc 2 96 0
+	ldr	r3, [sp, #168]
+	cmp	r3, #1
+	bne	.L7
+	.loc 2 97 0
+	ldr	r3, [sp, #120]
+	str	r3, [sp]
+	ldr	r3, [sp, #116]
+	str	r3, [sp, #4]
+	ldr	r3, [sp, #112]
+	str	r3, [sp, #8]
+	ldr	r3, [sp, #108]
+	str	r3, [sp, #12]
+	ldr	r3, [sp, #104]
+	str	r3, [sp, #16]
+	ldr	r3, [sp, #100]
+	str	r3, [sp, #20]
+	ldr	r0, [sp, #136]
+	ldr	r1, [sp, #132]
+	ldr	r2, [sp, #128]
+	ldr	r3, [sp, #124]
+	bl	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_(PLT)
+	str	r0, [sp, #168]
+	.loc 2 98 0
+	mov	r3, #1
+	str	r3, [sp, #172]
+	.loc 2 99 0
+	bl	_Z15Iw2DSurfaceShowv(PLT)
+.L7:
+	.loc 2 101 0
+	ldr	r3, [sp, #168]
+	cmp	r3, #2
+	bne	.L8
+	.loc 2 102 0
+	mov	r0, #-16777216
+	bl	_Z16Iw2DSurfaceClearj(PLT)
+	.loc 2 103 0
+	mvn	r0, #0
+	bl	_Z13Iw2DSetColourj(PLT)
+	.loc 2 104 0
+	ldr	r0, [sp, #76]
+	ldr	r1, [sp, #72]
+	bl	_Z7InGameMP10CIw2DImageS0_(PLT)
+	str	r0, [sp, #168]
+	.loc 2 105 0
+	ldr	r0, [sp, #172]
+	bl	_Z8DrawMazei(PLT)
+	.loc 2 106 0
+	ldr	r0, [sp, #172]
+	ldr	r1, [sp, #164]	@ float
+	ldr	r2, [sp, #96]
+	bl	_Z10DrawPlayerifP10CIw2DImage(PLT)
+	str	r0, [sp, #164]	@ float
+	.loc 2 107 0
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	str	r3, [sp, #4]
+	ldr	r0, [sp, #172]
+	ldr	r1, [sp, #164]	@ float
+	ldr	r2, [sp, #92]
+	ldr	r3, [sp, #88]
+	bl	_Z10PlayerMoveifP10CIw2DImageS0_S0_S0_(PLT)
+	str	r0, [sp, #172]
+	.loc 2 108 0
+	bl	_Z15Iw2DSurfaceShowv(PLT)
+.L8:
+	.loc 2 110 0
+	ldr	r3, [sp, #168]
+	cmp	r3, #3
+	bne	.L9
+	.loc 2 111 0
+	mov	r0, #-16777216
+	bl	_Z16Iw2DSurfaceClearj(PLT)
+	.loc 2 112 0
+	mvn	r0, #0
+	bl	_Z13Iw2DSetColourj(PLT)
+	.loc 2 113 0
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	str	r3, [sp, #4]
+	ldr	r3, [sp, #44]
+	str	r3, [sp, #8]
+	ldr	r3, [sp, #40]
+	str	r3, [sp, #12]
+	ldr	r0, [sp, #68]
+	ldr	r1, [sp, #64]
+	ldr	r2, [sp, #60]
+	ldr	r3, [sp, #56]
+	bl	_Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_(PLT)
+	str	r0, [sp, #168]
+	.loc 2 114 0
+	bl	_Z15Iw2DSurfaceShowv(PLT)
+.L9:
+	.loc 2 116 0
+	ldr	r3, [sp, #168]
+	cmp	r3, #5
+	bne	.L10
+	.loc 2 117 0
+	ldr	r3, .L13+120
+	str	r3, [sp, #164]	@ float
+	.loc 2 118 0
+	mov	r3, #1
+	str	r3, [sp, #172]
+	.loc 2 119 0
+	mov	r3, #2
+	str	r3, [sp, #168]
+.L10:
+	.loc 2 126 0
 	mov	r0, #0
 	bl	s3eDeviceYield(PLT)
 .L5:
-.LBE4:
-	.loc 2 144 0 discriminator 1
+	.loc 2 82 0 discriminator 1
 	bl	s3eDeviceCheckQuitRequest(PLT)
 	mov	r3, r0
 	cmp	r3, #0
@@ -462,13 +614,13 @@ main:
 	uxtb	r3, r3
 	cmp	r3, #0
 	bne	.L11
-	.loc 2 411 0
+	.loc 2 132 0
 	bl	_Z13Iw2DTerminatev(PLT)
 .LBE3:
-	.loc 2 413 0
+	.loc 2 134 0
 	mov	r3, #0
 	mov	r0, r3
-	add	sp, sp, #112
+	add	sp, sp, #176
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
 .L14:
@@ -478,20 +630,33 @@ main:
 	.word	.LC1-(.LPIC1+8)
 	.word	.LC2-(.LPIC2+8)
 	.word	.LC3-(.LPIC3+8)
-	.word	.LC4-(.LPIC4+8)
-	.word	.LC5-(.LPIC5+8)
-	.word	.LC6-(.LPIC6+8)
-	.word	.LC7-(.LPIC7+8)
+	.word	.LC0-(.LPIC4+8)
+	.word	.LC4-(.LPIC5+8)
+	.word	.LC5-(.LPIC6+8)
+	.word	.LC6-(.LPIC7+8)
+	.word	.LC7-(.LPIC8+8)
+	.word	.LC8-(.LPIC9+8)
+	.word	.LC9-(.LPIC10+8)
+	.word	.LC10-(.LPIC11+8)
+	.word	.LC11-(.LPIC12+8)
+	.word	.LC12-(.LPIC13+8)
+	.word	.LC13-(.LPIC14+8)
+	.word	.LC14-(.LPIC15+8)
+	.word	.LC15-(.LPIC16+8)
+	.word	.LC16-(.LPIC17+8)
+	.word	.LC17-(.LPIC18+8)
+	.word	.LC18-(.LPIC19+8)
+	.word	.LC19-(.LPIC20+8)
+	.word	.LC0-(.LPIC21+8)
+	.word	.LC20-(.LPIC22+8)
+	.word	.LC21-(.LPIC23+8)
+	.word	.LC22-(.LPIC24+8)
+	.word	.LC23-(.LPIC25+8)
+	.word	.LC24-(.LPIC26+8)
+	.word	.LC25-(.LPIC27+8)
+	.word	.LC26-(.LPIC28+8)
 	.word	1074003968
-	.word	16744576
-	.word	1134559232
-	.word	1140195328
-	.word	1118437376
-	.word	1133445120
-	.word	1125515264
-	.word	1112014848
-	.word	-10879155
-	.word	-32640
+	.word	1132920832
 	.cfi_endproc
 .LFE2965:
 	.size	main, .-main
@@ -500,7 +665,7 @@ main:
 	.type	_Z41__static_initialization_and_destruction_0ii, %function
 _Z41__static_initialization_and_destruction_0ii:
 .LFB3275:
-	.loc 2 413 0
+	.loc 2 134 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -515,13 +680,13 @@ _Z41__static_initialization_and_destruction_0ii:
 	str	r0, [sp, #4]
 	str	r1, [sp]
 	ldr	r4, .L17
-.LPIC10:
+.LPIC31:
 	add	r4, pc, r4
-	.loc 2 413 0
+	.loc 2 134 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
 	bne	.L15
-	.loc 2 413 0 is_stmt 0 discriminator 1
+	.loc 2 134 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp]
 	ldr	r3, .L17+4
 	cmp	r2, r3
@@ -529,88 +694,88 @@ _Z41__static_initialization_and_destruction_0ii:
 	.file 3 "c:/marmalade/7.5/s3e/h/std/c++/iostream"
 	.loc 3 69 0 is_stmt 1
 	ldr	r3, .L17+8
-.LPIC8:
+.LPIC29:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base9_Loc_initC1Ev(PLT)
 	ldr	r3, .L17+12
-.LPIC9:
+.LPIC30:
 	add	r3, pc, r3
 	mov	r0, r3
 	ldr	r3, .L17+16
 	ldr	r3, [r4, r3]
 	mov	r1, r3
 	ldr	r3, .L17+20
-.LPIC11:
+.LPIC32:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 	.loc 3 75 0
 	ldr	r3, .L17+24
-.LPIC12:
+.LPIC33:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base4InitC1Ev(PLT)
 	ldr	r3, .L17+28
-.LPIC13:
+.LPIC34:
 	add	r3, pc, r3
 	mov	r0, r3
 	ldr	r3, .L17+32
 	ldr	r3, [r4, r3]
 	mov	r1, r3
 	ldr	r3, .L17+36
-.LPIC14:
+.LPIC35:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
-	.loc 2 27 0
+	.loc 2 29 0
 	mov	r0, #0
 	bl	s3eSurfaceGetInt(PLT)
 	mov	r3, r0
 	mov	r2, r3
 	ldr	r3, .L17+40
-.LPIC15:
+.LPIC36:
 	add	r3, pc, r3
 	str	r2, [r3]
-	.loc 2 28 0
+	.loc 2 30 0
 	mov	r0, #1
 	bl	s3eSurfaceGetInt(PLT)
 	mov	r3, r0
 	mov	r2, r3
 	ldr	r3, .L17+44
-.LPIC16:
+.LPIC37:
 	add	r3, pc, r3
 	str	r2, [r3]
-	.loc 2 29 0
+	.loc 2 31 0
 	mov	r0, #2
 	bl	s3eSurfaceGetInt(PLT)
 	mov	r3, r0
 	mov	r2, r3
 	ldr	r3, .L17+48
-.LPIC17:
+.LPIC38:
 	add	r3, pc, r3
 	str	r2, [r3]
 .L15:
-	.loc 2 413 0
+	.loc 2 134 0
 	add	sp, sp, #8
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
 .L18:
 	.align	2
 .L17:
-	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC10+8)
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC31+8)
 	.word	65535
-	.word	_ZN4_STLL8_LocInitE-(.LPIC8+8)
-	.word	_ZN4_STLL8_LocInitE-(.LPIC9+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC29+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC30+8)
 	.word	_ZN4_STL8ios_base9_Loc_initD1Ev(GOT)
-	.word	__dso_handle-(.LPIC11+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC12+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC13+8)
+	.word	__dso_handle-(.LPIC32+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC33+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC34+8)
 	.word	_ZN4_STL8ios_base4InitD1Ev(GOT)
-	.word	__dso_handle-(.LPIC14+8)
-	.word	screenWidth-(.LPIC15+8)
-	.word	screenHeight-(.LPIC16+8)
-	.word	screenPitch-(.LPIC17+8)
+	.word	__dso_handle-(.LPIC35+8)
+	.word	screenWidth-(.LPIC36+8)
+	.word	screenHeight-(.LPIC37+8)
+	.word	screenPitch-(.LPIC38+8)
 	.cfi_endproc
 .LFE3275:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
@@ -619,7 +784,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	.type	_GLOBAL__sub_I_AmazingMaze.cpp, %function
 _GLOBAL__sub_I_AmazingMaze.cpp:
 .LFB3276:
-	.loc 2 413 0
+	.loc 2 134 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -628,7 +793,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 3, -8
 	.cfi_offset 14, -4
-	.loc 2 413 0
+	.loc 2 134 0
 	mov	r0, #1
 	ldr	r1, .L20
 	bl	_Z41__static_initialization_and_destruction_0ii(PLT)
@@ -681,29 +846,29 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.file 37 "c:/marmalade/7.5/modules/iwutil/h/IwArray.h"
 	.file 38 "c:/marmalade/7.5/modules/iwutil/h/IwManagedList.h"
 	.file 39 "c:/marmalade/7.5/modules/iwutil/h/IwEvent.h"
-	.file 40 "c:/marmalade/7.5/s3e/h/s3ePointer.h"
-	.file 41 "c:/marmalade/7.5/modules/iwresmanager/h/IwResGroup.h"
-	.file 42 "c:/marmalade/7.5/modules/iwresmanager/h/IwResManagerClass.h"
-	.file 43 "c:/marmalade/7.5/modules/iwgx/h/IwGxTypes.h"
-	.file 44 "c:/marmalade/7.5/modules/iw2dscenegraphcore/h/Iw2DSceneGraphCore.h"
+	.file 40 "c:/marmalade/7.5/modules/iwresmanager/h/IwResGroup.h"
+	.file 41 "c:/marmalade/7.5/modules/iwresmanager/h/IwResManagerClass.h"
+	.file 42 "c:/marmalade/7.5/modules/iwgx/h/IwGxTypes.h"
+	.file 43 "c:/marmalade/7.5/modules/iw2dscenegraphcore/h/Iw2DSceneGraphCore.h"
+	.file 44 "c:/marmalade/7.5/modules/iw2dscenegraph/h/Iw2DSceneGraph.h"
 	.file 45 "c:/marmalade/7.5/modules/iw2d/h/Iw2D.h"
-	.file 46 "c:/marmalade/7.5/modules/iwgeom/h/IwGeomSqrt.h"
-	.file 47 "c:/marmalade/7.5/modules/iwutil/h/IwMenu.h"
-	.file 48 "c:/marmalade/7.5/modules/iwutil/h/IwTextParserITX.h"
-	.file 49 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
-	.file 50 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
-	.file 51 "c:/marmalade/7.5/modules/iw2dscenegraph/h/Iw2DSceneGraph.h"
+	.file 46 "d:/School/cs115/AmazingMaze/menu.h"
+	.file 47 "c:/marmalade/7.5/modules/iwgeom/h/IwGeomSqrt.h"
+	.file 48 "c:/marmalade/7.5/modules/iwutil/h/IwMenu.h"
+	.file 49 "c:/marmalade/7.5/modules/iwutil/h/IwTextParserITX.h"
+	.file 50 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
+	.file 51 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x67c4
+	.4byte	0x6824
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF1003
+	.4byte	.LASF1012
 	.byte	0x4
-	.4byte	.LASF1004
-	.4byte	.LASF1005
+	.4byte	.LASF1013
+	.4byte	.LASF1014
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -1512,9 +1677,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	0x5a
 	.uleb128 0x11
 	.ascii	"buf\000"
-	.byte	0x31
+	.byte	0x32
 	.byte	0x58
-	.4byte	.LASF1006
+	.4byte	.LASF1015
 	.4byte	0x7e2
 	.byte	0x1
 	.byte	0x1
@@ -1523,7 +1688,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0xe
 	.2byte	0x125
 	.4byte	.LASF32
-	.4byte	0x675f
+	.4byte	0x67bf
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x12
@@ -1531,7 +1696,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0xe
 	.2byte	0x126
 	.4byte	.LASF33
-	.4byte	0x675f
+	.4byte	0x67bf
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x13
@@ -1539,7 +1704,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0xf
 	.byte	0x25
 	.4byte	.LASF36
-	.4byte	0x676a
+	.4byte	0x67ca
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x13
@@ -1547,7 +1712,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0xf
 	.byte	0x3f
 	.4byte	.LASF37
-	.4byte	0x675f
+	.4byte	0x67bf
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x14
@@ -2123,7 +2288,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.4byte	0xadd
 	.uleb128 0x29
-	.4byte	.LASF956
+	.4byte	.LASF942
 	.4byte	0x72c
 	.byte	0x2
 	.byte	0x23
@@ -6158,7 +6323,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x3e
 	.byte	0x4
-	.byte	0x32
+	.byte	0x33
 	.byte	0x26
 	.4byte	0x2dbb
 	.uleb128 0x2e
@@ -6305,7 +6470,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	0x2e90
 	.uleb128 0x3f
 	.ascii	"M\000"
-	.4byte	0x678b
+	.4byte	0x67eb
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
@@ -7722,7 +7887,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"Pop\000"
 	.byte	0x26
 	.2byte	0x180
-	.4byte	.LASF1007
+	.4byte	.LASF1016
 	.4byte	0x2e90
 	.byte	0x1
 	.4byte	0x3afe
@@ -7824,7 +7989,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF605
 	.byte	0x26
 	.2byte	0x1c0
-	.4byte	.LASF852
+	.4byte	.LASF838
 	.byte	0x1
 	.4byte	0x3be4
 	.uleb128 0xc
@@ -7923,62 +8088,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	0x3caf
 	.uleb128 0x21
 	.4byte	0x6ee
-	.uleb128 0x2f
-	.4byte	.LASF619
-	.byte	0x4
-	.byte	0x28
-	.2byte	0x159
-	.4byte	0x3ce0
-	.uleb128 0x2e
-	.4byte	.LASF620
-	.sleb128 0
-	.uleb128 0x2e
-	.4byte	.LASF621
-	.sleb128 1
-	.uleb128 0x2e
-	.4byte	.LASF622
-	.sleb128 2
-	.uleb128 0x2e
-	.4byte	.LASF623
-	.sleb128 4
-	.uleb128 0x2e
-	.4byte	.LASF624
-	.sleb128 5
-	.byte	0
-	.uleb128 0x2f
-	.4byte	.LASF625
-	.byte	0x4
-	.byte	0x28
-	.2byte	0x167
-	.4byte	0x3d18
-	.uleb128 0x2e
-	.4byte	.LASF626
-	.sleb128 0
-	.uleb128 0x2e
-	.4byte	.LASF627
-	.sleb128 0
-	.uleb128 0x2e
-	.4byte	.LASF628
-	.sleb128 1
-	.uleb128 0x2e
-	.4byte	.LASF629
-	.sleb128 2
-	.uleb128 0x2e
-	.4byte	.LASF630
-	.sleb128 3
-	.uleb128 0x2e
-	.4byte	.LASF631
-	.sleb128 4
-	.uleb128 0x2e
-	.4byte	.LASF632
-	.sleb128 5
-	.byte	0
 	.uleb128 0x30
-	.4byte	.LASF633
+	.4byte	.LASF619
 	.byte	0x1
 	.byte	0x23
 	.byte	0x70
-	.4byte	0x3dbe
+	.4byte	0x3d5a
 	.uleb128 0x15
 	.4byte	.LASF439
 	.byte	0x23
@@ -7994,68 +8109,68 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF441
 	.byte	0x23
 	.byte	0x85
-	.4byte	.LASF634
-	.4byte	0x3d2f
+	.4byte	.LASF620
+	.4byte	0x3ccb
 	.byte	0x1
-	.4byte	0x3d53
-	.4byte	0x3d5f
+	.4byte	0x3cef
+	.4byte	0x3cfb
 	.uleb128 0xc
-	.4byte	0x3dbe
+	.4byte	0x3d5a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3d24
+	.4byte	0x3cc0
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF443
 	.byte	0x23
 	.byte	0x8e
-	.4byte	.LASF635
-	.4byte	0x3d2f
+	.4byte	.LASF621
+	.4byte	0x3ccb
 	.byte	0x1
-	.4byte	0x3d78
-	.4byte	0x3d89
+	.4byte	0x3d14
+	.4byte	0x3d25
 	.uleb128 0xc
-	.4byte	0x3dbe
+	.4byte	0x3d5a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3d2f
+	.4byte	0x3ccb
 	.uleb128 0x1e
-	.4byte	0x3d24
+	.4byte	0x3cc0
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF445
 	.byte	0x23
 	.byte	0x93
-	.4byte	.LASF636
+	.4byte	.LASF622
 	.byte	0x1
-	.4byte	0x3d9e
-	.4byte	0x3daf
+	.4byte	0x3d3a
+	.4byte	0x3d4b
 	.uleb128 0xc
-	.4byte	0x3dbe
+	.4byte	0x3d5a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3d2f
+	.4byte	0x3ccb
 	.uleb128 0x1e
-	.4byte	0x3d24
+	.4byte	0x3cc0
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"T\000"
 	.4byte	0x2a48
 	.uleb128 0x3f
 	.ascii	"M\000"
-	.4byte	0x679d
+	.4byte	0x67fd
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x3d18
+	.4byte	0x3cb4
 	.uleb128 0x30
-	.4byte	.LASF637
+	.4byte	.LASF623
 	.byte	0x10
 	.byte	0x25
 	.byte	0x51
-	.4byte	0x45b3
+	.4byte	0x454f
 	.uleb128 0x40
 	.ascii	"p\000"
 	.byte	0x25
@@ -8111,7 +8226,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"a\000"
 	.byte	0x25
 	.2byte	0x332
-	.4byte	0x3d18
+	.4byte	0x3cb4
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xd
@@ -8126,13 +8241,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF457
 	.byte	0x25
 	.byte	0x61
-	.4byte	.LASF638
-	.4byte	0x3e2d
+	.4byte	.LASF624
+	.4byte	0x3dc9
 	.byte	0x1
-	.4byte	0x3e51
-	.4byte	0x3e58
+	.4byte	0x3ded
+	.4byte	0x3df4
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x34
@@ -8140,13 +8255,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"end\000"
 	.byte	0x25
 	.byte	0x67
-	.4byte	.LASF639
-	.4byte	0x3e2d
+	.4byte	.LASF625
+	.4byte	0x3dc9
 	.byte	0x1
-	.4byte	0x3e71
-	.4byte	0x3e78
+	.4byte	0x3e0d
+	.4byte	0x3e14
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -8154,13 +8269,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF460
 	.byte	0x25
 	.byte	0x6c
-	.4byte	.LASF640
+	.4byte	.LASF626
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x3e91
-	.4byte	0x3e98
+	.4byte	0x3e2d
+	.4byte	0x3e34
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -8168,13 +8283,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF374
 	.byte	0x25
 	.byte	0x71
-	.4byte	.LASF641
+	.4byte	.LASF627
 	.4byte	0x6f9
 	.byte	0x1
-	.4byte	0x3eb1
-	.4byte	0x3eb8
+	.4byte	0x3e4d
+	.4byte	0x3e54
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -8182,13 +8297,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF378
 	.byte	0x25
 	.byte	0x77
-	.4byte	.LASF642
+	.4byte	.LASF628
 	.4byte	0x6f9
 	.byte	0x1
-	.4byte	0x3ed1
-	.4byte	0x3ed8
+	.4byte	0x3e6d
+	.4byte	0x3e74
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -8196,13 +8311,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF464
 	.byte	0x25
 	.byte	0x7d
-	.4byte	.LASF643
+	.4byte	.LASF629
 	.4byte	0x36da
 	.byte	0x1
-	.4byte	0x3ef1
-	.4byte	0x3ef8
+	.4byte	0x3e8d
+	.4byte	0x3e94
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x3a
@@ -8210,13 +8325,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF466
 	.byte	0x25
 	.byte	0x83
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0x1
-	.4byte	0x3f0e
-	.4byte	0x3f1a
+	.4byte	0x3eaa
+	.4byte	0x3eb6
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8228,10 +8343,10 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0x89
 	.4byte	0x72c
 	.byte	0x1
-	.4byte	0x3f2f
-	.4byte	0x3f3c
+	.4byte	0x3ecb
+	.4byte	0x3ed8
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0xc
 	.4byte	0x65b
@@ -8242,27 +8357,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF466
 	.byte	0x25
 	.byte	0x99
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
-	.4byte	0x3f51
-	.4byte	0x3f5d
+	.4byte	0x3eed
+	.4byte	0x3ef9
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45c4
+	.4byte	0x4560
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF468
 	.byte	0x25
 	.byte	0xa4
-	.4byte	.LASF644
+	.4byte	.LASF630
 	.byte	0x1
-	.4byte	0x3f72
-	.4byte	0x3f79
+	.4byte	0x3f0e
+	.4byte	0x3f15
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -8270,27 +8385,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF232
 	.byte	0x25
 	.byte	0xba
-	.4byte	.LASF645
+	.4byte	.LASF631
 	.byte	0x1
-	.4byte	0x3f8e
-	.4byte	0x3f9a
+	.4byte	0x3f2a
+	.4byte	0x3f36
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45c4
+	.4byte	0x4560
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF471
 	.byte	0x25
 	.byte	0xc7
-	.4byte	.LASF646
+	.4byte	.LASF632
 	.byte	0x1
-	.4byte	0x3faf
-	.4byte	0x3fb6
+	.4byte	0x3f4b
+	.4byte	0x3f52
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -8298,12 +8413,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF473
 	.byte	0x25
 	.byte	0xd1
-	.4byte	.LASF647
+	.4byte	.LASF633
 	.byte	0x1
-	.4byte	0x3fcb
-	.4byte	0x3fd2
+	.4byte	0x3f67
+	.4byte	0x3f6e
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -8311,13 +8426,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF475
 	.byte	0x25
 	.byte	0xda
-	.4byte	.LASF648
+	.4byte	.LASF634
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x3feb
-	.4byte	0x3ff2
+	.4byte	0x3f87
+	.4byte	0x3f8e
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -8325,12 +8440,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF477
 	.byte	0x25
 	.byte	0xe5
-	.4byte	.LASF649
+	.4byte	.LASF635
 	.byte	0x1
-	.4byte	0x4007
-	.4byte	0x4013
+	.4byte	0x3fa3
+	.4byte	0x3faf
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8340,12 +8455,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF479
 	.byte	0x25
 	.byte	0xf2
-	.4byte	.LASF650
+	.4byte	.LASF636
 	.byte	0x1
-	.4byte	0x4028
-	.4byte	0x402f
+	.4byte	0x3fc4
+	.4byte	0x3fcb
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -8353,12 +8468,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF481
 	.byte	0x25
 	.byte	0xfd
-	.4byte	.LASF651
+	.4byte	.LASF637
 	.byte	0x1
-	.4byte	0x4044
-	.4byte	0x4050
+	.4byte	0x3fe0
+	.4byte	0x3fec
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8368,12 +8483,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF483
 	.byte	0x25
 	.2byte	0x10a
-	.4byte	.LASF652
+	.4byte	.LASF638
 	.byte	0x1
-	.4byte	0x4066
-	.4byte	0x4072
+	.4byte	0x4002
+	.4byte	0x400e
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -8383,12 +8498,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF485
 	.byte	0x25
 	.2byte	0x119
-	.4byte	.LASF653
+	.4byte	.LASF639
 	.byte	0x1
-	.4byte	0x4088
-	.4byte	0x4094
+	.4byte	0x4024
+	.4byte	0x4030
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8398,12 +8513,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF487
 	.byte	0x25
 	.2byte	0x124
-	.4byte	.LASF654
+	.4byte	.LASF640
 	.byte	0x1
-	.4byte	0x40aa
-	.4byte	0x40b6
+	.4byte	0x4046
+	.4byte	0x4052
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8413,13 +8528,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF382
 	.byte	0x25
 	.2byte	0x134
-	.4byte	.LASF655
+	.4byte	.LASF641
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x40d0
-	.4byte	0x40dc
+	.4byte	0x406c
+	.4byte	0x4078
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8429,13 +8544,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF490
 	.byte	0x25
 	.2byte	0x143
-	.4byte	.LASF656
+	.4byte	.LASF642
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x40f6
-	.4byte	0x4102
+	.4byte	0x4092
+	.4byte	0x409e
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8445,13 +8560,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF492
 	.byte	0x25
 	.2byte	0x158
-	.4byte	.LASF657
+	.4byte	.LASF643
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x411c
-	.4byte	0x4128
+	.4byte	0x40b8
+	.4byte	0x40c4
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8461,56 +8576,56 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF494
 	.byte	0x25
 	.2byte	0x16e
-	.4byte	.LASF658
+	.4byte	.LASF644
 	.4byte	0x1319
+	.byte	0x1
+	.4byte	0x40de
+	.4byte	0x40ea
+	.uleb128 0xc
+	.4byte	0x455a
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x36f1
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF496
+	.byte	0x25
+	.2byte	0x17f
+	.4byte	.LASF645
+	.byte	0x1
+	.4byte	0x4100
+	.4byte	0x4107
+	.uleb128 0xc
+	.4byte	0x455a
+	.byte	0x1
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF498
+	.byte	0x25
+	.2byte	0x18a
+	.4byte	.LASF646
+	.4byte	0x2a48
+	.byte	0x1
+	.4byte	0x4121
+	.4byte	0x4128
+	.uleb128 0xc
+	.4byte	0x455a
+	.byte	0x1
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF500
+	.byte	0x25
+	.2byte	0x19c
+	.4byte	.LASF647
+	.4byte	0x65b
 	.byte	0x1
 	.4byte	0x4142
 	.4byte	0x414e
 	.uleb128 0xc
-	.4byte	0x45be
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x36f1
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF496
-	.byte	0x25
-	.2byte	0x17f
-	.4byte	.LASF659
-	.byte	0x1
-	.4byte	0x4164
-	.4byte	0x416b
-	.uleb128 0xc
-	.4byte	0x45be
-	.byte	0x1
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF498
-	.byte	0x25
-	.2byte	0x18a
-	.4byte	.LASF660
-	.4byte	0x2a48
-	.byte	0x1
-	.4byte	0x4185
-	.4byte	0x418c
-	.uleb128 0xc
-	.4byte	0x45be
-	.byte	0x1
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF500
-	.byte	0x25
-	.2byte	0x19c
-	.4byte	.LASF661
-	.4byte	0x65b
-	.byte	0x1
-	.4byte	0x41a6
-	.4byte	0x41b2
-	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -8520,13 +8635,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1ac
-	.4byte	.LASF662
+	.4byte	.LASF648
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x41cc
-	.4byte	0x41dd
+	.4byte	0x4168
+	.4byte	0x4179
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -8538,47 +8653,47 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1be
-	.4byte	.LASF663
-	.4byte	0x3e2d
+	.4byte	.LASF649
+	.4byte	0x3dc9
 	.byte	0x1
-	.4byte	0x41f7
-	.4byte	0x4203
+	.4byte	0x4193
+	.4byte	0x419f
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3e2d
+	.4byte	0x3dc9
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1c8
-	.4byte	.LASF664
-	.4byte	0x3e2d
+	.4byte	.LASF650
+	.4byte	0x3dc9
 	.byte	0x1
-	.4byte	0x421d
-	.4byte	0x422e
+	.4byte	0x41b9
+	.4byte	0x41ca
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3e2d
+	.4byte	0x3dc9
 	.uleb128 0x1e
-	.4byte	0x3e2d
+	.4byte	0x3dc9
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1d6
-	.4byte	.LASF665
+	.4byte	.LASF651
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4248
-	.4byte	0x4254
+	.4byte	0x41e4
+	.4byte	0x41f0
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -8588,13 +8703,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1e4
-	.4byte	.LASF666
+	.4byte	.LASF652
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x426e
-	.4byte	0x427f
+	.4byte	0x420a
+	.4byte	0x421b
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8606,46 +8721,46 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1f2
-	.4byte	.LASF667
-	.4byte	0x3e2d
+	.4byte	.LASF653
+	.4byte	0x3dc9
 	.byte	0x1
-	.4byte	0x4299
-	.4byte	0x42a5
+	.4byte	0x4235
+	.4byte	0x4241
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3e2d
+	.4byte	0x3dc9
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1fc
-	.4byte	.LASF668
-	.4byte	0x3e2d
+	.4byte	.LASF654
+	.4byte	0x3dc9
 	.byte	0x1
-	.4byte	0x42bf
-	.4byte	0x42d0
+	.4byte	0x425b
+	.4byte	0x426c
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x3e2d
+	.4byte	0x3dc9
 	.uleb128 0x1e
-	.4byte	0x3e2d
+	.4byte	0x3dc9
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF510
 	.byte	0x25
 	.2byte	0x207
-	.4byte	.LASF669
+	.4byte	.LASF655
 	.byte	0x1
-	.4byte	0x42e6
-	.4byte	0x42f7
+	.4byte	0x4282
+	.4byte	0x4293
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8657,15 +8772,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF510
 	.byte	0x25
 	.2byte	0x222
-	.4byte	.LASF670
+	.4byte	.LASF656
 	.byte	0x1
-	.4byte	0x430d
-	.4byte	0x431e
+	.4byte	0x42a9
+	.4byte	0x42ba
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45ca
+	.4byte	0x4566
 	.uleb128 0x1e
 	.4byte	0x6f9
 	.byte	0
@@ -8674,13 +8789,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF513
 	.byte	0x25
 	.2byte	0x244
-	.4byte	.LASF671
+	.4byte	.LASF657
 	.4byte	0x36f1
 	.byte	0x1
-	.4byte	0x4338
-	.4byte	0x433f
+	.4byte	0x42d4
+	.4byte	0x42db
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -8688,13 +8803,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF513
 	.byte	0x25
 	.2byte	0x249
-	.4byte	.LASF672
+	.4byte	.LASF658
 	.4byte	0x36e0
 	.byte	0x1
-	.4byte	0x4359
-	.4byte	0x4360
+	.4byte	0x42f5
+	.4byte	0x42fc
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -8702,13 +8817,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF516
 	.byte	0x25
 	.2byte	0x254
-	.4byte	.LASF673
+	.4byte	.LASF659
 	.4byte	0x36f1
 	.byte	0x1
-	.4byte	0x437a
-	.4byte	0x4381
+	.4byte	0x4316
+	.4byte	0x431d
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -8716,13 +8831,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF516
 	.byte	0x25
 	.2byte	0x25a
-	.4byte	.LASF674
+	.4byte	.LASF660
 	.4byte	0x36e0
 	.byte	0x1
-	.4byte	0x439b
-	.4byte	0x43a2
+	.4byte	0x4337
+	.4byte	0x433e
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -8730,13 +8845,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF519
 	.byte	0x25
 	.2byte	0x264
-	.4byte	.LASF675
+	.4byte	.LASF661
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x43bc
-	.4byte	0x43c8
+	.4byte	0x4358
+	.4byte	0x4364
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8746,29 +8861,29 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF519
 	.byte	0x25
 	.2byte	0x26d
-	.4byte	.LASF676
+	.4byte	.LASF662
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x43e2
-	.4byte	0x43ee
+	.4byte	0x437e
+	.4byte	0x438a
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45ca
+	.4byte	0x4566
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF522
 	.byte	0x25
 	.2byte	0x27c
-	.4byte	.LASF677
+	.4byte	.LASF663
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4408
-	.4byte	0x4414
+	.4byte	0x43a4
+	.4byte	0x43b0
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8778,13 +8893,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF522
 	.byte	0x25
 	.2byte	0x297
-	.4byte	.LASF678
+	.4byte	.LASF664
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x442e
-	.4byte	0x4435
+	.4byte	0x43ca
+	.4byte	0x43d1
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x43
@@ -8792,12 +8907,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF525
 	.byte	0x25
 	.2byte	0x2a4
-	.4byte	.LASF679
+	.4byte	.LASF665
 	.byte	0x1
-	.4byte	0x444b
-	.4byte	0x445c
+	.4byte	0x43e7
+	.4byte	0x43f8
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36f1
@@ -8809,12 +8924,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF525
 	.byte	0x25
 	.2byte	0x2b9
-	.4byte	.LASF680
+	.4byte	.LASF666
 	.byte	0x1
-	.4byte	0x4472
-	.4byte	0x447e
+	.4byte	0x440e
+	.4byte	0x441a
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -8824,13 +8939,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF304
 	.byte	0x25
 	.2byte	0x2c8
-	.4byte	.LASF681
+	.4byte	.LASF667
 	.4byte	0x36e0
 	.byte	0x1
-	.4byte	0x4498
-	.4byte	0x44a4
+	.4byte	0x4434
+	.4byte	0x4440
 	.uleb128 0xc
-	.4byte	0x45b3
+	.4byte	0x454f
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -8840,27 +8955,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF529
 	.byte	0x25
 	.2byte	0x2d4
-	.4byte	.LASF682
+	.4byte	.LASF668
 	.byte	0x1
-	.4byte	0x44ba
-	.4byte	0x44c6
+	.4byte	0x4456
+	.4byte	0x4462
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45c4
+	.4byte	0x4560
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF529
 	.byte	0x25
 	.2byte	0x2e5
-	.4byte	.LASF683
+	.4byte	.LASF669
 	.byte	0x1
-	.4byte	0x44dc
-	.4byte	0x44f2
+	.4byte	0x4478
+	.4byte	0x448e
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x36da
@@ -8874,13 +8989,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF532
 	.byte	0x25
 	.2byte	0x2f3
-	.4byte	.LASF684
+	.4byte	.LASF670
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x450c
-	.4byte	0x4513
+	.4byte	0x44a8
+	.4byte	0x44af
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x43
@@ -8888,12 +9003,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF534
 	.byte	0x25
 	.2byte	0x2ff
-	.4byte	.LASF685
+	.4byte	.LASF671
 	.byte	0x1
-	.4byte	0x4529
-	.4byte	0x4535
+	.4byte	0x44c5
+	.4byte	0x44d1
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x1319
@@ -8903,12 +9018,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF536
 	.byte	0x25
 	.2byte	0x336
-	.4byte	.LASF686
+	.4byte	.LASF672
 	.byte	0x1
-	.4byte	0x454b
-	.4byte	0x4557
+	.4byte	0x44e7
+	.4byte	0x44f3
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8918,12 +9033,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF538
 	.byte	0x25
 	.2byte	0x30f
-	.4byte	.LASF687
+	.4byte	.LASF673
 	.byte	0x1
-	.4byte	0x456d
-	.4byte	0x4579
+	.4byte	0x4509
+	.4byte	0x4515
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -8933,46 +9048,46 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF540
 	.byte	0x25
 	.2byte	0x31c
-	.4byte	.LASF688
+	.4byte	.LASF674
 	.byte	0x1
-	.4byte	0x458f
-	.4byte	0x459b
+	.4byte	0x452b
+	.4byte	0x4537
 	.uleb128 0xc
-	.4byte	0x45be
+	.4byte	0x455a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45ca
+	.4byte	0x4566
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"X\000"
 	.4byte	0x2a48
 	.uleb128 0x3f
 	.ascii	"A\000"
-	.4byte	0x3d18
+	.4byte	0x3cb4
 	.uleb128 0x44
 	.4byte	.LASF542
-	.4byte	0x63cc
+	.4byte	0x635e
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x45b9
+	.4byte	0x4555
 	.uleb128 0x21
-	.4byte	0x3dc4
+	.4byte	0x3d60
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x3dc4
+	.4byte	0x3d60
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x45b9
+	.4byte	0x4555
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x3dc4
+	.4byte	0x3d60
 	.uleb128 0x30
-	.4byte	.LASF689
+	.4byte	.LASF675
 	.byte	0x1
 	.byte	0x23
 	.byte	0x70
-	.4byte	0x4676
+	.4byte	0x4612
 	.uleb128 0x15
 	.4byte	.LASF439
 	.byte	0x23
@@ -8982,103 +9097,103 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF440
 	.byte	0x23
 	.byte	0x75
-	.4byte	0x4676
+	.4byte	0x4612
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF441
 	.byte	0x23
 	.byte	0x85
-	.4byte	.LASF690
-	.4byte	0x45e7
+	.4byte	.LASF676
+	.4byte	0x4583
 	.byte	0x1
-	.4byte	0x460b
-	.4byte	0x4617
+	.4byte	0x45a7
+	.4byte	0x45b3
 	.uleb128 0xc
-	.4byte	0x46a9
+	.4byte	0x4645
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45dc
+	.4byte	0x4578
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF443
 	.byte	0x23
 	.byte	0x8e
-	.4byte	.LASF691
-	.4byte	0x45e7
+	.4byte	.LASF677
+	.4byte	0x4583
 	.byte	0x1
-	.4byte	0x4630
-	.4byte	0x4641
+	.4byte	0x45cc
+	.4byte	0x45dd
 	.uleb128 0xc
-	.4byte	0x46a9
+	.4byte	0x4645
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45e7
+	.4byte	0x4583
 	.uleb128 0x1e
-	.4byte	0x45dc
+	.4byte	0x4578
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF445
 	.byte	0x23
 	.byte	0x93
-	.4byte	.LASF692
+	.4byte	.LASF678
 	.byte	0x1
-	.4byte	0x4656
-	.4byte	0x4667
+	.4byte	0x45f2
+	.4byte	0x4603
 	.uleb128 0xc
-	.4byte	0x46a9
+	.4byte	0x4645
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x45e7
+	.4byte	0x4583
 	.uleb128 0x1e
-	.4byte	0x45dc
+	.4byte	0x4578
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"T\000"
-	.4byte	0x467c
+	.4byte	0x4618
 	.uleb128 0x3f
 	.ascii	"M\000"
-	.4byte	0x67af
+	.4byte	0x680f
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x467c
+	.4byte	0x4618
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x4682
+	.4byte	0x461e
 	.uleb128 0x8
-	.4byte	.LASF693
+	.4byte	.LASF679
 	.byte	0x1
-	.4byte	0x4698
+	.4byte	0x4634
 	.uleb128 0x15
 	.4byte	.LASF450
-	.byte	0x29
+	.byte	0x28
 	.byte	0xb7
-	.4byte	0x4718
+	.4byte	0x46b4
 	.byte	0
 	.uleb128 0x21
-	.4byte	0x467c
+	.4byte	0x4618
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x467c
+	.4byte	0x4618
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x4698
+	.4byte	0x4634
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x45d0
+	.4byte	0x456c
 	.uleb128 0x30
-	.4byte	.LASF694
+	.4byte	.LASF680
 	.byte	0x10
 	.byte	0x25
 	.byte	0x51
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.uleb128 0x40
 	.ascii	"p\000"
 	.byte	0x25
 	.byte	0x54
-	.4byte	0x4676
+	.4byte	0x4612
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
@@ -9129,7 +9244,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"a\000"
 	.byte	0x25
 	.2byte	0x332
-	.4byte	0x45d0
+	.4byte	0x456c
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xd
@@ -9138,19 +9253,19 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF456
 	.byte	0x25
 	.byte	0x5a
-	.4byte	0x4676
+	.4byte	0x4612
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF457
 	.byte	0x25
 	.byte	0x61
-	.4byte	.LASF695
-	.4byte	0x4718
+	.4byte	.LASF681
+	.4byte	0x46b4
 	.byte	0x1
-	.4byte	0x473c
-	.4byte	0x4743
+	.4byte	0x46d8
+	.4byte	0x46df
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x34
@@ -9158,13 +9273,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"end\000"
 	.byte	0x25
 	.byte	0x67
-	.4byte	.LASF696
-	.4byte	0x4718
+	.4byte	.LASF682
+	.4byte	0x46b4
 	.byte	0x1
-	.4byte	0x475c
-	.4byte	0x4763
+	.4byte	0x46f8
+	.4byte	0x46ff
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -9172,13 +9287,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF460
 	.byte	0x25
 	.byte	0x6c
-	.4byte	.LASF697
+	.4byte	.LASF683
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x477c
-	.4byte	0x4783
+	.4byte	0x4718
+	.4byte	0x471f
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -9186,13 +9301,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF374
 	.byte	0x25
 	.byte	0x71
-	.4byte	.LASF698
+	.4byte	.LASF684
 	.4byte	0x6f9
 	.byte	0x1
-	.4byte	0x479c
-	.4byte	0x47a3
+	.4byte	0x4738
+	.4byte	0x473f
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -9200,13 +9315,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF378
 	.byte	0x25
 	.byte	0x77
-	.4byte	.LASF699
+	.4byte	.LASF685
 	.4byte	0x6f9
 	.byte	0x1
-	.4byte	0x47bc
-	.4byte	0x47c3
+	.4byte	0x4758
+	.4byte	0x475f
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -9214,13 +9329,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF464
 	.byte	0x25
 	.byte	0x7d
-	.4byte	.LASF700
-	.4byte	0x4676
+	.4byte	.LASF686
+	.4byte	0x4612
 	.byte	0x1
-	.4byte	0x47dc
-	.4byte	0x47e3
+	.4byte	0x4778
+	.4byte	0x477f
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x3a
@@ -9228,13 +9343,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF466
 	.byte	0x25
 	.byte	0x83
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0x1
-	.4byte	0x47f9
-	.4byte	0x4805
+	.4byte	0x4795
+	.4byte	0x47a1
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9246,10 +9361,10 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0x89
 	.4byte	0x72c
 	.byte	0x1
-	.4byte	0x481a
-	.4byte	0x4827
+	.4byte	0x47b6
+	.4byte	0x47c3
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0xc
 	.4byte	0x65b
@@ -9260,27 +9375,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF466
 	.byte	0x25
 	.byte	0x99
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
-	.4byte	0x483c
-	.4byte	0x4848
+	.4byte	0x47d8
+	.4byte	0x47e4
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eaf
+	.4byte	0x4e4b
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF468
 	.byte	0x25
 	.byte	0xa4
-	.4byte	.LASF701
+	.4byte	.LASF687
 	.byte	0x1
-	.4byte	0x485d
-	.4byte	0x4864
+	.4byte	0x47f9
+	.4byte	0x4800
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -9288,27 +9403,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF232
 	.byte	0x25
 	.byte	0xba
-	.4byte	.LASF702
+	.4byte	.LASF688
 	.byte	0x1
-	.4byte	0x4879
-	.4byte	0x4885
+	.4byte	0x4815
+	.4byte	0x4821
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eaf
+	.4byte	0x4e4b
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF471
 	.byte	0x25
 	.byte	0xc7
-	.4byte	.LASF703
+	.4byte	.LASF689
 	.byte	0x1
-	.4byte	0x489a
-	.4byte	0x48a1
+	.4byte	0x4836
+	.4byte	0x483d
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -9316,12 +9431,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF473
 	.byte	0x25
 	.byte	0xd1
-	.4byte	.LASF704
+	.4byte	.LASF690
 	.byte	0x1
-	.4byte	0x48b6
-	.4byte	0x48bd
+	.4byte	0x4852
+	.4byte	0x4859
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -9329,13 +9444,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF475
 	.byte	0x25
 	.byte	0xda
-	.4byte	.LASF705
+	.4byte	.LASF691
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x48d6
-	.4byte	0x48dd
+	.4byte	0x4872
+	.4byte	0x4879
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -9343,12 +9458,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF477
 	.byte	0x25
 	.byte	0xe5
-	.4byte	.LASF706
+	.4byte	.LASF692
 	.byte	0x1
-	.4byte	0x48f2
-	.4byte	0x48fe
+	.4byte	0x488e
+	.4byte	0x489a
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9358,12 +9473,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF479
 	.byte	0x25
 	.byte	0xf2
-	.4byte	.LASF707
+	.4byte	.LASF693
 	.byte	0x1
-	.4byte	0x4913
-	.4byte	0x491a
+	.4byte	0x48af
+	.4byte	0x48b6
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -9371,12 +9486,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF481
 	.byte	0x25
 	.byte	0xfd
-	.4byte	.LASF708
+	.4byte	.LASF694
 	.byte	0x1
-	.4byte	0x492f
-	.4byte	0x493b
+	.4byte	0x48cb
+	.4byte	0x48d7
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9386,12 +9501,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF483
 	.byte	0x25
 	.2byte	0x10a
-	.4byte	.LASF709
+	.4byte	.LASF695
 	.byte	0x1
-	.4byte	0x4951
-	.4byte	0x495d
+	.4byte	0x48ed
+	.4byte	0x48f9
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -9401,12 +9516,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF485
 	.byte	0x25
 	.2byte	0x119
-	.4byte	.LASF710
+	.4byte	.LASF696
 	.byte	0x1
-	.4byte	0x4973
-	.4byte	0x497f
+	.4byte	0x490f
+	.4byte	0x491b
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9416,12 +9531,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF487
 	.byte	0x25
 	.2byte	0x124
-	.4byte	.LASF711
+	.4byte	.LASF697
 	.byte	0x1
-	.4byte	0x4995
-	.4byte	0x49a1
+	.4byte	0x4931
+	.4byte	0x493d
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9431,76 +9546,76 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF382
 	.byte	0x25
 	.2byte	0x134
-	.4byte	.LASF712
+	.4byte	.LASF698
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x49bb
-	.4byte	0x49c7
+	.4byte	0x4957
+	.4byte	0x4963
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF490
 	.byte	0x25
 	.2byte	0x143
-	.4byte	.LASF713
+	.4byte	.LASF699
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x49e1
-	.4byte	0x49ed
+	.4byte	0x497d
+	.4byte	0x4989
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF492
 	.byte	0x25
 	.2byte	0x158
-	.4byte	.LASF714
+	.4byte	.LASF700
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x4a07
-	.4byte	0x4a13
+	.4byte	0x49a3
+	.4byte	0x49af
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF494
 	.byte	0x25
 	.2byte	0x16e
-	.4byte	.LASF715
+	.4byte	.LASF701
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x4a2d
-	.4byte	0x4a39
+	.4byte	0x49c9
+	.4byte	0x49d5
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF496
 	.byte	0x25
 	.2byte	0x17f
-	.4byte	.LASF716
+	.4byte	.LASF702
 	.byte	0x1
-	.4byte	0x4a4f
-	.4byte	0x4a56
+	.4byte	0x49eb
+	.4byte	0x49f2
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -9508,13 +9623,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF498
 	.byte	0x25
 	.2byte	0x18a
-	.4byte	.LASF717
-	.4byte	0x467c
+	.4byte	.LASF703
+	.4byte	0x4618
 	.byte	0x1
-	.4byte	0x4a70
-	.4byte	0x4a77
+	.4byte	0x4a0c
+	.4byte	0x4a13
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -9522,13 +9637,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x19c
-	.4byte	.LASF718
+	.4byte	.LASF704
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4a91
-	.4byte	0x4a9d
+	.4byte	0x4a2d
+	.4byte	0x4a39
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -9538,13 +9653,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1ac
-	.4byte	.LASF719
+	.4byte	.LASF705
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4ab7
-	.4byte	0x4ac8
+	.4byte	0x4a53
+	.4byte	0x4a64
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -9556,47 +9671,47 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1be
-	.4byte	.LASF720
-	.4byte	0x4718
+	.4byte	.LASF706
+	.4byte	0x46b4
 	.byte	0x1
-	.4byte	0x4ae2
-	.4byte	0x4aee
+	.4byte	0x4a7e
+	.4byte	0x4a8a
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4718
+	.4byte	0x46b4
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1c8
-	.4byte	.LASF721
-	.4byte	0x4718
+	.4byte	.LASF707
+	.4byte	0x46b4
 	.byte	0x1
-	.4byte	0x4b08
-	.4byte	0x4b19
+	.4byte	0x4aa4
+	.4byte	0x4ab5
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4718
+	.4byte	0x46b4
 	.uleb128 0x1e
-	.4byte	0x4718
+	.4byte	0x46b4
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1d6
-	.4byte	.LASF722
+	.4byte	.LASF708
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4b33
-	.4byte	0x4b3f
+	.4byte	0x4acf
+	.4byte	0x4adb
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -9606,13 +9721,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1e4
-	.4byte	.LASF723
+	.4byte	.LASF709
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4b59
-	.4byte	0x4b6a
+	.4byte	0x4af5
+	.4byte	0x4b06
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9624,49 +9739,49 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1f2
-	.4byte	.LASF724
-	.4byte	0x4718
+	.4byte	.LASF710
+	.4byte	0x46b4
 	.byte	0x1
-	.4byte	0x4b84
-	.4byte	0x4b90
+	.4byte	0x4b20
+	.4byte	0x4b2c
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4718
+	.4byte	0x46b4
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1fc
-	.4byte	.LASF725
-	.4byte	0x4718
+	.4byte	.LASF711
+	.4byte	0x46b4
 	.byte	0x1
-	.4byte	0x4baa
-	.4byte	0x4bbb
+	.4byte	0x4b46
+	.4byte	0x4b57
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4718
+	.4byte	0x46b4
 	.uleb128 0x1e
-	.4byte	0x4718
+	.4byte	0x46b4
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF510
 	.byte	0x25
 	.2byte	0x207
-	.4byte	.LASF726
+	.4byte	.LASF712
 	.byte	0x1
-	.4byte	0x4bd1
-	.4byte	0x4be2
+	.4byte	0x4b6d
+	.4byte	0x4b7e
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.uleb128 0x1e
 	.4byte	0x6f9
 	.byte	0
@@ -9675,15 +9790,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF510
 	.byte	0x25
 	.2byte	0x222
-	.4byte	.LASF727
+	.4byte	.LASF713
 	.byte	0x1
-	.4byte	0x4bf8
-	.4byte	0x4c09
+	.4byte	0x4b94
+	.4byte	0x4ba5
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eb5
+	.4byte	0x4e51
 	.uleb128 0x1e
 	.4byte	0x6f9
 	.byte	0
@@ -9692,13 +9807,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF513
 	.byte	0x25
 	.2byte	0x244
-	.4byte	.LASF728
-	.4byte	0x46a3
+	.4byte	.LASF714
+	.4byte	0x463f
 	.byte	0x1
-	.4byte	0x4c23
-	.4byte	0x4c2a
+	.4byte	0x4bbf
+	.4byte	0x4bc6
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -9706,13 +9821,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF513
 	.byte	0x25
 	.2byte	0x249
-	.4byte	.LASF729
-	.4byte	0x469d
+	.4byte	.LASF715
+	.4byte	0x4639
 	.byte	0x1
-	.4byte	0x4c44
-	.4byte	0x4c4b
+	.4byte	0x4be0
+	.4byte	0x4be7
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -9720,13 +9835,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF516
 	.byte	0x25
 	.2byte	0x254
-	.4byte	.LASF730
-	.4byte	0x46a3
+	.4byte	.LASF716
+	.4byte	0x463f
 	.byte	0x1
-	.4byte	0x4c65
-	.4byte	0x4c6c
+	.4byte	0x4c01
+	.4byte	0x4c08
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -9734,13 +9849,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF516
 	.byte	0x25
 	.2byte	0x25a
-	.4byte	.LASF731
-	.4byte	0x469d
+	.4byte	.LASF717
+	.4byte	0x4639
 	.byte	0x1
-	.4byte	0x4c86
-	.4byte	0x4c8d
+	.4byte	0x4c22
+	.4byte	0x4c29
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -9748,61 +9863,61 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF519
 	.byte	0x25
 	.2byte	0x264
-	.4byte	.LASF732
+	.4byte	.LASF718
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4ca7
-	.4byte	0x4cb3
+	.4byte	0x4c43
+	.4byte	0x4c4f
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF519
 	.byte	0x25
 	.2byte	0x26d
-	.4byte	.LASF733
+	.4byte	.LASF719
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4ccd
-	.4byte	0x4cd9
+	.4byte	0x4c69
+	.4byte	0x4c75
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eb5
+	.4byte	0x4e51
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF522
 	.byte	0x25
 	.2byte	0x27c
-	.4byte	.LASF734
+	.4byte	.LASF720
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4cf3
-	.4byte	0x4cff
+	.4byte	0x4c8f
+	.4byte	0x4c9b
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF522
 	.byte	0x25
 	.2byte	0x297
-	.4byte	.LASF735
+	.4byte	.LASF721
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x4d19
-	.4byte	0x4d20
+	.4byte	0x4cb5
+	.4byte	0x4cbc
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x43
@@ -9810,15 +9925,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF525
 	.byte	0x25
 	.2byte	0x2a4
-	.4byte	.LASF736
+	.4byte	.LASF722
 	.byte	0x1
-	.4byte	0x4d36
-	.4byte	0x4d47
+	.4byte	0x4cd2
+	.4byte	0x4ce3
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x46a3
+	.4byte	0x463f
 	.uleb128 0x1e
 	.4byte	0x65b
 	.byte	0
@@ -9827,12 +9942,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF525
 	.byte	0x25
 	.2byte	0x2b9
-	.4byte	.LASF737
+	.4byte	.LASF723
 	.byte	0x1
-	.4byte	0x4d5d
-	.4byte	0x4d69
+	.4byte	0x4cf9
+	.4byte	0x4d05
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -9842,13 +9957,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF304
 	.byte	0x25
 	.2byte	0x2c8
-	.4byte	.LASF738
-	.4byte	0x469d
+	.4byte	.LASF724
+	.4byte	0x4639
 	.byte	0x1
-	.4byte	0x4d83
-	.4byte	0x4d8f
+	.4byte	0x4d1f
+	.4byte	0x4d2b
 	.uleb128 0xc
-	.4byte	0x4e9e
+	.4byte	0x4e3a
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -9858,30 +9973,30 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF529
 	.byte	0x25
 	.2byte	0x2d4
-	.4byte	.LASF739
+	.4byte	.LASF725
 	.byte	0x1
-	.4byte	0x4da5
-	.4byte	0x4db1
+	.4byte	0x4d41
+	.4byte	0x4d4d
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eaf
+	.4byte	0x4e4b
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF529
 	.byte	0x25
 	.2byte	0x2e5
-	.4byte	.LASF740
+	.4byte	.LASF726
 	.byte	0x1
-	.4byte	0x4dc7
-	.4byte	0x4ddd
+	.4byte	0x4d63
+	.4byte	0x4d79
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4676
+	.4byte	0x4612
 	.uleb128 0x1e
 	.4byte	0x65b
 	.uleb128 0x1e
@@ -9892,13 +10007,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF532
 	.byte	0x25
 	.2byte	0x2f3
-	.4byte	.LASF741
+	.4byte	.LASF727
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x4df7
-	.4byte	0x4dfe
+	.4byte	0x4d93
+	.4byte	0x4d9a
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.byte	0
 	.uleb128 0x43
@@ -9906,12 +10021,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF534
 	.byte	0x25
 	.2byte	0x2ff
-	.4byte	.LASF742
+	.4byte	.LASF728
 	.byte	0x1
-	.4byte	0x4e14
-	.4byte	0x4e20
+	.4byte	0x4db0
+	.4byte	0x4dbc
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x1319
@@ -9921,12 +10036,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF536
 	.byte	0x25
 	.2byte	0x336
-	.4byte	.LASF743
+	.4byte	.LASF729
 	.byte	0x1
-	.4byte	0x4e36
-	.4byte	0x4e42
+	.4byte	0x4dd2
+	.4byte	0x4dde
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9936,12 +10051,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF538
 	.byte	0x25
 	.2byte	0x30f
-	.4byte	.LASF744
+	.4byte	.LASF730
 	.byte	0x1
-	.4byte	0x4e58
-	.4byte	0x4e64
+	.4byte	0x4df4
+	.4byte	0x4e00
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -9951,168 +10066,168 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF540
 	.byte	0x25
 	.2byte	0x31c
-	.4byte	.LASF745
+	.4byte	.LASF731
 	.byte	0x1
-	.4byte	0x4e7a
-	.4byte	0x4e86
+	.4byte	0x4e16
+	.4byte	0x4e22
 	.uleb128 0xc
-	.4byte	0x4ea9
+	.4byte	0x4e45
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eb5
+	.4byte	0x4e51
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"X\000"
-	.4byte	0x467c
+	.4byte	0x4618
 	.uleb128 0x3f
 	.ascii	"A\000"
-	.4byte	0x45d0
+	.4byte	0x456c
 	.uleb128 0x44
 	.4byte	.LASF542
-	.4byte	0x67b5
+	.4byte	0x6815
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x4ea4
+	.4byte	0x4e40
 	.uleb128 0x21
-	.4byte	0x46af
+	.4byte	0x464b
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x46af
+	.4byte	0x464b
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x4ea4
+	.4byte	0x4e40
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x46af
+	.4byte	0x464b
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x4ec1
+	.4byte	0x4e5d
 	.uleb128 0x4
-	.4byte	.LASF746
+	.4byte	.LASF732
 	.byte	0x1
 	.uleb128 0x4a
-	.4byte	.LASF747
+	.4byte	.LASF733
 	.2byte	0x148
-	.byte	0x2a
+	.byte	0x29
 	.byte	0x90
-	.4byte	0x58b3
+	.4byte	0x584f
 	.uleb128 0x2d
-	.4byte	.LASF748
+	.4byte	.LASF734
 	.byte	0x4
-	.byte	0x2a
+	.byte	0x29
 	.byte	0x96
-	.4byte	0x4eed
+	.4byte	0x4e89
 	.uleb128 0x2e
-	.4byte	.LASF749
+	.4byte	.LASF735
 	.sleb128 0
 	.uleb128 0x2e
-	.4byte	.LASF750
+	.4byte	.LASF736
 	.sleb128 1
 	.byte	0
 	.uleb128 0x4b
-	.4byte	.LASF1008
+	.4byte	.LASF1017
 	.byte	0x4
-	.byte	0x2a
+	.byte	0x29
 	.2byte	0x279
 	.byte	0x3
-	.4byte	0x4f0e
+	.4byte	0x4eaa
 	.uleb128 0x2e
-	.4byte	.LASF751
+	.4byte	.LASF737
 	.sleb128 0
 	.uleb128 0x2e
-	.4byte	.LASF752
+	.4byte	.LASF738
 	.sleb128 1
 	.uleb128 0x2e
-	.4byte	.LASF753
+	.4byte	.LASF739
 	.sleb128 2
 	.byte	0
 	.uleb128 0x4c
-	.4byte	.LASF1009
+	.4byte	.LASF1018
 	.byte	0x8
-	.byte	0x2a
+	.byte	0x29
 	.2byte	0x298
 	.byte	0x3
-	.4byte	0x4f3b
+	.4byte	0x4ed7
 	.uleb128 0x4d
-	.4byte	.LASF754
-	.byte	0x2a
+	.4byte	.LASF740
+	.byte	0x29
 	.2byte	0x29a
 	.4byte	0x704
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x4d
-	.4byte	.LASF755
-	.byte	0x2a
+	.4byte	.LASF741
+	.byte	0x29
 	.2byte	0x29b
-	.4byte	0x467c
+	.4byte	0x4618
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.byte	0
 	.uleb128 0x21
-	.4byte	0x4f0e
+	.4byte	0x4eaa
 	.uleb128 0x4d
-	.4byte	.LASF756
-	.byte	0x2a
+	.4byte	.LASF742
+	.byte	0x29
 	.2byte	0x267
 	.4byte	0x6f9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.uleb128 0x4d
-	.4byte	.LASF757
-	.byte	0x2a
+	.4byte	.LASF743
+	.byte	0x29
 	.2byte	0x268
-	.4byte	0x3dc4
+	.4byte	0x3d60
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x4d
-	.4byte	.LASF758
-	.byte	0x2a
+	.4byte	.LASF744
+	.byte	0x29
 	.2byte	0x269
 	.4byte	0x7e8
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x14
 	.uleb128 0x4d
-	.4byte	.LASF759
-	.byte	0x2a
+	.4byte	.LASF745
+	.byte	0x29
 	.2byte	0x26a
 	.4byte	0x7e8
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x18
 	.uleb128 0x4d
-	.4byte	.LASF760
-	.byte	0x2a
+	.4byte	.LASF746
+	.byte	0x29
 	.2byte	0x26b
 	.4byte	0x36f7
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x1c
 	.uleb128 0x4d
-	.4byte	.LASF761
-	.byte	0x2a
+	.4byte	.LASF747
+	.byte	0x29
 	.2byte	0x26c
 	.4byte	0x704
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x2c
 	.uleb128 0x45
-	.4byte	.LASF762
-	.byte	0x2a
+	.4byte	.LASF748
+	.byte	0x29
 	.2byte	0x28c
-	.4byte	0x467c
+	.4byte	0x4618
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x30
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF763
-	.byte	0x2a
+	.4byte	.LASF749
+	.byte	0x29
 	.2byte	0x28d
 	.4byte	0x36f7
 	.byte	0x2
@@ -10120,8 +10235,8 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x34
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF764
-	.byte	0x2a
+	.4byte	.LASF750
+	.byte	0x29
 	.2byte	0x28e
 	.4byte	0x36f7
 	.byte	0x2
@@ -10129,8 +10244,8 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x44
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF765
-	.byte	0x2a
+	.4byte	.LASF751
+	.byte	0x29
 	.2byte	0x28f
 	.4byte	0x36f7
 	.byte	0x2
@@ -10138,17 +10253,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x54
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF766
-	.byte	0x2a
+	.4byte	.LASF752
+	.byte	0x29
 	.2byte	0x290
-	.4byte	0x467c
+	.4byte	0x4618
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0x64
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF767
-	.byte	0x2a
+	.4byte	.LASF753
+	.byte	0x29
 	.2byte	0x291
 	.4byte	0x7e8
 	.byte	0x2
@@ -10156,8 +10271,8 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x68
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF768
-	.byte	0x2a
+	.4byte	.LASF754
+	.byte	0x29
 	.2byte	0x292
 	.4byte	0x2a3c
 	.byte	0x2
@@ -10165,8 +10280,8 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x6c
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF769
-	.byte	0x2a
+	.4byte	.LASF755
+	.byte	0x29
 	.2byte	0x293
 	.4byte	0x36f7
 	.byte	0x3
@@ -10174,17 +10289,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x10c
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF770
-	.byte	0x2a
+	.4byte	.LASF756
+	.byte	0x29
 	.2byte	0x294
-	.4byte	0x6183
+	.4byte	0x611f
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x11c
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF771
-	.byte	0x2a
+	.4byte	.LASF757
+	.byte	0x29
 	.2byte	0x295
 	.4byte	0x6f9
 	.byte	0x3
@@ -10192,8 +10307,8 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x120
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF772
-	.byte	0x2a
+	.4byte	.LASF758
+	.byte	0x29
 	.2byte	0x296
 	.4byte	0x1319
 	.byte	0x3
@@ -10201,325 +10316,325 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x124
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF773
-	.byte	0x2a
+	.4byte	.LASF759
+	.byte	0x29
 	.2byte	0x29d
-	.4byte	0x5971
+	.4byte	0x590d
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x128
 	.byte	0x3
 	.uleb128 0x45
-	.4byte	.LASF774
-	.byte	0x2a
+	.4byte	.LASF760
+	.byte	0x29
 	.2byte	0x29f
-	.4byte	0x3dc4
+	.4byte	0x3d60
 	.byte	0x3
 	.byte	0x23
 	.uleb128 0x138
 	.byte	0x3
 	.uleb128 0x15
-	.4byte	.LASF775
-	.byte	0x2a
+	.4byte	.LASF761
+	.byte	0x29
 	.byte	0xa1
 	.4byte	0x7c4
 	.uleb128 0x15
-	.4byte	.LASF776
-	.byte	0x2a
+	.4byte	.LASF762
+	.byte	0x29
 	.byte	0xa8
 	.4byte	0x7c4
 	.uleb128 0x32
 	.byte	0x1
-	.4byte	.LASF777
-	.byte	0x2a
+	.4byte	.LASF763
+	.byte	0x29
 	.byte	0xb5
-	.4byte	.LASF778
+	.4byte	.LASF764
 	.byte	0x1
-	.4byte	0x509b
-	.4byte	0x50a7
+	.4byte	0x5037
+	.4byte	0x5043
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4ed4
+	.4byte	0x4e70
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
-	.4byte	.LASF779
-	.byte	0x2a
+	.4byte	.LASF765
+	.byte	0x29
 	.byte	0xc4
-	.4byte	.LASF780
-	.4byte	0x4ed4
+	.4byte	.LASF766
+	.4byte	0x4e70
 	.byte	0x1
-	.4byte	0x50c0
-	.4byte	0x50c7
+	.4byte	0x505c
+	.4byte	0x5063
 	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
-	.4byte	.LASF781
-	.byte	0x2a
+	.4byte	.LASF767
+	.byte	0x29
 	.byte	0xdb
-	.4byte	.LASF782
+	.4byte	.LASF768
 	.byte	0x1
-	.4byte	0x50dc
-	.4byte	0x50e8
+	.4byte	0x5078
+	.4byte	0x5084
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4ebb
+	.4byte	0x4e57
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
-	.4byte	.LASF783
-	.byte	0x2a
+	.4byte	.LASF769
+	.byte	0x29
 	.byte	0xe3
-	.4byte	.LASF784
+	.4byte	.LASF770
 	.byte	0x1
-	.4byte	0x50fd
-	.4byte	0x5109
+	.4byte	0x5099
+	.4byte	0x50a5
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
-	.4byte	.LASF785
-	.byte	0x2a
+	.4byte	.LASF771
+	.byte	0x29
 	.byte	0xec
-	.4byte	.LASF786
+	.4byte	.LASF772
 	.byte	0x1
-	.4byte	0x511e
-	.4byte	0x512a
+	.4byte	0x50ba
+	.4byte	0x50c6
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x467c
+	.4byte	0x4618
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
-	.4byte	.LASF787
-	.byte	0x2a
+	.4byte	.LASF773
+	.byte	0x29
 	.byte	0xf4
-	.4byte	.LASF788
-	.4byte	0x468c
+	.4byte	.LASF774
+	.4byte	0x4628
 	.byte	0x1
-	.4byte	0x5143
-	.4byte	0x514f
+	.4byte	0x50df
+	.4byte	0x50eb
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
-	.4byte	.LASF787
-	.byte	0x2a
+	.4byte	.LASF773
+	.byte	0x29
 	.byte	0xfc
-	.4byte	.LASF789
-	.4byte	0x468c
+	.4byte	.LASF775
+	.4byte	0x4628
 	.byte	0x1
-	.4byte	0x5168
-	.4byte	0x5174
+	.4byte	0x5104
+	.4byte	0x5110
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x467c
+	.4byte	0x4618
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF790
-	.byte	0x2a
+	.4byte	.LASF776
+	.byte	0x29
 	.2byte	0x107
-	.4byte	.LASF791
+	.4byte	.LASF777
 	.byte	0x1
-	.4byte	0x518a
-	.4byte	0x5196
+	.4byte	0x5126
+	.4byte	0x5132
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF778
+	.byte	0x29
+	.2byte	0x112
+	.4byte	.LASF779
+	.byte	0x1
+	.4byte	0x5148
+	.4byte	0x5154
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x65b
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF780
+	.byte	0x29
+	.2byte	0x11d
+	.4byte	.LASF781
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x516e
+	.4byte	0x517f
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.uleb128 0x1e
+	.4byte	0x6f9
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF782
+	.byte	0x29
+	.2byte	0x128
+	.4byte	.LASF783
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x5199
+	.4byte	0x51aa
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x6f9
+	.uleb128 0x1e
+	.4byte	0x6f9
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF784
+	.byte	0x29
+	.2byte	0x130
+	.4byte	.LASF785
+	.4byte	0x6f9
+	.byte	0x1
+	.4byte	0x51c4
+	.4byte	0x51cb
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF786
+	.byte	0x29
+	.2byte	0x13b
+	.4byte	.LASF787
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x51e5
+	.4byte	0x51f1
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x6f9
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF788
+	.byte	0x29
+	.2byte	0x146
+	.4byte	.LASF789
+	.4byte	0x4e57
+	.byte	0x1
+	.4byte	0x520b
+	.4byte	0x521c
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.uleb128 0x1e
+	.4byte	0x6f9
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF790
+	.byte	0x29
+	.2byte	0x151
+	.4byte	.LASF791
+	.4byte	0x7e8
+	.byte	0x1
+	.4byte	0x5236
+	.4byte	0x5247
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.uleb128 0x1e
+	.4byte	0x6f9
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF792
-	.byte	0x2a
-	.2byte	0x112
+	.byte	0x29
+	.2byte	0x166
 	.4byte	.LASF793
 	.byte	0x1
-	.4byte	0x51ac
-	.4byte	0x51b8
+	.4byte	0x525d
+	.4byte	0x5278
 	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x65b
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF794
-	.byte	0x2a
-	.2byte	0x11d
-	.4byte	.LASF795
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x51d2
-	.4byte	0x51e3
-	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.uleb128 0x1e
-	.4byte	0x6f9
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF796
-	.byte	0x2a
-	.2byte	0x128
-	.4byte	.LASF797
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x51fd
-	.4byte	0x520e
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
+	.4byte	0x6136
 	.uleb128 0x1e
-	.4byte	0x6f9
+	.4byte	0x6136
 	.uleb128 0x1e
-	.4byte	0x6f9
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF798
-	.byte	0x2a
-	.2byte	0x130
-	.4byte	.LASF799
-	.4byte	0x6f9
-	.byte	0x1
-	.4byte	0x5228
-	.4byte	0x522f
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF800
-	.byte	0x2a
-	.2byte	0x13b
-	.4byte	.LASF801
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x5249
-	.4byte	0x5255
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x6f9
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF802
-	.byte	0x2a
-	.2byte	0x146
-	.4byte	.LASF803
-	.4byte	0x4ebb
-	.byte	0x1
-	.4byte	0x526f
-	.4byte	0x5280
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.uleb128 0x1e
-	.4byte	0x6f9
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF804
-	.byte	0x2a
-	.2byte	0x151
-	.4byte	.LASF805
-	.4byte	0x7e8
-	.byte	0x1
-	.4byte	0x529a
-	.4byte	0x52ab
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.uleb128 0x1e
-	.4byte	0x6f9
+	.4byte	0x613c
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF806
-	.byte	0x2a
-	.2byte	0x166
-	.4byte	.LASF807
-	.byte	0x1
-	.4byte	0x52c1
-	.4byte	0x52dc
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.uleb128 0x1e
-	.4byte	0x619a
-	.uleb128 0x1e
-	.4byte	0x619a
-	.uleb128 0x1e
-	.4byte	0x61a0
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF806
-	.byte	0x2a
+	.4byte	.LASF792
+	.byte	0x29
 	.2byte	0x167
-	.4byte	.LASF808
+	.4byte	.LASF794
 	.byte	0x1
-	.4byte	0x52f2
-	.4byte	0x530d
+	.4byte	0x528e
+	.4byte	0x52a9
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.uleb128 0x1e
-	.4byte	0x619a
+	.4byte	0x6136
 	.uleb128 0x1e
-	.4byte	0x61a0
+	.4byte	0x613c
 	.uleb128 0x1e
-	.4byte	0x61a0
+	.4byte	0x613c
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF809
-	.byte	0x2a
+	.4byte	.LASF795
+	.byte	0x29
 	.2byte	0x177
-	.4byte	.LASF810
+	.4byte	.LASF796
 	.4byte	0x3c97
 	.byte	0x1
-	.4byte	0x5327
-	.4byte	0x533d
+	.4byte	0x52c3
+	.4byte	0x52d9
 	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
@@ -10530,16 +10645,16 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF811
-	.byte	0x2a
+	.4byte	.LASF797
+	.byte	0x29
 	.2byte	0x182
-	.4byte	.LASF812
+	.4byte	.LASF798
 	.4byte	0x3c97
 	.byte	0x1
-	.4byte	0x5357
-	.4byte	0x536d
+	.4byte	0x52f3
+	.4byte	0x5309
 	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -10550,76 +10665,76 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF813
-	.byte	0x2a
+	.4byte	.LASF799
+	.byte	0x29
 	.2byte	0x18d
-	.4byte	.LASF814
+	.4byte	.LASF800
 	.byte	0x1
-	.4byte	0x5383
+	.4byte	0x531f
+	.4byte	0x5330
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.uleb128 0x1e
+	.4byte	0x3c97
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF801
+	.byte	0x29
+	.2byte	0x196
+	.4byte	.LASF802
+	.byte	0x1
+	.4byte	0x5346
+	.4byte	0x5352
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x4618
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF803
+	.byte	0x29
+	.2byte	0x1a3
+	.4byte	.LASF804
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x536c
+	.4byte	0x5373
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF805
+	.byte	0x29
+	.2byte	0x1ac
+	.4byte	.LASF806
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x538d
 	.4byte	0x5394
 	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.uleb128 0x1e
-	.4byte	0x3c97
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF815
-	.byte	0x2a
-	.2byte	0x196
-	.4byte	.LASF816
-	.byte	0x1
-	.4byte	0x53aa
-	.4byte	0x53b6
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x467c
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF817
-	.byte	0x2a
-	.2byte	0x1a3
-	.4byte	.LASF818
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x53d0
-	.4byte	0x53d7
-	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF819
-	.byte	0x2a
-	.2byte	0x1ac
-	.4byte	.LASF820
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x53f1
-	.4byte	0x53f8
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF821
-	.byte	0x2a
+	.4byte	.LASF807
+	.byte	0x29
 	.2byte	0x1b6
-	.4byte	.LASF822
-	.4byte	0x467c
+	.4byte	.LASF808
+	.4byte	0x4618
 	.byte	0x1
-	.4byte	0x5412
-	.4byte	0x5423
+	.4byte	0x53ae
+	.4byte	0x53bf
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
@@ -10628,16 +10743,16 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF823
-	.byte	0x2a
+	.4byte	.LASF809
+	.byte	0x29
 	.2byte	0x1c1
-	.4byte	.LASF824
-	.4byte	0x467c
+	.4byte	.LASF810
+	.4byte	0x4618
 	.byte	0x1
-	.4byte	0x543d
-	.4byte	0x544e
+	.4byte	0x53d9
+	.4byte	0x53ea
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x3ca9
@@ -10646,165 +10761,165 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF825
-	.byte	0x2a
+	.4byte	.LASF811
+	.byte	0x29
 	.2byte	0x1cc
-	.4byte	.LASF826
-	.4byte	0x467c
+	.4byte	.LASF812
+	.4byte	0x4618
 	.byte	0x1
-	.4byte	0x5468
-	.4byte	0x5479
+	.4byte	0x5404
+	.4byte	0x5415
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.uleb128 0x1e
 	.4byte	0x1319
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF813
+	.byte	0x29
+	.2byte	0x1cf
+	.4byte	.LASF814
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x542f
+	.4byte	0x5440
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.uleb128 0x1e
+	.4byte	0x1319
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF815
+	.byte	0x29
+	.2byte	0x1d7
+	.4byte	.LASF816
+	.byte	0x1
+	.4byte	0x5456
+	.4byte	0x5462
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x500c
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF817
+	.byte	0x29
+	.2byte	0x1df
+	.4byte	.LASF818
+	.byte	0x1
+	.4byte	0x5478
+	.4byte	0x5484
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x5017
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF819
+	.byte	0x29
+	.2byte	0x1ef
+	.4byte	.LASF820
+	.byte	0x1
+	.4byte	0x549a
+	.4byte	0x54b0
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x2ebc
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.uleb128 0x1e
+	.4byte	0x1319
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF821
+	.byte	0x29
+	.2byte	0x1fa
+	.4byte	.LASF822
+	.byte	0x1
+	.4byte	0x54c6
+	.4byte	0x54d7
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x2ebc
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF823
+	.byte	0x29
+	.2byte	0x204
+	.4byte	.LASF824
+	.4byte	0x6148
+	.byte	0x1
+	.4byte	0x54f1
+	.4byte	0x5502
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x6148
+	.uleb128 0x1e
+	.4byte	0x614e
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF825
+	.byte	0x29
+	.2byte	0x20e
+	.4byte	.LASF826
+	.byte	0x1
+	.4byte	0x5518
+	.4byte	0x5524
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF827
-	.byte	0x2a
-	.2byte	0x1cf
-	.4byte	.LASF828
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x5493
-	.4byte	0x54a4
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.uleb128 0x1e
-	.4byte	0x1319
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF829
-	.byte	0x2a
-	.2byte	0x1d7
-	.4byte	.LASF830
-	.byte	0x1
-	.4byte	0x54ba
-	.4byte	0x54c6
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x5070
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF831
-	.byte	0x2a
-	.2byte	0x1df
-	.4byte	.LASF832
-	.byte	0x1
-	.4byte	0x54dc
-	.4byte	0x54e8
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x507b
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF833
-	.byte	0x2a
-	.2byte	0x1ef
-	.4byte	.LASF834
-	.byte	0x1
-	.4byte	0x54fe
-	.4byte	0x5514
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x2ebc
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.uleb128 0x1e
-	.4byte	0x1319
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF835
-	.byte	0x2a
-	.2byte	0x1fa
-	.4byte	.LASF836
-	.byte	0x1
-	.4byte	0x552a
-	.4byte	0x553b
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x2ebc
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF837
-	.byte	0x2a
-	.2byte	0x204
-	.4byte	.LASF838
-	.4byte	0x61ac
-	.byte	0x1
-	.4byte	0x5555
-	.4byte	0x5566
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x61ac
-	.uleb128 0x1e
-	.4byte	0x61b2
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF839
-	.byte	0x2a
-	.2byte	0x20e
-	.4byte	.LASF840
-	.byte	0x1
-	.4byte	0x557c
-	.4byte	0x5588
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF841
-	.byte	0x2a
+	.byte	0x29
 	.2byte	0x215
-	.4byte	.LASF842
+	.4byte	.LASF828
 	.4byte	0x2a3c
 	.byte	0x1
-	.4byte	0x55a2
-	.4byte	0x55a9
+	.4byte	0x553e
+	.4byte	0x5545
 	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF843
-	.byte	0x2a
+	.4byte	.LASF829
+	.byte	0x29
 	.2byte	0x237
-	.4byte	.LASF844
+	.4byte	.LASF830
 	.4byte	0x3c97
 	.byte	0x1
-	.4byte	0x55c3
-	.4byte	0x55d9
+	.4byte	0x555f
+	.4byte	0x5575
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
@@ -10815,322 +10930,322 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF845
-	.byte	0x2a
+	.4byte	.LASF831
+	.byte	0x29
 	.2byte	0x23a
-	.4byte	.LASF846
+	.4byte	.LASF832
 	.byte	0x1
-	.4byte	0x55ef
-	.4byte	0x55fb
+	.4byte	0x558b
+	.4byte	0x5597
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6298
+	.4byte	0x6234
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF847
-	.byte	0x2a
+	.4byte	.LASF833
+	.byte	0x29
 	.2byte	0x23d
-	.4byte	.LASF848
+	.4byte	.LASF834
 	.byte	0x1
-	.4byte	0x5611
-	.4byte	0x5618
+	.4byte	0x55ad
+	.4byte	0x55b4
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF849
-	.byte	0x2a
+	.4byte	.LASF835
+	.byte	0x29
 	.2byte	0x240
-	.4byte	.LASF850
+	.4byte	.LASF836
 	.4byte	0x7e8
 	.byte	0x1
-	.4byte	0x5632
-	.4byte	0x5639
+	.4byte	0x55ce
+	.4byte	0x55d5
 	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.byte	0
 	.uleb128 0x4e
 	.byte	0x1
-	.4byte	.LASF851
-	.byte	0x2a
+	.4byte	.LASF837
+	.byte	0x29
 	.2byte	0x248
-	.4byte	.LASF853
+	.4byte	.LASF839
 	.byte	0x1
-	.4byte	0x5656
+	.4byte	0x55f2
 	.uleb128 0x1e
-	.4byte	0x619a
+	.4byte	0x6136
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF854
-	.byte	0x2a
+	.4byte	.LASF840
+	.byte	0x29
 	.2byte	0x24b
-	.4byte	.LASF855
+	.4byte	.LASF841
 	.byte	0x1
-	.4byte	0x566c
-	.4byte	0x5678
+	.4byte	0x5608
+	.4byte	0x5614
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x2dd8
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF856
-	.byte	0x2a
+	.4byte	.LASF842
+	.byte	0x29
 	.2byte	0x253
-	.4byte	.LASF857
+	.4byte	.LASF843
 	.byte	0x1
-	.4byte	0x568e
-	.4byte	0x569a
+	.4byte	0x562a
+	.4byte	0x5636
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF858
-	.byte	0x2a
+	.4byte	.LASF844
+	.byte	0x29
 	.2byte	0x259
-	.4byte	.LASF859
+	.4byte	.LASF845
 	.byte	0x1
-	.4byte	0x56b0
-	.4byte	0x56bc
+	.4byte	0x564c
+	.4byte	0x5658
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6183
+	.4byte	0x611f
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
-	.4byte	.LASF860
-	.byte	0x2a
+	.4byte	.LASF846
+	.byte	0x29
 	.2byte	0x25a
-	.4byte	.LASF861
-	.4byte	0x6183
+	.4byte	.LASF847
+	.4byte	0x611f
+	.byte	0x1
+	.4byte	0x5672
+	.4byte	0x567e
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x7e8
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF848
+	.byte	0x29
+	.2byte	0x25b
+	.4byte	.LASF849
+	.4byte	0x611f
+	.byte	0x1
+	.4byte	0x5698
+	.4byte	0x569f
+	.uleb128 0xc
+	.4byte	0x612b
+	.byte	0x1
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF850
+	.byte	0x29
+	.2byte	0x25e
+	.4byte	.LASF851
+	.4byte	0x1319
+	.byte	0x1
+	.4byte	0x56b9
+	.4byte	0x56c0
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF852
+	.byte	0x29
+	.2byte	0x261
+	.4byte	.LASF853
 	.byte	0x1
 	.4byte	0x56d6
 	.4byte	0x56e2
 	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x7e8
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF862
-	.byte	0x2a
-	.2byte	0x25b
-	.4byte	.LASF863
-	.4byte	0x6183
-	.byte	0x1
-	.4byte	0x56fc
-	.4byte	0x5703
-	.uleb128 0xc
-	.4byte	0x618f
-	.byte	0x1
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF864
-	.byte	0x2a
-	.2byte	0x25e
-	.4byte	.LASF865
-	.4byte	0x1319
-	.byte	0x1
-	.4byte	0x571d
-	.4byte	0x5724
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF866
-	.byte	0x2a
-	.2byte	0x261
-	.4byte	.LASF867
-	.byte	0x1
-	.4byte	0x573a
-	.4byte	0x5746
-	.uleb128 0xc
-	.4byte	0x618f
+	.4byte	0x612b
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
-	.4byte	.LASF868
-	.byte	0x2a
+	.4byte	.LASF854
+	.byte	0x29
 	.2byte	0x26f
-	.4byte	.LASF869
+	.4byte	.LASF855
+	.byte	0x1
+	.4byte	0x56f8
+	.4byte	0x56ff
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.byte	0
+	.uleb128 0x43
+	.byte	0x1
+	.4byte	.LASF856
+	.byte	0x29
+	.2byte	0x270
+	.4byte	.LASF857
+	.byte	0x1
+	.4byte	0x5715
+	.4byte	0x5721
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.uleb128 0x1e
+	.4byte	0x4618
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF858
+	.byte	0x29
+	.2byte	0x271
+	.4byte	.LASF859
+	.4byte	0x4618
+	.byte	0x1
+	.4byte	0x573b
+	.4byte	0x5742
+	.uleb128 0xc
+	.4byte	0x6125
+	.byte	0x1
+	.byte	0
+	.uleb128 0x36
+	.byte	0x1
+	.4byte	.LASF860
+	.byte	0x29
+	.2byte	0x272
+	.4byte	.LASF861
+	.4byte	0x6f9
 	.byte	0x1
 	.4byte	0x575c
 	.4byte	0x5763
 	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.byte	0
-	.uleb128 0x43
-	.byte	0x1
-	.4byte	.LASF870
-	.byte	0x2a
-	.2byte	0x270
-	.4byte	.LASF871
-	.byte	0x1
-	.4byte	0x5779
-	.4byte	0x5785
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.uleb128 0x1e
-	.4byte	0x467c
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF872
-	.byte	0x2a
-	.2byte	0x271
-	.4byte	.LASF873
-	.4byte	0x467c
-	.byte	0x1
-	.4byte	0x579f
-	.4byte	0x57a6
-	.uleb128 0xc
-	.4byte	0x6189
-	.byte	0x1
-	.byte	0
-	.uleb128 0x36
-	.byte	0x1
-	.4byte	.LASF874
-	.byte	0x2a
-	.2byte	0x272
-	.4byte	.LASF875
-	.4byte	0x6f9
-	.byte	0x1
-	.4byte	0x57c0
-	.4byte	0x57c7
-	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.byte	0
 	.uleb128 0x4f
 	.byte	0x1
-	.4byte	.LASF876
-	.byte	0x2a
+	.4byte	.LASF862
+	.byte	0x29
 	.2byte	0x276
-	.4byte	.LASF877
+	.4byte	.LASF863
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x57de
-	.4byte	0x57ea
+	.4byte	0x577a
+	.4byte	0x5786
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x467c
+	.4byte	0x4618
 	.byte	0
 	.uleb128 0x50
 	.byte	0x1
-	.4byte	.LASF880
-	.byte	0x2a
+	.4byte	.LASF866
+	.byte	0x29
 	.2byte	0x277
-	.4byte	.LASF882
+	.4byte	.LASF868
 	.4byte	0x2a3c
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x5805
-	.4byte	0x5811
+	.4byte	0x57a1
+	.4byte	0x57ad
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x7e8
 	.byte	0
 	.uleb128 0x4f
 	.byte	0x1
-	.4byte	.LASF878
-	.byte	0x2a
+	.4byte	.LASF864
+	.byte	0x29
 	.2byte	0x280
-	.4byte	.LASF879
+	.4byte	.LASF865
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x5828
-	.4byte	0x5834
+	.4byte	0x57c4
+	.4byte	0x57d0
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x4eed
+	.4byte	0x4e89
 	.byte	0
 	.uleb128 0x50
 	.byte	0x1
-	.4byte	.LASF881
-	.byte	0x2a
+	.4byte	.LASF867
+	.byte	0x29
 	.2byte	0x285
-	.4byte	.LASF883
-	.4byte	0x4eed
+	.4byte	.LASF869
+	.4byte	0x4e89
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x584f
-	.4byte	0x5856
+	.4byte	0x57eb
+	.4byte	0x57f2
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.byte	0
 	.uleb128 0x4f
 	.byte	0x1
-	.4byte	.LASF884
-	.byte	0x2a
+	.4byte	.LASF870
+	.byte	0x29
 	.2byte	0x28a
-	.4byte	.LASF885
+	.4byte	.LASF871
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x586d
-	.4byte	0x5874
+	.4byte	0x5809
+	.4byte	0x5810
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.byte	0
 	.uleb128 0x51
 	.byte	0x1
-	.4byte	.LASF747
-	.byte	0x2a
+	.4byte	.LASF733
+	.byte	0x29
 	.2byte	0x2a1
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x588b
-	.4byte	0x5892
+	.4byte	0x5827
+	.4byte	0x582e
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.byte	0
 	.uleb128 0x52
 	.byte	0x1
-	.4byte	.LASF886
-	.byte	0x2a
+	.4byte	.LASF872
+	.byte	0x29
 	.2byte	0x2a2
 	.4byte	0x72c
 	.byte	0x3
 	.byte	0x1
-	.4byte	0x58a5
+	.4byte	0x5841
 	.uleb128 0xc
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.uleb128 0xc
 	.4byte	0x65b
@@ -11138,11 +11253,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.byte	0
 	.uleb128 0x30
-	.4byte	.LASF887
+	.4byte	.LASF873
 	.byte	0x1
 	.byte	0x23
 	.byte	0x70
-	.4byte	0x5959
+	.4byte	0x58f5
 	.uleb128 0x15
 	.4byte	.LASF439
 	.byte	0x23
@@ -11152,88 +11267,88 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF440
 	.byte	0x23
 	.byte	0x75
-	.4byte	0x5959
+	.4byte	0x58f5
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF441
 	.byte	0x23
 	.byte	0x85
-	.4byte	.LASF888
-	.4byte	0x58ca
+	.4byte	.LASF874
+	.4byte	0x5866
 	.byte	0x1
-	.4byte	0x58ee
-	.4byte	0x58fa
+	.4byte	0x588a
+	.4byte	0x5896
 	.uleb128 0xc
-	.4byte	0x596b
+	.4byte	0x5907
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x58bf
+	.4byte	0x585b
 	.byte	0
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF443
 	.byte	0x23
 	.byte	0x8e
-	.4byte	.LASF889
-	.4byte	0x58ca
+	.4byte	.LASF875
+	.4byte	0x5866
 	.byte	0x1
-	.4byte	0x5913
-	.4byte	0x5924
+	.4byte	0x58af
+	.4byte	0x58c0
 	.uleb128 0xc
-	.4byte	0x596b
+	.4byte	0x5907
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x58ca
+	.4byte	0x5866
 	.uleb128 0x1e
-	.4byte	0x58bf
+	.4byte	0x585b
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF445
 	.byte	0x23
 	.byte	0x93
-	.4byte	.LASF890
+	.4byte	.LASF876
 	.byte	0x1
-	.4byte	0x5939
-	.4byte	0x594a
+	.4byte	0x58d5
+	.4byte	0x58e6
 	.uleb128 0xc
-	.4byte	0x596b
+	.4byte	0x5907
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x58ca
+	.4byte	0x5866
 	.uleb128 0x1e
-	.4byte	0x58bf
+	.4byte	0x585b
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"T\000"
-	.4byte	0x4f0e
+	.4byte	0x4eaa
 	.uleb128 0x3f
 	.ascii	"M\000"
-	.4byte	0x67bb
+	.4byte	0x681b
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x4f0e
+	.4byte	0x4eaa
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x4f0e
+	.4byte	0x4eaa
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x4f3b
+	.4byte	0x4ed7
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x58b3
+	.4byte	0x584f
 	.uleb128 0x30
-	.4byte	.LASF891
+	.4byte	.LASF877
 	.byte	0x10
 	.byte	0x25
 	.byte	0x51
-	.4byte	0x6160
+	.4byte	0x60fc
 	.uleb128 0x40
 	.ascii	"p\000"
 	.byte	0x25
 	.byte	0x54
-	.4byte	0x5959
+	.4byte	0x58f5
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
@@ -11284,7 +11399,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"a\000"
 	.byte	0x25
 	.2byte	0x332
-	.4byte	0x58b3
+	.4byte	0x584f
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0xd
@@ -11293,19 +11408,19 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF456
 	.byte	0x25
 	.byte	0x5a
-	.4byte	0x5959
+	.4byte	0x58f5
 	.uleb128 0x35
 	.byte	0x1
 	.4byte	.LASF457
 	.byte	0x25
 	.byte	0x61
-	.4byte	.LASF892
-	.4byte	0x59da
+	.4byte	.LASF878
+	.4byte	0x5976
 	.byte	0x1
-	.4byte	0x59fe
-	.4byte	0x5a05
+	.4byte	0x599a
+	.4byte	0x59a1
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x34
@@ -11313,13 +11428,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"end\000"
 	.byte	0x25
 	.byte	0x67
-	.4byte	.LASF893
-	.4byte	0x59da
+	.4byte	.LASF879
+	.4byte	0x5976
 	.byte	0x1
-	.4byte	0x5a1e
-	.4byte	0x5a25
+	.4byte	0x59ba
+	.4byte	0x59c1
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -11327,13 +11442,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF460
 	.byte	0x25
 	.byte	0x6c
-	.4byte	.LASF894
+	.4byte	.LASF880
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x5a3e
-	.4byte	0x5a45
+	.4byte	0x59da
+	.4byte	0x59e1
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -11341,13 +11456,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF374
 	.byte	0x25
 	.byte	0x71
-	.4byte	.LASF895
+	.4byte	.LASF881
 	.4byte	0x6f9
 	.byte	0x1
-	.4byte	0x5a5e
-	.4byte	0x5a65
+	.4byte	0x59fa
+	.4byte	0x5a01
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -11355,13 +11470,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF378
 	.byte	0x25
 	.byte	0x77
-	.4byte	.LASF896
+	.4byte	.LASF882
 	.4byte	0x6f9
 	.byte	0x1
-	.4byte	0x5a7e
-	.4byte	0x5a85
+	.4byte	0x5a1a
+	.4byte	0x5a21
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -11369,13 +11484,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF464
 	.byte	0x25
 	.byte	0x7d
-	.4byte	.LASF897
-	.4byte	0x5959
+	.4byte	.LASF883
+	.4byte	0x58f5
 	.byte	0x1
-	.4byte	0x5a9e
-	.4byte	0x5aa5
+	.4byte	0x5a3a
+	.4byte	0x5a41
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x3a
@@ -11383,13 +11498,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF466
 	.byte	0x25
 	.byte	0x83
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0x1
-	.4byte	0x5abb
-	.4byte	0x5ac7
+	.4byte	0x5a57
+	.4byte	0x5a63
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -11401,10 +11516,10 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0x89
 	.4byte	0x72c
 	.byte	0x1
-	.4byte	0x5adc
-	.4byte	0x5ae9
+	.4byte	0x5a78
+	.4byte	0x5a85
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0xc
 	.4byte	0x65b
@@ -11415,27 +11530,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF466
 	.byte	0x25
 	.byte	0x99
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
-	.4byte	0x5afe
-	.4byte	0x5b0a
+	.4byte	0x5a9a
+	.4byte	0x5aa6
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6171
+	.4byte	0x610d
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF468
 	.byte	0x25
 	.byte	0xa4
-	.4byte	.LASF898
+	.4byte	.LASF884
 	.byte	0x1
-	.4byte	0x5b1f
-	.4byte	0x5b26
+	.4byte	0x5abb
+	.4byte	0x5ac2
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -11443,27 +11558,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF232
 	.byte	0x25
 	.byte	0xba
-	.4byte	.LASF899
+	.4byte	.LASF885
 	.byte	0x1
-	.4byte	0x5b3b
-	.4byte	0x5b47
+	.4byte	0x5ad7
+	.4byte	0x5ae3
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6171
+	.4byte	0x610d
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
 	.4byte	.LASF471
 	.byte	0x25
 	.byte	0xc7
-	.4byte	.LASF900
+	.4byte	.LASF886
 	.byte	0x1
-	.4byte	0x5b5c
-	.4byte	0x5b63
+	.4byte	0x5af8
+	.4byte	0x5aff
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -11471,12 +11586,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF473
 	.byte	0x25
 	.byte	0xd1
-	.4byte	.LASF901
+	.4byte	.LASF887
 	.byte	0x1
-	.4byte	0x5b78
-	.4byte	0x5b7f
+	.4byte	0x5b14
+	.4byte	0x5b1b
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x35
@@ -11484,13 +11599,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF475
 	.byte	0x25
 	.byte	0xda
-	.4byte	.LASF902
+	.4byte	.LASF888
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5b98
-	.4byte	0x5b9f
+	.4byte	0x5b34
+	.4byte	0x5b3b
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -11498,12 +11613,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF477
 	.byte	0x25
 	.byte	0xe5
-	.4byte	.LASF903
+	.4byte	.LASF889
 	.byte	0x1
-	.4byte	0x5bb4
-	.4byte	0x5bc0
+	.4byte	0x5b50
+	.4byte	0x5b5c
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -11513,12 +11628,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF479
 	.byte	0x25
 	.byte	0xf2
-	.4byte	.LASF904
+	.4byte	.LASF890
 	.byte	0x1
-	.4byte	0x5bd5
-	.4byte	0x5bdc
+	.4byte	0x5b71
+	.4byte	0x5b78
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x32
@@ -11526,12 +11641,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF481
 	.byte	0x25
 	.byte	0xfd
-	.4byte	.LASF905
+	.4byte	.LASF891
 	.byte	0x1
-	.4byte	0x5bf1
-	.4byte	0x5bfd
+	.4byte	0x5b8d
+	.4byte	0x5b99
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -11541,12 +11656,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF483
 	.byte	0x25
 	.2byte	0x10a
-	.4byte	.LASF906
+	.4byte	.LASF892
 	.byte	0x1
-	.4byte	0x5c13
-	.4byte	0x5c1f
+	.4byte	0x5baf
+	.4byte	0x5bbb
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -11556,12 +11671,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF485
 	.byte	0x25
 	.2byte	0x119
-	.4byte	.LASF907
+	.4byte	.LASF893
 	.byte	0x1
-	.4byte	0x5c35
-	.4byte	0x5c41
+	.4byte	0x5bd1
+	.4byte	0x5bdd
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -11571,12 +11686,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF487
 	.byte	0x25
 	.2byte	0x124
-	.4byte	.LASF908
+	.4byte	.LASF894
 	.byte	0x1
-	.4byte	0x5c57
-	.4byte	0x5c63
+	.4byte	0x5bf3
+	.4byte	0x5bff
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -11586,76 +11701,76 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF382
 	.byte	0x25
 	.2byte	0x134
-	.4byte	.LASF909
+	.4byte	.LASF895
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5c7d
-	.4byte	0x5c89
+	.4byte	0x5c19
+	.4byte	0x5c25
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF490
 	.byte	0x25
 	.2byte	0x143
-	.4byte	.LASF910
+	.4byte	.LASF896
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x5ca3
-	.4byte	0x5caf
+	.4byte	0x5c3f
+	.4byte	0x5c4b
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF492
 	.byte	0x25
 	.2byte	0x158
-	.4byte	.LASF911
+	.4byte	.LASF897
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x5cc9
-	.4byte	0x5cd5
+	.4byte	0x5c65
+	.4byte	0x5c71
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF494
 	.byte	0x25
 	.2byte	0x16e
-	.4byte	.LASF912
+	.4byte	.LASF898
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x5cef
-	.4byte	0x5cfb
+	.4byte	0x5c8b
+	.4byte	0x5c97
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF496
 	.byte	0x25
 	.2byte	0x17f
-	.4byte	.LASF913
+	.4byte	.LASF899
 	.byte	0x1
-	.4byte	0x5d11
-	.4byte	0x5d18
+	.4byte	0x5cad
+	.4byte	0x5cb4
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -11663,13 +11778,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF498
 	.byte	0x25
 	.2byte	0x18a
-	.4byte	.LASF914
-	.4byte	0x4f0e
+	.4byte	.LASF900
+	.4byte	0x4eaa
 	.byte	0x1
-	.4byte	0x5d32
-	.4byte	0x5d39
+	.4byte	0x5cce
+	.4byte	0x5cd5
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -11677,13 +11792,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x19c
-	.4byte	.LASF915
+	.4byte	.LASF901
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5d53
-	.4byte	0x5d5f
+	.4byte	0x5cef
+	.4byte	0x5cfb
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -11693,13 +11808,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1ac
-	.4byte	.LASF916
+	.4byte	.LASF902
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5d79
-	.4byte	0x5d8a
+	.4byte	0x5d15
+	.4byte	0x5d26
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -11711,47 +11826,47 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1be
-	.4byte	.LASF917
-	.4byte	0x59da
+	.4byte	.LASF903
+	.4byte	0x5976
 	.byte	0x1
-	.4byte	0x5da4
-	.4byte	0x5db0
+	.4byte	0x5d40
+	.4byte	0x5d4c
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x59da
+	.4byte	0x5976
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF500
 	.byte	0x25
 	.2byte	0x1c8
-	.4byte	.LASF918
-	.4byte	0x59da
+	.4byte	.LASF904
+	.4byte	0x5976
 	.byte	0x1
-	.4byte	0x5dca
-	.4byte	0x5ddb
+	.4byte	0x5d66
+	.4byte	0x5d77
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x59da
+	.4byte	0x5976
 	.uleb128 0x1e
-	.4byte	0x59da
+	.4byte	0x5976
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1d6
-	.4byte	.LASF919
+	.4byte	.LASF905
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5df5
-	.4byte	0x5e01
+	.4byte	0x5d91
+	.4byte	0x5d9d
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -11761,13 +11876,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1e4
-	.4byte	.LASF920
+	.4byte	.LASF906
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5e1b
-	.4byte	0x5e2c
+	.4byte	0x5db7
+	.4byte	0x5dc8
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -11779,49 +11894,49 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1f2
-	.4byte	.LASF921
-	.4byte	0x59da
+	.4byte	.LASF907
+	.4byte	0x5976
 	.byte	0x1
-	.4byte	0x5e46
-	.4byte	0x5e52
+	.4byte	0x5de2
+	.4byte	0x5dee
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x59da
+	.4byte	0x5976
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF505
 	.byte	0x25
 	.2byte	0x1fc
-	.4byte	.LASF922
-	.4byte	0x59da
+	.4byte	.LASF908
+	.4byte	0x5976
 	.byte	0x1
-	.4byte	0x5e6c
-	.4byte	0x5e7d
+	.4byte	0x5e08
+	.4byte	0x5e19
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x59da
+	.4byte	0x5976
 	.uleb128 0x1e
-	.4byte	0x59da
+	.4byte	0x5976
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF510
 	.byte	0x25
 	.2byte	0x207
-	.4byte	.LASF923
+	.4byte	.LASF909
 	.byte	0x1
-	.4byte	0x5e93
-	.4byte	0x5ea4
+	.4byte	0x5e2f
+	.4byte	0x5e40
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.uleb128 0x1e
 	.4byte	0x6f9
 	.byte	0
@@ -11830,15 +11945,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF510
 	.byte	0x25
 	.2byte	0x222
-	.4byte	.LASF924
+	.4byte	.LASF910
 	.byte	0x1
-	.4byte	0x5eba
-	.4byte	0x5ecb
+	.4byte	0x5e56
+	.4byte	0x5e67
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6177
+	.4byte	0x6113
 	.uleb128 0x1e
 	.4byte	0x6f9
 	.byte	0
@@ -11847,13 +11962,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF513
 	.byte	0x25
 	.2byte	0x244
-	.4byte	.LASF925
-	.4byte	0x5965
+	.4byte	.LASF911
+	.4byte	0x5901
 	.byte	0x1
-	.4byte	0x5ee5
-	.4byte	0x5eec
+	.4byte	0x5e81
+	.4byte	0x5e88
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -11861,13 +11976,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF513
 	.byte	0x25
 	.2byte	0x249
-	.4byte	.LASF926
-	.4byte	0x595f
+	.4byte	.LASF912
+	.4byte	0x58fb
 	.byte	0x1
-	.4byte	0x5f06
-	.4byte	0x5f0d
+	.4byte	0x5ea2
+	.4byte	0x5ea9
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -11875,13 +11990,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF516
 	.byte	0x25
 	.2byte	0x254
-	.4byte	.LASF927
-	.4byte	0x5965
+	.4byte	.LASF913
+	.4byte	0x5901
 	.byte	0x1
-	.4byte	0x5f27
-	.4byte	0x5f2e
+	.4byte	0x5ec3
+	.4byte	0x5eca
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -11889,13 +12004,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF516
 	.byte	0x25
 	.2byte	0x25a
-	.4byte	.LASF928
-	.4byte	0x595f
+	.4byte	.LASF914
+	.4byte	0x58fb
 	.byte	0x1
-	.4byte	0x5f48
-	.4byte	0x5f4f
+	.4byte	0x5ee4
+	.4byte	0x5eeb
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x36
@@ -11903,61 +12018,61 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF519
 	.byte	0x25
 	.2byte	0x264
-	.4byte	.LASF929
+	.4byte	.LASF915
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5f69
-	.4byte	0x5f75
+	.4byte	0x5f05
+	.4byte	0x5f11
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF519
 	.byte	0x25
 	.2byte	0x26d
-	.4byte	.LASF930
+	.4byte	.LASF916
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5f8f
-	.4byte	0x5f9b
+	.4byte	0x5f2b
+	.4byte	0x5f37
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6177
+	.4byte	0x6113
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF522
 	.byte	0x25
 	.2byte	0x27c
-	.4byte	.LASF931
+	.4byte	.LASF917
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5fb5
-	.4byte	0x5fc1
+	.4byte	0x5f51
+	.4byte	0x5f5d
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.byte	0
 	.uleb128 0x36
 	.byte	0x1
 	.4byte	.LASF522
 	.byte	0x25
 	.2byte	0x297
-	.4byte	.LASF932
+	.4byte	.LASF918
 	.4byte	0x65b
 	.byte	0x1
-	.4byte	0x5fdb
-	.4byte	0x5fe2
+	.4byte	0x5f77
+	.4byte	0x5f7e
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x43
@@ -11965,15 +12080,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF525
 	.byte	0x25
 	.2byte	0x2a4
-	.4byte	.LASF933
+	.4byte	.LASF919
 	.byte	0x1
-	.4byte	0x5ff8
-	.4byte	0x6009
+	.4byte	0x5f94
+	.4byte	0x5fa5
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5965
+	.4byte	0x5901
 	.uleb128 0x1e
 	.4byte	0x65b
 	.byte	0
@@ -11982,12 +12097,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF525
 	.byte	0x25
 	.2byte	0x2b9
-	.4byte	.LASF934
+	.4byte	.LASF920
 	.byte	0x1
-	.4byte	0x601f
-	.4byte	0x602b
+	.4byte	0x5fbb
+	.4byte	0x5fc7
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -11997,13 +12112,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF304
 	.byte	0x25
 	.2byte	0x2c8
-	.4byte	.LASF935
-	.4byte	0x595f
+	.4byte	.LASF921
+	.4byte	0x58fb
 	.byte	0x1
-	.4byte	0x6045
-	.4byte	0x6051
+	.4byte	0x5fe1
+	.4byte	0x5fed
 	.uleb128 0xc
-	.4byte	0x6160
+	.4byte	0x60fc
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x65b
@@ -12013,30 +12128,30 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF529
 	.byte	0x25
 	.2byte	0x2d4
-	.4byte	.LASF936
+	.4byte	.LASF922
 	.byte	0x1
-	.4byte	0x6067
-	.4byte	0x6073
+	.4byte	0x6003
+	.4byte	0x600f
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6171
+	.4byte	0x610d
 	.byte	0
 	.uleb128 0x43
 	.byte	0x1
 	.4byte	.LASF529
 	.byte	0x25
 	.2byte	0x2e5
-	.4byte	.LASF937
+	.4byte	.LASF923
 	.byte	0x1
-	.4byte	0x6089
-	.4byte	0x609f
+	.4byte	0x6025
+	.4byte	0x603b
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x5959
+	.4byte	0x58f5
 	.uleb128 0x1e
 	.4byte	0x65b
 	.uleb128 0x1e
@@ -12047,13 +12162,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF532
 	.byte	0x25
 	.2byte	0x2f3
-	.4byte	.LASF938
+	.4byte	.LASF924
 	.4byte	0x1319
 	.byte	0x1
-	.4byte	0x60b9
-	.4byte	0x60c0
+	.4byte	0x6055
+	.4byte	0x605c
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.byte	0
 	.uleb128 0x43
@@ -12061,12 +12176,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF534
 	.byte	0x25
 	.2byte	0x2ff
-	.4byte	.LASF939
+	.4byte	.LASF925
 	.byte	0x1
-	.4byte	0x60d6
-	.4byte	0x60e2
+	.4byte	0x6072
+	.4byte	0x607e
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x1319
@@ -12076,12 +12191,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF536
 	.byte	0x25
 	.2byte	0x336
-	.4byte	.LASF940
+	.4byte	.LASF926
 	.byte	0x1
-	.4byte	0x60f8
-	.4byte	0x6104
+	.4byte	0x6094
+	.4byte	0x60a0
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -12091,12 +12206,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF538
 	.byte	0x25
 	.2byte	0x30f
-	.4byte	.LASF941
+	.4byte	.LASF927
 	.byte	0x1
-	.4byte	0x611a
-	.4byte	0x6126
+	.4byte	0x60b6
+	.4byte	0x60c2
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x6f9
@@ -12106,54 +12221,54 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LASF540
 	.byte	0x25
 	.2byte	0x31c
-	.4byte	.LASF942
+	.4byte	.LASF928
 	.byte	0x1
-	.4byte	0x613c
-	.4byte	0x6148
+	.4byte	0x60d8
+	.4byte	0x60e4
 	.uleb128 0xc
-	.4byte	0x616b
+	.4byte	0x6107
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x6177
+	.4byte	0x6113
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"X\000"
-	.4byte	0x4f0e
+	.4byte	0x4eaa
 	.uleb128 0x3f
 	.ascii	"A\000"
-	.4byte	0x58b3
+	.4byte	0x584f
 	.uleb128 0x44
 	.4byte	.LASF542
-	.4byte	0x67c1
+	.4byte	0x6821
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x6166
+	.4byte	0x6102
 	.uleb128 0x21
-	.4byte	0x5971
+	.4byte	0x590d
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x5971
+	.4byte	0x590d
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x6166
+	.4byte	0x6102
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x5971
+	.4byte	0x590d
 	.uleb128 0x4
-	.4byte	.LASF943
+	.4byte	.LASF929
 	.byte	0x1
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x617d
+	.4byte	0x6119
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x4ec7
+	.4byte	0x4e63
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x6195
+	.4byte	0x6131
 	.uleb128 0x21
-	.4byte	0x4ec7
+	.4byte	0x4e63
 	.uleb128 0x2c
 	.byte	0x4
 	.4byte	0x2a3c
@@ -12161,23 +12276,23 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0x4
 	.4byte	0x272c
 	.uleb128 0x4
-	.4byte	.LASF944
+	.4byte	.LASF930
 	.byte	0x1
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x61a6
+	.4byte	0x6142
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x61b8
+	.4byte	0x6154
 	.uleb128 0x30
-	.4byte	.LASF945
+	.4byte	.LASF931
 	.byte	0x8
-	.byte	0x2b
+	.byte	0x2a
 	.byte	0x45
-	.4byte	0x6298
+	.4byte	0x6234
 	.uleb128 0x1c
 	.ascii	"x\000"
-	.byte	0x2b
+	.byte	0x2a
 	.byte	0x48
 	.4byte	0x71a
 	.byte	0x2
@@ -12185,7 +12300,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0
 	.uleb128 0x1c
 	.ascii	"y\000"
-	.byte	0x2b
+	.byte	0x2a
 	.byte	0x49
 	.4byte	0x71a
 	.byte	0x2
@@ -12193,7 +12308,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x2
 	.uleb128 0x1c
 	.ascii	"w\000"
-	.byte	0x2b
+	.byte	0x2a
 	.byte	0x4a
 	.4byte	0x71a
 	.byte	0x2
@@ -12201,7 +12316,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x4
 	.uleb128 0x1c
 	.ascii	"h\000"
-	.byte	0x2b
+	.byte	0x2a
 	.byte	0x4b
 	.4byte	0x71a
 	.byte	0x2
@@ -12209,28 +12324,28 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x6
 	.uleb128 0x39
 	.byte	0x1
-	.4byte	.LASF945
-	.byte	0x2b
+	.4byte	.LASF931
+	.byte	0x2a
 	.byte	0x52
-	.4byte	0x62eb
+	.4byte	0x6276
 	.byte	0x1
-	.4byte	0x6209
-	.4byte	0x6210
+	.4byte	0x61a5
+	.4byte	0x61ac
 	.uleb128 0xc
-	.4byte	0x62eb
+	.4byte	0x6276
 	.byte	0x1
 	.byte	0
 	.uleb128 0x39
 	.byte	0x1
-	.4byte	.LASF945
-	.byte	0x2b
+	.4byte	.LASF931
+	.byte	0x2a
 	.byte	0x5d
-	.4byte	0x62eb
+	.4byte	0x6276
 	.byte	0x1
-	.4byte	0x6225
-	.4byte	0x6240
+	.4byte	0x61c1
+	.4byte	0x61dc
 	.uleb128 0xc
-	.4byte	0x62eb
+	.4byte	0x6276
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x71a
@@ -12243,15 +12358,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x32
 	.byte	0x1
-	.4byte	.LASF946
-	.byte	0x2b
+	.4byte	.LASF932
+	.byte	0x2a
 	.byte	0x68
-	.4byte	.LASF947
+	.4byte	.LASF933
 	.byte	0x1
-	.4byte	0x6255
-	.4byte	0x6270
+	.4byte	0x61f1
+	.4byte	0x620c
 	.uleb128 0xc
-	.4byte	0x62eb
+	.4byte	0x6276
 	.byte	0x1
 	.uleb128 0x1e
 	.4byte	0x71a
@@ -12264,17 +12379,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x53
 	.byte	0x1
-	.4byte	.LASF948
-	.byte	0x2b
+	.4byte	.LASF934
+	.byte	0x2a
 	.byte	0x6a
-	.4byte	.LASF1010
+	.4byte	.LASF1019
 	.byte	0x1
-	.4byte	0x6281
+	.4byte	0x621d
 	.uleb128 0xc
-	.4byte	0x62eb
+	.4byte	0x6276
 	.byte	0x1
 	.uleb128 0x1e
-	.4byte	0x62e0
+	.4byte	0x626b
 	.uleb128 0x1e
 	.4byte	0x704
 	.uleb128 0x1e
@@ -12283,135 +12398,127 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x629e
+	.4byte	0x623a
 	.uleb128 0x21
 	.4byte	0x2a3c
-	.uleb128 0x1f
-	.byte	0x4
-	.4byte	0x62b4
 	.uleb128 0x54
-	.4byte	.LASF949
-	.byte	0x2c
-	.byte	0x38
-	.4byte	0x62bb
-	.uleb128 0x4
-	.4byte	.LASF950
-	.byte	0x1
-	.byte	0
-	.uleb128 0x2d
-	.4byte	.LASF951
-	.byte	0x4
+	.4byte	.LASF940
 	.byte	0x2b
+	.byte	0x38
+	.uleb128 0x2d
+	.4byte	.LASF935
+	.byte	0x4
+	.byte	0x2a
 	.byte	0x35
-	.4byte	0x62e0
+	.4byte	0x626b
 	.uleb128 0x2e
-	.4byte	.LASF952
+	.4byte	.LASF936
 	.sleb128 0
 	.uleb128 0x2e
-	.4byte	.LASF953
+	.4byte	.LASF937
 	.sleb128 1
 	.uleb128 0x2e
-	.4byte	.LASF954
+	.4byte	.LASF938
 	.sleb128 2
 	.uleb128 0x2e
-	.4byte	.LASF955
+	.4byte	.LASF939
 	.sleb128 3
 	.byte	0
 	.uleb128 0x15
-	.4byte	.LASF951
-	.byte	0x2b
+	.4byte	.LASF935
+	.byte	0x2a
 	.byte	0x3b
-	.4byte	0x62bb
+	.4byte	0x6246
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x61b8
-	.uleb128 0x55
-	.4byte	.LASF1011
-	.byte	0x33
+	.4byte	0x6154
+	.uleb128 0x54
+	.4byte	.LASF941
+	.byte	0x2c
 	.byte	0x2a
-	.uleb128 0x56
-	.4byte	.LASF1012
+	.uleb128 0x55
+	.4byte	.LASF1020
 	.byte	0x4
 	.byte	0x2d
 	.byte	0x2a
-	.4byte	0x62f8
-	.4byte	0x63b1
+	.4byte	0x6283
+	.4byte	0x633c
 	.uleb128 0x29
-	.4byte	.LASF957
-	.4byte	0x6427
+	.4byte	.LASF943
+	.4byte	0x63b9
 	.byte	0x2
 	.byte	0x23
 	.uleb128 0
 	.byte	0x1
-	.uleb128 0x57
+	.uleb128 0x56
 	.byte	0x1
-	.4byte	.LASF958
+	.4byte	.LASF944
 	.byte	0x2d
 	.byte	0x33
-	.4byte	.LASF960
+	.4byte	.LASF946
 	.4byte	0x133d
 	.byte	0x1
 	.byte	0x2
 	.byte	0x10
 	.uleb128 0
-	.4byte	0x62f8
+	.4byte	0x6283
 	.byte	0x1
-	.4byte	0x6336
-	.4byte	0x633d
+	.4byte	0x62c1
+	.4byte	0x62c8
 	.uleb128 0xc
-	.4byte	0x63b1
+	.4byte	0x633c
 	.byte	0x1
 	.byte	0
-	.uleb128 0x57
+	.uleb128 0x56
 	.byte	0x1
-	.4byte	.LASF959
+	.4byte	.LASF945
 	.byte	0x2d
 	.byte	0x3b
-	.4byte	.LASF961
+	.4byte	.LASF947
 	.4byte	0x133d
 	.byte	0x1
 	.byte	0x2
 	.byte	0x10
 	.uleb128 0x1
-	.4byte	0x62f8
+	.4byte	0x6283
 	.byte	0x1
-	.4byte	0x635e
-	.4byte	0x6365
+	.4byte	0x62e9
+	.4byte	0x62f0
 	.uleb128 0xc
-	.4byte	0x63b1
+	.4byte	0x633c
 	.byte	0x1
 	.byte	0
-	.uleb128 0x57
+	.uleb128 0x56
 	.byte	0x1
-	.4byte	.LASF962
+	.4byte	.LASF948
 	.byte	0x2d
 	.byte	0x43
-	.4byte	.LASF963
-	.4byte	0x61ac
+	.4byte	.LASF949
+	.4byte	0x6148
 	.byte	0x1
 	.byte	0x2
 	.byte	0x10
 	.uleb128 0x2
-	.4byte	0x62f8
+	.4byte	0x6283
 	.byte	0x1
-	.4byte	0x6386
-	.4byte	0x638d
+	.4byte	0x6311
+	.4byte	0x6318
 	.uleb128 0xc
-	.4byte	0x63b1
+	.4byte	0x633c
 	.byte	0x1
 	.byte	0
-	.uleb128 0x58
+	.uleb128 0x57
 	.byte	0x1
-	.4byte	.LASF964
+	.4byte	.LASF950
 	.byte	0x2d
 	.byte	0x45
 	.4byte	0x72c
 	.byte	0x1
-	.4byte	0x62f8
+	.4byte	0x6283
 	.byte	0x1
-	.4byte	0x63a3
+	.4byte	0x632e
 	.uleb128 0xc
-	.4byte	0x63b1
+	.4byte	0x633c
 	.byte	0x1
 	.uleb128 0xc
 	.4byte	0x65b
@@ -12420,34 +12527,38 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x62f8
-	.uleb128 0x59
+	.4byte	0x6283
+	.uleb128 0x58
 	.byte	0x2
 	.byte	0xb
 	.4byte	0x6d
-	.uleb128 0x59
+	.uleb128 0x58
+	.byte	0x2e
+	.byte	0x1b
+	.4byte	0x6d
+	.uleb128 0x58
 	.byte	0x2
-	.byte	0x12
-	.4byte	0x62a9
-	.uleb128 0x59
+	.byte	0x14
+	.4byte	0x623f
+	.uleb128 0x58
 	.byte	0x2
-	.byte	0x13
-	.4byte	0x62f1
+	.byte	0x15
+	.4byte	0x627c
 	.uleb128 0x30
-	.4byte	.LASF965
+	.4byte	.LASF951
 	.byte	0x1
 	.byte	0x25
 	.byte	0x31
-	.4byte	0x6416
+	.4byte	0x63a8
 	.uleb128 0x49
 	.byte	0x1
 	.4byte	.LASF607
 	.byte	0x25
 	.byte	0x34
-	.4byte	.LASF966
+	.4byte	.LASF952
 	.4byte	0x36da
 	.byte	0x1
-	.4byte	0x6407
+	.4byte	0x6399
 	.uleb128 0x1e
 	.4byte	0x6f9
 	.uleb128 0x1e
@@ -12457,48 +12568,48 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x1e
 	.4byte	0x36da
 	.uleb128 0x1e
-	.4byte	0x6416
+	.4byte	0x63a8
 	.byte	0
 	.uleb128 0x3f
 	.ascii	"X\000"
 	.4byte	0x2a48
 	.uleb128 0x3f
 	.ascii	"A\000"
-	.4byte	0x3d18
+	.4byte	0x3cb4
 	.byte	0
 	.uleb128 0x2c
 	.byte	0x4
-	.4byte	0x3d18
+	.4byte	0x3cb4
 	.uleb128 0x23
 	.4byte	0x65b
-	.4byte	0x6427
+	.4byte	0x63b9
 	.uleb128 0x2b
 	.byte	0
 	.uleb128 0x1f
 	.byte	0x4
-	.4byte	0x642d
-	.uleb128 0x5a
+	.4byte	0x63bf
+	.uleb128 0x59
 	.byte	0x4
-	.4byte	.LASF1013
-	.4byte	0x641c
+	.4byte	.LASF1021
+	.4byte	0x63ae
 	.uleb128 0x1f
 	.byte	0x4
 	.4byte	0x3ca3
-	.uleb128 0x5b
+	.uleb128 0x5a
 	.4byte	0x232d
 	.byte	0x2
-	.4byte	0x644b
-	.4byte	0x646a
-	.uleb128 0x5c
-	.4byte	.LASF1014
-	.4byte	0x646a
+	.4byte	0x63dd
+	.4byte	0x63fc
+	.uleb128 0x5b
+	.4byte	.LASF1022
+	.4byte	0x63fc
 	.byte	0x1
-	.uleb128 0x5d
+	.uleb128 0x5c
 	.ascii	"_x\000"
 	.byte	0x1
 	.byte	0x48
 	.4byte	0x133d
-	.uleb128 0x5d
+	.uleb128 0x5c
 	.ascii	"_y\000"
 	.byte	0x1
 	.byte	0x48
@@ -12506,216 +12617,376 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x21
 	.4byte	0x2714
-	.uleb128 0x5e
-	.4byte	0x643d
-	.4byte	.LASF1015
+	.uleb128 0x5d
+	.4byte	0x63cf
+	.4byte	.LASF1023
 	.4byte	.LFB1319
 	.4byte	.LFE1319
 	.4byte	.LLST0
-	.4byte	0x648d
+	.4byte	0x641f
 	.byte	0x1
-	.4byte	0x64a6
-	.uleb128 0x5f
-	.4byte	0x644b
+	.4byte	0x6438
+	.uleb128 0x5e
+	.4byte	0x63dd
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -4
-	.uleb128 0x5f
-	.4byte	0x6455
+	.uleb128 0x5e
+	.4byte	0x63e7
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -8
-	.uleb128 0x5f
-	.4byte	0x645f
+	.uleb128 0x5e
+	.4byte	0x63f1
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.byte	0
-	.uleb128 0x60
+	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF967
+	.4byte	.LASF953
 	.byte	0x2
-	.byte	0x73
+	.byte	0x22
 	.4byte	0x65b
 	.4byte	.LFB2965
 	.4byte	.LFE2965
 	.4byte	.LLST1
 	.byte	0x1
-	.4byte	0x65a4
-	.uleb128 0x61
+	.4byte	0x666e
+	.uleb128 0x60
 	.4byte	.LBB3
 	.4byte	.LBE3
-	.uleb128 0x62
-	.4byte	.LASF968
+	.uleb128 0x61
+	.4byte	.LASF954
 	.byte	0x2
-	.byte	0x79
+	.byte	0x28
 	.4byte	0x65b
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -16
-	.uleb128 0x62
-	.4byte	.LASF969
-	.byte	0x2
-	.byte	0x7a
-	.4byte	0x65b
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -20
-	.uleb128 0x62
-	.4byte	.LASF970
-	.byte	0x2
-	.byte	0x7d
-	.4byte	0x63b1
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -24
-	.uleb128 0x62
-	.4byte	.LASF971
+	.uleb128 0x61
+	.4byte	.LASF955
 	.byte	0x2
-	.byte	0x7e
-	.4byte	0x63b1
+	.byte	0x29
+	.4byte	0x65b
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -28
-	.uleb128 0x62
-	.4byte	.LASF972
+	.uleb128 0x61
+	.4byte	.LASF956
 	.byte	0x2
-	.byte	0x7f
-	.4byte	0x63b1
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -32
-	.uleb128 0x63
-	.ascii	"bg\000"
-	.byte	0x2
-	.byte	0x80
-	.4byte	0x63b1
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -36
-	.uleb128 0x62
-	.4byte	.LASF973
-	.byte	0x2
-	.byte	0x81
-	.4byte	0x65a4
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -104
-	.uleb128 0x62
-	.4byte	.LASF974
-	.byte	0x2
-	.byte	0x87
-	.4byte	0x22c6
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -112
-	.uleb128 0x62
-	.4byte	.LASF975
-	.byte	0x2
-	.byte	0x88
-	.4byte	0x6f9
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -40
-	.uleb128 0x62
-	.4byte	.LASF976
-	.byte	0x2
-	.byte	0x8a
+	.byte	0x2a
 	.4byte	0x65b
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.uleb128 0x61
-	.4byte	.LBB8
-	.4byte	.LBE8
-	.uleb128 0x62
-	.4byte	.LASF977
+	.4byte	.LASF957
 	.byte	0x2
-	.byte	0xb0
-	.4byte	0x65b
+	.byte	0x2d
+	.4byte	0x633c
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x61
+	.4byte	.LASF958
+	.byte	0x2
+	.byte	0x2e
+	.4byte	0x633c
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -36
+	.uleb128 0x61
+	.4byte	.LASF959
+	.byte	0x2
+	.byte	0x2f
+	.4byte	0x633c
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -40
+	.uleb128 0x61
+	.4byte	.LASF960
+	.byte	0x2
+	.byte	0x30
+	.4byte	0x633c
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -44
-	.uleb128 0x62
-	.4byte	.LASF978
+	.uleb128 0x61
+	.4byte	.LASF961
 	.byte	0x2
-	.byte	0xb1
-	.4byte	0x65b
+	.byte	0x32
+	.4byte	0x633c
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -48
-	.uleb128 0x63
-	.ascii	"x\000"
+	.uleb128 0x61
+	.4byte	.LASF962
 	.byte	0x2
-	.byte	0xb2
-	.4byte	0x65b
+	.byte	0x33
+	.4byte	0x633c
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -52
-	.uleb128 0x63
-	.ascii	"y\000"
+	.uleb128 0x61
+	.4byte	.LASF963
 	.byte	0x2
-	.byte	0xb3
-	.4byte	0x65b
+	.byte	0x34
+	.4byte	0x633c
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -56
-	.uleb128 0x64
-	.4byte	.LASF1016
+	.uleb128 0x61
+	.4byte	.LASF964
 	.byte	0x2
-	.byte	0xb4
-	.4byte	0x65b
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x18
-	.4byte	0x63b1
-	.4byte	0x65b4
-	.uleb128 0x19
-	.4byte	0x73e
+	.byte	0x35
+	.4byte	0x633c
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -60
+	.uleb128 0x61
+	.4byte	.LASF965
+	.byte	0x2
+	.byte	0x36
+	.4byte	0x633c
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -64
+	.uleb128 0x61
+	.4byte	.LASF966
+	.byte	0x2
+	.byte	0x37
+	.4byte	0x633c
 	.byte	0x3
+	.byte	0x91
+	.sleb128 -68
+	.uleb128 0x61
+	.4byte	.LASF967
+	.byte	0x2
+	.byte	0x38
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -72
+	.uleb128 0x61
+	.4byte	.LASF968
+	.byte	0x2
+	.byte	0x39
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -76
+	.uleb128 0x61
+	.4byte	.LASF969
+	.byte	0x2
+	.byte	0x3a
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -80
+	.uleb128 0x61
+	.4byte	.LASF970
+	.byte	0x2
+	.byte	0x3b
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -84
+	.uleb128 0x61
+	.4byte	.LASF971
+	.byte	0x2
+	.byte	0x3d
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -88
+	.uleb128 0x61
+	.4byte	.LASF972
+	.byte	0x2
+	.byte	0x3e
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -92
+	.uleb128 0x61
+	.4byte	.LASF973
+	.byte	0x2
+	.byte	0x3f
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -96
+	.uleb128 0x61
+	.4byte	.LASF974
+	.byte	0x2
+	.byte	0x40
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -100
+	.uleb128 0x61
+	.4byte	.LASF975
+	.byte	0x2
+	.byte	0x41
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -104
+	.uleb128 0x61
+	.4byte	.LASF976
+	.byte	0x2
+	.byte	0x42
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -108
+	.uleb128 0x61
+	.4byte	.LASF977
+	.byte	0x2
+	.byte	0x43
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -112
+	.uleb128 0x61
+	.4byte	.LASF978
+	.byte	0x2
+	.byte	0x45
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -116
+	.uleb128 0x61
+	.4byte	.LASF979
+	.byte	0x2
+	.byte	0x46
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -120
+	.uleb128 0x61
+	.4byte	.LASF980
+	.byte	0x2
+	.byte	0x47
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -124
+	.uleb128 0x61
+	.4byte	.LASF981
+	.byte	0x2
+	.byte	0x48
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -128
+	.uleb128 0x61
+	.4byte	.LASF982
+	.byte	0x2
+	.byte	0x49
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -132
+	.uleb128 0x61
+	.4byte	.LASF983
+	.byte	0x2
+	.byte	0x4a
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -136
+	.uleb128 0x61
+	.4byte	.LASF984
+	.byte	0x2
+	.byte	0x4b
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -140
+	.uleb128 0x61
+	.4byte	.LASF985
+	.byte	0x2
+	.byte	0x4c
+	.4byte	0x633c
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -144
+	.uleb128 0x61
+	.4byte	.LASF986
+	.byte	0x2
+	.byte	0x4e
+	.4byte	0x22c6
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -156
+	.uleb128 0x61
+	.4byte	.LASF987
+	.byte	0x2
+	.byte	0x4f
+	.4byte	0x6f9
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -148
+	.uleb128 0x61
+	.4byte	.LASF988
+	.byte	0x2
+	.byte	0x50
+	.4byte	0x65b
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x61
+	.4byte	.LASF989
+	.byte	0x2
+	.byte	0x51
+	.4byte	0x133d
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
 	.byte	0
-	.uleb128 0x65
-	.4byte	.LASF1017
+	.byte	0
+	.uleb128 0x62
+	.4byte	.LASF1024
 	.byte	0x1
 	.4byte	.LFB3275
 	.4byte	.LFE3275
 	.4byte	.LLST2
 	.byte	0x1
-	.4byte	0x65ea
-	.uleb128 0x66
-	.4byte	.LASF979
+	.4byte	0x66a2
+	.uleb128 0x63
+	.4byte	.LASF990
 	.byte	0x2
-	.2byte	0x19d
+	.byte	0x86
 	.4byte	0x65b
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x66
-	.4byte	.LASF980
+	.uleb128 0x63
+	.4byte	.LASF991
 	.byte	0x2
-	.2byte	0x19d
+	.byte	0x86
 	.4byte	0x65b
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.byte	0
-	.uleb128 0x67
-	.4byte	.LASF1018
+	.uleb128 0x64
+	.4byte	.LASF1025
 	.byte	0x1
 	.4byte	.LFB3276
 	.4byte	.LFE3276
 	.4byte	.LLST3
 	.byte	0x1
-	.uleb128 0x68
-	.4byte	.LASF981
+	.uleb128 0x65
+	.4byte	.LASF992
 	.byte	0x1c
 	.byte	0x47
 	.4byte	0x13fa
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x68
-	.4byte	.LASF982
+	.uleb128 0x65
+	.4byte	.LASF993
 	.byte	0x1c
 	.byte	0x48
 	.4byte	0x65b
@@ -12723,62 +12994,62 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	0x65b
-	.4byte	0x6622
-	.uleb128 0x69
+	.4byte	0x66da
+	.uleb128 0x66
 	.byte	0
-	.uleb128 0x68
-	.4byte	.LASF983
-	.byte	0x2e
+	.uleb128 0x65
+	.4byte	.LASF994
+	.byte	0x2f
 	.byte	0x4f
-	.4byte	0x6617
+	.4byte	0x66cf
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x68
-	.4byte	.LASF984
-	.byte	0x2e
+	.uleb128 0x65
+	.4byte	.LASF995
+	.byte	0x2f
 	.byte	0xc5
-	.4byte	0x6617
+	.4byte	0x66cf
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	0x14e8
-	.4byte	0x6647
-	.uleb128 0x69
+	.4byte	0x66ff
+	.uleb128 0x66
 	.byte	0
-	.uleb128 0x6a
-	.4byte	.LASF985
+	.uleb128 0x67
+	.4byte	.LASF996
 	.byte	0x1f
 	.2byte	0x16d
-	.4byte	0x663c
+	.4byte	0x66f4
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x6a
-	.4byte	.LASF986
-	.byte	0x2f
+	.uleb128 0x67
+	.4byte	.LASF997
+	.byte	0x30
 	.2byte	0x1d4
-	.4byte	0x6663
+	.4byte	0x671b
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x1f
 	.byte	0x4
 	.4byte	0x2dde
-	.uleb128 0x6a
-	.4byte	.LASF987
-	.byte	0x30
+	.uleb128 0x67
+	.4byte	.LASF998
+	.byte	0x31
 	.2byte	0x256
-	.4byte	0x6437
+	.4byte	0x63c9
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x6a
-	.4byte	.LASF988
-	.byte	0x2a
+	.uleb128 0x67
+	.4byte	.LASF999
+	.byte	0x29
 	.2byte	0x2ae
-	.4byte	0x6189
+	.4byte	0x6125
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	0x133d
-	.4byte	0x66a1
+	.4byte	0x6759
 	.uleb128 0x19
 	.4byte	0x73e
 	.byte	0x8
@@ -12789,147 +13060,104 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	0x73e
 	.byte	0xe
 	.byte	0
-	.uleb128 0x6b
-	.4byte	.LASF989
+	.uleb128 0x68
+	.4byte	.LASF1000
 	.byte	0x2
-	.byte	0xf
-	.4byte	0x6685
+	.byte	0x11
+	.4byte	0x673d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	level
-	.uleb128 0x6b
-	.4byte	.LASF990
+	.uleb128 0x68
+	.4byte	.LASF1001
 	.byte	0x2
-	.byte	0x10
+	.byte	0x12
 	.4byte	0x65b
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.4byte	MaxLevel
-	.uleb128 0x6b
-	.4byte	.LASF991
-	.byte	0x2
-	.byte	0x16
-	.4byte	0x62a3
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	g_SceneRoot
-	.uleb128 0x6b
-	.4byte	.LASF992
-	.byte	0x2
-	.byte	0x1b
-	.4byte	0x6f9
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	screenWidth
-	.uleb128 0x6b
-	.4byte	.LASF993
-	.byte	0x2
-	.byte	0x1c
-	.4byte	0x6f9
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	screenHeight
-	.uleb128 0x6b
-	.4byte	.LASF994
+	.uleb128 0x68
+	.4byte	.LASF1002
 	.byte	0x2
 	.byte	0x1d
 	.4byte	0x6f9
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.4byte	screenPitch
-	.uleb128 0x18
-	.4byte	0x133d
-	.4byte	0x671d
-	.uleb128 0x19
-	.4byte	0x73e
-	.byte	0x6
-	.byte	0
-	.uleb128 0x6b
-	.4byte	.LASF11
+	.4byte	screenWidth
+	.uleb128 0x68
+	.4byte	.LASF1003
 	.byte	0x2
 	.byte	0x1e
-	.4byte	0x670d
+	.4byte	0x6f9
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.4byte	left
-	.uleb128 0x6b
-	.4byte	.LASF12
+	.4byte	screenHeight
+	.uleb128 0x68
+	.4byte	.LASF1004
 	.byte	0x2
 	.byte	0x1f
-	.4byte	0x670d
+	.4byte	0x6f9
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.4byte	right
-	.uleb128 0x6b
-	.4byte	.LASF995
-	.byte	0x2
-	.byte	0x20
-	.4byte	0x65b
-	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	printed
-	.uleb128 0x6c
-	.4byte	.LASF996
+	.4byte	screenPitch
+	.uleb128 0x69
+	.4byte	.LASF1005
 	.4byte	0x72c
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x18
 	.4byte	0x29
-	.4byte	0x676a
-	.uleb128 0x69
+	.4byte	0x67ca
+	.uleb128 0x66
 	.byte	0
 	.uleb128 0x18
 	.4byte	0x686
-	.4byte	0x6775
-	.uleb128 0x69
+	.4byte	0x67d5
+	.uleb128 0x66
 	.byte	0
-	.uleb128 0x6d
+	.uleb128 0x6a
 	.4byte	0x62b
 	.byte	0x5
 	.byte	0x3
 	.4byte	_ZN4_STLL8_LocInitE
-	.uleb128 0x6d
+	.uleb128 0x6a
 	.4byte	0x637
 	.byte	0x5
 	.byte	0x3
 	.4byte	_ZN4_STLL8_IosInitE
 	.uleb128 0x8
-	.4byte	.LASF997
+	.4byte	.LASF1006
 	.byte	0x1
-	.4byte	0x679d
+	.4byte	0x67fd
 	.uleb128 0x3f
 	.ascii	"T\000"
 	.4byte	0x2e90
 	.byte	0
 	.uleb128 0x8
-	.4byte	.LASF998
+	.4byte	.LASF1007
 	.byte	0x1
-	.4byte	0x67af
+	.4byte	0x680f
 	.uleb128 0x3f
 	.ascii	"T\000"
 	.4byte	0x2a48
 	.byte	0
 	.uleb128 0x4
-	.4byte	.LASF999
+	.4byte	.LASF1008
 	.byte	0x1
 	.uleb128 0x4
-	.4byte	.LASF1000
+	.4byte	.LASF1009
 	.byte	0x1
 	.uleb128 0x4
-	.4byte	.LASF1001
+	.4byte	.LASF1010
 	.byte	0x1
 	.uleb128 0x4
-	.4byte	.LASF1002
+	.4byte	.LASF1011
 	.byte	0x1
 	.byte	0
 	.section	.debug_abbrev,"",%progbits
@@ -14233,29 +14461,16 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.uleb128 0x54
 	.uleb128 0x39
-	.byte	0x1
+	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x55
-	.uleb128 0x39
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x56
 	.uleb128 0x2
 	.byte	0x1
 	.uleb128 0x3
@@ -14272,7 +14487,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x57
+	.uleb128 0x56
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -14301,7 +14516,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x58
+	.uleb128 0x57
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -14324,7 +14539,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x59
+	.uleb128 0x58
 	.uleb128 0x3a
 	.byte	0
 	.uleb128 0x3a
@@ -14335,7 +14550,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5a
+	.uleb128 0x59
 	.uleb128 0xf
 	.byte	0
 	.uleb128 0xb
@@ -14346,7 +14561,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5b
+	.uleb128 0x5a
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x47
@@ -14359,7 +14574,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5c
+	.uleb128 0x5b
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -14370,7 +14585,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x5d
+	.uleb128 0x5c
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -14383,7 +14598,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5e
+	.uleb128 0x5d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x31
@@ -14404,7 +14619,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5f
+	.uleb128 0x5e
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x31
@@ -14413,7 +14628,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x60
+	.uleb128 0x5f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -14438,7 +14653,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x61
+	.uleb128 0x60
 	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x11
@@ -14447,7 +14662,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x1
 	.byte	0
 	.byte	0
-	.uleb128 0x62
+	.uleb128 0x61
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -14462,11 +14677,30 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x63
+	.uleb128 0x62
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
 	.uleb128 0x34
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0x6
+	.uleb128 0x2116
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x63
+	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
-	.uleb128 0x8
+	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -14478,39 +14712,46 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.byte	0
 	.byte	0
 	.uleb128 0x64
-	.uleb128 0x34
+	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
+	.uleb128 0x34
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0x6
+	.uleb128 0x2116
+	.uleb128 0xc
 	.byte	0
 	.byte	0
 	.uleb128 0x65
-	.uleb128 0x2e
-	.byte	0x1
+	.uleb128 0x34
+	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
-	.uleb128 0x34
-	.uleb128 0xc
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0x6
-	.uleb128 0x2116
-	.uleb128 0xc
-	.uleb128 0x1
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
 	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
 	.byte	0
 	.byte	0
 	.uleb128 0x66
-	.uleb128 0x5
+	.uleb128 0x21
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x67
+	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
@@ -14520,24 +14761,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x5
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x67
-	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x34
+	.uleb128 0x3f
 	.uleb128 0xc
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0x6
-	.uleb128 0x2116
+	.uleb128 0x3c
 	.uleb128 0xc
 	.byte	0
 	.byte	0
@@ -14554,50 +14780,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0x13
 	.uleb128 0x3f
 	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x69
-	.uleb128 0x21
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x6a
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x6b
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
 	.uleb128 0x2
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x6c
+	.uleb128 0x69
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -14612,7 +14799,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x6d
+	.uleb128 0x6a
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x47
@@ -14652,7 +14839,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.4byte	.LFE2965
 	.2byte	0x3
 	.byte	0x7d
-	.sleb128 120
+	.sleb128 184
 	.4byte	0
 	.4byte	0
 .LLST2:
@@ -14721,7 +14908,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.section	.debug_str,"MS",%progbits,1
 .LASF165:
 	.ascii	"wcspbrk\000"
-.LASF704:
+.LASF690:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15clea"
 	.ascii	"r_optimisedEv\000"
@@ -14731,17 +14918,19 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK9CIwStringILi32EE6lengthEv\000"
 .LASF589:
 	.ascii	"GetSize\000"
-.LASF677:
+.LASF663:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
 	.ascii	"ush_backERKS1_\000"
+.LASF963:
+	.ascii	"BackBt\000"
 .LASF370:
 	.ascii	"m_Buffer\000"
 .LASF21:
 	.ascii	"unitbuf\000"
 .LASF10:
 	.ascii	"~_Loc_init\000"
-.LASF841:
+.LASF827:
 	.ascii	"GetBuildStyleCurrName\000"
 .LASF419:
 	.ascii	"IW_TYPE_NONE\000"
@@ -14753,47 +14942,45 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN9CIwStringILi32EEplEPKc\000"
 .LASF369:
 	.ascii	"CIwString<32>\000"
-.LASF864:
+.LASF850:
 	.ascii	"BuildResources\000"
-.LASF865:
+.LASF851:
 	.ascii	"_ZN13CIwResManager14BuildResourcesEv\000"
 .LASF16:
 	.ascii	"boolalpha\000"
 .LASF126:
 	.ascii	"tm_sec\000"
-.LASF810:
+.LASF796:
 	.ascii	"_ZNK13CIwResManager11GetResNamedEPKcS1_j\000"
 .LASF211:
 	.ascii	"handle\000"
 .LASF581:
 	.ascii	"EraseFast\000"
-.LASF1017:
+.LASF1024:
 	.ascii	"__static_initialization_and_destruction_0\000"
 .LASF441:
 	.ascii	"allocate\000"
 .LASF395:
 	.ascii	"_ZNK9CIwStringILi32EEeqEPKc\000"
-.LASF978:
-	.ascii	"displayHeight\000"
 .LASF310:
 	.ascii	"_ZN7CIwVec2aSERK8CIwFVec2\000"
 .LASF140:
 	.ascii	"fwide\000"
 .LASF38:
 	.ascii	"_LocInit\000"
-.LASF814:
+.LASF800:
 	.ascii	"_ZN13CIwResManager6AddResEPKcP11CIwResource\000"
 .LASF24:
 	.ascii	"basefield\000"
 .LASF144:
 	.ascii	"getwc\000"
-.LASF349:
-	.ascii	"_ZNK8CIwFVec213GetNormalisedEv\000"
+.LASF981:
+	.ascii	"ResumeBtC\000"
 .LASF96:
 	.ascii	"fpos_t\000"
 .LASF71:
 	.ascii	"ldiv_t\000"
-.LASF800:
+.LASF786:
 	.ascii	"GetGroup\000"
 .LASF534:
 	.ascii	"LockSize\000"
@@ -14803,7 +14990,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"S3E_SURFACE_HEIGHT\000"
 .LASF259:
 	.ascii	"GetLengthSafe\000"
-.LASF982:
+.LASF993:
 	.ascii	"g_IwSerialiseContextValid\000"
 .LASF469:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -14811,15 +14998,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"liseHeaderEv\000"
 .LASF542:
 	.ascii	"REALLOCATE\000"
-.LASF984:
+.LASF995:
 	.ascii	"g_InverseSqrtTable\000"
 .LASF409:
 	.ascii	"_ZN9CIwStringILi160EEaSEPKc\000"
-.LASF665:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
-	.ascii	"raseEi\000"
-.LASF730:
+.LASF716:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5fron"
 	.ascii	"tEv\000"
@@ -14829,23 +15012,25 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"reserve_optimised\000"
 .LASF536:
 	.ascii	"set_capacity\000"
-.LASF902:
+.LASF888:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE11MemoryUsageEv\000"
 .LASF394:
 	.ascii	"_ZN9CIwStringILi32EEpLEc\000"
+.LASF989:
+	.ascii	"angle\000"
 .LASF163:
 	.ascii	"wcsncmp\000"
-.LASF663:
+.LASF649:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
 	.ascii	"erase_fastEPS1_\000"
 .LASF209:
 	.ascii	"read\000"
-.LASF958:
+.LASF944:
 	.ascii	"GetWidth\000"
-.LASF909:
+.LASF895:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE4findERKS1_\000"
@@ -14853,13 +15038,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwFVec212IsNormalisedEv\000"
 .LASF100:
 	.ascii	"feof\000"
-.LASF631:
-	.ascii	"S3E_POINTER_BUTTON_MOUSEWHEELDOWN\000"
-.LASF701:
+.LASF687:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15Seri"
 	.ascii	"aliseHeaderEv\000"
-.LASF936:
+.LASF922:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5ShareERKS8_\000"
@@ -14869,7 +15052,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"Serialise\000"
 .LASF57:
 	.ascii	"uint16_t\000"
-.LASF661:
+.LASF647:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
 	.ascii	"erase_fastEi\000"
@@ -14889,17 +15072,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwFVec2dvEf\000"
 .LASF479:
 	.ascii	"optimise_capacity\000"
-.LASF705:
+.LASF691:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11Mem"
 	.ascii	"oryUsageEv\000"
 .LASF376:
 	.ascii	"length\000"
-.LASF935:
+.LASF921:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EEixEi\000"
-.LASF648:
+.LASF634:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE1"
 	.ascii	"1MemoryUsageEv\000"
@@ -14907,14 +15090,16 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwSVec2lSEi\000"
 .LASF591:
 	.ascii	"GetCapacity\000"
-.LASF737:
+.LASF973:
+	.ascii	"InBtC\000"
+.LASF723:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push"
 	.ascii	"_back_qtyEi\000"
-.LASF889:
+.LASF875:
 	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
 	.ascii	"5CIwMallocRouterIS1_EE10reallocateEPS1_j\000"
-.LASF691:
+.LASF677:
 	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
 	.ascii	"1_EE10reallocateEPS1_j\000"
 .LASF549:
@@ -14923,23 +15108,21 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"deallocate\000"
 .LASF231:
 	.ascii	"_ZN9CIwColour7SetGreyEh\000"
-.LASF908:
+.LASF894:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE6resizeEj\000"
 .LASF134:
 	.ascii	"tm_isdst\000"
-.LASF642:
+.LASF628:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8"
 	.ascii	"capacityEv\000"
-.LASF627:
-	.ascii	"S3E_POINTER_BUTTON_LEFTMOUSE\000"
 .LASF541:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4swapER"
 	.ascii	"S8_\000"
-.LASF817:
+.LASF803:
 	.ascii	"GetCurrentGroup\000"
 .LASF267:
 	.ascii	"Normalise\000"
@@ -14955,15 +15138,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"ityEv\000"
 .LASF408:
 	.ascii	"_ZNK9CIwStringILi160EEixEi\000"
-.LASF757:
+.LASF743:
 	.ascii	"m_LoadPaths\000"
 .LASF60:
 	.ascii	"uint8\000"
-.LASF963:
+.LASF949:
 	.ascii	"_ZN10CIw2DImage11GetMaterialEv\000"
 .LASF577:
 	.ascii	"RemoveFast\000"
-.LASF719:
+.LASF705:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
 	.ascii	"e_fastEii\000"
@@ -14977,11 +15160,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"atol\000"
 .LASF406:
 	.ascii	"_ZNK9CIwStringILi160EE6substrEii\000"
-.LASF778:
+.LASF764:
 	.ascii	"_ZN13CIwResManager7SetModeENS_10GlobalModeE\000"
 .LASF40:
 	.ascii	"__std_alias\000"
-.LASF988:
+.LASF999:
 	.ascii	"g_IwResManager\000"
 .LASF91:
 	.ascii	"strcoll\000"
@@ -14997,18 +15180,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"headBit\000"
 .LASF298:
 	.ascii	"operator>>=\000"
-.LASF904:
+.LASF890:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE17optimise_capacityEv\000"
 .LASF335:
 	.ascii	"_ZN7CIwVec2mLEi\000"
-.LASF694:
-	.ascii	"CIwArray<CIwResGroup*, CIwAllocator<CIwResGroup*, C"
-	.ascii	"IwMallocRouter<CIwResGroup*> >, ReallocateDefault<C"
-	.ascii	"IwResGroup*, CIwAllocator<CIwResGroup*, CIwMallocRo"
-	.ascii	"uter<CIwResGroup*> > > >\000"
-.LASF655:
+.LASF182:
+	.ascii	"long double\000"
+.LASF641:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
 	.ascii	"findERKS1_\000"
@@ -15020,21 +15200,23 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12resiz"
 	.ascii	"e_quickEj\000"
-.LASF971:
-	.ascii	"menubg\000"
-.LASF717:
+.LASF960:
+	.ascii	"StartTitle\000"
+.LASF957:
+	.ascii	"StartBg\000"
+.LASF703:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12pop_"
 	.ascii	"back_getEv\000"
-.LASF706:
+.LASF692:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16resi"
 	.ascii	"ze_optimisedEj\000"
-.LASF696:
+.LASF682:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3endE"
 	.ascii	"v\000"
-.LASF919:
+.LASF905:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5eraseEi\000"
@@ -15044,7 +15226,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"IW_EVENT_ENGINE\000"
 .LASF611:
 	.ascii	"IW_EVENT_GX\000"
-.LASF682:
+.LASF668:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5S"
 	.ascii	"hareERKS8_\000"
@@ -15054,17 +15236,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"iwfixed\000"
 .LASF177:
 	.ascii	"wscanf\000"
-.LASF1005:
+.LASF1014:
 	.ascii	"d:\\\\School\\\\cs115\\\\AmazingMaze\\\\build_amazi"
 	.ascii	"ngmaze_vc12\000"
 .LASF508:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
 	.ascii	"PS1_\000"
-.LASF634:
+.LASF620:
 	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
 	.ascii	"erIS1_EE8allocateEj\000"
-.LASF683:
+.LASF669:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5S"
 	.ascii	"hareEPS1_ii\000"
@@ -15076,19 +15258,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
 	.ascii	"jj\000"
-.LASF629:
-	.ascii	"S3E_POINTER_BUTTON_MIDDLEMOUSE\000"
 .LASF188:
 	.ascii	"S3E_SURFACE_DEVICE_HEIGHT\000"
-.LASF657:
+.LASF643:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
 	.ascii	"find_and_removeERKS1_\000"
-.LASF630:
-	.ascii	"S3E_POINTER_BUTTON_MOUSEWHEELUP\000"
 .LASF203:
 	.ascii	"S3E_ERROR_SHOW_IGNORE\000"
-.LASF734:
+.LASF720:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
 	.ascii	"backERKS1_\000"
@@ -15098,13 +15276,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"and_remove_fastERKS1_\000"
 .LASF70:
 	.ascii	"6ldiv_t\000"
-.LASF927:
+.LASF913:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE5frontEv\000"
-.LASF871:
+.LASF857:
 	.ascii	"_ZN13CIwResManager13SetAltasOwnerEP11CIwResGroup\000"
-.LASF832:
+.LASF818:
 	.ascii	"_ZN13CIwResManager25SetBuildGroupCallbackPostEPFvvE"
 	.ascii	"\000"
 .LASF431:
@@ -15115,31 +15293,34 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
 	.ascii	"i\000"
-.LASF776:
+.LASF680:
+	.ascii	"CIwArray<CIwResGroup*, CIwAllocator<CIwResGroup*, C"
+	.ascii	"IwMallocRouter<CIwResGroup*> >, ReallocateDefault<C"
+	.ascii	"IwResGroup*, CIwAllocator<CIwResGroup*, CIwMallocRo"
+	.ascii	"uter<CIwResGroup*> > > >\000"
+.LASF762:
 	.ascii	"BuildGroupCallbackPost\000"
-.LASF626:
-	.ascii	"S3E_POINTER_BUTTON_SELECT\000"
 .LASF616:
 	.ascii	"IW_EVENT_ALLOCATION_MASK\000"
-.LASF713:
+.LASF699:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8cont"
 	.ascii	"ainsERKS1_\000"
 .LASF274:
 	.ascii	"_ZNK8CIwSVec217GetNormalisedSafeEv\000"
-.LASF770:
+.LASF756:
 	.ascii	"m_BuildStyleCurr\000"
-.LASF656:
+.LASF642:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8"
 	.ascii	"containsERKS1_\000"
-.LASF813:
+.LASF799:
 	.ascii	"AddRes\000"
-.LASF718:
+.LASF704:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
 	.ascii	"e_fastEi\000"
-.LASF755:
+.LASF741:
 	.ascii	"m_Group\000"
 .LASF118:
 	.ascii	"rename\000"
@@ -15155,11 +15336,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwSVec213GetLengthSafeEv\000"
 .LASF27:
 	.ascii	"badbit\000"
-.LASF722:
+.LASF708:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
 	.ascii	"Ei\000"
-.LASF964:
+.LASF950:
 	.ascii	"~CIw2DImage\000"
 .LASF448:
 	.ascii	"CIwManaged\000"
@@ -15169,14 +15350,14 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwFVec2ixEi\000"
 .LASF171:
 	.ascii	"wcsstr\000"
-.LASF979:
+.LASF990:
 	.ascii	"__initialize_p\000"
 .LASF107:
 	.ascii	"fread\000"
-.LASF692:
+.LASF678:
 	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
 	.ascii	"1_EE10deallocateEPS1_j\000"
-.LASF840:
+.LASF826:
 	.ascii	"_ZN13CIwResManager13SetBuildStyleEPKc\000"
 .LASF275:
 	.ascii	"IsNormalised\000"
@@ -15186,7 +15367,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"PS1_S9_\000"
 .LASF198:
 	.ascii	"S3E_SURFACE_GL_MODE\000"
-.LASF653:
+.LASF639:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
 	.ascii	"resize_quickEj\000"
@@ -15194,36 +15375,38 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"remove\000"
 .LASF169:
 	.ascii	"wcstod\000"
-.LASF620:
-	.ascii	"S3E_POINTER_STATE_UP\000"
+.LASF901:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE10erase_fastEi\000"
 .LASF154:
 	.ascii	"wcstok\000"
 .LASF170:
 	.ascii	"wcstol\000"
-.LASF647:
+.LASF633:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
 	.ascii	"clear_optimisedEv\000"
 .LASF108:
 	.ascii	"freopen\000"
-.LASF783:
+.LASF769:
 	.ascii	"RemoveHandler\000"
-.LASF753:
+.LASF739:
 	.ascii	"IW_RES_GROUP_COLLISION_PATCH_F\000"
 .LASF183:
 	.ascii	"S3E_SURFACE_WIDTH\000"
-.LASF859:
+.LASF845:
 	.ascii	"_ZN13CIwResManager13AddBuildStyleEP16CIwResBuildSty"
 	.ascii	"le\000"
 .LASF18:
 	.ascii	"showpoint\000"
-.LASF829:
+.LASF815:
 	.ascii	"SetBuildGroupCallbackPre\000"
 .LASF563:
 	.ascii	"_ZN14CIwManagedList5ClearEv\000"
-.LASF869:
+.LASF855:
 	.ascii	"_ZN13CIwResManager15ClearAtlasOwnerEv\000"
-.LASF746:
+.LASF732:
 	.ascii	"CIwResHandler\000"
 .LASF101:
 	.ascii	"ferror\000"
@@ -15231,9 +15414,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaSERKS8"
 	.ascii	"_\000"
-.LASF957:
+.LASF943:
 	.ascii	"_vptr.CIw2DImage\000"
-.LASF769:
+.LASF755:
 	.ascii	"m_BuildStyles\000"
 .LASF15:
 	.ascii	"scientific\000"
@@ -15249,7 +15432,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"operator-\000"
 .LASF294:
 	.ascii	"operator/\000"
-.LASF668:
+.LASF654:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
 	.ascii	"raseEPS1_S9_\000"
@@ -15263,23 +15446,25 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"wmemmove\000"
 .LASF179:
 	.ascii	"wmemset\000"
-.LASF659:
+.LASF645:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8p"
 	.ascii	"op_backEv\000"
 .LASF232:
 	.ascii	"operator=\000"
-.LASF821:
+.LASF807:
 	.ascii	"LoadGroup\000"
 .LASF330:
 	.ascii	"_ZNK7CIwVec2mlERKS_\000"
 .LASF223:
 	.ascii	"_ZN9CIwColour3SetEj\000"
-.LASF762:
+.LASF972:
+	.ascii	"InBt\000"
+.LASF748:
 	.ascii	"m_AtlasParentGroup\000"
 .LASF388:
 	.ascii	"_ZN9CIwStringILi32EEaSEPKc\000"
-.LASF940:
+.LASF926:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE12set_capacityEj\000"
@@ -15293,39 +15478,43 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"s3eFile\000"
 .LASF258:
 	.ascii	"_ZNK8CIwSVec216GetLengthSquaredEv\000"
-.LASF720:
+.LASF706:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
 	.ascii	"e_fastEPS1_\000"
 .LASF598:
 	.ascii	"GetBegin\000"
-.LASF842:
+.LASF828:
 	.ascii	"_ZNK13CIwResManager21GetBuildStyleCurrNameEv\000"
-.LASF930:
+.LASF916:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE6appendERS8_\000"
-.LASF976:
-	.ascii	"maze\000"
+.LASF521:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
+	.ascii	"ERS8_\000"
 .LASF35:
 	.ascii	"__narrow_atoms\000"
 .LASF245:
 	.ascii	"_ZN9CIwColourplES_\000"
-.LASF968:
+.LASF954:
 	.ascii	"surface_width\000"
 .LASF384:
 	.ascii	"substr\000"
-.LASF961:
+.LASF947:
 	.ascii	"_ZN10CIw2DImage9GetHeightEv\000"
-.LASF673:
+.LASF659:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
 	.ascii	"frontEv\000"
 .LASF308:
 	.ascii	"CIwVec2\000"
-.LASF1016:
-	.ascii	"Maxlvl\000"
-.LASF798:
+.LASF651:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
+	.ascii	"raseEi\000"
+.LASF784:
 	.ascii	"GetNumGroups\000"
 .LASF247:
 	.ascii	"_ZN9CIwColourpLERKS_\000"
@@ -15337,7 +15526,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"IW_TYPE_BOOL\000"
 .LASF22:
 	.ascii	"uppercase\000"
-.LASF644:
+.LASF630:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
 	.ascii	"SerialiseHeaderEv\000"
@@ -15345,13 +15534,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
 	.ascii	"back_qtyERKS1_i\000"
-.LASF1002:
+.LASF1011:
 	.ascii	"ReallocateDefault<CIwResManager::CRemovedGroup, CIw"
 	.ascii	"Allocator<CIwResManager::CRemovedGroup, CIwMallocRo"
 	.ascii	"uter<CIwResManager::CRemovedGroup> > >\000"
 .LASF168:
 	.ascii	"wcsxfrm\000"
-.LASF827:
+.LASF813:
 	.ascii	"ReloadGroup\000"
 .LASF533:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -15359,7 +15548,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"izeEv\000"
 .LASF161:
 	.ascii	"wcslen\000"
-.LASF773:
+.LASF759:
 	.ascii	"m_RemovedGroups\000"
 .LASF348:
 	.ascii	"_ZN8CIwFVec29NormaliseEv\000"
@@ -15367,34 +15556,32 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwFVec2ixEi\000"
 .LASF181:
 	.ascii	"float\000"
-.LASF855:
+.LASF841:
 	.ascii	"_ZN13CIwResManager17DebugAddMenuItemsEP7CIwMenu\000"
 .LASF336:
 	.ascii	"_ZNK7CIwVec2dvEi\000"
 .LASF253:
 	.ascii	"_ZN8CIwSVec2aSERK7CIwVec2\000"
-.LASF55:
-	.ascii	"long long int\000"
 .LASF531:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5ShareE"
 	.ascii	"PS1_ii\000"
-.LASF689:
+.LASF675:
 	.ascii	"CIwAllocator<CIwResGroup*, CIwMallocRouter<CIwResGr"
 	.ascii	"oup*> >\000"
-.LASF925:
+.LASF911:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE4backEv\000"
 .LASF34:
 	.ascii	"__digit_val_table\000"
-.LASF763:
+.LASF749:
 	.ascii	"m_Handlers\000"
-.LASF643:
+.LASF629:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4d"
 	.ascii	"ataEv\000"
-.LASF868:
+.LASF854:
 	.ascii	"ClearAtlasOwner\000"
 .LASF290:
 	.ascii	"_ZNK8CIwSVec2neERKS_\000"
@@ -15402,11 +15589,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"skipws\000"
 .LASF556:
 	.ascii	"_ZN14CIwManagedList16OptimizeCapacityEv\000"
-.LASF947:
+.LASF933:
 	.ascii	"_ZN7CIwRect4MakeEssss\000"
 .LASF235:
 	.ascii	"_ZNK9CIwColoureqEj\000"
-.LASF678:
+.LASF664:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
 	.ascii	"ush_backEv\000"
@@ -15416,27 +15603,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"resize_quick\000"
 .LASF618:
 	.ascii	"CIwTextParserITX\000"
-.LASF918:
+.LASF904:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE10erase_fastEPS1_S9_\000"
-.LASF898:
+.LASF884:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE15SerialiseHeaderEv\000"
-.LASF920:
+.LASF906:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5eraseEjj\000"
-.LASF980:
+.LASF991:
 	.ascii	"__priority\000"
 .LASF610:
 	.ascii	"IW_EVENT_NULL\000"
-.LASF796:
+.LASF782:
 	.ascii	"GetGroupHashed\000"
 .LASF582:
 	.ascii	"_ZN14CIwManagedList9EraseFastEj\000"
-.LASF910:
+.LASF896:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE8containsERKS1_\000"
@@ -15456,27 +15643,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"setbuf\000"
 .LASF255:
 	.ascii	"GetLength\000"
-.LASF876:
+.LASF862:
 	.ascii	"_TempRemoveGroup\000"
-.LASF649:
+.LASF635:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16"
 	.ascii	"resize_optimisedEj\000"
-.LASF1008:
+.LASF1017:
 	.ascii	"IwResGroupCollisionHandling\000"
-.LASF962:
+.LASF948:
 	.ascii	"GetMaterial\000"
-.LASF828:
+.LASF814:
 	.ascii	"_ZN13CIwResManager11ReloadGroupEPKcb\000"
 .LASF529:
 	.ascii	"Share\000"
-.LASF676:
+.LASF662:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6a"
 	.ascii	"ppendERS8_\000"
 .LASF353:
 	.ascii	"_ZNK8CIwFVec23DotERKS_\000"
-.LASF681:
+.LASF667:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEi"
 	.ascii	"xEi\000"
@@ -15484,15 +15671,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"size_type\000"
 .LASF119:
 	.ascii	"rewind\000"
-.LASF802:
+.LASF788:
 	.ascii	"GetHandler\000"
-.LASF397:
-	.ascii	"_ZN9CIwStringILi32EE9SerialiseEv\000"
-.LASF815:
+.LASF801:
 	.ascii	"SetCurrentGroup\000"
-.LASF752:
+.LASF738:
 	.ascii	"IW_RES_GROUP_COLLISION_REPLACE_F\000"
-.LASF850:
+.LASF836:
 	.ascii	"_ZNK13CIwResManager11GetPathNameEv\000"
 .LASF456:
 	.ascii	"iterator\000"
@@ -15504,16 +15689,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"atexit\000"
 .LASF340:
 	.ascii	"_ZN7CIwVec2lSEi\000"
-.LASF781:
+.LASF767:
 	.ascii	"AddHandler\000"
-.LASF632:
-	.ascii	"S3E_POINTER_BUTTON_MAX\000"
 .LASF187:
 	.ascii	"S3E_SURFACE_DEVICE_WIDTH\000"
 .LASF592:
 	.ascii	"_ZNK14CIwManagedList11GetCapacityEv\000"
-.LASF991:
-	.ascii	"g_SceneRoot\000"
 .LASF608:
 	.ascii	"_ZN17ReallocateDefaultIP10CIwManaged12CIwAllocatorI"
 	.ascii	"S1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1_RS5_"
@@ -15522,7 +15703,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK7CIwVec217GetNormalisedSafeEv\000"
 .LASF155:
 	.ascii	"wcscat\000"
-.LASF679:
+.LASF665:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13"
 	.ascii	"push_back_qtyERKS1_i\000"
@@ -15532,21 +15713,21 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"va_list\000"
 .LASF562:
 	.ascii	"Clear\000"
-.LASF945:
+.LASF931:
 	.ascii	"CIwRect\000"
 .LASF478:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16resiz"
 	.ascii	"e_optimisedEj\000"
-.LASF874:
+.LASF860:
 	.ascii	"GetUniqueRunStamp\000"
 .LASF520:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
 	.ascii	"ERKS1_\000"
-.LASF777:
+.LASF763:
 	.ascii	"SetMode\000"
-.LASF886:
+.LASF872:
 	.ascii	"~CIwResManager\000"
 .LASF491:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
@@ -15554,7 +15735,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"insERKS1_\000"
 .LASF510:
 	.ascii	"insert_slow\000"
-.LASF779:
+.LASF765:
 	.ascii	"GetMode\000"
 .LASF374:
 	.ascii	"size\000"
@@ -15566,7 +15747,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"GetTop\000"
 .LASF427:
 	.ascii	"IW_TYPE_UINT32\000"
-.LASF1011:
+.LASF941:
 	.ascii	"Iw2DSceneGraph\000"
 .LASF95:
 	.ascii	"FILE\000"
@@ -15578,7 +15759,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"IW_EVENT_USER\000"
 .LASF122:
 	.ascii	"tmpfile\000"
-.LASF685:
+.LASF671:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8L"
 	.ascii	"ockSizeEb\000"
@@ -15588,15 +15769,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"pop_back_get\000"
 .LASF47:
 	.ascii	"size_t\000"
-.LASF914:
+.LASF900:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE12pop_back_getEv\000"
-.LASF688:
+.LASF969:
+	.ascii	"HardBt\000"
+.LASF674:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4s"
 	.ascii	"wapERS8_\000"
-.LASF745:
+.LASF731:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4swapE"
 	.ascii	"RS8_\000"
@@ -15604,29 +15787,35 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"quot\000"
 .LASF516:
 	.ascii	"front\000"
-.LASF843:
+.LASF829:
 	.ascii	"LoadRes\000"
+.LASF988:
+	.ascii	"stage\000"
 .LASF9:
 	.ascii	"~Init\000"
+.LASF980:
+	.ascii	"ResumeBt\000"
 .LASF383:
 	.ascii	"_ZN9CIwStringILi32EE4findEPKc\000"
+.LASF974:
+	.ascii	"OutBt\000"
 .LASF116:
 	.ascii	"perror\000"
-.LASF723:
+.LASF709:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
 	.ascii	"Ejj\000"
-.LASF870:
+.LASF856:
 	.ascii	"SetAltasOwner\000"
 .LASF575:
 	.ascii	"RemoveSlow\000"
 .LASF30:
 	.ascii	"__hex_char_table_lo\000"
-.LASF797:
+.LASF783:
 	.ascii	"_ZNK13CIwResManager14GetGroupHashedEjj\000"
 .LASF430:
 	.ascii	"IW_TYPE_STRING\000"
-.LASF932:
+.LASF918:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE9push_backEv\000"
@@ -15634,15 +15823,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"IW_TYPE_UINT8\000"
 .LASF420:
 	.ascii	"IW_TYPE_CHAR\000"
-.LASF931:
+.LASF917:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE9push_backERKS1_\000"
-.LASF942:
+.LASF977:
+	.ascii	"PauseBtC\000"
+.LASF928:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE4swapERS8_\000"
-.LASF952:
+.LASF936:
 	.ascii	"IW_GX_ORIENT_NONE\000"
 .LASF228:
 	.ascii	"_ZN9CIwColour9SerialiseEv\000"
@@ -15652,8 +15843,8 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
 	.ascii	"_fastEii\000"
-.LASF625:
-	.ascii	"s3ePointerButton\000"
+.LASF772:
+	.ascii	"_ZN13CIwResManager8AddGroupEP11CIwResGroup\000"
 .LASF434:
 	.ascii	"IW_TYPE_PAD_F\000"
 .LASF173:
@@ -15662,21 +15853,23 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"fwprintf\000"
 .LASF19:
 	.ascii	"showpos\000"
+.LASF958:
+	.ascii	"PlayBt\000"
 .LASF490:
 	.ascii	"contains\000"
-.LASF883:
+.LASF869:
 	.ascii	"_ZN13CIwResManager25GetGroupCollisionHandlingEv\000"
 .LASF39:
 	.ascii	"_IosInit\000"
-.LASF948:
+.LASF934:
 	.ascii	"Rotate\000"
 .LASF78:
 	.ascii	"mblen\000"
 .LASF150:
 	.ascii	"vfwprintf\000"
-.LASF805:
+.LASF791:
 	.ascii	"_ZNK13CIwResManager10GetResTypeEPKcj\000"
-.LASF923:
+.LASF909:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE11insert_slowERKS1_j\000"
@@ -15684,9 +15877,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"IW_EVENT_GUI\000"
 .LASF343:
 	.ascii	"CIwFVec2\000"
-.LASF1013:
+.LASF1021:
 	.ascii	"__vtbl_ptr_type\000"
-.LASF912:
+.LASF898:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE20find_and_remove_fastERKS1_\000"
@@ -15694,15 +15887,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK9CIwStringILi160EEeqERKS0_\000"
 .LASF586:
 	.ascii	"_ZNK14CIwManagedList4FindERKP10CIwManaged\000"
-.LASF851:
+.LASF837:
 	.ascii	"ChangeExtension\000"
 .LASF605:
 	.ascii	"_AddHashAsPointer\000"
-.LASF654:
+.LASF640:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6r"
 	.ascii	"esizeEj\000"
-.LASF852:
+.LASF838:
 	.ascii	"_ZN14CIwManagedList17_AddHashAsPointerEj\000"
 .LASF277:
 	.ascii	"_ZN8CIwSVec29SerialiseEv\000"
@@ -15716,15 +15909,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"push_back_qty\000"
 .LASF324:
 	.ascii	"_ZNK7CIwVec23DotERKS_\000"
-.LASF686:
+.LASF672:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
 	.ascii	"set_capacityEj\000"
-.LASF970:
-	.ascii	"image\000"
 .LASF139:
 	.ascii	"fputws\000"
-.LASF845:
+.LASF831:
 	.ascii	"AddLoadPath\000"
 .LASF323:
 	.ascii	"_ZNK7CIwVec26IsZeroEv\000"
@@ -15736,14 +15927,14 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"RKS8_\000"
 .LASF239:
 	.ascii	"_ZNK9CIwColourneERKS_\000"
-.LASF641:
+.LASF627:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
 	.ascii	"sizeEv\000"
-.LASF888:
+.LASF874:
 	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
 	.ascii	"5CIwMallocRouterIS1_EE8allocateEj\000"
-.LASF768:
+.LASF754:
 	.ascii	"m_GroupPathNameCurr\000"
 .LASF225:
 	.ascii	"_ZN9CIwColour3SetEhhh\000"
@@ -15757,7 +15948,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwSVec26IsZeroEv\000"
 .LASF166:
 	.ascii	"wcschr\000"
-.LASF998:
+.LASF1007:
 	.ascii	"CIwMallocRouter<CIwString<160> >\000"
 .LASF352:
 	.ascii	"_ZNK8CIwFVec26IsZeroEv\000"
@@ -15765,21 +15956,21 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"find\000"
 .LASF286:
 	.ascii	"_ZNK8CIwSVec2miERKS_\000"
-.LASF846:
+.LASF832:
 	.ascii	"_ZN13CIwResManager11AddLoadPathERK9CIwStringILi160E"
 	.ascii	"E\000"
 .LASF572:
 	.ascii	"_ZN14CIwManagedList3AddEP10CIwManagedb\000"
 .LASF202:
 	.ascii	"S3E_ERROR_SHOW_STOP\000"
-.LASF965:
+.LASF951:
 	.ascii	"ReallocateDefault<CIwString<160>, CIwAllocator<CIwS"
 	.ascii	"tring<160>, CIwMallocRouter<CIwString<160> > > >\000"
 .LASF584:
 	.ascii	"_ZNK14CIwManagedList8ContainsEP10CIwManaged\000"
 .LASF500:
 	.ascii	"erase_fast\000"
-.LASF750:
+.LASF736:
 	.ascii	"MODE_LOAD\000"
 .LASF33:
 	.ascii	"_ZN4_STL19__hex_char_table_hiE\000"
@@ -15789,11 +15980,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwFVec2ngEv\000"
 .LASF351:
 	.ascii	"_ZN8CIwFVec29SerialiseEv\000"
-.LASF780:
+.LASF766:
 	.ascii	"_ZNK13CIwResManager7GetModeEv\000"
-.LASF759:
+.LASF745:
 	.ascii	"m_DebugGroupBinCopyPath\000"
-.LASF1014:
+.LASF1022:
 	.ascii	"this\000"
 .LASF568:
 	.ascii	"GetObjHashed\000"
@@ -15801,8 +15992,6 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK9CIwColourneEj\000"
 .LASF221:
 	.ascii	"CIwColour\000"
-.LASF619:
-	.ascii	"s3ePointerState\000"
 .LASF99:
 	.ascii	"fclose\000"
 .LASF435:
@@ -15813,7 +16002,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3endEv"
 	.ascii	"\000"
-.LASF726:
+.LASF712:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inse"
 	.ascii	"rt_slowERKS1_j\000"
@@ -15823,15 +16012,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"operator[]\000"
 .LASF94:
 	.ascii	"strxfrm\000"
-.LASF867:
+.LASF853:
 	.ascii	"_ZNK13CIwResManager13DumpCatalogueEPKc\000"
-.LASF671:
+.LASF657:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
 	.ascii	"backEv\000"
-.LASF847:
+.LASF833:
 	.ascii	"ClearLoadPaths\000"
-.LASF716:
+.LASF702:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8pop_b"
 	.ascii	"ackEv\000"
@@ -15841,7 +16030,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwSVec2plERKS_\000"
 .LASF85:
 	.ascii	"wcstombs\000"
-.LASF897:
+.LASF883:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE4dataEv\000"
@@ -15851,29 +16040,29 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK14CIwManagedListixEi\000"
 .LASF269:
 	.ascii	"GetNormalised\000"
-.LASF873:
+.LASF859:
 	.ascii	"_ZN13CIwResManager13GetAtlasOwnerEv\000"
-.LASF662:
+.LASF648:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
 	.ascii	"erase_fastEii\000"
-.LASF714:
+.LASF700:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find"
 	.ascii	"_and_removeERKS1_\000"
 .LASF414:
 	.ascii	"_ZN9CIwStringILi160EEplERKS0_\000"
-.LASF658:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20"
-	.ascii	"find_and_remove_fastERKS1_\000"
+.LASF967:
+	.ascii	"MedBt\000"
+.LASF965:
+	.ascii	"EasyBt\000"
 .LASF501:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
 	.ascii	"_fastEi\000"
 .LASF249:
 	.ascii	"CIwSVec2\000"
-.LASF818:
+.LASF804:
 	.ascii	"_ZNK13CIwResManager15GetCurrentGroupEv\000"
 .LASF292:
 	.ascii	"_ZNK8CIwSVec2mlEi\000"
@@ -15883,54 +16072,50 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"bad_cast\000"
 .LASF295:
 	.ascii	"_ZNK8CIwSVec2dvEi\000"
-.LASF933:
+.LASF919:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE13push_back_qtyERKS1_i\000"
-.LASF974:
+.LASF986:
 	.ascii	"image_position\000"
-.LASF636:
+.LASF622:
 	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
 	.ascii	"erIS1_EE10deallocateEPS1_j\000"
-.LASF887:
+.LASF873:
 	.ascii	"CIwAllocator<CIwResManager::CRemovedGroup, CIwMallo"
 	.ascii	"cRouter<CIwResManager::CRemovedGroup> >\000"
-.LASF916:
+.LASF902:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE10erase_fastEii\000"
-.LASF848:
+.LASF834:
 	.ascii	"_ZN13CIwResManager14ClearLoadPathsEv\000"
-.LASF521:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
-	.ascii	"ERS8_\000"
 .LASF289:
 	.ascii	"_ZNK8CIwSVec2eqERKS_\000"
 .LASF149:
 	.ascii	"swscanf\000"
-.LASF791:
+.LASF777:
 	.ascii	"_ZN13CIwResManager13ReserveGroupsEi\000"
-.LASF878:
+.LASF864:
 	.ascii	"SetGroupCollisionHandling\000"
 .LASF164:
 	.ascii	"wcsncpy\000"
 .LASF270:
 	.ascii	"_ZNK8CIwSVec213GetNormalisedEv\000"
-.LASF890:
+.LASF876:
 	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
 	.ascii	"5CIwMallocRouterIS1_EE10deallocateEPS1_j\000"
-.LASF951:
+.LASF935:
 	.ascii	"IwGxScreenOrient\000"
 .LASF271:
 	.ascii	"NormaliseSafe\000"
-.LASF1018:
+.LASF1025:
 	.ascii	"_GLOBAL__sub_I_AmazingMaze.cpp\000"
 .LASF462:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4sizeE"
 	.ascii	"v\000"
-.LASF992:
+.LASF1002:
 	.ascii	"screenWidth\000"
 .LASF5:
 	.ascii	"_STL\000"
@@ -15942,7 +16127,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"pop_back\000"
 .LASF410:
 	.ascii	"_ZN9CIwStringILi160EEaSERKS0_\000"
-.LASF975:
+.LASF987:
 	.ascii	"timer\000"
 .LASF344:
 	.ascii	"_ZN8CIwFVec2aSERK8CIwSVec2\000"
@@ -15952,13 +16137,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"operator!=\000"
 .LASF124:
 	.ascii	"ungetc\000"
-.LASF938:
+.LASF924:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE9CanResizeEv\000"
 .LASF325:
 	.ascii	"_ZN7CIwVec2aSERKS_\000"
-.LASF652:
+.LASF638:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17"
 	.ascii	"reserve_optimisedEi\000"
@@ -15984,7 +16169,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 .LASF442:
 	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
 	.ascii	"_EE8allocateEj\000"
-.LASF803:
+.LASF789:
 	.ascii	"_ZNK13CIwResManager10GetHandlerEPKcj\000"
 .LASF548:
 	.ascii	"_ZNK14CIwManagedList9_CheckGetEjb\000"
@@ -15993,9 +16178,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"MallocRouter<CIwManaged*> >, ReallocateDefault<CIwM"
 	.ascii	"anaged*, CIwAllocator<CIwManaged*, CIwMallocRouter<"
 	.ascii	"CIwManaged*> > > >\000"
-.LASF831:
+.LASF817:
 	.ascii	"SetBuildGroupCallbackPost\000"
-.LASF823:
+.LASF809:
 	.ascii	"LoadGroupFromMemory\000"
 .LASF103:
 	.ascii	"fgetc\000"
@@ -16003,32 +16188,32 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"block_delete\000"
 .LASF440:
 	.ascii	"pointer\000"
-.LASF728:
+.LASF714:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4back"
 	.ascii	"Ev\000"
 .LASF538:
 	.ascii	"truncate\000"
-.LASF637:
+.LASF623:
 	.ascii	"CIwArray<CIwString<160>, CIwAllocator<CIwString<160"
 	.ascii	">, CIwMallocRouter<CIwString<160> > >, ReallocateDe"
 	.ascii	"fault<CIwString<160>, CIwAllocator<CIwString<160>, "
 	.ascii	"CIwMallocRouter<CIwString<160> > > > >\000"
 .LASF133:
 	.ascii	"tm_yday\000"
-.LASF915:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE10erase_fastEi\000"
 .LASF105:
 	.ascii	"fgets\000"
 .LASF66:
 	.ascii	"sizetype\000"
-.LASF989:
+.LASF1000:
 	.ascii	"level\000"
 .LASF234:
 	.ascii	"_ZN9CIwColouraSEj\000"
-.LASF733:
+.LASF979:
+	.ascii	"PauseTitle\000"
+.LASF970:
+	.ascii	"HardBtC\000"
+.LASF719:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6appen"
 	.ascii	"dERS8_\000"
@@ -16040,7 +16225,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
 	.ascii	"v\000"
-.LASF1007:
+.LASF1016:
 	.ascii	"_ZN14CIwManagedList3PopEv\000"
 .LASF51:
 	.ascii	"short unsigned int\000"
@@ -16049,9 +16234,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 .LASF606:
 	.ascii	"ReallocateDefault<CIwManaged*, CIwAllocator<CIwMana"
 	.ascii	"ged*, CIwMallocRouter<CIwManaged*> > >\000"
-.LASF999:
+.LASF1008:
 	.ascii	"CIwMallocRouter<CIwResGroup*>\000"
-.LASF743:
+.LASF729:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12set_"
 	.ascii	"capacityEj\000"
@@ -16059,7 +16244,10 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwSVec213NormaliseSlowEv\000"
 .LASF242:
 	.ascii	"_ZN9CIwColourmLERKS_\000"
-.LASF882:
+.LASF619:
+	.ascii	"CIwAllocator<CIwString<160>, CIwMallocRouter<CIwStr"
+	.ascii	"ing<160> > >\000"
+.LASF868:
 	.ascii	"_ZN13CIwResManager13GetBinaryPathEPKc\000"
 .LASF26:
 	.ascii	"goodbit\000"
@@ -16067,7 +16255,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN9CIwStringILi160EEixEi\000"
 .LASF43:
 	.ascii	"ptrdiff_t\000"
-.LASF907:
+.LASF893:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE12resize_quickEj\000"
@@ -16075,9 +16263,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK9CIwStringILi32EE4sizeEv\000"
 .LASF148:
 	.ascii	"swprintf\000"
-.LASF793:
+.LASF779:
 	.ascii	"_ZN13CIwResManager15ReserveHandlersEi\000"
-.LASF712:
+.LASF698:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4find"
 	.ascii	"ERKS1_\000"
@@ -16087,25 +16275,25 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"back\000"
 .LASF212:
 	.ascii	"filename\000"
-.LASF1010:
+.LASF1019:
 	.ascii	"_ZN7CIwRect6RotateE16IwGxScreenOrientii\000"
 .LASF224:
 	.ascii	"_ZN9CIwColour3SetEhhhh\000"
-.LASF946:
+.LASF932:
 	.ascii	"Make\000"
-.LASF934:
+.LASF920:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE13push_back_qtyEi\000"
 .LASF455:
 	.ascii	"no_grow\000"
-.LASF959:
+.LASF945:
 	.ascii	"GetHeight\000"
 .LASF570:
 	.ascii	"GetObjHashedNextIt\000"
 .LASF159:
 	.ascii	"wcscpy\000"
-.LASF804:
+.LASF790:
 	.ascii	"GetResType\000"
 .LASF65:
 	.ascii	"wchar_t\000"
@@ -16115,9 +16303,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwSVec2rsEi\000"
 .LASF146:
 	.ascii	"putwc\000"
-.LASF872:
+.LASF858:
 	.ascii	"GetAtlasOwner\000"
-.LASF684:
+.LASF670:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9C"
 	.ascii	"anResizeEv\000"
@@ -16125,7 +16313,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"SetOpaque\000"
 .LASF52:
 	.ascii	"s3e_int16_t\000"
-.LASF721:
+.LASF707:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
 	.ascii	"e_fastEPS1_S9_\000"
@@ -16133,11 +16321,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK9CIwStringILi32EE5c_strEv\000"
 .LASF487:
 	.ascii	"resize\000"
-.LASF819:
+.LASF805:
 	.ascii	"GetLastSearchGroup\000"
 .LASF429:
 	.ascii	"IW_TYPE_DOUBLE\000"
-.LASF994:
+.LASF1004:
 	.ascii	"screenPitch\000"
 .LASF527:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -16145,7 +16333,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"back_qtyEi\000"
 .LASF79:
 	.ascii	"mbstowcs\000"
-.LASF837:
+.LASF823:
 	.ascii	"GetAtlasMaterial\000"
 .LASF135:
 	.ascii	"mbstate_t\000"
@@ -16163,29 +16351,29 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"wcscspn\000"
 .LASF599:
 	.ascii	"_ZNK14CIwManagedList8GetBeginEv\000"
-.LASF896:
+.LASF882:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE8capacityEv\000"
-.LASF826:
+.LASF812:
 	.ascii	"_ZN13CIwResManager10MountGroupEPKcb\000"
-.LASF639:
+.LASF625:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3"
 	.ascii	"endEv\000"
-.LASF996:
+.LASF1005:
 	.ascii	"__dso_handle\000"
 .LASF41:
 	.ascii	"stlport\000"
-.LASF856:
+.LASF842:
 	.ascii	"DebugSetGroupBinCopyPath\000"
-.LASF981:
+.LASF992:
 	.ascii	"g_IwSerialiseContext\000"
 .LASF422:
 	.ascii	"IW_TYPE_INT8\000"
 .LASF519:
 	.ascii	"append\000"
-.LASF742:
+.LASF728:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8LockS"
 	.ascii	"izeEb\000"
@@ -16193,13 +16381,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"tm_mon\000"
 .LASF543:
 	.ascii	"CIwManagedList\000"
-.LASF899:
+.LASF885:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EEaSERKS8_\000"
 .LASF567:
 	.ascii	"_ZNK14CIwManagedList11GetObjNamedEPKcb\000"
-.LASF669:
+.LASF655:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11"
 	.ascii	"insert_slowERKS1_j\000"
@@ -16217,13 +16405,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"fgetpos\000"
 .LASF263:
 	.ascii	"GetLengthSquaredUnshifted\000"
+.LASF349:
+	.ascii	"_ZNK8CIwFVec213GetNormalisedEv\000"
 .LASF398:
 	.ascii	"CIwStringL\000"
 .LASF484:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17reser"
 	.ascii	"ve_optimisedEi\000"
-.LASF772:
+.LASF758:
 	.ascii	"m_LoadingPatch\000"
 .LASF368:
 	.ascii	"CIwStringS\000"
@@ -16231,7 +16421,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"adjustfield\000"
 .LASF151:
 	.ascii	"vwprintf\000"
-.LASF879:
+.LASF865:
 	.ascii	"_ZN13CIwResManager25SetGroupCollisionHandlingENS_27"
 	.ascii	"IwResGroupCollisionHandlingE\000"
 .LASF467:
@@ -16240,12 +16430,12 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"ClearAndFree\000"
 .LASF131:
 	.ascii	"tm_year\000"
-.LASF834:
+.LASF820:
 	.ascii	"_ZN13CIwResManager15SerialiseResPtrERP10CIwManagedP"
 	.ascii	"Kcb\000"
-.LASF824:
+.LASF810:
 	.ascii	"_ZN13CIwResManager19LoadGroupFromMemoryEPKhj\000"
-.LASF672:
+.LASF658:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4b"
 	.ascii	"ackEv\000"
@@ -16261,41 +16451,43 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN7CIwVec29NormaliseEv\000"
 .LASF115:
 	.ascii	"gets\000"
-.LASF954:
+.LASF938:
 	.ascii	"IW_GX_ORIENT_180\000"
 .LASF74:
 	.ascii	"atof\000"
-.LASF635:
+.LASF621:
 	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
 	.ascii	"erIS1_EE10reallocateEPS1_j\000"
-.LASF623:
-	.ascii	"S3E_POINTER_STATE_RELEASED\000"
+.LASF644:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20"
+	.ascii	"find_and_remove_fastERKS1_\000"
 .LASF482:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7reserv"
 	.ascii	"eEj\000"
 .LASF214:
 	.ascii	"callbackPeriod\000"
-.LASF857:
+.LASF962:
+	.ascii	"LevelTitle\000"
+.LASF843:
 	.ascii	"_ZN13CIwResManager24DebugSetGroupBinCopyPathEPKc\000"
-.LASF747:
+.LASF733:
 	.ascii	"CIwResManager\000"
-.LASF973:
-	.ascii	"touchscreenButtonImage\000"
 .LASF59:
 	.ascii	"intptr_t\000"
-.LASF853:
+.LASF839:
 	.ascii	"_ZN13CIwResManager15ChangeExtensionER9CIwStringILi1"
 	.ascii	"60EEPKc\000"
-.LASF675:
+.LASF661:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6a"
 	.ascii	"ppendERKS1_\000"
-.LASF709:
+.LASF695:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17rese"
 	.ascii	"rve_optimisedEi\000"
-.LASF667:
+.LASF653:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
 	.ascii	"raseEPS1_\000"
@@ -16309,7 +16501,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"strtok\000"
 .LASF82:
 	.ascii	"strtol\000"
-.LASF820:
+.LASF806:
 	.ascii	"_ZNK13CIwResManager18GetLastSearchGroupEv\000"
 .LASF332:
 	.ascii	"_ZNK7CIwVec2neERKS_\000"
@@ -16317,17 +16509,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"reserve\000"
 .LASF381:
 	.ascii	"_ZN9CIwStringILi32EE9setLengthEi\000"
-.LASF901:
+.LASF887:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE15clear_optimisedEv\000"
 .LASF186:
 	.ascii	"S3E_SURFACE_PIXEL_TYPE\000"
-.LASF702:
+.LASF688:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaSERKS"
 	.ascii	"8_\000"
-.LASF806:
+.LASF792:
 	.ascii	"SplitPathName\000"
 .LASF63:
 	.ascii	"uint16\000"
@@ -16336,9 +16528,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 .LASF446:
 	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
 	.ascii	"_EE10deallocateEPS1_j\000"
-.LASF792:
+.LASF778:
 	.ascii	"ReserveHandlers\000"
-.LASF983:
+.LASF994:
 	.ascii	"g_SqrtTable\000"
 .LASF193:
 	.ascii	"S3E_SURFACE_NUM_DISPLAYS\000"
@@ -16358,43 +16550,47 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwSVec213NormaliseSafeEv\000"
 .LASF246:
 	.ascii	"operator+=\000"
-.LASF885:
+.LASF871:
 	.ascii	"_ZN13CIwResManager22OptimisedMountedGroupsEv\000"
-.LASF937:
+.LASF923:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5ShareEPS1_ii\000"
+.LASF983:
+	.ascii	"StartOverBtC\000"
 .LASF123:
 	.ascii	"tmpnam\000"
-.LASF789:
+.LASF775:
 	.ascii	"_ZN13CIwResManager12DestroyGroupEP11CIwResGroup\000"
 .LASF301:
 	.ascii	"_ZNK8CIwSVec2lsEi\000"
-.LASF650:
+.LASF636:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17"
 	.ascii	"optimise_capacityEv\000"
 .LASF357:
 	.ascii	"_ZNK8CIwFVec2miERKS_\000"
-.LASF854:
+.LASF840:
 	.ascii	"DebugAddMenuItems\000"
-.LASF884:
+.LASF968:
+	.ascii	"MedBtC\000"
+.LASF870:
 	.ascii	"OptimisedMountedGroups\000"
-.LASF774:
+.LASF760:
 	.ascii	"m_GroupsMounted\000"
-.LASF735:
+.LASF721:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
 	.ascii	"backEv\000"
 .LASF550:
 	.ascii	"_ZN14CIwManagedList9SerialiseEv\000"
-.LASF788:
+.LASF774:
 	.ascii	"_ZN13CIwResManager12DestroyGroupEPKc\000"
 .LASF42:
 	.ascii	"char\000"
-.LASF839:
+.LASF825:
 	.ascii	"SetBuildStyle\000"
-.LASF1012:
+.LASF1020:
 	.ascii	"CIw2DImage\000"
 .LASF522:
 	.ascii	"push_back\000"
@@ -16402,7 +16598,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4findE"
 	.ascii	"RKS1_\000"
-.LASF715:
+.LASF701:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20find"
 	.ascii	"_and_remove_fastERKS1_\000"
@@ -16416,15 +16612,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5begin"
 	.ascii	"Ev\000"
-.LASF799:
+.LASF785:
 	.ascii	"_ZNK13CIwResManager12GetNumGroupsEv\000"
 .LASF603:
 	.ascii	"_ZN14CIwManagedList7ReserveEj\000"
-.LASF861:
+.LASF847:
 	.ascii	"_ZNK13CIwResManager18GetBuildStyleNamedEPKc\000"
 .LASF437:
 	.ascii	"CIwMenuManager\000"
-.LASF877:
+.LASF863:
 	.ascii	"_ZN13CIwResManager16_TempRemoveGroupEP11CIwResGroup"
 	.ascii	"\000"
 .LASF494:
@@ -16437,41 +16633,43 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"ckEv\000"
 .LASF393:
 	.ascii	"_ZN9CIwStringILi32EEplERKS0_\000"
-.LASF695:
+.LASF681:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5begi"
 	.ascii	"nEv\000"
-.LASF917:
+.LASF903:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE10erase_fastEPS1_\000"
-.LASF790:
+.LASF776:
 	.ascii	"ReserveGroups\000"
 .LASF248:
 	.ascii	"operator-=\000"
+.LASF985:
+	.ascii	"ChangeLevelBtC\000"
 .LASF433:
 	.ascii	"IW_TYPE_MAX_BIT\000"
 .LASF194:
 	.ascii	"S3E_SURFACE_DEVICE_BLIT_DIRECTION\000"
-.LASF1015:
+.LASF1023:
 	.ascii	"_ZN8CIwFVec2C2Eff\000"
-.LASF786:
-	.ascii	"_ZN13CIwResManager8AddGroupEP11CIwResGroup\000"
+.LASF397:
+	.ascii	"_ZN9CIwStringILi32EE9SerialiseEv\000"
 .LASF512:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inser"
 	.ascii	"t_slowERS8_j\000"
 .LASF355:
 	.ascii	"_ZNK8CIwFVec2plERKS_\000"
-.LASF666:
+.LASF652:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
 	.ascii	"raseEjj\000"
 .LASF307:
 	.ascii	"_ZNK8CIwSVec2ixEi\000"
-.LASF866:
+.LASF852:
 	.ascii	"DumpCatalogue\000"
-.LASF651:
+.LASF637:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7r"
 	.ascii	"eserveEj\000"
@@ -16480,19 +16678,19 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"nagedb\000"
 .LASF265:
 	.ascii	"NormaliseSlow\000"
-.LASF955:
+.LASF939:
 	.ascii	"IW_GX_ORIENT_270\000"
 .LASF461:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5empty"
 	.ascii	"Ev\000"
-.LASF863:
+.LASF849:
 	.ascii	"_ZNK13CIwResManager17GetBuildStyleCurrEv\000"
 .LASF50:
 	.ascii	"s3e_uint16_t\000"
 .LASF337:
 	.ascii	"_ZNK7CIwVec2rsEi\000"
-.LASF729:
+.LASF715:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
 	.ascii	"v\000"
@@ -16510,45 +16708,45 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"S3E_ERROR_SHOW_AGAIN\000"
 .LASF554:
 	.ascii	"_ZN14CIwManagedList13SerialisePtrsEv\000"
-.LASF836:
+.LASF822:
 	.ascii	"_ZN13CIwResManager13ResolveResPtrERP10CIwManagedPKc"
 	.ascii	"\000"
 .LASF535:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8LockSi"
 	.ascii	"zeEb\000"
-.LASF697:
+.LASF683:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5empt"
 	.ascii	"yEv\000"
-.LASF645:
+.LASF631:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaS"
 	.ascii	"ERKS8_\000"
-.LASF687:
+.LASF673:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8t"
 	.ascii	"runcateEj\000"
 .LASF389:
 	.ascii	"_ZN9CIwStringILi32EEaSERKS0_\000"
-.LASF993:
+.LASF1003:
 	.ascii	"screenHeight\000"
 .LASF109:
 	.ascii	"fseek\000"
-.LASF727:
+.LASF713:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inse"
 	.ascii	"rt_slowERS8_j\000"
 .LASF360:
 	.ascii	"_ZNK8CIwFVec2eqERKS_\000"
-.LASF795:
+.LASF781:
 	.ascii	"_ZNK13CIwResManager13GetGroupNamedEPKcj\000"
 .LASF87:
 	.ascii	"bsearch\000"
 .LASF528:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EEixEi\000"
-.LASF785:
+.LASF771:
 	.ascii	"AddGroup\000"
 .LASF588:
 	.ascii	"_ZN14CIwManagedList8CopyListERKS_\000"
@@ -16556,7 +16754,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwSVec29GetLengthEv\000"
 .LASF143:
 	.ascii	"getwchar\000"
-.LASF939:
+.LASF925:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE8LockSizeEb\000"
@@ -16566,31 +16764,31 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN9CIwColourmlEi\000"
 .LASF14:
 	.ascii	"fixed\000"
-.LASF985:
+.LASF996:
 	.ascii	"g_IwGxColours\000"
-.LASF900:
+.LASF886:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5clearEv\000"
 .LASF129:
 	.ascii	"tm_mday\000"
-.LASF929:
+.LASF915:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE6appendERKS1_\000"
 .LASF372:
 	.ascii	"c_str\000"
-.LASF711:
+.LASF697:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6resiz"
 	.ascii	"eEj\000"
 .LASF424:
 	.ascii	"IW_TYPE_INT16\000"
-.LASF736:
+.LASF722:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push"
 	.ascii	"_back_qtyERKS1_i\000"
-.LASF664:
+.LASF650:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
 	.ascii	"erase_fastEPS1_S9_\000"
@@ -16598,11 +16796,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"SetGrey\000"
 .LASF579:
 	.ascii	"Erase\000"
-.LASF986:
-	.ascii	"g_IwMenuManager\000"
 .LASF997:
+	.ascii	"g_IwMenuManager\000"
+.LASF1006:
 	.ascii	"CIwMallocRouter<CIwManaged*>\000"
-.LASF690:
+.LASF676:
 	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
 	.ascii	"1_EE8allocateEj\000"
 .LASF546:
@@ -16613,33 +16811,37 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK7CIwVec29GetLengthEv\000"
 .LASF110:
 	.ascii	"fsetpos\000"
-.LASF740:
+.LASF726:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5Share"
 	.ascii	"EPS1_ii\000"
-.LASF809:
+.LASF795:
 	.ascii	"GetResNamed\000"
-.LASF622:
-	.ascii	"S3E_POINTER_STATE_PRESSED\000"
+.LASF961:
+	.ascii	"LevelBg\000"
 .LASF254:
 	.ascii	"_ZN8CIwSVec2aSERK8CIwFVec2\000"
-.LASF921:
+.LASF966:
+	.ascii	"EasyBtC\000"
+.LASF907:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5eraseEPS1_\000"
-.LASF756:
+.LASF742:
 	.ascii	"m_Flags\000"
-.LASF860:
+.LASF846:
 	.ascii	"GetBuildStyleNamed\000"
-.LASF928:
+.LASF914:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5frontEv\000"
-.LASF766:
+.LASF752:
 	.ascii	"m_GroupCurr\000"
 .LASF468:
 	.ascii	"SerialiseHeader\000"
-.LASF913:
+.LASF982:
+	.ascii	"StartOverBt\000"
+.LASF899:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE8pop_backEv\000"
@@ -16647,13 +16849,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"capacity\000"
 .LASF88:
 	.ascii	"ldiv\000"
-.LASF748:
+.LASF734:
 	.ascii	"GlobalMode\000"
 .LASF346:
 	.ascii	"_ZNK8CIwFVec29GetLengthEv\000"
 .LASF29:
 	.ascii	"failbit\000"
-.LASF758:
+.LASF744:
 	.ascii	"m_OwnerResName\000"
 .LASF505:
 	.ascii	"erase\000"
@@ -16663,7 +16865,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5clearE"
 	.ascii	"v\000"
-.LASF1003:
+.LASF1012:
 	.ascii	"GNU C++ 4.8.3 20140228 (release) [ARM/embedded-4_8-"
 	.ascii	"branch revision 208322] -fpreprocessed -mstructure-"
 	.ascii	"size-boundary=8 -march=armv6 -mfloat-abi=soft -mthu"
@@ -16673,11 +16875,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"inter -fmessage-length=0 -ffunction-sections -fvisi"
 	.ascii	"bility=hidden -fPIC -fvisibility-inlines-hidden -fn"
 	.ascii	"o-exceptions\000"
-.LASF1009:
+.LASF1018:
 	.ascii	"CRemovedGroup\000"
 .LASF573:
 	.ascii	"Insert\000"
-.LASF749:
+.LASF735:
 	.ascii	"MODE_BUILD\000"
 .LASF412:
 	.ascii	"_ZN9CIwStringILi160EEpLERKS0_\000"
@@ -16691,17 +16893,17 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
 	.ascii	"_fastEPS1_S9_\000"
-.LASF903:
+.LASF889:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE16resize_optimisedEj\000"
-.LASF703:
+.LASF689:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5clear"
 	.ascii	"Ev\000"
 .LASF89:
 	.ascii	"qsort\000"
-.LASF1004:
+.LASF1013:
 	.ascii	"d:/School/cs115/AmazingMaze/AmazingMaze.cpp\000"
 .LASF515:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -16719,15 +16921,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5frontE"
 	.ascii	"v\000"
-.LASF894:
+.LASF880:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE5emptyEv\000"
 .LASF415:
 	.ascii	"_ZN9CIwStringILi160EEpLEc\000"
-.LASF1006:
+.LASF1015:
 	.ascii	"_ZN4_STL3bufE\000"
-.LASF784:
+.LASF770:
 	.ascii	"_ZN13CIwResManager13RemoveHandlerEPKc\000"
 .LASF405:
 	.ascii	"_ZN9CIwStringILi160EE4findEPKc\000"
@@ -16735,19 +16937,19 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11Memo"
 	.ascii	"ryUsageEv\000"
-.LASF741:
+.LASF727:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9CanRe"
 	.ascii	"sizeEv\000"
-.LASF906:
+.LASF892:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE17reserve_optimisedEi\000"
 .LASF560:
 	.ascii	"Delete\000"
-.LASF953:
+.LASF937:
 	.ascii	"IW_GX_ORIENT_90\000"
-.LASF731:
+.LASF717:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5front"
 	.ascii	"Ev\000"
@@ -16757,7 +16959,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"left\000"
 .LASF121:
 	.ascii	"setvbuf\000"
-.LASF708:
+.LASF694:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7reser"
 	.ascii	"veEj\000"
@@ -16769,13 +16971,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK7CIwVec2miERKS_\000"
 .LASF411:
 	.ascii	"_ZN9CIwStringILi160EEpLEPKc\000"
-.LASF624:
-	.ascii	"S3E_POINTER_STATE_UNKNOWN\000"
 .LASF69:
 	.ascii	"5div_t\000"
 .LASF339:
 	.ascii	"_ZNK7CIwVec2lsEi\000"
-.LASF765:
+.LASF751:
 	.ascii	"m_ReplacingGroups\000"
 .LASF206:
 	.ascii	"__XXFILE\000"
@@ -16783,17 +16983,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"div_t\000"
 .LASF617:
 	.ascii	"CIwResource\000"
-.LASF732:
+.LASF718:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6appen"
 	.ascii	"dERKS1_\000"
-.LASF972:
-	.ascii	"playbt\000"
 .LASF288:
 	.ascii	"_ZNK8CIwSVec2mlERKS_\000"
-.LASF875:
+.LASF861:
 	.ascii	"_ZN13CIwResManager17GetUniqueRunStampEv\000"
-.LASF926:
+.LASF912:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE4backEv\000"
@@ -16803,21 +17001,21 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK8CIwFVec216GetLengthSquaredEv\000"
 .LASF400:
 	.ascii	"_ZNK9CIwStringILi160EE5c_strEv\000"
-.LASF699:
+.LASF685:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8capa"
 	.ascii	"cityEv\000"
 .LASF80:
 	.ascii	"mbtowc\000"
-.LASF771:
+.LASF757:
 	.ascii	"m_UniqueRunStamp\000"
 .LASF276:
 	.ascii	"_ZNK8CIwSVec212IsNormalisedEv\000"
-.LASF941:
+.LASF927:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE8truncateEj\000"
-.LASF638:
+.LASF624:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
 	.ascii	"beginEv\000"
@@ -16825,25 +17023,25 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"long long unsigned int\000"
 .LASF64:
 	.ascii	"int16\000"
-.LASF844:
+.LASF830:
 	.ascii	"_ZN13CIwResManager7LoadResEPKcS1_j\000"
 .LASF413:
 	.ascii	"_ZN9CIwStringILi160EEplEPKc\000"
-.LASF858:
+.LASF844:
 	.ascii	"AddBuildStyle\000"
 .LASF178:
 	.ascii	"wmemcpy\000"
-.LASF990:
+.LASF1001:
 	.ascii	"MaxLevel\000"
-.LASF738:
+.LASF724:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEixEi\000"
 .LASF364:
 	.ascii	"_ZN8CIwFVec2mLEf\000"
-.LASF838:
+.LASF824:
 	.ascii	"_ZN13CIwResManager16GetAtlasMaterialEP11CIwMaterial"
 	.ascii	"R7CIwRect\000"
-.LASF764:
+.LASF750:
 	.ascii	"m_Groups\000"
 .LASF17:
 	.ascii	"showbase\000"
@@ -16853,28 +17051,32 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"Array\000"
 .LASF326:
 	.ascii	"_ZNK7CIwVec2plERKS_\000"
-.LASF808:
+.LASF794:
 	.ascii	"_ZN13CIwResManager13SplitPathNameEPKcR9CIwStringILi"
 	.ascii	"160EERS2_ILi32EES6_\000"
 .LASF6:
 	.ascii	"Init\000"
+.LASF956:
+	.ascii	"currentLevel\000"
 .LASF587:
 	.ascii	"CopyList\000"
-.LASF646:
+.LASF959:
+	.ascii	"PlayBtC\000"
+.LASF632:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5c"
 	.ascii	"learEv\000"
-.LASF693:
+.LASF679:
 	.ascii	"CIwResGroup\000"
 .LASF387:
 	.ascii	"_ZNK9CIwStringILi32EEixEi\000"
-.LASF893:
+.LASF879:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE3endEv\000"
 .LASF342:
 	.ascii	"_ZNK7CIwVec2ixEi\000"
-.LASF895:
+.LASF881:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE4sizeEv\000"
@@ -16884,26 +17086,24 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"S3E_SURFACE_DEVICE_WIDTH_QUANTISED\000"
 .LASF106:
 	.ascii	"fopen\000"
-.LASF943:
+.LASF929:
 	.ascii	"CIwResBuildStyle\000"
-.LASF807:
+.LASF793:
 	.ascii	"_ZN13CIwResManager13SplitPathNameEPKcR9CIwStringILi"
 	.ascii	"160EES4_RS2_ILi32EE\000"
 .LASF322:
 	.ascii	"_ZN7CIwVec29SerialiseEv\000"
 .LASF600:
 	.ascii	"GetEnd\000"
-.LASF950:
-	.ascii	"CNode\000"
-.LASF825:
+.LASF811:
 	.ascii	"MountGroup\000"
-.LASF725:
+.LASF711:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
 	.ascii	"EPS1_S9_\000"
 .LASF2:
 	.ascii	"type_info\000"
-.LASF761:
+.LASF747:
 	.ascii	"m_ChildBuildScale\000"
 .LASF62:
 	.ascii	"int32\000"
@@ -16911,38 +17111,38 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"num_p\000"
 .LASF13:
 	.ascii	"internal\000"
-.LASF1001:
+.LASF1010:
 	.ascii	"CIwMallocRouter<CIwResManager::CRemovedGroup>\000"
 .LASF331:
 	.ascii	"_ZNK7CIwVec2eqERKS_\000"
+.LASF975:
+	.ascii	"OutBtC\000"
 .LASF73:
 	.ascii	"getenv\000"
 .LASF136:
 	.ascii	"fgetwc\000"
-.LASF710:
+.LASF696:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12resi"
 	.ascii	"ze_quickEj\000"
-.LASF811:
+.LASF797:
 	.ascii	"GetResHashed\000"
-.LASF880:
+.LASF866:
 	.ascii	"GetBinaryPath\000"
-.LASF956:
+.LASF942:
 	.ascii	"__ap\000"
 .LASF293:
 	.ascii	"_ZN8CIwSVec2mLEi\000"
 .LASF137:
 	.ascii	"fgetws\000"
-.LASF621:
-	.ascii	"S3E_POINTER_STATE_DOWN\000"
 .LASF315:
 	.ascii	"_ZNK7CIwVec225GetLengthSquaredUnshiftedEv\000"
 .LASF280:
 	.ascii	"_ZNK9CIwColour3GetEv\000"
 .LASF199:
 	.ascii	"s3eSurfaceProperty\000"
-.LASF182:
-	.ascii	"long double\000"
+.LASF984:
+	.ascii	"ChangeLevelBt\000"
 .LASF302:
 	.ascii	"operator<<=\000"
 .LASF213:
@@ -16955,9 +17155,9 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"wcscoll\000"
 .LASF0:
 	.ascii	"exception\000"
-.LASF760:
+.LASF746:
 	.ascii	"m_GroupBuildData\000"
-.LASF724:
+.LASF710:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
 	.ascii	"EPS1_\000"
@@ -16969,23 +17169,23 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"S3E_SURFACE_DEVICE_ORIENTATION_LOCK\000"
 .LASF156:
 	.ascii	"wcsrchr\000"
-.LASF801:
+.LASF787:
 	.ascii	"_ZNK13CIwResManager8GetGroupEj\000"
-.LASF977:
-	.ascii	"displayWidth\000"
-.LASF862:
+.LASF55:
+	.ascii	"long long int\000"
+.LASF848:
 	.ascii	"GetBuildStyleCurr\000"
 .LASF493:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find_"
 	.ascii	"and_removeERKS1_\000"
-.LASF949:
+.LASF940:
 	.ascii	"Iw2DSceneGraphCore\000"
-.LASF674:
+.LASF660:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5f"
 	.ascii	"rontEv\000"
-.LASF670:
+.LASF656:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11"
 	.ascii	"insert_slowERS8_j\000"
@@ -16993,15 +17193,13 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN4_STL17__digit_val_tableE\000"
 .LASF314:
 	.ascii	"_ZNK7CIwVec220GetLengthSquaredSafeEv\000"
-.LASF822:
+.LASF808:
 	.ascii	"_ZN13CIwResManager9LoadGroupEPKcb\000"
 .LASF524:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_b"
 	.ascii	"ackEv\000"
-.LASF995:
-	.ascii	"printed\000"
-.LASF680:
+.LASF666:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13"
 	.ascii	"push_back_qtyEi\000"
@@ -17009,15 +17207,15 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"getchar\000"
 .LASF428:
 	.ascii	"IW_TYPE_FLOAT\000"
-.LASF751:
+.LASF737:
 	.ascii	"IW_RES_GROUP_COLLISION_ERROR_F\000"
 .LASF604:
 	.ascii	"_ZN14CIwManagedList8LockSizeEb\000"
-.LASF698:
+.LASF684:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
 	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4size"
 	.ascii	"Ev\000"
-.LASF700:
+.LASF686:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4dataE"
 	.ascii	"v\000"
@@ -17029,7 +17227,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12pop_b"
 	.ascii	"ack_getEv\000"
-.LASF754:
+.LASF740:
 	.ascii	"m_Index\000"
 .LASF565:
 	.ascii	"_ZN14CIwManagedList12ClearAndFreeEv\000"
@@ -17043,11 +17241,11 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZN4_STL19__hex_char_table_loE\000"
 .LASF327:
 	.ascii	"_ZN7CIwVec2pLERKS_\000"
-.LASF944:
+.LASF930:
 	.ascii	"CIwMaterial\000"
 .LASF200:
 	.ascii	"s3eErrorShowResult\000"
-.LASF739:
+.LASF725:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5Share"
 	.ascii	"ERKS8_\000"
@@ -17055,21 +17253,21 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK7CIwVec213GetNormalisedEv\000"
 .LASF609:
 	.ascii	"IW_EVENT_TABLE_GLOBAL\000"
+.LASF964:
+	.ascii	"BackBtC\000"
 .LASF356:
 	.ascii	"_ZN8CIwFVec2pLERKS_\000"
 .LASF257:
 	.ascii	"GetLengthSquared\000"
 .LASF386:
 	.ascii	"_ZN9CIwStringILi32EEixEi\000"
-.LASF924:
+.LASF910:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE11insert_slowERS8_j\000"
-.LASF1000:
+.LASF1009:
 	.ascii	"ReallocateDefault<CIwResGroup*, CIwAllocator<CIwRes"
 	.ascii	"Group*, CIwMallocRouter<CIwResGroup*> > >\000"
-.LASF628:
-	.ascii	"S3E_POINTER_BUTTON_RIGHTMOUSE\000"
 .LASF444:
 	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
 	.ascii	"_EE10reallocateEPS1_j\000"
@@ -17079,7 +17277,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"ackERKS1_\000"
 .LASF319:
 	.ascii	"_ZN7CIwVec213NormaliseSafeEv\000"
-.LASF849:
+.LASF835:
 	.ascii	"GetPathName\000"
 .LASF488:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -17087,29 +17285,29 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"Ej\000"
 .LASF300:
 	.ascii	"operator<<\000"
-.LASF707:
+.LASF693:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17opti"
 	.ascii	"mise_capacityEv\000"
-.LASF787:
+.LASF773:
 	.ascii	"DestroyGroup\000"
-.LASF830:
+.LASF816:
 	.ascii	"_ZN13CIwResManager24SetBuildGroupCallbackPreEPFvvE\000"
 .LASF190:
 	.ascii	"S3E_SURFACE_DEVICE_PITCH\000"
 .LASF403:
 	.ascii	"_ZNK9CIwStringILi160EE8capacityEv\000"
-.LASF881:
+.LASF867:
 	.ascii	"GetGroupCollisionHandling\000"
-.LASF967:
+.LASF953:
 	.ascii	"main\000"
-.LASF905:
+.LASF891:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE7reserveEj\000"
 .LASF262:
 	.ascii	"_ZNK8CIwSVec220GetLengthSquaredSafeEv\000"
-.LASF891:
+.LASF877:
 	.ascii	"CIwArray<CIwResManager::CRemovedGroup, CIwAllocator"
 	.ascii	"<CIwResManager::CRemovedGroup, CIwMallocRouter<CIwR"
 	.ascii	"esManager::CRemovedGroup> >, ReallocateDefault<CIwR"
@@ -17128,25 +17326,27 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"Reserve\000"
 .LASF475:
 	.ascii	"MemoryUsage\000"
+.LASF971:
+	.ascii	"Player\000"
 .LASF45:
 	.ascii	"unsigned int\000"
-.LASF892:
+.LASF878:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE5beginEv\000"
-.LASF833:
+.LASF819:
 	.ascii	"SerialiseResPtr\000"
 .LASF299:
 	.ascii	"_ZN8CIwSVec2rSEi\000"
-.LASF812:
+.LASF798:
 	.ascii	"_ZNK13CIwResManager12GetResHashedEjPKcj\000"
 .LASF102:
 	.ascii	"fflush\000"
-.LASF767:
+.LASF753:
 	.ascii	"m_PathName\000"
-.LASF987:
+.LASF998:
 	.ascii	"g_IwTextParserITX\000"
-.LASF744:
+.LASF730:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8trunc"
 	.ascii	"ateEj\000"
@@ -17154,60 +17354,61 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"max_p\000"
 .LASF296:
 	.ascii	"operator>>\000"
-.LASF835:
+.LASF821:
 	.ascii	"ResolveResPtr\000"
 .LASF53:
 	.ascii	"short int\000"
 .LASF457:
 	.ascii	"begin\000"
-.LASF960:
+.LASF946:
 	.ascii	"_ZN10CIw2DImage8GetWidthEv\000"
-.LASF969:
+.LASF955:
 	.ascii	"surface_height\000"
 .LASF552:
 	.ascii	"_ZN14CIwManagedList7ResolveEv\000"
 .LASF321:
 	.ascii	"_ZNK7CIwVec212IsNormalisedEv\000"
-.LASF640:
+.LASF626:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
 	.ascii	"emptyEv\000"
-.LASF816:
+.LASF802:
 	.ascii	"_ZN13CIwResManager15SetCurrentGroupEP11CIwResGroup\000"
 .LASF474:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15clear"
 	.ascii	"_optimisedEv\000"
-.LASF782:
+.LASF768:
 	.ascii	"_ZN13CIwResManager10AddHandlerEP13CIwResHandler\000"
-.LASF966:
+.LASF952:
 	.ascii	"_ZN17ReallocateDefaultI9CIwStringILi160EE12CIwAlloc"
 	.ascii	"atorIS1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1"
 	.ascii	"_RS5_\000"
-.LASF794:
+.LASF780:
 	.ascii	"GetGroupNamed\000"
-.LASF922:
+.LASF908:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5eraseEPS1_S9_\000"
-.LASF660:
+.LASF646:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
 	.ascii	"pop_back_getEv\000"
-.LASF633:
-	.ascii	"CIwAllocator<CIwString<160>, CIwMallocRouter<CIwStr"
-	.ascii	"ing<160> > >\000"
+.LASF978:
+	.ascii	"PauseBg\000"
 .LASF425:
 	.ascii	"IW_TYPE_UINT16\000"
 .LASF390:
 	.ascii	"_ZN9CIwStringILi32EEpLEPKc\000"
+.LASF976:
+	.ascii	"PauseBt\000"
 .LASF465:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4dataEv"
 	.ascii	"\000"
 .LASF125:
 	.ascii	"__va_list\000"
-.LASF775:
+.LASF761:
 	.ascii	"BuildGroupCallbackPre\000"
 .LASF229:
 	.ascii	"_ZN9CIwColour9SetOpaqueEj\000"
@@ -17217,7 +17418,7 @@ _GLOBAL__sub_I_AmazingMaze.cpp:
 	.ascii	"_ZNK9CIwStringILi32EE6substrEii\000"
 .LASF585:
 	.ascii	"Find\000"
-.LASF911:
+.LASF897:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE15find_and_removeERKS1_\000"

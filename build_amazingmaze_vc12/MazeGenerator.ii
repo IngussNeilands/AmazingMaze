@@ -35737,6 +35737,7 @@ using namespace _STL;
 extern float level[9][20][15];
 extern int MaxLevel;
 
+
 void MazeInitializer();
 int setDifficulity(int difficulity);
 int DoorGenerator();

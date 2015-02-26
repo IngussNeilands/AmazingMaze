@@ -923,6 +923,9 @@
     <ClInclude Include="c:/marmalade/7.5/s3e/h/std/memory.h">
       <Filter>'Marmalade System (S3E)'\stdc headers</Filter>
     </ClInclude>
+    <ClInclude Include="d:/School/cs115/AmazingMaze/menu.h">
+      <Filter></Filter>
+    </ClInclude>
     <ClInclude Include="c:/marmalade/7.5/s3e/h/std/sys/mman.h">
       <Filter>'Marmalade System (S3E)'\stdc headers\sys</Filter>
     </ClInclude>
@@ -1283,6 +1286,9 @@
       <Filter>Extensions\PVRTexTool\interface</Filter>
     </ClCompile>
     <ClCompile Include="..\PlayerMovement.cpp">
+      <Filter></Filter>
+    </ClCompile>
+    <ClCompile Include="..\menu.cpp">
       <Filter></Filter>
     </ClCompile>
   </ItemGroup>

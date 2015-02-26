@@ -18,10 +18,12 @@ float level[9][20][15];  //a 3D arrway that stores the parent, door leftpt, bloc
 int MaxLevel;  // MaxLevel is set based on the difficulity
 int sign = 1;
 
+
+
 //load btn1 //load btn2 
 
-float DrawPlayer(int curLevel, float angle, CIw2DImage* player, CIw2DImage* InBt){
-
+float DrawPlayer(int curLevel,float angle, CIw2DImage* player){
+	
 	int surface_width = Iw2DGetSurfaceWidth();
 	int surface_height = Iw2DGetSurfaceHeight();
 	float radian = angle * 2 * PI / 360;
@@ -33,7 +35,7 @@ float DrawPlayer(int curLevel, float angle, CIw2DImage* player, CIw2DImage* InBt
 	if (curLevel == 5) factor = 1.15;
 	if (curLevel == 6) factor = 0.97;
 	if (curLevel == 7) factor = 0.73;
-	if (curLevel == (MaxLevel+1)) factor = 0;
+	if (curLevel == (MaxLevel + 1)) factor = 0;
 	factor = factor * sign;
 //	printf("print factor = %f\n", factor);
 	CIwFVec2 image_position;  //initialization?
@@ -50,8 +52,8 @@ float DrawPlayer(int curLevel, float angle, CIw2DImage* player, CIw2DImage* InBt
 	//printf("innerR = %f   outterR = %f    radius = %f \n", innerR, outterR, radius);
 	image_position.x = cos(radian) * radius;
 	image_position.y = sin(radian) * radius;
-	image_position.y = image_position.y + surface_height / 2 - radius / (curLevel * 3.5*2);
-	image_position.x = image_position.x + surface_width / 2 - radius / (curLevel * 3.5*2);
+	image_position.y = image_position.y + surface_height / 2 - radius / (curLevel * 3.5 * 2);
+	image_position.x = image_position.x + surface_width / 2 - radius / (curLevel * 3.5 * 2);
 	angle = angle + factor;
 	if (angle > 360){
 		angle = angle - 360;
@@ -76,31 +78,56 @@ float DrawPlayer(int curLevel, float angle, CIw2DImage* player, CIw2DImage* InBt
 		}
 		
 	}
+	
+
 	Iw2DSetColour(0xffffffff);
 	Iw2DDrawImage(player, image_position, CIwFVec2(radius / (curLevel*3.5), radius / (curLevel*3.5)));
-	Iw2DDrawImage(InBt, CIwFVec2(8, surface_height - 80), CIwFVec2(144, 72));
-	//Iw2DDrawImage(player, image_position, CIwFVec2(radius / 4, radius / 4));
-	//.Iw2DSurfaceShow();
 	return angle;
 
 }
 
-int moveUp(int curLevel, float angle){
+
+
+int PlayerMove(int curLevel, float angle, CIw2DImage* InBt, CIw2DImage* InBtC, CIw2DImage* OutBt, CIw2DImage* OutBtC){
+	CIw2DImage* IBT = InBt;
+	CIw2DImage* OBT = OutBt;
+	int Levle = curLevel;
+	int surface_width = Iw2DGetSurfaceWidth();
+	int surface_height = Iw2DGetSurfaceHeight();
+	if (s3ePointerGetState(S3E_POINTER_BUTTON_SELECT) & S3E_POINTER_STATE_PRESSED){
+		int xx = s3ePointerGetX();
+		int yy = s3ePointerGetY();
+
+		if (xx > 8 && yy > surface_height - 80 && xx < 152 && yy < surface_height - 8) {
+		IBT = InBtC;
+		Levle = moveDown(curLevel, angle);
+		}
+		if (xx > surface_width - 152 && yy > surface_height - 80 && xx < surface_width - 8 && yy < surface_height - 8){
+		OBT = OutBtC;
+		Levle = moveUp(curLevel, angle);
+		}
+	}
+	Iw2DDrawImage(IBT, CIwFVec2(8, surface_height - 80), CIwFVec2(144, 72));
+	Iw2DDrawImage(OBT, CIwFVec2(surface_width - 152, surface_height - 80), CIwFVec2(144, 72));
+	return Levle;
+}
+
+int moveUp(int currentLevel, float angle){
 	float radian = angle * 2 * PI / 360 + 1.56761102;
 	if (radian > 6.28) radian = radian - 6.28;
 	printf("radian = %f\n", radian);
-	int moveTo = curLevel;
+	int moveTo = currentLevel;
 	float doorsizes = 0.3;
-	if (curLevel == 1) doorsizes = 0.3;
-	if (curLevel == 2) doorsizes = 0.2;
-	if (curLevel == 3) doorsizes = 0.1333;
-	if (curLevel == 4) doorsizes = 0.088866667;
-	if (curLevel == 5) doorsizes = 0.059244;
-	if (curLevel == 6) doorsizes = 0.039496;
-	if (curLevel == 7) doorsizes = 0.04;
+	if (currentLevel == 1) doorsizes = 0.3;
+	if (currentLevel == 2) doorsizes = 0.2;
+	if (currentLevel == 3) doorsizes = 0.1333;
+	if (currentLevel == 4) doorsizes = 0.088866667;
+	if (currentLevel == 5) doorsizes = 0.059244;
+	if (currentLevel == 6) doorsizes = 0.039496;
+	if (currentLevel == 7) doorsizes = 0.04;
 
 	for (int doors = 0; doors < 20; doors++){
-	float doorleftpt = level[curLevel][doors][1] - 0.1;
+		float doorleftpt = level[currentLevel][doors][1] - 0.1;
 	if (doorleftpt < -0.5) break;
 	float doorrightpt = doorleftpt + doorsizes + 0.1;
 	//printf("-------------------------------------leftpt = %f, rightpt = %f\n", doorleftpt, doorrightpt);
@@ -109,22 +136,22 @@ int moveUp(int curLevel, float angle){
 	return moveTo;
 }
 
-int moveDown(int curLevel, float angle){
+int moveDown(int currentLevel, float angle){
 	float radian = angle * 2 * PI / 360 + 1.56761102;
 	if (radian > 6.28) radian = radian - 6.28;
 	printf("radian = %f\n", radian);
-	int moveTo = curLevel;
+	int moveTo = currentLevel;
 	float doorsizes = 0.3;
-	if (curLevel == 1) doorsizes = 0.3;
-	if (curLevel == 2) doorsizes = 0.2;
-	if (curLevel == 3) doorsizes = 0.1333;
-	if (curLevel == 4) doorsizes = 0.088866667;
-	if (curLevel == 5) doorsizes = 0.059244;
-	if (curLevel == 6) doorsizes = 0.039496;
-	if (curLevel == 7) doorsizes = 0.04;
+	if (currentLevel == 1) doorsizes = 0.3;
+	if (currentLevel == 2) doorsizes = 0.2;
+	if (currentLevel == 3) doorsizes = 0.1333;
+	if (currentLevel == 4) doorsizes = 0.088866667;
+	if (currentLevel == 5) doorsizes = 0.059244;
+	if (currentLevel == 6) doorsizes = 0.039496;
+	if (currentLevel == 7) doorsizes = 0.04;
 
 	for (int doors = 0; doors < 20; doors++){
-		float doorleftpt = level[curLevel-1][doors][1] - 0.1;
+		float doorleftpt = level[currentLevel - 1][doors][1] - 0.1;
 		if (doorleftpt < -0.5) break;
 		float doorrightpt = doorleftpt + doorsizes + 0.1;
 		//printf("-------------------------------------leftpt = %f, rightpt = %f\n", doorleftpt, doorrightpt);

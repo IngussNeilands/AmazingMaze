@@ -13,7 +13,8 @@
 #include <math.h>
 
 
-float DrawPlayer(int curLevel, float angle, CIw2DImage* player, CIw2DImage* InBt);
-int moveUp(int curLevel, float angle);
-int moveDown(int curLevel, float angle);
+float DrawPlayer(int curLevel, float angle, CIw2DImage* player);
+int PlayerMove(int curLevel, float angle, CIw2DImage* InBt, CIw2DImage* InBtC, CIw2DImage* OutBt, CIw2DImage* OutBtC);
+int moveUp(int currentLevel, float angle);
+int moveDown(int currentLevel, float angle);
 #endif

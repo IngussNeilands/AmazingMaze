@@ -1,0 +1,32 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: GCC ARM Debug Win32 ------
+1>  ARM Compiling(GCC) c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ...
+1>  ARM Compiling(GCC) d:\School\cs115\AmazingMaze\menu.cpp ...
+1>  ARM Linking(GCC) ...
+1>  :Debug_AmazingMaze_vc12_gcc_arm/MazeDrawer.obj( In function `_STL) :_IosInit': (col )
+1>  
+1>  MazeDrawer.cpp:(.bss+0x8): multiple definition of `level'
+1>  :Debug_AmazingMaze_vc12_gcc_arm/AmazingMaze.obj(c) :72: first defined here (col /marmalade/7.5/modules/iwgeom/h/IwGeomFVec2.h)
+1>  
+1>  :Debug_AmazingMaze_vc12_gcc_arm/MazeDrawer.obj( In function `_STL) :_IosInit': (col )
+1>  
+1>  MazeDrawer.cpp:(.bss+0x2a38): multiple definition of `MaxLevel'
+1>  :Debug_AmazingMaze_vc12_gcc_arm/AmazingMaze.obj(AmazingMaze.cpp) : first defined here (col (.bss+0x2a38))
+1>  
+1>  :Debug_AmazingMaze_vc12_gcc_arm/PlayerMovement.obj( In function `_STL) :_IosInit': (col )
+1>  
+1>  PlayerMovement.cpp:(.bss+0x8): multiple definition of `level'
+1>  :Debug_AmazingMaze_vc12_gcc_arm/AmazingMaze.obj(c) :72: first defined here (col /marmalade/7.5/modules/iwgeom/h/IwGeomFVec2.h)
+1>  
+1>  :Debug_AmazingMaze_vc12_gcc_arm/PlayerMovement.obj( In function `_STL) :_IosInit': (col )
+1>  
+1>  d:/School/cs115/AmazingMaze/PlayerMovement.cpp:117: multiple definition of `MaxLevel'
+1>  :Debug_AmazingMaze_vc12_gcc_arm/AmazingMaze.obj(AmazingMaze.cpp) : first defined here (col (.bss+0x2a38))
+1>  
+1>  :Debug_AmazingMaze_vc12_gcc_arm/menu.obj( In function `_STL) :_IosInit': (col )
+1>  
+1>  menu.cpp:(.bss+0x8): multiple definition of `MaxLevel'
+1>  :Debug_AmazingMaze_vc12_gcc_arm/AmazingMaze.obj(AmazingMaze.cpp) : first defined here (col (.bss+0x2a38))
+1>  
+1>collect2.exe : error : ld returned 1 exit status
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+

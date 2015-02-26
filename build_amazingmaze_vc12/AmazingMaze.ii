@@ -35715,6 +35715,7 @@ using namespace _STL;
 extern float level[9][20][15];
 extern int MaxLevel;
 
+
 void MazeInitializer();
 int setDifficulity(int difficulity);
 int DoorGenerator();
@@ -35726,6 +35727,28 @@ void BlockGenerator(int curlevel, int doors);
 void printall();
 void DrawMaze(int curLevel);
 # 14 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp" 2
+# 1 "d:/School/cs115/AmazingMaze/PlayerMovement.h" 1
+# 16 "d:/School/cs115/AmazingMaze/PlayerMovement.h"
+float DrawPlayer(int curLevel, float angle, CIw2DImage* player);
+int PlayerMove(int curLevel, float angle, CIw2DImage* InBt, CIw2DImage* InBtC, CIw2DImage* OutBt, CIw2DImage* OutBtC);
+int moveUp(int currentLevel, float angle);
+int moveDown(int currentLevel, float angle);
+# 15 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp" 2
+# 1 "d:/School/cs115/AmazingMaze/menu.h" 1
+# 27 "d:/School/cs115/AmazingMaze/menu.h"
+using namespace _STL;
+
+
+
+
+int StartM(CIw2DImage* StartBg, CIw2DImage* PlayBt, CIw2DImage* PlayBtC, CIw2DImage* StartTitle);
+int LevelM(CIw2DImage* LevelBg, CIw2DImage* LevelTitle, CIw2DImage* BackBt, CIw2DImage* BackBtC,
+ CIw2DImage* EasyBt, CIw2DImage* EasyBtC, CIw2DImage* MedBt, CIw2DImage* MedBtC, CIw2DImage* HardBt, CIw2DImage*HardBtC);
+int InGameM(CIw2DImage* PauseBt, CIw2DImage* PauseBtC);
+int PauseM(CIw2DImage* PausedBg, CIw2DImage* PausedTitle, CIw2DImage* ResumeBt, CIw2DImage* ResumeBtC,
+ CIw2DImage* StartOverBt, CIw2DImage* StartOverBtC, CIw2DImage* ChangeLevelBt, CIw2DImage* ChangeLevelBtC);
+int PostM();
+# 16 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp" 2
 
 float level[9][20][15];
 int MaxLevel;
@@ -35734,7 +35757,7 @@ using namespace Iw2DSceneGraphCore;
 using namespace Iw2DSceneGraph;
 
 
-CNode* g_SceneRoot = __null;
+
 
 
 
@@ -35742,10 +35765,8 @@ CNode* g_SceneRoot = __null;
 uint32 screenWidth = s3eSurfaceGetInt(S3E_SURFACE_WIDTH);
 uint32 screenHeight = s3eSurfaceGetInt(S3E_SURFACE_HEIGHT);
 uint32 screenPitch = s3eSurfaceGetInt(S3E_SURFACE_PITCH);
-float left[7];
-float right[7];
-int printed = 0;
-# 115 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp"
+
+
 int main()
 {
 
@@ -35754,83 +35775,88 @@ int main()
 
  int surface_width = Iw2DGetSurfaceWidth();
  int surface_height = Iw2DGetSurfaceHeight();
+ int currentLevel = 1;
 
 
- CIw2DImage* image = Iw2DCreateImage("textures/gem1.png");
- CIw2DImage* menubg = Iw2DCreateImage("textures/menubg.png");
- CIw2DImage* playbt = Iw2DCreateImage("textures/playbt.png");
- CIw2DImage* bg = Iw2DCreateImage("textures/rainbowbg.png");
- CIw2DImage* touchscreenButtonImage[4];
- touchscreenButtonImage[0] = Iw2DCreateImage("textures/touchscreenMoveUp.png");
- touchscreenButtonImage[1] = Iw2DCreateImage("textures/touchscreenMoveL.png");
- touchscreenButtonImage[2] = Iw2DCreateImage("textures/touchscreenMoveDown.png");
- touchscreenButtonImage[3] = Iw2DCreateImage("textures/touchscreenMoveR.png");
+ CIw2DImage* StartBg = Iw2DCreateImage("textures/menubg.png");
+ CIw2DImage* PlayBt = Iw2DCreateImage("textures/playbt.png");
+ CIw2DImage* PlayBtC = Iw2DCreateImage("textures/playbtclicked.png");
+ CIw2DImage* StartTitle = Iw2DCreateImage("textures/title.png");
+
+ CIw2DImage* LevelBg = Iw2DCreateImage("textures/menubg.png");
+ CIw2DImage* LevelTitle = Iw2DCreateImage("textures/chooselevel.png");
+ CIw2DImage* BackBt = Iw2DCreateImage("textures/backbt.png");
+ CIw2DImage* BackBtC = Iw2DCreateImage("textures/backbtclicked.png");
+ CIw2DImage* EasyBt = Iw2DCreateImage("textures/easybt.png");
+ CIw2DImage* EasyBtC = Iw2DCreateImage("textures/easybtclicked.png");
+ CIw2DImage* MedBt = Iw2DCreateImage("textures/mediumbt.png");
+ CIw2DImage* MedBtC = Iw2DCreateImage("textures/mediumbtclicked.png");
+ CIw2DImage* HardBt = Iw2DCreateImage("textures/hardbt.png");
+ CIw2DImage* HardBtC = Iw2DCreateImage("textures/hardbtclicked.png");
+
+ CIw2DImage* Player = Iw2DCreateImage("textures/gem1.png");
+ CIw2DImage* InBt = Iw2DCreateImage("textures/inbt.png");
+ CIw2DImage* InBtC = Iw2DCreateImage("textures/inbtclicked.png");
+ CIw2DImage* OutBt = Iw2DCreateImage("textures/outbt.png");
+ CIw2DImage* OutBtC = Iw2DCreateImage("textures/outbtclicked.png");
+ CIw2DImage* PauseBt = Iw2DCreateImage("textures/pausebt.png");
+ CIw2DImage* PauseBtC = Iw2DCreateImage("textures/pausebtclicked.png");
+
+ CIw2DImage* PauseBg = Iw2DCreateImage("textures/menubg.png");
+ CIw2DImage* PauseTitle = Iw2DCreateImage("textures/pausedtitle.png");
+ CIw2DImage* ResumeBt = Iw2DCreateImage("textures/resumebt.png");
+ CIw2DImage* ResumeBtC = Iw2DCreateImage("textures/resumebtclicked.png");
+ CIw2DImage* StartOverBt = Iw2DCreateImage("textures/startoverbt.png");
+ CIw2DImage* StartOverBtC = Iw2DCreateImage("textures/startoverbtclicked.png");
+ CIw2DImage* ChangeLevelBt = Iw2DCreateImage("textures/changelevelbt.png");
+ CIw2DImage* ChangeLevelBtC = Iw2DCreateImage("textures/changelevelbtclicked.png");
 
  CIwFVec2 image_position = CIwFVec2(surface_width / 2 - 2.5, surface_height / 2 - 2.5);
  uint32 timer = (uint32)s3eTimerGetMs();
-
- int maze = 0;
-
-
-
-
-
+ int stage = 0;
+ float angle = 270;
  while (!s3eDeviceCheckQuitRequest())
  {
-
-
 
   s3eKeyboardUpdate();
   s3ePointerUpdate();
 
 
-  Iw2DSurfaceClear(0xff8080);
-# 168 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp"
-  if (maze == 0){
-   Iw2DDrawImage(menubg, CIwFVec2(0, 0), CIwFVec2(320, 492));
-   Iw2DDrawImage(playbt, CIwFVec2(85, 286), CIwFVec2(150, 50));
-
-   if (s3ePointerGetState(S3E_POINTER_BUTTON_SELECT) & S3E_POINTER_STATE_DOWN)
-   {
 
 
-    int displayWidth = Iw2DGetSurfaceWidth();
-    int displayHeight = Iw2DGetSurfaceHeight();
-    int x = s3ePointerGetX() * 4 / displayWidth;
-    int y = s3ePointerGetY() * 4 / displayHeight;
-    int Maxlvl;
-    if (x == 1 && y == 2){
-     MazeInitializer();
-     setDifficulity(3);
-     DoorGenerator();
-     printall();
-     maze = 1;
-    }
-    if (x == 2 && y == 2){
-     MazeInitializer();
-     setDifficulity(3);
-     DoorGenerator();
-     printall();
-     maze = 1;
-    }
-   }
+
+  if (stage == 0){
+   stage = StartM(StartBg, PlayBt, PlayBtC, StartTitle);
+   Iw2DSurfaceShow();
   }
-
-  if (maze == 1){
-
-   Iw2DSetColour(0xff59ff4d);
-# 280 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp"
-   Iw2DSetColour(0xffff8080);
-# 289 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp"
-   DrawMaze(6);
-# 396 "d:/School/cs115/AmazingMaze/AmazingMaze.cpp"
+  if (stage == 1){
+   stage = LevelM(LevelBg, LevelTitle, BackBt, BackBtC, EasyBt, EasyBtC, MedBt, MedBtC, HardBt, HardBtC);
+   currentLevel = 1;
+   Iw2DSurfaceShow();
+  }
+  if (stage == 2){
+   Iw2DSurfaceClear(0xff000000);
+   Iw2DSetColour(0xffffffff);
+   stage = InGameM(PauseBt, PauseBtC);
+   DrawMaze(currentLevel);
+   angle = DrawPlayer(currentLevel, angle, Player);
+   currentLevel = PlayerMove(currentLevel, angle, InBt, InBtC, OutBt, OutBtC);
+   Iw2DSurfaceShow();
+  }
+  if (stage == 3){
+   Iw2DSurfaceClear(0xff000000);
+   Iw2DSetColour(0xffffffff);
+   stage = PauseM(PauseBg, PauseTitle, ResumeBt, ResumeBtC, StartOverBt, StartOverBtC, ChangeLevelBt, ChangeLevelBtC);
+   Iw2DSurfaceShow();
+  }
+  if (stage == 5){
+   angle = 270;
+   currentLevel = 1;
+   stage = 2;
   }
 
 
 
-
-
-  Iw2DSurfaceShow();
 
 
   s3eDeviceYield(0);

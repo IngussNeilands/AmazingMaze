@@ -8,6 +8,8 @@ files
 	MazeDrawer.h
 	PlayerMovement.cpp
 	PlayerMovement.h
+	menu.cpp
+	menu.h
 }
 
 subprojects
