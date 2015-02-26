@@ -1,0 +1,19 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  Performing Custom Build Tools
+1>  msg: option 'default-buildenv' overridden by command line
+1>  C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --default-buildenv=vc12 --msvc-project
+1>  Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+1>  done
+1>  AmazingMaze.cpp
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
+1>AmazingMaze.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+1>LIBCMTD.lib(strtoq.obj) : warning LNK4006: _strtof already defined in s3e_d.lib(iwcrt_common.obj); second definition ignored
+1>LIBCMTD.lib(sscanf.obj) : warning LNK4006: _vsscanf already defined in s3e_d.lib(iwcrt_win32.obj); second definition ignored
+1>     Creating library Debug_AmazingMaze_vc12_x86\AmazingMaze.lib and object Debug_AmazingMaze_vc12_x86\AmazingMaze.exp
+1>Debug_AmazingMaze_vc12_x86\AmazingMaze.s86 : warning LNK4088: image being generated due to /FORCE option; image may not run
+1>  AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86
+1>  C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86"
+1>  "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_x86\AmazingMaze.s86" 
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+

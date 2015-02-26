@@ -16,7 +16,8 @@ using namespace std;
 //int test[10];
 //float level[8][24][11];  //a 3D arrway that stores the parent, door leftpt, blockpt, and childs
 //int MaxLevel = 3;  // MaxLevel is set based on the difficulity
-
+//float level[9][20][15];  //a 3D arrway that stores the parent, door leftpt, blockpt, and childs					//0 = parent, 1 = leftpt, 2 = block, 3 = blockleft, 4 = blockright, 5 = childamount, 6-10 = childs
+//int MaxLevel;  // MaxLevel is set based on the difficulity
 
 void MazeInitializer(){
 	for (int leveler = 0; leveler < 9; leveler++){

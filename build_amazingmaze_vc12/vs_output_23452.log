@@ -1,0 +1,101 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Release Win32 ------
+1>  AmazingMaze.cpp
+1>  MazeDrawer.cpp
+1>  MazeGenerator.cpp
+1>  PlayerMovement.cpp
+1>  menu.cpp
+1>..\MazeDrawer.cpp(40): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(47): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(48): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(49): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(53): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(54): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(55): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(61): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(66): warning C4305: 'initializing' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(67): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(68): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(69): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(70): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(71): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(72): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(73): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\MazeDrawer.cpp(80): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(81): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(82): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(83): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(86): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(87): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeDrawer.cpp(88): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(32): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(33): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(34): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(35): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(36): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(37): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(46): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(53): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(54): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(55): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(56): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(64): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+1>..\PlayerMovement.cpp(69): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+1>..\PlayerMovement.cpp(84): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(110): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(111): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(116): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(117): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(120): warning C4305: 'initializing' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(121): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(122): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(123): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(124): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(125): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(126): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(127): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(130): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(132): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(140): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(141): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(144): warning C4305: 'initializing' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(145): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(146): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(147): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(148): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(149): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(150): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(151): warning C4305: '=' : truncation from 'double' to 'float'
+1>..\PlayerMovement.cpp(154): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\PlayerMovement.cpp(156): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(50): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(53): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(66): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(69): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(70): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(76): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(77): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(78): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(82): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(89): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(98): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(127): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(136): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(138): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(149): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(152): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\MazeGenerator.cpp(175): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(177): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(178): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+1>..\MazeGenerator.cpp(181): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+1>..\AmazingMaze.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+1>LIBCMTD.lib(strtoq.obj) : warning LNK4006: _strtof already defined in s3e.lib(iwcrt_common.obj); second definition ignored
+1>LIBCMTD.lib(sscanf.obj) : warning LNK4006: _vsscanf already defined in s3e.lib(iwcrt_win32.obj); second definition ignored
+1>     Creating library Release_AmazingMaze_vc12_x86\AmazingMaze.lib and object Release_AmazingMaze_vc12_x86\AmazingMaze.exp
+1>Release_AmazingMaze_vc12_x86\AmazingMaze.s86 : warning LNK4088: image being generated due to /FORCE option; image may not run
+1>  AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_x86\AmazingMaze.s86
+1>  C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_x86\AmazingMaze.s86"
+1>  "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_x86\AmazingMaze.s86" 
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+

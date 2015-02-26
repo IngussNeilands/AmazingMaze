@@ -4,7 +4,7 @@
 # tool during the build process.
 
 config = {}
-cmdline = ['C:/Marmalade/7.5/s3e/makefile_builder/mkb.py', 'd:/School/cs115/AmazingMaze/AmazingMaze.mkb', '--buildenv=VC12', '--debug', '--x86', '--no-ide', '--execute', '--deploy-only']
+cmdline = ['C:/Marmalade/7.5/s3e/makefile_builder/mkb.py', 'd:/School/cs115/AmazingMaze/AmazingMaze.mkb', '--buildenv=VC12', '--release', '--x86', '--no-ide', '--execute', '--deploy-only']
 mkb = 'd:/School/cs115/AmazingMaze/AmazingMaze.mkb'
 mkf = ['c:\\marmalade\\7.5\\s3e\\s3e-default.mkf', 'c:\\marmalade\\7.5\\modules\\iwutil\\iwutil.mkf', 'c:\\marmalade\\7.5\\modules\\third_party\\libjpeg\\libjpeg.mkf', 'c:\\marmalade\\7.5\\modules\\third_party\\libpng\\libpng.mkf', 'c:\\marmalade\\7.5\\modules\\third_party\\zlib\\zlib.mkf', 'c:\\marmalade\\7.5\\modules\\iw2dscenegraphcore\\iw2dscenegraphcore.mkf', 'c:\\marmalade\\7.5\\modules\\iw2dscenegraph\\iw2dscenegraph.mkf', 'c:\\marmalade\\7.5\\modules\\iw2d\\iw2d.mkf', 'c:\\marmalade\\7.5\\modules\\iwgx\\iwgx.mkf', 'c:\\marmalade\\7.5\\modules\\iwgl\\iwgl.mkf', 'c:\\marmalade\\7.5\\modules\\iwgeom\\iwgeom.mkf', 'c:\\marmalade\\7.5\\modules\\iwresmanager\\iwresmanager.mkf', 'c:\\marmalade\\7.5\\extensions\\pvrtextool\\pvrtextool.mkf', 'c:\\marmalade\\7.5\\modules\\iwgxfont\\iwgxfont.mkf', 'c:\\marmalade\\7.5\\modules\\third_party\\tiniconv\\tiniconv.mkf', 'c:\\marmalade\\7.5\\modules\\iwtween\\iwtween.mkf']
 

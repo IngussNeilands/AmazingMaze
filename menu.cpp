@@ -13,7 +13,7 @@ using namespace std;
 #include "MazeGenerator.h"
 #include "PlayerMovement.h"
 
-int MaxLevel;  // MaxLevel is set based on the difficulity
+//int MaxLevel;  // MaxLevel is set based on the difficulity
 int x = 0;
 int y = 0;
 
