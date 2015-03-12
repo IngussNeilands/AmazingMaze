@@ -1,0 +1,121 @@
+﻿Build started 3/11/2015 10:50:50 PM.
+     1>Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" on node 2 (Build target(s)).
+     1>CustomBuild:
+         Performing Custom Build Tools
+         msg: option 'default-buildenv' overridden by command line
+         C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --default-buildenv=vc12 --msvc-project
+         Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+         done
+       ClCompile:
+         C:\Marmalade\7.5\s3e\bin\CL.exe /c /Ic:/marmalade/7.5/modules/iwutil/h /Ic:/marmalade/7.5/modules/third_party/libjpeg/h /Ic:/marmalade/7.5/modules/third_party/zlib/h /Ic:/marmalade/7.5/modules/third_party/libpng/h /Ic:/marmalade/7.5/modules/iw2dscenegraphcore/h /Ic:/marmalade/7.5/modules/iw2dscenegraph/h /Ic:/marmalade/7.5/modules/iw2d/h /Ic:/marmalade/7.5/modules/iwgx/h /Ic:/marmalade/7.5/modules/iwgl/h /Ic:/marmalade/7.5/modules/iwgeom/h /Ic:/marmalade/7.5/modules/iwresmanager/h /Ic:/marmalade/7.5/extensions/pvrtextool/h /Ic:/marmalade/7.5/modules/iwgxfont/h /Ic:/marmalade/7.5/modules/third_party/tiniconv/source /Ic:/marmalade/7.5/modules/iwtween/h /Ic:/marmalade/7.5/s3e/h /Ic:/marmalade/7.5/s3e/h/ext /Ic:/marmalade/7.5/s3e/h/std /Ic:/marmalade/7.5/s3e/h/std/c++ /Ic:/marmalade/7.5/s3e/h/ext_legacy /Ic:/marmalade/7.5/s3e/h/legacy /I. /Z7 /nologo /W3 /WX- /MP /O2 /Oi /Oy- /X /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release_AmazingMaze_vc12_gcc_arm\\" /Fd"Release_AmazingMaze_vc12_gcc_arm\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /S3Eproject /J /Fe"s3e-custom-tool='c:/marmalade/7.5/s3e/gcc/win32/arm/bin/arm-none-eabi-gcc.exe' tooltype=gcc_compiler -funsigned-char -fno-strict-aliasing -fno-stack-protector -fno-short-enums -fshort-wchar -Wall -fomit-frame-pointer -fmessage-length=0 -Wno-unused -Wno-parentheses -save-temps -ffunction-sections -mstructure-size-boundary=8 -march=armv6 -mfloat-abi=soft -mthumb-interwork -mthumb-interwork -mword-relocations -Wno-switch -Wno-psabi -fvisibility=hidden -nostdinc -fPIC --cppflag=-Wno-reorder --cppflag=-fvisibility-inlines-hidden --cppflag=-fno-exceptions --cppflag=-nostdinc++ -O3" /FD  /FI"d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\temp_defines_release.h" ..\AmazingMaze.cpp c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp ..\MazeDrawer.cpp ..\MazeGenerator.cpp c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ..\PlayerMovement.cpp ..\menu.cpp
+         ARM Compiling(GCC) d:\School\cs115\AmazingMaze\AmazingMaze.cpp ...
+         ARM Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp ...
+         ARM Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp ...
+         ARM Compiling(GCC) c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp ...
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+         c:/marmalade/7.5/modules/iwtween/h/IwTween.h( In member function 'IwTween) :CTween* IwTween::CTweenManager::Tween(float, ...)': (col )
+         
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : 'tween.IwTween::CTween::m_ElapsedTime' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: 'tween.IwTween::CTween::m_ElapsedTime' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : '*((void*)& tween +36)' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: '*((void*)& tween +36)' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : '*((void*)& tween +37)' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: '*((void*)& tween +37)' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : '*((void*)& tween +38)' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: '*((void*)& tween +38)' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : '*((void*)& tween +39)' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: '*((void*)& tween +39)' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : 'tween.IwTween::CTween::m_NumCycles' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: 'tween.IwTween::CTween::m_NumCycles' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [In file included from]
+     1>c:/marmalade/7.5/modules/iwtween/h/IwTween.h(377): warning : 'tween.IwTween::CTween::m_List' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 7)
+         
+         class CTween
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(234) : note: 'tween.IwTween::CTween::m_List' was declared here (col 12)
+         
+         CTween tween(spec);
+         ^
+         c:/marmalade/7.5/s3e/h/std/c++/stl/_alloc.h(68) [In file included from]
+         c:/marmalade/7.5/s3e/h/std/c++/stl/_vector.h(40) [from]
+         c:/marmalade/7.5/s3e/h/std/c++/vector(40) [from]
+         c:/marmalade/7.5/modules/iwtween/h/IwTween.h(27) [from]
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(23) [from]
+     1>c:/marmalade/7.5/s3e/h/std/c++/stl/_construct.h(97): warning : 'value' may be used uninitialized in this function [-Wmaybe-uninitialized] (col 5)
+         
+         _STLP_PLACEMENT_NEW (__p) _T1(__val);
+         ^
+         c:/marmalade/7.5/modules/iwtween/source/IwTween.cpp(256) : note: 'value' was declared here (col 13)
+         
+         int value;
+         ^
+         ARM Compiling(GCC) d:\School\cs115\AmazingMaze\MazeDrawer.cpp ...
+         ARM Compiling(GCC) d:\School\cs115\AmazingMaze\MazeGenerator.cpp ...
+         ARM Compiling(GCC) c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ...
+         ARM Compiling(GCC) d:\School\cs115\AmazingMaze\PlayerMovement.cpp ...
+         ARM Compiling(GCC) d:\School\cs115\AmazingMaze\menu.cpp ...
+       Link:
+         C:\Marmalade\7.5\s3e\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.s3e" /INCREMENTAL:NO /NOLOGO /LIBPATH:c:/marmalade/7.5/modules/iwutil/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/third_party/libjpeg/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/third_party/zlib/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/third_party/libpng/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/iw2d/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/iwgx/atitools /LIBPATH:c:/marmalade/7.5/modules/iwgx/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/iwgl/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/iwgeom/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/iwresmanager/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/iwgxfont/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/modules/third_party/tiniconv/lib/arm/v6/nofpu/soft /LIBPATH:c:/marmalade/7.5/s3e/lib/arm/v6/nofpu/soft /NODEFAULTLIB:libcmt /MANIFEST:NO /PDB:"Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.lib" /MACHINE:X86  /include:_IwMain /include:_raise /include:_DllEntryPoint@12 /force:multiple /COMMENT:"s3e-custom-tool='c:/marmalade/7.5/s3e/gcc/win32/arm/bin/arm-none-eabi-g++.exe' tooltype=gcc_linker -Wl,--gc-sections -Wl,--as-needed -march=armv6 -mfloat-abi=soft -mthumb-interwork -mthumb-interwork -pie -Wl,--entry=_IwMain -Wl,--no-enum-size-warning -Wl,-Tlinker_script -lc -lm -Wl,-Map='Release_AmazingMaze_vc12_gcc_arm\/AmazingMaze.map' -Wl,--start-group -liwutil -ljpeg -lz -lpng -liw2d -liwgx -liwgl -liwgeom -liwresmanager -liwgxfont -ltiniconv -ls3e_cpp -ls3e -ls3e_api_iwgl -Wl,--end-group --plink:--arch=armv6 --plink:--compiler=rvct --plink:-u" /DLL Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.obj
+         Release_AmazingMaze_vc12_gcc_arm\Iw2DSceneGraph.obj
+         Release_AmazingMaze_vc12_gcc_arm\Iw2DSceneGraphCore.obj
+         Release_AmazingMaze_vc12_gcc_arm\IwTween.obj
+         Release_AmazingMaze_vc12_gcc_arm\MazeDrawer.obj
+         Release_AmazingMaze_vc12_gcc_arm\MazeGenerator.obj
+         Release_AmazingMaze_vc12_gcc_arm\PVRTexTool_interface.obj
+         Release_AmazingMaze_vc12_gcc_arm\PlayerMovement.obj
+         Release_AmazingMaze_vc12_gcc_arm\menu.obj
+         ARM Linking(GCC) ...
+         AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.s3e
+       PostBuildEvent:
+         echo C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.s3e"
+         chdir /d "c:\marmalade\7.5\s3e\tools"
+         C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.s3e"
+         
+         :VCEnd
+         C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Release_AmazingMaze_vc12_gcc_arm\AmazingMaze.s3e"
+     1>Done Building Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:08.46

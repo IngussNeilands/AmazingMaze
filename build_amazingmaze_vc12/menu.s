@@ -59,13 +59,6 @@ _ZN4_STLL8_LocInitE:
 	.align	2
 _ZN4_STLL8_IosInitE:
 	.space	1
-	.hidden	MaxLevel
-	.global	MaxLevel
-	.align	2
-	.type	MaxLevel, %object
-	.size	MaxLevel, 4
-MaxLevel:
-	.space	4
 	.hidden	x
 	.global	x
 	.align	2
@@ -80,159 +73,380 @@ x:
 	.size	y, 4
 y:
 	.space	4
-	.section	.text._Z6StartMP10CIw2DImageS0_S0_S0_,"ax",%progbits
+	.global	__aeabi_i2d
+	.global	__aeabi_ddiv
+	.global	__aeabi_i2f
+	.global	__aeabi_dmul
+	.global	__aeabi_d2f
+	.section	.text._Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_,"ax",%progbits
 	.align	2
-	.global	_Z6StartMP10CIw2DImageS0_S0_S0_
-	.hidden	_Z6StartMP10CIw2DImageS0_S0_S0_
-	.type	_Z6StartMP10CIw2DImageS0_S0_S0_, %function
-_Z6StartMP10CIw2DImageS0_S0_S0_:
+	.global	_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_
+	.hidden	_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_
+	.type	_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_, %function
+_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_:
 .LFB2965:
 	.file 2 "d:/School/cs115/AmazingMaze/menu.cpp"
 	.loc 2 20 0
 	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 72
+	@ args = 8, pretend = 0, frame = 112
 	@ frame_needed = 0, uses_anonymous_args = 0
-	str	lr, [sp, #-4]!
+	stmfd	sp!, {r4, lr}
 .LCFI1:
-	.cfi_def_cfa_offset 4
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #84
+	sub	sp, sp, #120
 .LCFI2:
-	.cfi_def_cfa_offset 88
+	.cfi_def_cfa_offset 128
 	str	r0, [sp, #20]
 	str	r1, [sp, #16]
 	str	r2, [sp, #12]
 	str	r3, [sp, #8]
 .LBB3:
 	.loc 2 21 0
-	mov	r3, #0
-	str	r3, [sp, #76]
+	bl	_Z8Iw2DInitv(PLT)
 	.loc 2 22 0
-	ldr	r3, [sp, #16]
-	str	r3, [sp, #72]
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #104]
 	.loc 2 23 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #100]
+	.loc 2 24 0
+	ldr	r0, [sp, #104]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L13
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #88]
+	.loc 2 25 0
+	mov	r3, #0
+	str	r3, [sp, #116]
+	.loc 2 26 0
+	ldr	r3, [sp, #16]
+	str	r3, [sp, #112]
+	.loc 2 27 0
+	ldr	r3, [sp, #128]
+	str	r3, [sp, #108]
+	.loc 2 28 0
 	mov	r0, #0
 	bl	s3ePointerGetState(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L5
-	.loc 2 23 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #76]
+	.loc 2 28 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #116]
 	cmp	r3, #0
 	bne	.L5
-	.loc 2 23 0 discriminator 3
+	.loc 2 28 0 discriminator 3
 	mov	r3, #1
 	b	.L6
 .L5:
-	.loc 2 23 0 discriminator 2
+	.loc 2 28 0 discriminator 2
 	mov	r3, #0
 .L6:
-	.loc 2 23 0 discriminator 4
+	.loc 2 28 0 discriminator 4
 	cmp	r3, #0
 	beq	.L7
-	.loc 2 24 0 is_stmt 1
+	.loc 2 29 0 is_stmt 1
 	bl	s3ePointerGetX(PLT)
 	mov	r2, r0
-	ldr	r3, .L11
+	ldr	r3, .L13+4
 .LPIC0:
 	add	r3, pc, r3
 	str	r2, [r3]
-	.loc 2 25 0
+	.loc 2 30 0
 	bl	s3ePointerGetY(PLT)
 	mov	r2, r0
-	ldr	r3, .L11+4
+	ldr	r3, .L13+8
 .LPIC1:
 	add	r3, pc, r3
 	str	r2, [r3]
-	.loc 2 27 0
-	ldr	r3, .L11+8
+	.loc 2 32 0
+	ldr	r3, .L13+12
 .LPIC2:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #45
+	cmp	r3, #0
 	ble	.L8
-	.loc 2 27 0 is_stmt 0 discriminator 1
-	ldr	r3, .L11+12
+	.loc 2 32 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #100]
+	mov	r2, #200
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+20
 .LPIC3:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L11+16
+	ldr	r3, [r3]
 	cmp	r2, r3
-	ble	.L8
-	ldr	r3, .L11+20
+	bge	.L8
+	ldr	r2, [sp, #104]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #6
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+28
 .LPIC4:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L11+24
+	ldr	r3, [r3]
 	cmp	r2, r3
-	bgt	.L8
-	ldr	r3, .L11+28
+	ble	.L8
+	ldr	r3, [sp, #100]
+	mov	r2, #300
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+32
 .LPIC5:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #340
-	bgt	.L8
+	cmp	r2, r3
+	ble	.L8
 	ldr	r3, [sp, #12]
-	str	r3, [sp, #72]
-	b	.L8
-.L7:
-	.loc 2 30 0 is_stmt 1
-	ldr	r3, .L11+32
+	str	r3, [sp, #112]
+.L8:
+	.loc 2 33 0 is_stmt 1
+	ldr	r3, .L13+36
 .LPIC6:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #45
+	cmp	r3, #0
 	ble	.L9
-	.loc 2 30 0 is_stmt 0 discriminator 1
-	ldr	r3, .L11+36
+	.loc 2 33 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #100]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	add	r3, r3, r2
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+40
 .LPIC7:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L11+16
+	ldr	r3, [r3]
 	cmp	r2, r3
-	ble	.L9
-	ldr	r3, .L11+40
+	bge	.L9
+	ldr	r2, [sp, #104]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #6
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+44
 .LPIC8:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L11+24
+	ldr	r3, [r3]
 	cmp	r2, r3
-	bgt	.L9
-	ldr	r3, .L11+44
+	ble	.L9
+	ldr	r2, [sp, #100]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+48
 .LPIC9:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #340
-	bgt	.L9
-	ldr	r3, [sp, #76]
-	cmp	r3, #0
-	bne	.L9
-	mov	r3, #1
-	str	r3, [sp, #76]
-.L9:
-	.loc 2 31 0 is_stmt 1
-	ldr	r3, .L11+48
+	cmp	r2, r3
+	ble	.L9
+	ldr	r3, [sp, #132]
+	str	r3, [sp, #108]
+	b	.L9
+.L7:
+	.loc 2 36 0 is_stmt 1
+	ldr	r3, .L13+52
 .LPIC10:
 	add	r3, pc, r3
-	mov	r2, #0
-	str	r2, [r3]
-	.loc 2 32 0
-	ldr	r3, .L11+52
+	ldr	r3, [r3]
+	cmp	r3, #0
+	ble	.L10
+	.loc 2 36 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #100]
+	mov	r2, #200
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+56
 .LPIC11:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L10
+	ldr	r2, [sp, #104]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #6
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+60
+.LPIC12:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L10
+	ldr	r3, [sp, #100]
+	mov	r2, #300
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+64
+.LPIC13:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L10
+	ldr	r3, [sp, #116]
+	cmp	r3, #0
+	bne	.L10
+	mov	r3, #1
+	str	r3, [sp, #116]
+.L10:
+	.loc 2 37 0 is_stmt 1
+	ldr	r3, .L13+68
+.LPIC14:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r3, #0
+	ble	.L11
+	.loc 2 37 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #100]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	add	r3, r3, r2
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+72
+.LPIC15:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L11
+	ldr	r2, [sp, #104]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #6
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+76
+.LPIC16:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L11
+	ldr	r2, [sp, #100]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L13+80
+.LPIC17:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L11
+	ldr	r3, [sp, #116]
+	cmp	r3, #0
+	bne	.L11
+	mov	r3, #7
+	str	r3, [sp, #116]
+.L11:
+	.loc 2 38 0 is_stmt 1
+	ldr	r3, .L13+84
+.LPIC18:
 	add	r3, pc, r3
 	mov	r2, #0
 	str	r2, [r3]
-.L8:
-	.loc 2 34 0
+	.loc 2 39 0
+	ldr	r3, .L13+88
+.LPIC19:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L9:
+	.loc 2 41 0
 	add	r3, sp, #24
 	mov	r0, r3
 	mov	r1, #0
 	mov	r2, #0
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #32
-	mov	r0, r3
-	ldr	r1, .L11+56
-	ldr	r2, .L11+60
+	ldr	r0, [sp, #104]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #100]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #36]
 	str	r3, [sp]
@@ -241,16 +455,65 @@ _Z6StartMP10CIw2DImageS0_S0_S0_:
 	add	r2, sp, #24
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 35 0
-	add	r3, sp, #40
+	.loc 2 42 0
+	ldr	r2, [sp, #104]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L11+64
-	ldr	r2, .L11+68
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #100]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #48
+	ldrd	r0, [sp, #88]
+	mov	r2, #0
+	ldr	r3, .L13+92
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #100]
+	mov	r2, #170
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L11+72
-	ldr	r2, .L11+76
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #52]
 	str	r3, [sp]
@@ -259,42 +522,154 @@ _Z6StartMP10CIw2DImageS0_S0_S0_:
 	add	r2, sp, #40
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 36 0
-	add	r3, sp, #56
+	.loc 2 43 0
+	ldr	r3, [sp, #104]
+	mvn	r2, #129
+	mul	r3, r2, r3
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L11+80
-	ldr	r2, .L11+84
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #100]
+	mov	r2, #200
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #64
+	ldrd	r0, [sp, #88]
+	mov	r2, #0
+	ldr	r3, .L13+96
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #100]
+	mov	r2, #100
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L11+88
-	ldr	r2, .L11+92
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #68]
 	str	r3, [sp]
 	ldr	r3, [sp, #64]
-	ldr	r0, [sp, #72]
+	ldr	r0, [sp, #112]
 	add	r2, sp, #56
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 37 0
-	ldr	r3, [sp, #76]
-.LBE3:
-	.loc 2 38 0
+	.loc 2 44 0
+	ldr	r3, [sp, #104]
+	mvn	r2, #129
+	mul	r3, r2, r3
+	ldr	r2, .L13+24
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	add	sp, sp, #84
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #100]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	add	r3, r3, r2
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #88]
+	mov	r2, #0
+	ldr	r3, .L13+96
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #100]
+	mov	r2, #100
+	mul	r3, r2, r3
+	ldr	r2, .L13+16
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	ldr	r0, [sp, #108]
+	add	r2, sp, #72
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 45 0
+	ldr	r3, [sp, #116]
+.LBE3:
+	.loc 2 46 0
+	mov	r0, r3
+	add	sp, sp, #120
 	@ sp needed
-	ldr	pc, [sp], #4
-.L12:
+	ldmfd	sp!, {r4, pc}
+.L14:
 	.align	2
-.L11:
+.L13:
+	.word	1081344000
 	.word	x-(.LPIC0+8)
 	.word	y-(.LPIC1+8)
 	.word	x-(.LPIC2+8)
+	.word	-2004318071
 	.word	y-(.LPIC3+8)
-	.word	266
+	.word	1717986919
 	.word	x-(.LPIC4+8)
-	.word	269
 	.word	y-(.LPIC5+8)
 	.word	x-(.LPIC6+8)
 	.word	y-(.LPIC7+8)
@@ -302,506 +677,6 @@ _Z6StartMP10CIw2DImageS0_S0_S0_:
 	.word	y-(.LPIC9+8)
 	.word	x-(.LPIC10+8)
 	.word	y-(.LPIC11+8)
-	.word	1134559232
-	.word	1140195328
-	.word	1084227584
-	.word	1115947008
-	.word	1134395392
-	.word	1126825984
-	.word	1110704128
-	.word	1132789760
-	.word	1130430464
-	.word	1117126656
-	.cfi_endproc
-.LFE2965:
-	.size	_Z6StartMP10CIw2DImageS0_S0_S0_, .-_Z6StartMP10CIw2DImageS0_S0_S0_
-	.section	.text._Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
-	.align	2
-	.global	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
-	.hidden	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
-	.type	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, %function
-_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
-.LFB2966:
-	.loc 2 41 0
-	.cfi_startproc
-	@ args = 24, pretend = 0, frame = 136
-	@ frame_needed = 0, uses_anonymous_args = 0
-	str	lr, [sp, #-4]!
-.LCFI3:
-	.cfi_def_cfa_offset 4
-	.cfi_offset 14, -4
-	sub	sp, sp, #148
-.LCFI4:
-	.cfi_def_cfa_offset 152
-	str	r0, [sp, #20]
-	str	r1, [sp, #16]
-	str	r2, [sp, #12]
-	str	r3, [sp, #8]
-.LBB4:
-	.loc 2 42 0
-	ldr	r3, [sp, #12]
-	str	r3, [sp, #140]
-	.loc 2 43 0
-	ldr	r3, [sp, #152]
-	str	r3, [sp, #136]
-	.loc 2 44 0
-	ldr	r3, [sp, #160]
-	str	r3, [sp, #132]
-	.loc 2 45 0
-	ldr	r3, [sp, #168]
-	str	r3, [sp, #128]
-	.loc 2 46 0
-	mov	r3, #1
-	str	r3, [sp, #124]
-	.loc 2 47 0
-	bl	_Z15MazeInitializerv(PLT)
-	.loc 2 48 0
-	mov	r0, #0
-	bl	s3ePointerGetState(PLT)
-	mov	r3, r0
-	cmp	r3, #0
-	beq	.L14
-	.loc 2 48 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L14
-	.loc 2 48 0 discriminator 3
-	mov	r3, #1
-	b	.L15
-.L14:
-	.loc 2 48 0 discriminator 2
-	mov	r3, #0
-.L15:
-	.loc 2 48 0 discriminator 4
-	cmp	r3, #0
-	beq	.L16
-	.loc 2 49 0 is_stmt 1
-	bl	s3ePointerGetX(PLT)
-	mov	r2, r0
-	ldr	r3, .L26
-.LPIC12:
-	add	r3, pc, r3
-	str	r2, [r3]
-	.loc 2 50 0
-	bl	s3ePointerGetY(PLT)
-	mov	r2, r0
-	ldr	r3, .L26+4
-.LPIC13:
-	add	r3, pc, r3
-	str	r2, [r3]
-	.loc 2 51 0
-	ldr	r3, .L26+8
-.LPIC14:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #5
-	ble	.L17
-	.loc 2 51 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+12
-.LPIC15:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #5
-	ble	.L17
-	ldr	r3, .L26+16
-.LPIC16:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #79
-	bgt	.L17
-	ldr	r3, .L26+20
-.LPIC17:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #44
-	bgt	.L17
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L17
-	ldr	r3, [sp, #8]
-	str	r3, [sp, #140]
-.L17:
-	.loc 2 52 0 is_stmt 1
-	ldr	r3, .L26+24
-.LPIC18:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #60
-	ble	.L18
-	.loc 2 52 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+28
-.LPIC19:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #155
-	ble	.L18
-	ldr	r3, .L26+32
-.LPIC20:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #260
-	bge	.L18
-	ldr	r3, .L26+36
-.LPIC21:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #244
-	bgt	.L18
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L18
-	ldr	r3, [sp, #156]
-	str	r3, [sp, #136]
-.L18:
-	.loc 2 53 0 is_stmt 1
-	ldr	r3, .L26+40
-.LPIC22:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #60
-	ble	.L19
-	.loc 2 53 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+44
-.LPIC23:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #255
-	ble	.L19
-	ldr	r3, .L26+48
-.LPIC24:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #260
-	bge	.L19
-	ldr	r3, .L26+52
-.LPIC25:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #344
-	bgt	.L19
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L19
-	ldr	r3, [sp, #164]
-	str	r3, [sp, #132]
-.L19:
-	.loc 2 54 0 is_stmt 1
-	ldr	r3, .L26+56
-.LPIC26:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #60
-	ble	.L20
-	.loc 2 54 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+60
-.LPIC27:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #356
-	blt	.L20
-	ldr	r3, .L26+64
-.LPIC28:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #260
-	bge	.L20
-	ldr	r3, .L26+68
-.LPIC29:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #444
-	bgt	.L20
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L20
-	ldr	r3, [sp, #172]
-	str	r3, [sp, #128]
-	b	.L20
-.L16:
-	.loc 2 57 0 is_stmt 1
-	ldr	r3, .L26+72
-.LPIC30:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #5
-	ble	.L21
-	.loc 2 57 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+76
-.LPIC31:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #5
-	ble	.L21
-	ldr	r3, .L26+80
-.LPIC32:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #79
-	bgt	.L21
-	ldr	r3, .L26+84
-.LPIC33:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #44
-	bgt	.L21
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L21
-	mov	r3, #0
-	str	r3, [sp, #124]
-.L21:
-	.loc 2 58 0 is_stmt 1
-	ldr	r3, .L26+88
-.LPIC34:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #60
-	ble	.L22
-	.loc 2 58 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+92
-.LPIC35:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #155
-	ble	.L22
-	ldr	r3, .L26+96
-.LPIC36:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #260
-	bge	.L22
-	ldr	r3, .L26+100
-.LPIC37:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #244
-	bgt	.L22
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L22
-	.loc 2 59 0 is_stmt 1
-	bl	_Z15MazeInitializerv(PLT)
-	.loc 2 60 0
-	mov	r0, #1
-	bl	_Z14setDifficulityi(PLT)
-	.loc 2 61 0
-	bl	_Z13DoorGeneratorv(PLT)
-	.loc 2 62 0
-	mov	r3, #2
-	str	r3, [sp, #124]
-.L22:
-	.loc 2 64 0
-	ldr	r3, .L26+104
-.LPIC38:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #60
-	ble	.L23
-	.loc 2 64 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+108
-.LPIC39:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #255
-	ble	.L23
-	ldr	r3, .L26+112
-.LPIC40:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #260
-	bge	.L23
-	ldr	r3, .L26+116
-.LPIC41:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #344
-	bgt	.L23
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L23
-	.loc 2 65 0 is_stmt 1
-	bl	_Z15MazeInitializerv(PLT)
-	.loc 2 66 0
-	mov	r0, #2
-	bl	_Z14setDifficulityi(PLT)
-	.loc 2 67 0
-	bl	_Z13DoorGeneratorv(PLT)
-	.loc 2 68 0
-	mov	r3, #2
-	str	r3, [sp, #124]
-.L23:
-	.loc 2 70 0
-	ldr	r3, .L26+120
-.LPIC42:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #60
-	ble	.L24
-	.loc 2 70 0 is_stmt 0 discriminator 1
-	ldr	r3, .L26+124
-.LPIC43:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #356
-	blt	.L24
-	ldr	r3, .L26+128
-.LPIC44:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #260
-	bge	.L24
-	ldr	r3, .L26+132
-.LPIC45:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #444
-	bgt	.L24
-	ldr	r3, [sp, #124]
-	cmp	r3, #1
-	bne	.L24
-	.loc 2 71 0 is_stmt 1
-	bl	_Z15MazeInitializerv(PLT)
-	.loc 2 72 0
-	mov	r0, #3
-	bl	_Z14setDifficulityi(PLT)
-	.loc 2 73 0
-	bl	_Z13DoorGeneratorv(PLT)
-	.loc 2 74 0
-	mov	r3, #2
-	str	r3, [sp, #124]
-.L24:
-	.loc 2 76 0
-	ldr	r3, .L26+136
-.LPIC46:
-	add	r3, pc, r3
-	mov	r2, #0
-	str	r2, [r3]
-	.loc 2 77 0
-	ldr	r3, .L26+140
-.LPIC47:
-	add	r3, pc, r3
-	mov	r2, #0
-	str	r2, [r3]
-.L20:
-	.loc 2 79 0
-	add	r3, sp, #28
-	mov	r0, r3
-	mov	r1, #0
-	mov	r2, #0
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #36
-	mov	r0, r3
-	ldr	r1, .L26+144
-	ldr	r2, .L26+148
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #40]
-	str	r3, [sp]
-	ldr	r3, [sp, #36]
-	ldr	r0, [sp, #20]
-	add	r2, sp, #28
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 80 0
-	add	r3, sp, #44
-	mov	r0, r3
-	ldr	r1, .L26+152
-	ldr	r2, .L26+152
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #52
-	mov	r0, r3
-	ldr	r1, .L26+156
-	ldr	r2, .L26+160
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #56]
-	str	r3, [sp]
-	ldr	r3, [sp, #52]
-	ldr	r0, [sp, #140]
-	add	r2, sp, #44
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 81 0
-	add	r3, sp, #60
-	mov	r0, r3
-	ldr	r1, .L26+164
-	ldr	r2, .L26+160
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #68
-	mov	r0, r3
-	ldr	r1, .L26+168
-	ldr	r2, .L26+172
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #72]
-	str	r3, [sp]
-	ldr	r3, [sp, #68]
-	ldr	r0, [sp, #16]
-	add	r2, sp, #60
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 82 0
-	add	r3, sp, #76
-	mov	r0, r3
-	ldr	r1, .L26+176
-	ldr	r2, .L26+180
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #84
-	mov	r0, r3
-	ldr	r1, .L26+184
-	ldr	r2, .L26+188
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #88]
-	str	r3, [sp]
-	ldr	r3, [sp, #84]
-	ldr	r0, [sp, #136]
-	add	r2, sp, #76
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 83 0
-	add	r3, sp, #92
-	mov	r0, r3
-	ldr	r1, .L26+176
-	ldr	r2, .L26+192
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #100
-	mov	r0, r3
-	ldr	r1, .L26+184
-	ldr	r2, .L26+188
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #104]
-	str	r3, [sp]
-	ldr	r3, [sp, #100]
-	ldr	r0, [sp, #132]
-	add	r2, sp, #92
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 84 0
-	add	r3, sp, #108
-	mov	r0, r3
-	ldr	r1, .L26+176
-	ldr	r2, .L26+196
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #116
-	mov	r0, r3
-	ldr	r1, .L26+184
-	ldr	r2, .L26+188
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #120]
-	str	r3, [sp]
-	ldr	r3, [sp, #116]
-	ldr	r0, [sp, #128]
-	add	r2, sp, #108
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 85 0
-	ldr	r3, [sp, #124]
-.LBE4:
-	.loc 2 86 0
-	mov	r0, r3
-	add	sp, sp, #148
-	@ sp needed
-	ldr	pc, [sp], #4
-.L27:
-	.align	2
-.L26:
 	.word	x-(.LPIC12+8)
 	.word	y-(.LPIC13+8)
 	.word	x-(.LPIC14+8)
@@ -810,9 +685,1124 @@ _Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
 	.word	y-(.LPIC17+8)
 	.word	x-(.LPIC18+8)
 	.word	y-(.LPIC19+8)
+	.word	1081323520
+	.word	1082259456
+	.cfi_endproc
+.LFE2965:
+	.size	_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_, .-_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_
+	.section	.text._Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
+	.align	2
+	.global	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.hidden	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.type	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, %function
+_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
+.LFB2966:
+	.loc 2 49 0
+	.cfi_startproc
+	@ args = 24, pretend = 0, frame = 152
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+.LCFI3:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #160
+.LCFI4:
+	.cfi_def_cfa_offset 168
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+.LBB4:
+	.loc 2 50 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 51 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #136]
+	.loc 2 52 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #132]
+	.loc 2 53 0
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L28
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #120]
+	.loc 2 54 0
+	ldr	r3, [sp, #12]
+	str	r3, [sp, #156]
+	.loc 2 55 0
+	ldr	r3, [sp, #168]
+	str	r3, [sp, #152]
+	.loc 2 56 0
+	ldr	r3, [sp, #176]
+	str	r3, [sp, #148]
+	.loc 2 57 0
+	ldr	r3, [sp, #184]
+	str	r3, [sp, #144]
+	.loc 2 58 0
+	mov	r3, #1
+	str	r3, [sp, #140]
+	.loc 2 59 0
+	bl	_Z15MazeInitializerv(PLT)
+	.loc 2 60 0
+	mov	r0, #0
+	bl	s3ePointerGetState(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	beq	.L16
+	.loc 2 60 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L16
+	.loc 2 60 0 discriminator 3
+	mov	r3, #1
+	b	.L17
+.L16:
+	.loc 2 60 0 discriminator 2
+	mov	r3, #0
+.L17:
+	.loc 2 60 0 discriminator 4
+	cmp	r3, #0
+	beq	.L18
+	.loc 2 61 0 is_stmt 1
+	bl	s3ePointerGetX(PLT)
+	mov	r2, r0
+	ldr	r3, .L28+4
+.LPIC20:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 62 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L28+8
+.LPIC21:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 63 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+16
+.LPIC22:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L19
+	.loc 2 63 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+24
+.LPIC23:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L19
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+28
+.LPIC24:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L19
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+32
+.LPIC25:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L19
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L19
+	ldr	r3, [sp, #8]
+	str	r3, [sp, #156]
+.L19:
+	.loc 2 64 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+36
+.LPIC26:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L20
+	.loc 2 64 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #5
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+40
+.LPIC27:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L20
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+44
+.LPIC28:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L20
+	ldr	r3, [sp, #132]
+	mov	r2, #245
+	mul	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+48
+.LPIC29:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L20
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L20
+	ldr	r3, [sp, #172]
+	str	r3, [sp, #152]
+.L20:
+	.loc 2 65 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+52
+.LPIC30:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L21
+	.loc 2 65 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #8
+	rsb	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+56
+.LPIC31:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L21
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+60
+.LPIC32:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L21
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+64
+.LPIC33:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L21
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L21
+	ldr	r3, [sp, #180]
+	str	r3, [sp, #148]
+.L21:
+	.loc 2 66 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+68
+.LPIC34:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L22
+	.loc 2 66 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+72
+.LPIC35:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L22
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+76
+.LPIC36:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L22
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+80
+.LPIC37:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L22
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L22
+	ldr	r3, [sp, #188]
+	str	r3, [sp, #144]
+	b	.L22
+.L18:
+	.loc 2 69 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+84
+.LPIC38:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L23
+	.loc 2 69 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+88
+.LPIC39:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L23
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+92
+.LPIC40:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L23
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+96
+.LPIC41:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L23
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L23
+	mov	r3, #0
+	str	r3, [sp, #140]
+.L23:
+	.loc 2 70 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+100
+.LPIC42:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L24
+	.loc 2 70 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #5
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+104
+.LPIC43:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L24
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+108
+.LPIC44:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L24
+	ldr	r3, [sp, #132]
+	mov	r2, #245
+	mul	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+112
+.LPIC45:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L24
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L24
+	.loc 2 71 0 is_stmt 1
+	bl	_Z15MazeInitializerv(PLT)
+	.loc 2 72 0
+	mov	r0, #1
+	bl	_Z14setDifficulityi(PLT)
+	.loc 2 73 0
+	bl	_Z13DoorGeneratorv(PLT)
+	.loc 2 74 0
+	mov	r3, #2
+	str	r3, [sp, #140]
+.L24:
+	.loc 2 76 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+116
+.LPIC46:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L25
+	.loc 2 76 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #8
+	rsb	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+120
+.LPIC47:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L25
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+124
+.LPIC48:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L25
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+128
+.LPIC49:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L25
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L25
+	.loc 2 77 0 is_stmt 1
+	bl	_Z15MazeInitializerv(PLT)
+	.loc 2 78 0
+	mov	r0, #2
+	bl	_Z14setDifficulityi(PLT)
+	.loc 2 79 0
+	bl	_Z13DoorGeneratorv(PLT)
+	.loc 2 80 0
+	mov	r3, #2
+	str	r3, [sp, #140]
+.L25:
+	.loc 2 82 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+132
+.LPIC50:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L26
+	.loc 2 82 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+136
+.LPIC51:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L26
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+140
+.LPIC52:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L26
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L28+144
+.LPIC53:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L26
+	ldr	r3, [sp, #140]
+	cmp	r3, #1
+	bne	.L26
+	.loc 2 83 0 is_stmt 1
+	bl	_Z15MazeInitializerv(PLT)
+	.loc 2 84 0
+	mov	r0, #3
+	bl	_Z14setDifficulityi(PLT)
+	.loc 2 85 0
+	bl	_Z13DoorGeneratorv(PLT)
+	.loc 2 86 0
+	mov	r3, #2
+	str	r3, [sp, #140]
+.L26:
+	.loc 2 88 0
+	ldr	r3, .L28+148
+.LPIC54:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 89 0
+	ldr	r3, .L28+152
+.LPIC55:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L22:
+	.loc 2 91 0
+	add	r3, sp, #24
+	mov	r0, r3
+	mov	r1, #0
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #132]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #36]
+	str	r3, [sp]
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #20]
+	add	r2, sp, #24
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 92 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L28+156
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L28+160
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #156]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 93 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L28+164
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #68]
+	str	r3, [sp]
+	ldr	r3, [sp, #64]
+	ldr	r0, [sp, #16]
+	add	r2, sp, #56
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 94 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #5
+	rsb	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L28+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #90
+	mul	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	ldr	r0, [sp, #152]
+	add	r2, sp, #72
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 95 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #8
+	rsb	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #88
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L28+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #90
+	mul	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #96
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #100]
+	str	r3, [sp]
+	ldr	r3, [sp, #96]
+	ldr	r0, [sp, #148]
+	add	r2, sp, #88
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 96 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L28+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #104
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L28+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #90
+	mul	r3, r2, r3
+	ldr	r2, .L28+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #112
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #116]
+	str	r3, [sp]
+	ldr	r3, [sp, #112]
+	ldr	r0, [sp, #144]
+	add	r2, sp, #104
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 97 0
+	ldr	r3, [sp, #140]
+.LBE4:
+	.loc 2 98 0
+	mov	r0, r3
+	add	sp, sp, #160
+	@ sp needed
+	ldmfd	sp!, {r4, pc}
+.L29:
+	.align	2
+.L28:
+	.word	1081344000
 	.word	x-(.LPIC20+8)
 	.word	y-(.LPIC21+8)
+	.word	1717986919
 	.word	x-(.LPIC22+8)
+	.word	-2004318071
 	.word	y-(.LPIC23+8)
 	.word	x-(.LPIC24+8)
 	.word	y-(.LPIC25+8)
@@ -838,217 +1828,365 @@ _Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
 	.word	y-(.LPIC45+8)
 	.word	x-(.LPIC46+8)
 	.word	y-(.LPIC47+8)
-	.word	1134559232
-	.word	1140195328
-	.word	1084227584
-	.word	1117126656
-	.word	1109393408
-	.word	1108344832
-	.word	1132068864
-	.word	1121714176
-	.word	1114636288
-	.word	1125842944
-	.word	1128792064
-	.word	1119092736
-	.word	1132396544
-	.word	1135706112
-	.cfi_endproc
-.LFE2966:
-	.size	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, .-_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
-	.section	.text._Z7InGameMP10CIw2DImageS0_,"ax",%progbits
-	.align	2
-	.global	_Z7InGameMP10CIw2DImageS0_
-	.hidden	_Z7InGameMP10CIw2DImageS0_
-	.type	_Z7InGameMP10CIw2DImageS0_, %function
-_Z7InGameMP10CIw2DImageS0_:
-.LFB2967:
-	.loc 2 88 0
-	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 32
-	@ frame_needed = 0, uses_anonymous_args = 0
-	str	lr, [sp, #-4]!
-.LCFI5:
-	.cfi_def_cfa_offset 4
-	.cfi_offset 14, -4
-	sub	sp, sp, #44
-.LCFI6:
-	.cfi_def_cfa_offset 48
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-.LBB5:
-	.loc 2 89 0
-	ldr	r3, [sp, #12]
-	str	r3, [sp, #36]
-	.loc 2 90 0
-	mov	r3, #2
-	str	r3, [sp, #32]
-	.loc 2 91 0
-	mov	r0, #0
-	bl	s3ePointerGetState(PLT)
-	mov	r3, r0
-	cmp	r3, #0
-	beq	.L29
-	.loc 2 91 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #32]
-	cmp	r3, #2
-	bne	.L29
-	.loc 2 91 0 discriminator 3
-	mov	r3, #1
-	b	.L30
-.L29:
-	.loc 2 91 0 discriminator 2
-	mov	r3, #0
-.L30:
-	.loc 2 91 0 discriminator 4
-	cmp	r3, #0
-	beq	.L31
-	.loc 2 92 0 is_stmt 1
-	bl	s3ePointerGetX(PLT)
-	mov	r2, r0
-	ldr	r3, .L35
-.LPIC48:
-	add	r3, pc, r3
-	str	r2, [r3]
-	.loc 2 93 0
-	bl	s3ePointerGetY(PLT)
-	mov	r2, r0
-	ldr	r3, .L35+4
-.LPIC49:
-	add	r3, pc, r3
-	str	r2, [r3]
-	.loc 2 94 0
-	ldr	r3, .L35+8
-.LPIC50:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #165
-	ble	.L32
-	.loc 2 94 0 is_stmt 0 discriminator 1
-	ldr	r3, .L35+12
-.LPIC51:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #5
-	ble	.L32
-	ldr	r3, .L35+16
-.LPIC52:
-	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L35+20
-	cmp	r2, r3
-	bgt	.L32
-	ldr	r3, .L35+24
-.LPIC53:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #54
-	bgt	.L32
-	ldr	r3, [sp, #32]
-	cmp	r3, #2
-	bne	.L32
-	ldr	r3, [sp, #8]
-	str	r3, [sp, #36]
-	b	.L32
-.L31:
-	.loc 2 97 0 is_stmt 1
-	ldr	r3, .L35+28
-.LPIC54:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #165
-	ble	.L33
-	.loc 2 97 0 is_stmt 0 discriminator 1
-	ldr	r3, .L35+32
-.LPIC55:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #5
-	ble	.L33
-	ldr	r3, .L35+36
-.LPIC56:
-	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L35+20
-	cmp	r2, r3
-	bgt	.L33
-	ldr	r3, .L35+40
-.LPIC57:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #54
-	bgt	.L33
-	ldr	r3, [sp, #32]
-	cmp	r3, #2
-	bne	.L33
-	mov	r3, #3
-	str	r3, [sp, #32]
-.L33:
-	.loc 2 98 0 is_stmt 1
-	ldr	r3, .L35+44
-.LPIC58:
-	add	r3, pc, r3
-	mov	r2, #0
-	str	r2, [r3]
-	.loc 2 99 0
-	ldr	r3, .L35+48
-.LPIC59:
-	add	r3, pc, r3
-	mov	r2, #0
-	str	r2, [r3]
-.L32:
-	.loc 2 101 0
-	add	r3, sp, #16
-	mov	r0, r3
-	ldr	r1, .L35+52
-	ldr	r2, .L35+56
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #24
-	mov	r0, r3
-	ldr	r1, .L35+60
-	ldr	r2, .L35+64
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #28]
-	str	r3, [sp]
-	ldr	r3, [sp, #24]
-	ldr	r0, [sp, #36]
-	add	r2, sp, #16
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 102 0
-	ldr	r3, [sp, #32]
-.LBE5:
-	.loc 2 103 0
-	mov	r0, r3
-	add	sp, sp, #44
-	@ sp needed
-	ldr	pc, [sp], #4
-.L36:
-	.align	2
-.L35:
 	.word	x-(.LPIC48+8)
 	.word	y-(.LPIC49+8)
 	.word	x-(.LPIC50+8)
 	.word	y-(.LPIC51+8)
 	.word	x-(.LPIC52+8)
-	.word	314
 	.word	y-(.LPIC53+8)
 	.word	x-(.LPIC54+8)
 	.word	y-(.LPIC55+8)
+	.word	1079164928
+	.word	1078198272
+	.word	1081032704
+	.word	1080623104
+	.cfi_endproc
+.LFE2966:
+	.size	_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, .-_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.section	.text._Z7InGameMP10CIw2DImageS0_S0_i,"ax",%progbits
+	.align	2
+	.global	_Z7InGameMP10CIw2DImageS0_S0_i
+	.hidden	_Z7InGameMP10CIw2DImageS0_S0_i
+	.type	_Z7InGameMP10CIw2DImageS0_S0_i, %function
+_Z7InGameMP10CIw2DImageS0_S0_i:
+.LFB2967:
+	.loc 2 100 0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 72
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+.LCFI5:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #80
+.LCFI6:
+	.cfi_def_cfa_offset 88
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+	ldr	r4, .L37
+.LPIC68:
+	add	r4, pc, r4
+.LBB5:
+	.loc 2 101 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 102 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #68]
+	.loc 2 103 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #64]
+	.loc 2 104 0
+	ldr	r0, [sp, #68]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L37+4
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #56]
+	.loc 2 105 0
+	ldr	r3, [sp, #20]
+	str	r3, [sp, #76]
+	.loc 2 106 0
+	mov	r3, #2
+	str	r3, [sp, #72]
+	.loc 2 107 0
+	mov	r0, #0
+	bl	s3ePointerGetState(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	beq	.L31
+	.loc 2 107 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #72]
+	cmp	r3, #2
+	bne	.L31
+	.loc 2 107 0 discriminator 3
+	mov	r3, #1
+	b	.L32
+.L31:
+	.loc 2 107 0 discriminator 2
+	mov	r3, #0
+.L32:
+	.loc 2 107 0 discriminator 4
+	cmp	r3, #0
+	beq	.L33
+	.loc 2 108 0 is_stmt 1
+	bl	s3ePointerGetX(PLT)
+	mov	r2, r0
+	ldr	r3, .L37+8
+.LPIC56:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 109 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L37+12
+.LPIC57:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 110 0
+	ldr	r3, [sp, #68]
+	mov	r2, #284
+	mul	r3, r2, r3
+	ldr	r2, .L37+16
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L37+20
+.LPIC58:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L34
+	.loc 2 110 0 is_stmt 0 discriminator 1
+	ldr	r3, .L37+24
+.LPIC59:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r3, #0
+	ble	.L34
+	ldr	r2, [sp, #68]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #6
+	ldr	r2, .L37+16
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L37+28
+.LPIC60:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L34
+	ldr	r2, [sp, #64]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L37+32
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L37+36
+.LPIC61:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L34
+	ldr	r3, [sp, #72]
+	cmp	r3, #2
+	bne	.L34
+	ldr	r3, [sp, #16]
+	str	r3, [sp, #76]
+	b	.L34
+.L33:
+	.loc 2 113 0 is_stmt 1
+	ldr	r3, [sp, #68]
+	mov	r2, #284
+	mul	r3, r2, r3
+	ldr	r2, .L37+16
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L37+40
+.LPIC62:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L35
+	.loc 2 113 0 is_stmt 0 discriminator 1
+	ldr	r3, .L37+44
+.LPIC63:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r3, #0
+	ble	.L35
+	ldr	r2, [sp, #68]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #6
+	ldr	r2, .L37+16
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L37+48
+.LPIC64:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L35
+	ldr	r2, [sp, #64]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L37+32
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L37+52
+.LPIC65:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L35
+	ldr	r3, [sp, #72]
+	cmp	r3, #2
+	bne	.L35
+	mov	r3, #3
+	str	r3, [sp, #72]
+.L35:
+	.loc 2 114 0 is_stmt 1
+	ldr	r3, .L37+56
+.LPIC66:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 115 0
+	ldr	r3, .L37+60
+.LPIC67:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 116 0
+	ldr	r3, .L37+64
+	ldr	r3, [r4, r3]
+	ldr	r3, [r3]
+	add	r2, r3, #1
+	ldr	r3, [sp, #8]
+	cmp	r2, r3
+	bne	.L34
+	.loc 2 116 0 is_stmt 0 discriminator 1
+	mov	r3, #4
+	str	r3, [sp, #72]
+.L34:
+	.loc 2 118 0 is_stmt 1
+	add	r3, sp, #24
+	mov	r0, r3
+	mov	r1, #0
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #68]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #64]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #36]
+	str	r3, [sp]
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #12]
+	add	r2, sp, #24
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 119 0
+	ldr	r3, [sp, #68]
+	mov	r2, #284
+	mul	r3, r2, r3
+	ldr	r2, .L37+16
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #56]
+	mov	r2, #0
+	ldr	r3, .L37+68
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #64]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L37+32
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #76]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 120 0
+	ldr	r3, [sp, #72]
+.LBE5:
+	.loc 2 121 0
+	mov	r0, r3
+	add	sp, sp, #80
+	@ sp needed
+	ldmfd	sp!, {r4, pc}
+.L38:
+	.align	2
+.L37:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC68+8)
+	.word	1081344000
 	.word	x-(.LPIC56+8)
 	.word	y-(.LPIC57+8)
+	.word	1717986919
 	.word	x-(.LPIC58+8)
 	.word	y-(.LPIC59+8)
-	.word	1126498304
-	.word	1084227584
-	.word	1125515264
-	.word	1112014848
+	.word	x-(.LPIC60+8)
+	.word	-2004318071
+	.word	y-(.LPIC61+8)
+	.word	x-(.LPIC62+8)
+	.word	y-(.LPIC63+8)
+	.word	x-(.LPIC64+8)
+	.word	y-(.LPIC65+8)
+	.word	x-(.LPIC66+8)
+	.word	y-(.LPIC67+8)
+	.word	MaxLevel(GOT)
+	.word	1078067200
 	.cfi_endproc
 .LFE2967:
-	.size	_Z7InGameMP10CIw2DImageS0_, .-_Z7InGameMP10CIw2DImageS0_
-	.section	.rodata
-	.align	2
-.LC0:
-	.ascii	" x = %i, y = %i \012\000"
+	.size	_Z7InGameMP10CIw2DImageS0_S0_i, .-_Z7InGameMP10CIw2DImageS0_S0_i
 	.section	.text._Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
 	.align	2
 	.global	_Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_
@@ -1056,308 +2194,584 @@ _Z7InGameMP10CIw2DImageS0_:
 	.type	_Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_, %function
 _Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_:
 .LFB2968:
-	.loc 2 106 0
+	.loc 2 124 0
 	.cfi_startproc
-	@ args = 16, pretend = 0, frame = 112
+	@ args = 16, pretend = 0, frame = 128
 	@ frame_needed = 0, uses_anonymous_args = 0
-	str	lr, [sp, #-4]!
+	stmfd	sp!, {r4, lr}
 .LCFI7:
-	.cfi_def_cfa_offset 4
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #124
+	sub	sp, sp, #136
 .LCFI8:
-	.cfi_def_cfa_offset 128
+	.cfi_def_cfa_offset 144
 	str	r0, [sp, #20]
 	str	r1, [sp, #16]
 	str	r2, [sp, #12]
 	str	r3, [sp, #8]
 .LBB6:
-	.loc 2 107 0
+	.loc 2 125 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 126 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #116]
+	.loc 2 127 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #112]
+	.loc 2 128 0
+	ldr	r0, [sp, #116]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L50
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #104]
+	.loc 2 129 0
 	ldr	r3, [sp, #12]
-	str	r3, [sp, #116]
-	.loc 2 108 0
-	ldr	r3, [sp, #128]
-	str	r3, [sp, #112]
-	.loc 2 109 0
-	ldr	r3, [sp, #136]
-	str	r3, [sp, #108]
-	.loc 2 110 0
+	str	r3, [sp, #132]
+	.loc 2 130 0
+	ldr	r3, [sp, #144]
+	str	r3, [sp, #128]
+	.loc 2 131 0
+	ldr	r3, [sp, #152]
+	str	r3, [sp, #124]
+	.loc 2 132 0
 	mov	r3, #3
-	str	r3, [sp, #104]
-	.loc 2 111 0
+	str	r3, [sp, #120]
+	.loc 2 133 0
 	mov	r0, #0
 	bl	s3ePointerGetState(PLT)
 	mov	r3, r0
 	cmp	r3, #0
-	beq	.L38
-	.loc 2 111 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #104]
-	cmp	r3, #3
-	bne	.L38
-	.loc 2 111 0 discriminator 3
-	mov	r3, #1
-	b	.L39
-.L38:
-	.loc 2 111 0 discriminator 2
-	mov	r3, #0
-.L39:
-	.loc 2 111 0 discriminator 4
-	cmp	r3, #0
 	beq	.L40
-	.loc 2 112 0 is_stmt 1
+	.loc 2 133 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #120]
+	cmp	r3, #3
+	bne	.L40
+	.loc 2 133 0 discriminator 3
+	mov	r3, #1
+	b	.L41
+.L40:
+	.loc 2 133 0 discriminator 2
+	mov	r3, #0
+.L41:
+	.loc 2 133 0 discriminator 4
+	cmp	r3, #0
+	beq	.L42
+	.loc 2 134 0 is_stmt 1
 	bl	s3ePointerGetX(PLT)
 	mov	r2, r0
-	ldr	r3, .L48
-.LPIC60:
-	add	r3, pc, r3
-	str	r2, [r3]
-	.loc 2 113 0
-	bl	s3ePointerGetY(PLT)
-	mov	r2, r0
-	ldr	r3, .L48+4
-.LPIC61:
-	add	r3, pc, r3
-	str	r2, [r3]
-	.loc 2 114 0
-	ldr	r3, .L48+8
-.LPIC62:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #36
-	ble	.L41
-	.loc 2 114 0 is_stmt 0 discriminator 1
-	ldr	r3, .L48+12
-.LPIC63:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #95
-	ble	.L41
-	ldr	r3, .L48+16
-.LPIC64:
-	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+20
-	cmp	r2, r3
-	bgt	.L41
-	ldr	r3, .L48+24
-.LPIC65:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #174
-	bgt	.L41
-	ldr	r3, [sp, #104]
-	cmp	r3, #3
-	bne	.L41
-	ldr	r3, [sp, #8]
-	str	r3, [sp, #116]
-.L41:
-	.loc 2 115 0 is_stmt 1
-	ldr	r3, .L48+28
-.LPIC66:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #36
-	ble	.L42
-	.loc 2 115 0 is_stmt 0 discriminator 1
-	ldr	r3, .L48+32
-.LPIC67:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #185
-	ble	.L42
-	ldr	r3, .L48+36
-.LPIC68:
-	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+20
-	cmp	r2, r3
-	bgt	.L42
-	ldr	r3, .L48+40
+	ldr	r3, .L50+4
 .LPIC69:
 	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #304
-	bgt	.L42
-	ldr	r3, [sp, #104]
-	cmp	r3, #3
-	bne	.L42
-	ldr	r3, [sp, #132]
-	str	r3, [sp, #112]
-.L42:
-	.loc 2 116 0 is_stmt 1
-	ldr	r3, .L48+44
+	str	r2, [r3]
+	.loc 2 135 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L50+8
 .LPIC70:
 	add	r3, pc, r3
-	ldr	r3, [r3]
-	cmp	r3, #36
-	ble	.L43
-	.loc 2 116 0 is_stmt 0 discriminator 1
-	ldr	r3, .L48+48
+	str	r2, [r3]
+	.loc 2 136 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+16
 .LPIC71:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #316
-	blt	.L43
-	ldr	r3, .L48+52
+	cmp	r2, r3
+	bge	.L43
+	.loc 2 136 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+24
 .LPIC72:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+20
+	ldr	r3, [r3]
 	cmp	r2, r3
-	bgt	.L43
-	ldr	r3, .L48+56
+	bge	.L43
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+28
 .LPIC73:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+60
+	ldr	r3, [r3]
 	cmp	r2, r3
-	bgt	.L43
-	ldr	r3, [sp, #104]
-	cmp	r3, #3
-	bne	.L43
-	ldr	r3, [sp, #140]
-	str	r3, [sp, #108]
-	b	.L43
-.L40:
-	.loc 2 119 0 is_stmt 1
-	ldr	r3, .L48+64
+	ble	.L43
+	ldr	r3, [sp, #112]
+	mov	r2, #175
+	mul	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+32
 .LPIC74:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+68
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L43
+	ldr	r3, [sp, #120]
+	cmp	r3, #3
+	bne	.L43
+	ldr	r3, [sp, #8]
+	str	r3, [sp, #132]
+.L43:
+	.loc 2 137 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+36
 .LPIC75:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	ldr	r1, .L48+72
+	cmp	r2, r3
+	bge	.L44
+	.loc 2 137 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #112]
+	mov	r2, #185
+	mul	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+40
 .LPIC76:
-	add	r1, pc, r1
-	mov	r0, r1
-	mov	r1, r2
-	mov	r2, r3
-	bl	printf(PLT)
-	.loc 2 120 0
-	ldr	r3, .L48+76
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L44
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+44
 .LPIC77:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #36
+	cmp	r2, r3
 	ble	.L44
-	.loc 2 120 0 is_stmt 0 discriminator 1
-	ldr	r3, .L48+80
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+48
 .LPIC78:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #95
+	cmp	r2, r3
 	ble	.L44
-	ldr	r3, .L48+84
+	ldr	r3, [sp, #120]
+	cmp	r3, #3
+	bne	.L44
+	ldr	r3, [sp, #148]
+	str	r3, [sp, #128]
+.L44:
+	.loc 2 138 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+52
 .LPIC79:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+20
+	ldr	r3, [r3]
 	cmp	r2, r3
-	bgt	.L44
-	ldr	r3, .L48+88
+	bge	.L45
+	.loc 2 138 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+56
 .LPIC80:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #174
-	bgt	.L44
-	ldr	r3, [sp, #104]
-	cmp	r3, #3
-	bne	.L44
-	mov	r3, #2
-	str	r3, [sp, #104]
-.L44:
-	.loc 2 121 0 is_stmt 1
-	ldr	r3, .L48+92
+	cmp	r2, r3
+	bge	.L45
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+60
 .LPIC81:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #36
+	cmp	r2, r3
 	ble	.L45
-	.loc 2 121 0 is_stmt 0 discriminator 1
-	ldr	r3, .L48+96
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+64
 .LPIC82:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #185
+	cmp	r2, r3
 	ble	.L45
-	ldr	r3, .L48+100
+	ldr	r3, [sp, #120]
+	cmp	r3, #3
+	bne	.L45
+	ldr	r3, [sp, #156]
+	str	r3, [sp, #124]
+	b	.L45
+.L42:
+	.loc 2 142 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+68
 .LPIC83:
 	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+20
+	ldr	r3, [r3]
 	cmp	r2, r3
-	bgt	.L45
-	ldr	r3, .L48+104
+	bge	.L46
+	.loc 2 142 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+72
 .LPIC84:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #304
-	bgt	.L45
-	ldr	r3, [sp, #104]
-	cmp	r3, #3
-	bne	.L45
-	mov	r3, #5
-	str	r3, [sp, #104]
-.L45:
-	.loc 2 122 0 is_stmt 1
-	ldr	r3, .L48+108
+	cmp	r2, r3
+	bge	.L46
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+76
 .LPIC85:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #36
+	cmp	r2, r3
 	ble	.L46
-	.loc 2 122 0 is_stmt 0 discriminator 1
-	ldr	r3, .L48+112
+	ldr	r3, [sp, #112]
+	mov	r2, #175
+	mul	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+80
 .LPIC86:
 	add	r3, pc, r3
 	ldr	r3, [r3]
-	cmp	r3, #316
-	blt	.L46
-	ldr	r3, .L48+116
-.LPIC87:
-	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+20
 	cmp	r2, r3
-	bgt	.L46
-	ldr	r3, .L48+120
-.LPIC88:
-	add	r3, pc, r3
-	ldr	r2, [r3]
-	ldr	r3, .L48+60
-	cmp	r2, r3
-	bgt	.L46
-	ldr	r3, [sp, #104]
+	ble	.L46
+	ldr	r3, [sp, #120]
 	cmp	r3, #3
 	bne	.L46
-	mov	r3, #1
-	str	r3, [sp, #104]
+	mov	r3, #2
+	str	r3, [sp, #120]
 .L46:
-	.loc 2 123 0 is_stmt 1
-	ldr	r3, .L48+124
+	.loc 2 143 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+84
+.LPIC87:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L47
+	.loc 2 143 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #112]
+	mov	r2, #185
+	mul	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+88
+.LPIC88:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L47
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+92
 .LPIC89:
 	add	r3, pc, r3
-	mov	r2, #0
-	str	r2, [r3]
-	.loc 2 124 0
-	ldr	r3, .L48+128
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L47
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+96
 .LPIC90:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L47
+	ldr	r3, [sp, #120]
+	cmp	r3, #3
+	bne	.L47
+	mov	r3, #5
+	str	r3, [sp, #120]
+.L47:
+	.loc 2 144 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+100
+.LPIC91:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L48
+	.loc 2 144 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+104
+.LPIC92:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L48
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+108
+.LPIC93:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L48
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L50+112
+.LPIC94:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L48
+	ldr	r3, [sp, #120]
+	cmp	r3, #3
+	bne	.L48
+	mov	r3, #1
+	str	r3, [sp, #120]
+.L48:
+	.loc 2 145 0 is_stmt 1
+	ldr	r3, .L50+116
+.LPIC95:
 	add	r3, pc, r3
 	mov	r2, #0
 	str	r2, [r3]
-.L43:
-	.loc 2 126 0
+	.loc 2 146 0
+	ldr	r3, .L50+120
+.LPIC96:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L45:
+	.loc 2 148 0
 	add	r3, sp, #24
 	mov	r0, r3
 	mov	r1, #0
 	mov	r2, #0
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #32
-	mov	r0, r3
-	ldr	r1, .L48+132
-	ldr	r2, .L48+136
+	ldr	r0, [sp, #116]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #112]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #36]
 	str	r3, [sp]
@@ -1366,16 +2780,67 @@ _Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_:
 	add	r2, sp, #24
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 127 0
-	add	r3, sp, #40
+	.loc 2 149 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+140
-	ldr	r2, .L48+144
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #1
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #48
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L50+124
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+148
-	ldr	r2, .L48+152
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #52]
 	str	r3, [sp]
@@ -1384,90 +2849,235 @@ _Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_:
 	add	r2, sp, #40
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 128 0
-	add	r3, sp, #56
+	.loc 2 150 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+140
-	ldr	r2, .L48+156
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #64
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L50+124
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+148
-	ldr	r2, .L48+152
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #68]
 	str	r3, [sp]
 	ldr	r3, [sp, #64]
-	ldr	r0, [sp, #116]
+	ldr	r0, [sp, #132]
 	add	r2, sp, #56
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 129 0
-	add	r3, sp, #72
+	.loc 2 151 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+140
-	ldr	r2, .L48+160
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #112]
+	mov	r2, #185
+	mul	r3, r2, r3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #80
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L50+124
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+148
-	ldr	r2, .L48+164
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #84]
 	str	r3, [sp]
 	ldr	r3, [sp, #80]
-	ldr	r0, [sp, #112]
+	ldr	r0, [sp, #128]
 	add	r2, sp, #72
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 130 0
-	add	r3, sp, #88
+	.loc 2 152 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L50+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+140
-	ldr	r2, .L48+168
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #88
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #96
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L50+124
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #3
+	ldr	r2, .L50+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L48+148
-	ldr	r2, .L48+164
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #96
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
 	ldr	r3, [sp, #100]
 	str	r3, [sp]
 	ldr	r3, [sp, #96]
-	ldr	r0, [sp, #108]
+	ldr	r0, [sp, #124]
 	add	r2, sp, #88
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 131 0
-	ldr	r3, [sp, #104]
+	.loc 2 153 0
+	ldr	r3, [sp, #120]
 .LBE6:
-	.loc 2 132 0
+	.loc 2 154 0
 	mov	r0, r3
-	add	sp, sp, #124
+	add	sp, sp, #136
 	@ sp needed
-	ldr	pc, [sp], #4
-.L49:
+	ldmfd	sp!, {r4, pc}
+.L51:
 	.align	2
-.L48:
-	.word	x-(.LPIC60+8)
-	.word	y-(.LPIC61+8)
-	.word	x-(.LPIC62+8)
-	.word	y-(.LPIC63+8)
-	.word	x-(.LPIC64+8)
-	.word	285
-	.word	y-(.LPIC65+8)
-	.word	x-(.LPIC66+8)
-	.word	y-(.LPIC67+8)
-	.word	x-(.LPIC68+8)
-	.word	y-(.LPIC69+8)
-	.word	x-(.LPIC70+8)
-	.word	y-(.LPIC71+8)
-	.word	x-(.LPIC72+8)
-	.word	y-(.LPIC73+8)
-	.word	434
-	.word	x-(.LPIC74+8)
-	.word	y-(.LPIC75+8)
-	.word	.LC0-(.LPIC76+8)
+.L50:
+	.word	1081344000
+	.word	x-(.LPIC69+8)
+	.word	y-(.LPIC70+8)
+	.word	1717986919
+	.word	x-(.LPIC71+8)
+	.word	-2004318071
+	.word	y-(.LPIC72+8)
+	.word	x-(.LPIC73+8)
+	.word	y-(.LPIC74+8)
+	.word	x-(.LPIC75+8)
+	.word	y-(.LPIC76+8)
 	.word	x-(.LPIC77+8)
 	.word	y-(.LPIC78+8)
 	.word	x-(.LPIC79+8)
@@ -1482,153 +3092,4405 @@ _Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_:
 	.word	y-(.LPIC88+8)
 	.word	x-(.LPIC89+8)
 	.word	y-(.LPIC90+8)
-	.word	1134559232
-	.word	1140195328
-	.word	1108344832
-	.word	1092616192
-	.word	1132068864
-	.word	1117782016
-	.word	1119748096
-	.word	1127809024
-	.word	1123024896
-	.word	1134395392
+	.word	x-(.LPIC91+8)
+	.word	y-(.LPIC92+8)
+	.word	x-(.LPIC93+8)
+	.word	y-(.LPIC94+8)
+	.word	x-(.LPIC95+8)
+	.word	y-(.LPIC96+8)
+	.word	1081032704
 	.cfi_endproc
 .LFE2968:
 	.size	_Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_, .-_Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_
-	.section	.text._Z5PostMv,"ax",%progbits
+	.section	.text._Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
 	.align	2
-	.global	_Z5PostMv
-	.hidden	_Z5PostMv
-	.type	_Z5PostMv, %function
-_Z5PostMv:
+	.global	_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_
+	.hidden	_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_
+	.type	_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_, %function
+_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_:
 .LFB2969:
-	.loc 2 134 0
+	.loc 2 157 0
 	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 0
-	@ frame_needed = 0, uses_anonymous_args = 0
-	@ link register save eliminated.
-	.loc 2 135 0
-	mov	r3, #0
-	.loc 2 136 0
-	mov	r0, r3
-	bx	lr
-	.cfi_endproc
-.LFE2969:
-	.size	_Z5PostMv, .-_Z5PostMv
-	.section	.text._Z41__static_initialization_and_destruction_0ii,"ax",%progbits
-	.align	2
-	.type	_Z41__static_initialization_and_destruction_0ii, %function
-_Z41__static_initialization_and_destruction_0ii:
-.LFB3279:
-	.loc 2 136 0
-	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 8
+	@ args = 16, pretend = 0, frame = 128
 	@ frame_needed = 0, uses_anonymous_args = 0
 	stmfd	sp!, {r4, lr}
 .LCFI9:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #8
+	sub	sp, sp, #136
 .LCFI10:
+	.cfi_def_cfa_offset 144
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+.LBB7:
+	.loc 2 158 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 159 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #116]
+	.loc 2 160 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #112]
+	.loc 2 161 0
+	ldr	r0, [sp, #116]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L63
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #104]
+	.loc 2 162 0
+	ldr	r3, [sp, #12]
+	str	r3, [sp, #132]
+	.loc 2 163 0
+	ldr	r3, [sp, #144]
+	str	r3, [sp, #128]
+	.loc 2 164 0
+	ldr	r3, [sp, #152]
+	str	r3, [sp, #124]
+	.loc 2 165 0
+	mov	r3, #4
+	str	r3, [sp, #120]
+	.loc 2 166 0
+	mov	r0, #0
+	bl	s3ePointerGetState(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	beq	.L53
+	.loc 2 166 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L53
+	.loc 2 166 0 discriminator 3
+	mov	r3, #1
+	b	.L54
+.L53:
+	.loc 2 166 0 discriminator 2
+	mov	r3, #0
+.L54:
+	.loc 2 166 0 discriminator 4
+	cmp	r3, #0
+	beq	.L55
+	.loc 2 167 0 is_stmt 1
+	bl	s3ePointerGetX(PLT)
+	mov	r2, r0
+	ldr	r3, .L63+4
+.LPIC97:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 168 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L63+8
+.LPIC98:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 169 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+16
+.LPIC99:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L56
+	.loc 2 169 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #112]
+	mov	r2, #180
+	mul	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+24
+.LPIC100:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L56
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+28
+.LPIC101:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L56
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+32
+.LPIC102:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L56
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L56
+	ldr	r3, [sp, #8]
+	str	r3, [sp, #132]
+.L56:
+	.loc 2 170 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+36
+.LPIC103:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L57
+	.loc 2 170 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #8
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+40
+.LPIC104:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L57
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+44
+.LPIC105:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L57
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+48
+.LPIC106:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L57
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L57
+	ldr	r3, [sp, #148]
+	str	r3, [sp, #128]
+.L57:
+	.loc 2 171 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+52
+.LPIC107:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L58
+	.loc 2 171 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+56
+.LPIC108:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L58
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+60
+.LPIC109:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L58
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+64
+.LPIC110:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L58
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L58
+	ldr	r3, [sp, #156]
+	str	r3, [sp, #124]
+	b	.L58
+.L55:
+	.loc 2 174 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+68
+.LPIC111:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L59
+	.loc 2 174 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #112]
+	mov	r2, #180
+	mul	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+72
+.LPIC112:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L59
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+76
+.LPIC113:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L59
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+80
+.LPIC114:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L59
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L59
+	mov	r3, #5
+	str	r3, [sp, #120]
+.L59:
+	.loc 2 175 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+84
+.LPIC115:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L60
+	.loc 2 175 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #8
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+88
+.LPIC116:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L60
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+92
+.LPIC117:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L60
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+96
+.LPIC118:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L60
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L60
+	mov	r3, #1
+	str	r3, [sp, #120]
+.L60:
+	.loc 2 176 0 is_stmt 1
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+100
+.LPIC119:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L61
+	.loc 2 176 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+104
+.LPIC120:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L61
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #6
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+108
+.LPIC121:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L61
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L63+112
+.LPIC122:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L61
+	ldr	r3, [sp, #120]
+	cmp	r3, #4
+	bne	.L61
+	mov	r3, #0
+	str	r3, [sp, #120]
+.L61:
+	.loc 2 177 0 is_stmt 1
+	ldr	r3, .L63+116
+.LPIC123:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 178 0
+	ldr	r3, .L63+120
+.LPIC124:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L58:
+	.loc 2 180 0
+	add	r3, sp, #24
+	mov	r0, r3
+	mov	r1, #0
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #116]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #112]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #36]
+	str	r3, [sp]
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #20]
+	add	r2, sp, #24
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 181 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L63+124
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #16]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 182 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #112]
+	mov	r2, #180
+	mul	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L63+128
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #5
+	add	r3, r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #68]
+	str	r3, [sp]
+	ldr	r3, [sp, #64]
+	ldr	r0, [sp, #132]
+	add	r2, sp, #56
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 183 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #8
+	rsb	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L63+128
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #112]
+	mov	r2, #90
+	mul	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	ldr	r0, [sp, #128]
+	add	r2, sp, #72
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 184 0
+	ldr	r2, [sp, #116]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	ldr	r2, .L63+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #112]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #88
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #104]
+	mov	r2, #0
+	ldr	r3, .L63+128
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #112]
+	mov	r2, #90
+	mul	r3, r2, r3
+	ldr	r2, .L63+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #96
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #100]
+	str	r3, [sp]
+	ldr	r3, [sp, #96]
+	ldr	r0, [sp, #124]
+	add	r2, sp, #88
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 186 0
+	ldr	r3, [sp, #120]
+.LBE7:
+	.loc 2 187 0
+	mov	r0, r3
+	add	sp, sp, #136
+	@ sp needed
+	ldmfd	sp!, {r4, pc}
+.L64:
+	.align	2
+.L63:
+	.word	1081344000
+	.word	x-(.LPIC97+8)
+	.word	y-(.LPIC98+8)
+	.word	1717986919
+	.word	x-(.LPIC99+8)
+	.word	-2004318071
+	.word	y-(.LPIC100+8)
+	.word	x-(.LPIC101+8)
+	.word	y-(.LPIC102+8)
+	.word	x-(.LPIC103+8)
+	.word	y-(.LPIC104+8)
+	.word	x-(.LPIC105+8)
+	.word	y-(.LPIC106+8)
+	.word	x-(.LPIC107+8)
+	.word	y-(.LPIC108+8)
+	.word	x-(.LPIC109+8)
+	.word	y-(.LPIC110+8)
+	.word	x-(.LPIC111+8)
+	.word	y-(.LPIC112+8)
+	.word	x-(.LPIC113+8)
+	.word	y-(.LPIC114+8)
+	.word	x-(.LPIC115+8)
+	.word	y-(.LPIC116+8)
+	.word	x-(.LPIC117+8)
+	.word	y-(.LPIC118+8)
+	.word	x-(.LPIC119+8)
+	.word	y-(.LPIC120+8)
+	.word	x-(.LPIC121+8)
+	.word	y-(.LPIC122+8)
+	.word	x-(.LPIC123+8)
+	.word	y-(.LPIC124+8)
+	.word	1081200640
+	.word	1080623104
+	.cfi_endproc
+.LFE2969:
+	.size	_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_, .-_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_
+	.section	.text._Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
+	.align	2
+	.global	_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.hidden	_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.type	_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, %function
+_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
+.LFB2970:
+	.loc 2 191 0
+	.cfi_startproc
+	@ args = 24, pretend = 0, frame = 152
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+.LCFI11:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #160
+.LCFI12:
+	.cfi_def_cfa_offset 168
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+.LBB8:
+	.loc 2 192 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 193 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #136]
+	.loc 2 194 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #132]
+	.loc 2 195 0
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L78
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #120]
+	.loc 2 196 0
+	ldr	r3, [sp, #12]
+	str	r3, [sp, #156]
+	.loc 2 197 0
+	ldr	r3, [sp, #168]
+	str	r3, [sp, #152]
+	.loc 2 198 0
+	ldr	r3, [sp, #176]
+	str	r3, [sp, #148]
+	.loc 2 199 0
+	ldr	r3, [sp, #184]
+	str	r3, [sp, #144]
+	.loc 2 200 0
+	mov	r3, #7
+	str	r3, [sp, #140]
+	.loc 2 201 0
+	mov	r0, #0
+	bl	s3ePointerGetState(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	beq	.L66
+	.loc 2 201 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L66
+	.loc 2 201 0 discriminator 3
+	mov	r3, #1
+	b	.L67
+.L66:
+	.loc 2 201 0 discriminator 2
+	mov	r3, #0
+.L67:
+	.loc 2 201 0 discriminator 4
+	cmp	r3, #0
+	beq	.L68
+	.loc 2 202 0 is_stmt 1
+	bl	s3ePointerGetX(PLT)
+	mov	r2, r0
+	ldr	r3, .L78+4
+.LPIC125:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 203 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L78+8
+.LPIC126:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 204 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+16
+.LPIC127:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L69
+	.loc 2 204 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+24
+.LPIC128:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L69
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+28
+.LPIC129:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L69
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+32
+.LPIC130:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L69
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L69
+	ldr	r3, [sp, #8]
+	str	r3, [sp, #156]
+.L69:
+	.loc 2 205 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+36
+.LPIC131:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L70
+	.loc 2 205 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+40
+.LPIC132:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L70
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+44
+.LPIC133:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L70
+	ldr	r3, [sp, #132]
+	ldr	r2, .L78+48
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+52
+.LPIC134:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L70
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L70
+	ldr	r3, [sp, #172]
+	str	r3, [sp, #152]
+.L70:
+	.loc 2 206 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+56
+.LPIC135:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L71
+	.loc 2 206 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+60
+.LPIC136:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L71
+	ldr	r3, [sp, #136]
+	mov	r2, #210
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+64
+.LPIC137:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L71
+	ldr	r3, [sp, #132]
+	ldr	r2, .L78+48
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+68
+.LPIC138:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L71
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L71
+	ldr	r3, [sp, #180]
+	str	r3, [sp, #148]
+.L71:
+	.loc 2 207 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+72
+.LPIC139:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L72
+	.loc 2 207 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+76
+.LPIC140:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L72
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+80
+.LPIC141:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L72
+	ldr	r3, [sp, #132]
+	ldr	r2, .L78+48
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+84
+.LPIC142:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L72
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L72
+	ldr	r3, [sp, #188]
+	str	r3, [sp, #144]
+	b	.L72
+.L68:
+	.loc 2 210 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+88
+.LPIC143:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L73
+	.loc 2 210 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+92
+.LPIC144:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L73
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+96
+.LPIC145:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L73
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+100
+.LPIC146:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L73
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L73
+	mov	r3, #0
+	str	r3, [sp, #140]
+.L73:
+	.loc 2 211 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+104
+.LPIC147:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L74
+	.loc 2 211 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+108
+.LPIC148:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L74
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+112
+.LPIC149:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L74
+	ldr	r3, [sp, #132]
+	ldr	r2, .L78+48
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+116
+.LPIC150:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L74
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L74
+	mov	r3, #7
+	str	r3, [sp, #140]
+.L74:
+	.loc 2 212 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+120
+.LPIC151:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L75
+	.loc 2 212 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+124
+.LPIC152:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L75
+	ldr	r3, [sp, #136]
+	mov	r2, #210
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+128
+.LPIC153:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L75
+	ldr	r3, [sp, #132]
+	ldr	r2, .L78+48
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+132
+.LPIC154:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L75
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L75
+	mov	r3, #8
+	str	r3, [sp, #140]
+.L75:
+	.loc 2 213 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+136
+.LPIC155:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L76
+	.loc 2 213 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+140
+.LPIC156:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L76
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+144
+.LPIC157:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L76
+	ldr	r3, [sp, #132]
+	ldr	r2, .L78+48
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L78+148
+.LPIC158:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L76
+	ldr	r3, [sp, #140]
+	cmp	r3, #7
+	bne	.L76
+	mov	r3, #9
+	str	r3, [sp, #140]
+.L76:
+	.loc 2 214 0 is_stmt 1
+	ldr	r3, .L78+152
+.LPIC159:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 215 0
+	ldr	r3, .L78+156
+.LPIC160:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L72:
+	.loc 2 217 0
+	add	r3, sp, #24
+	mov	r0, r3
+	mov	r1, #0
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #132]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #36]
+	str	r3, [sp]
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #20]
+	add	r2, sp, #24
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 218 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L78+160
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #156]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 219 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L78+164
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #68]
+	str	r3, [sp]
+	ldr	r3, [sp, #64]
+	ldr	r0, [sp, #16]
+	add	r2, sp, #56
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 220 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L78+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	ldr	r0, [sp, #152]
+	add	r2, sp, #72
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 221 0
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #88
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L78+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #96
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #100]
+	str	r3, [sp]
+	ldr	r3, [sp, #96]
+	ldr	r0, [sp, #148]
+	add	r2, sp, #88
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 222 0
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L78+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #104
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L78+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L78+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #112
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #116]
+	str	r3, [sp]
+	ldr	r3, [sp, #112]
+	ldr	r0, [sp, #144]
+	add	r2, sp, #104
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 223 0
+	ldr	r3, [sp, #140]
+.LBE8:
+	.loc 2 224 0
+	mov	r0, r3
+	add	sp, sp, #160
+	@ sp needed
+	ldmfd	sp!, {r4, pc}
+.L79:
+	.align	2
+.L78:
+	.word	1081344000
+	.word	x-(.LPIC125+8)
+	.word	y-(.LPIC126+8)
+	.word	1717986919
+	.word	x-(.LPIC127+8)
+	.word	-2004318071
+	.word	y-(.LPIC128+8)
+	.word	x-(.LPIC129+8)
+	.word	y-(.LPIC130+8)
+	.word	x-(.LPIC131+8)
+	.word	y-(.LPIC132+8)
+	.word	x-(.LPIC133+8)
+	.word	470
+	.word	y-(.LPIC134+8)
+	.word	x-(.LPIC135+8)
+	.word	y-(.LPIC136+8)
+	.word	x-(.LPIC137+8)
+	.word	y-(.LPIC138+8)
+	.word	x-(.LPIC139+8)
+	.word	y-(.LPIC140+8)
+	.word	x-(.LPIC141+8)
+	.word	y-(.LPIC142+8)
+	.word	x-(.LPIC143+8)
+	.word	y-(.LPIC144+8)
+	.word	x-(.LPIC145+8)
+	.word	y-(.LPIC146+8)
+	.word	x-(.LPIC147+8)
+	.word	y-(.LPIC148+8)
+	.word	x-(.LPIC149+8)
+	.word	y-(.LPIC150+8)
+	.word	x-(.LPIC151+8)
+	.word	y-(.LPIC152+8)
+	.word	x-(.LPIC153+8)
+	.word	y-(.LPIC154+8)
+	.word	x-(.LPIC155+8)
+	.word	y-(.LPIC156+8)
+	.word	x-(.LPIC157+8)
+	.word	y-(.LPIC158+8)
+	.word	x-(.LPIC159+8)
+	.word	y-(.LPIC160+8)
+	.word	1079164928
+	.word	1081032704
+	.word	1079574528
+	.cfi_endproc
+.LFE2970:
+	.size	_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, .-_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.section	.text._Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
+	.align	2
+	.global	_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.hidden	_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.type	_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, %function
+_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
+.LFB2971:
+	.loc 2 227 0
+	.cfi_startproc
+	@ args = 24, pretend = 0, frame = 152
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+.LCFI13:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #160
+.LCFI14:
+	.cfi_def_cfa_offset 168
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+.LBB9:
+	.loc 2 228 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 229 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #136]
+	.loc 2 230 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #132]
+	.loc 2 231 0
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L93
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #120]
+	.loc 2 232 0
+	ldr	r3, [sp, #12]
+	str	r3, [sp, #156]
+	.loc 2 233 0
+	ldr	r3, [sp, #168]
+	str	r3, [sp, #152]
+	.loc 2 234 0
+	ldr	r3, [sp, #176]
+	str	r3, [sp, #148]
+	.loc 2 235 0
+	ldr	r3, [sp, #184]
+	str	r3, [sp, #144]
+	.loc 2 236 0
+	mov	r3, #8
+	str	r3, [sp, #140]
+	.loc 2 237 0
+	mov	r0, #0
+	bl	s3ePointerGetState(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	beq	.L81
+	.loc 2 237 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L81
+	.loc 2 237 0 discriminator 3
+	mov	r3, #1
+	b	.L82
+.L81:
+	.loc 2 237 0 discriminator 2
+	mov	r3, #0
+.L82:
+	.loc 2 237 0 discriminator 4
+	cmp	r3, #0
+	beq	.L83
+	.loc 2 238 0 is_stmt 1
+	bl	s3ePointerGetX(PLT)
+	mov	r2, r0
+	ldr	r3, .L93+4
+.LPIC161:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 239 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L93+8
+.LPIC162:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 240 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+16
+.LPIC163:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L84
+	.loc 2 240 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+24
+.LPIC164:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L84
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+28
+.LPIC165:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L84
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+32
+.LPIC166:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L84
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L84
+	ldr	r3, [sp, #8]
+	str	r3, [sp, #156]
+.L84:
+	.loc 2 241 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+36
+.LPIC167:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L85
+	.loc 2 241 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+40
+.LPIC168:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L85
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+44
+.LPIC169:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L85
+	ldr	r3, [sp, #132]
+	ldr	r2, .L93+48
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+52
+.LPIC170:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L85
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L85
+	ldr	r3, [sp, #172]
+	str	r3, [sp, #152]
+.L85:
+	.loc 2 242 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+56
+.LPIC171:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L86
+	.loc 2 242 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+60
+.LPIC172:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L86
+	ldr	r3, [sp, #136]
+	mov	r2, #210
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+64
+.LPIC173:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L86
+	ldr	r3, [sp, #132]
+	ldr	r2, .L93+48
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+68
+.LPIC174:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L86
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L86
+	ldr	r3, [sp, #180]
+	str	r3, [sp, #148]
+.L86:
+	.loc 2 243 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+72
+.LPIC175:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L87
+	.loc 2 243 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+76
+.LPIC176:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L87
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+80
+.LPIC177:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L87
+	ldr	r3, [sp, #132]
+	ldr	r2, .L93+48
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+84
+.LPIC178:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L87
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L87
+	ldr	r3, [sp, #188]
+	str	r3, [sp, #144]
+	b	.L87
+.L83:
+	.loc 2 246 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+88
+.LPIC179:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L88
+	.loc 2 246 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+92
+.LPIC180:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L88
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+96
+.LPIC181:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L88
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+100
+.LPIC182:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L88
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L88
+	mov	r3, #0
+	str	r3, [sp, #140]
+.L88:
+	.loc 2 247 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+104
+.LPIC183:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L89
+	.loc 2 247 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+108
+.LPIC184:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L89
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+112
+.LPIC185:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L89
+	ldr	r3, [sp, #132]
+	ldr	r2, .L93+48
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+116
+.LPIC186:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L89
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L89
+	mov	r3, #7
+	str	r3, [sp, #140]
+.L89:
+	.loc 2 248 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+120
+.LPIC187:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L90
+	.loc 2 248 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+124
+.LPIC188:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L90
+	ldr	r3, [sp, #136]
+	mov	r2, #210
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+128
+.LPIC189:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L90
+	ldr	r3, [sp, #132]
+	ldr	r2, .L93+48
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+132
+.LPIC190:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L90
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L90
+	mov	r3, #8
+	str	r3, [sp, #140]
+.L90:
+	.loc 2 249 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+136
+.LPIC191:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L91
+	.loc 2 249 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+140
+.LPIC192:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L91
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+144
+.LPIC193:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L91
+	ldr	r3, [sp, #132]
+	ldr	r2, .L93+48
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L93+148
+.LPIC194:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L91
+	ldr	r3, [sp, #140]
+	cmp	r3, #8
+	bne	.L91
+	mov	r3, #9
+	str	r3, [sp, #140]
+.L91:
+	.loc 2 250 0 is_stmt 1
+	ldr	r3, .L93+152
+.LPIC195:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 251 0
+	ldr	r3, .L93+156
+.LPIC196:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L87:
+	.loc 2 253 0
+	add	r3, sp, #24
+	mov	r0, r3
+	mov	r1, #0
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #132]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #36]
+	str	r3, [sp]
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #20]
+	add	r2, sp, #24
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 254 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L93+160
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #156]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 255 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L93+164
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #68]
+	str	r3, [sp]
+	ldr	r3, [sp, #64]
+	ldr	r0, [sp, #16]
+	add	r2, sp, #56
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 256 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L93+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	ldr	r0, [sp, #152]
+	add	r2, sp, #72
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 257 0
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #88
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L93+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #96
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #100]
+	str	r3, [sp]
+	ldr	r3, [sp, #96]
+	ldr	r0, [sp, #148]
+	add	r2, sp, #88
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 258 0
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L93+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #104
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L93+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L93+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #112
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #116]
+	str	r3, [sp]
+	ldr	r3, [sp, #112]
+	ldr	r0, [sp, #144]
+	add	r2, sp, #104
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 259 0
+	ldr	r3, [sp, #140]
+.LBE9:
+	.loc 2 260 0
+	mov	r0, r3
+	add	sp, sp, #160
+	@ sp needed
+	ldmfd	sp!, {r4, pc}
+.L94:
+	.align	2
+.L93:
+	.word	1081344000
+	.word	x-(.LPIC161+8)
+	.word	y-(.LPIC162+8)
+	.word	1717986919
+	.word	x-(.LPIC163+8)
+	.word	-2004318071
+	.word	y-(.LPIC164+8)
+	.word	x-(.LPIC165+8)
+	.word	y-(.LPIC166+8)
+	.word	x-(.LPIC167+8)
+	.word	y-(.LPIC168+8)
+	.word	x-(.LPIC169+8)
+	.word	470
+	.word	y-(.LPIC170+8)
+	.word	x-(.LPIC171+8)
+	.word	y-(.LPIC172+8)
+	.word	x-(.LPIC173+8)
+	.word	y-(.LPIC174+8)
+	.word	x-(.LPIC175+8)
+	.word	y-(.LPIC176+8)
+	.word	x-(.LPIC177+8)
+	.word	y-(.LPIC178+8)
+	.word	x-(.LPIC179+8)
+	.word	y-(.LPIC180+8)
+	.word	x-(.LPIC181+8)
+	.word	y-(.LPIC182+8)
+	.word	x-(.LPIC183+8)
+	.word	y-(.LPIC184+8)
+	.word	x-(.LPIC185+8)
+	.word	y-(.LPIC186+8)
+	.word	x-(.LPIC187+8)
+	.word	y-(.LPIC188+8)
+	.word	x-(.LPIC189+8)
+	.word	y-(.LPIC190+8)
+	.word	x-(.LPIC191+8)
+	.word	y-(.LPIC192+8)
+	.word	x-(.LPIC193+8)
+	.word	y-(.LPIC194+8)
+	.word	x-(.LPIC195+8)
+	.word	y-(.LPIC196+8)
+	.word	1079164928
+	.word	1081032704
+	.word	1079574528
+	.cfi_endproc
+.LFE2971:
+	.size	_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, .-_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.section	.text._Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_,"ax",%progbits
+	.align	2
+	.global	_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.hidden	_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.type	_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, %function
+_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_:
+.LFB2972:
+	.loc 2 263 0
+	.cfi_startproc
+	@ args = 24, pretend = 0, frame = 152
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+.LCFI15:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #160
+.LCFI16:
+	.cfi_def_cfa_offset 168
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+.LBB10:
+	.loc 2 264 0
+	bl	_Z8Iw2DInitv(PLT)
+	.loc 2 265 0
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #136]
+	.loc 2 266 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #132]
+	.loc 2 267 0
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L108
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #120]
+	.loc 2 268 0
+	ldr	r3, [sp, #12]
+	str	r3, [sp, #156]
+	.loc 2 269 0
+	ldr	r3, [sp, #168]
+	str	r3, [sp, #152]
+	.loc 2 270 0
+	ldr	r3, [sp, #176]
+	str	r3, [sp, #148]
+	.loc 2 271 0
+	ldr	r3, [sp, #184]
+	str	r3, [sp, #144]
+	.loc 2 272 0
+	mov	r3, #9
+	str	r3, [sp, #140]
+	.loc 2 273 0
+	mov	r0, #0
+	bl	s3ePointerGetState(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	beq	.L96
+	.loc 2 273 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L96
+	.loc 2 273 0 discriminator 3
+	mov	r3, #1
+	b	.L97
+.L96:
+	.loc 2 273 0 discriminator 2
+	mov	r3, #0
+.L97:
+	.loc 2 273 0 discriminator 4
+	cmp	r3, #0
+	beq	.L98
+	.loc 2 274 0 is_stmt 1
+	bl	s3ePointerGetX(PLT)
+	mov	r2, r0
+	ldr	r3, .L108+4
+.LPIC197:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 275 0
+	bl	s3ePointerGetY(PLT)
+	mov	r2, r0
+	ldr	r3, .L108+8
+.LPIC198:
+	add	r3, pc, r3
+	str	r2, [r3]
+	.loc 2 276 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+16
+.LPIC199:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L99
+	.loc 2 276 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+24
+.LPIC200:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L99
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+28
+.LPIC201:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L99
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+32
+.LPIC202:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L99
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L99
+	ldr	r3, [sp, #8]
+	str	r3, [sp, #156]
+.L99:
+	.loc 2 277 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+36
+.LPIC203:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L100
+	.loc 2 277 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+40
+.LPIC204:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L100
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+44
+.LPIC205:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L100
+	ldr	r3, [sp, #132]
+	ldr	r2, .L108+48
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+52
+.LPIC206:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L100
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L100
+	ldr	r3, [sp, #172]
+	str	r3, [sp, #152]
+.L100:
+	.loc 2 278 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+56
+.LPIC207:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L101
+	.loc 2 278 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+60
+.LPIC208:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L101
+	ldr	r3, [sp, #136]
+	mov	r2, #210
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+64
+.LPIC209:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L101
+	ldr	r3, [sp, #132]
+	ldr	r2, .L108+48
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+68
+.LPIC210:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L101
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L101
+	ldr	r3, [sp, #180]
+	str	r3, [sp, #148]
+.L101:
+	.loc 2 279 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+72
+.LPIC211:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L102
+	.loc 2 279 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+76
+.LPIC212:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L102
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+80
+.LPIC213:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L102
+	ldr	r3, [sp, #132]
+	ldr	r2, .L108+48
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+84
+.LPIC214:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L102
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L102
+	ldr	r3, [sp, #188]
+	str	r3, [sp, #144]
+	b	.L102
+.L98:
+	.loc 2 282 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+88
+.LPIC215:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L103
+	.loc 2 282 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+92
+.LPIC216:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L103
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+96
+.LPIC217:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L103
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+100
+.LPIC218:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L103
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L103
+	mov	r3, #0
+	str	r3, [sp, #140]
+.L103:
+	.loc 2 283 0 is_stmt 1
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+104
+.LPIC219:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L104
+	.loc 2 283 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+108
+.LPIC220:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L104
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	rsb	r3, r2, r3
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+112
+.LPIC221:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L104
+	ldr	r3, [sp, #132]
+	ldr	r2, .L108+48
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+116
+.LPIC222:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L104
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L104
+	mov	r3, #7
+	str	r3, [sp, #140]
+.L104:
+	.loc 2 284 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+120
+.LPIC223:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L105
+	.loc 2 284 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+124
+.LPIC224:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L105
+	ldr	r3, [sp, #136]
+	mov	r2, #210
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+128
+.LPIC225:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L105
+	ldr	r3, [sp, #132]
+	ldr	r2, .L108+48
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+132
+.LPIC226:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L105
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L105
+	mov	r3, #8
+	str	r3, [sp, #140]
+.L105:
+	.loc 2 285 0 is_stmt 1
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+136
+.LPIC227:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L106
+	.loc 2 285 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+140
+.LPIC228:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	bge	.L106
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #6
+	rsb	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+144
+.LPIC229:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L106
+	ldr	r3, [sp, #132]
+	ldr	r2, .L108+48
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, .L108+148
+.LPIC230:
+	add	r3, pc, r3
+	ldr	r3, [r3]
+	cmp	r2, r3
+	ble	.L106
+	ldr	r3, [sp, #140]
+	cmp	r3, #9
+	bne	.L106
+	mov	r3, #9
+	str	r3, [sp, #140]
+.L106:
+	.loc 2 286 0 is_stmt 1
+	ldr	r3, .L108+152
+.LPIC231:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+	.loc 2 287 0
+	ldr	r3, .L108+156
+.LPIC232:
+	add	r3, pc, r3
+	mov	r2, #0
+	str	r2, [r3]
+.L102:
+	.loc 2 289 0
+	add	r3, sp, #24
+	mov	r0, r3
+	mov	r1, #0
+	mov	r2, #0
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #136]
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r0, [sp, #132]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #36]
+	str	r3, [sp]
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #20]
+	add	r2, sp, #24
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 290 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L108+160
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #156]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 291 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #3
+	add	r3, r3, r2
+	mov	r3, r3, asl #2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #56
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L108+164
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #132]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #64
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #68]
+	str	r3, [sp]
+	ldr	r3, [sp, #64]
+	ldr	r0, [sp, #16]
+	add	r2, sp, #56
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 292 0
+	ldr	r2, [sp, #136]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #72
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L108+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #80
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #84]
+	str	r3, [sp]
+	ldr	r3, [sp, #80]
+	ldr	r0, [sp, #152]
+	add	r2, sp, #72
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 293 0
+	ldr	r3, [sp, #136]
+	mov	r2, #110
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #88
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L108+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #96
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #100]
+	str	r3, [sp]
+	ldr	r3, [sp, #96]
+	ldr	r0, [sp, #148]
+	add	r2, sp, #88
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 294 0
+	ldr	r3, [sp, #136]
+	mov	r2, #215
+	mul	r3, r2, r3
+	ldr	r2, .L108+12
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #2
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	add	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #104
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #120]
+	mov	r2, #0
+	ldr	r3, .L108+168
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #132]
+	mov	r3, r2
+	mov	r3, r3, asl #1
+	add	r3, r3, r2
+	mov	r2, r3, asl #4
+	rsb	r3, r3, r2
+	ldr	r2, .L108+20
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #112
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #116]
+	str	r3, [sp]
+	ldr	r3, [sp, #112]
+	ldr	r0, [sp, #144]
+	add	r2, sp, #104
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 295 0
+	ldr	r3, [sp, #140]
+.LBE10:
+	.loc 2 296 0
+	mov	r0, r3
+	add	sp, sp, #160
+	@ sp needed
+	ldmfd	sp!, {r4, pc}
+.L109:
+	.align	2
+.L108:
+	.word	1081344000
+	.word	x-(.LPIC197+8)
+	.word	y-(.LPIC198+8)
+	.word	1717986919
+	.word	x-(.LPIC199+8)
+	.word	-2004318071
+	.word	y-(.LPIC200+8)
+	.word	x-(.LPIC201+8)
+	.word	y-(.LPIC202+8)
+	.word	x-(.LPIC203+8)
+	.word	y-(.LPIC204+8)
+	.word	x-(.LPIC205+8)
+	.word	470
+	.word	y-(.LPIC206+8)
+	.word	x-(.LPIC207+8)
+	.word	y-(.LPIC208+8)
+	.word	x-(.LPIC209+8)
+	.word	y-(.LPIC210+8)
+	.word	x-(.LPIC211+8)
+	.word	y-(.LPIC212+8)
+	.word	x-(.LPIC213+8)
+	.word	y-(.LPIC214+8)
+	.word	x-(.LPIC215+8)
+	.word	y-(.LPIC216+8)
+	.word	x-(.LPIC217+8)
+	.word	y-(.LPIC218+8)
+	.word	x-(.LPIC219+8)
+	.word	y-(.LPIC220+8)
+	.word	x-(.LPIC221+8)
+	.word	y-(.LPIC222+8)
+	.word	x-(.LPIC223+8)
+	.word	y-(.LPIC224+8)
+	.word	x-(.LPIC225+8)
+	.word	y-(.LPIC226+8)
+	.word	x-(.LPIC227+8)
+	.word	y-(.LPIC228+8)
+	.word	x-(.LPIC229+8)
+	.word	y-(.LPIC230+8)
+	.word	x-(.LPIC231+8)
+	.word	y-(.LPIC232+8)
+	.word	1079164928
+	.word	1081032704
+	.word	1079574528
+	.cfi_endproc
+.LFE2972:
+	.size	_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_, .-_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_
+	.section	.text._Z41__static_initialization_and_destruction_0ii,"ax",%progbits
+	.align	2
+	.type	_Z41__static_initialization_and_destruction_0ii, %function
+_Z41__static_initialization_and_destruction_0ii:
+.LFB3282:
+	.loc 2 296 0
+	.cfi_startproc
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+.LCFI17:
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
+	.cfi_offset 14, -4
+	sub	sp, sp, #8
+.LCFI18:
 	.cfi_def_cfa_offset 16
 	str	r0, [sp, #4]
 	str	r1, [sp]
-	ldr	r4, .L54
-.LPIC93:
+	ldr	r4, .L112
+.LPIC235:
 	add	r4, pc, r4
-	.loc 2 136 0
+	.loc 2 296 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
-	bne	.L52
-	.loc 2 136 0 is_stmt 0 discriminator 1
+	bne	.L110
+	.loc 2 296 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp]
-	ldr	r3, .L54+4
+	ldr	r3, .L112+4
 	cmp	r2, r3
-	bne	.L52
+	bne	.L110
 	.file 3 "c:/marmalade/7.5/s3e/h/std/c++/iostream"
 	.loc 3 69 0 is_stmt 1
-	ldr	r3, .L54+8
-.LPIC91:
+	ldr	r3, .L112+8
+.LPIC233:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base9_Loc_initC1Ev(PLT)
-	ldr	r3, .L54+12
-.LPIC92:
+	ldr	r3, .L112+12
+.LPIC234:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r3, .L54+16
+	ldr	r3, .L112+16
 	ldr	r3, [r4, r3]
 	mov	r1, r3
-	ldr	r3, .L54+20
-.LPIC94:
+	ldr	r3, .L112+20
+.LPIC236:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 	.loc 3 75 0
-	ldr	r3, .L54+24
-.LPIC95:
+	ldr	r3, .L112+24
+.LPIC237:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base4InitC1Ev(PLT)
-	ldr	r3, .L54+28
-.LPIC96:
+	ldr	r3, .L112+28
+.LPIC238:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r3, .L54+32
+	ldr	r3, .L112+32
 	ldr	r3, [r4, r3]
 	mov	r1, r3
-	ldr	r3, .L54+36
-.LPIC97:
+	ldr	r3, .L112+36
+.LPIC239:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
-.L52:
-	.loc 2 136 0
+.L110:
+	.loc 2 296 0
 	add	sp, sp, #8
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
-.L55:
+.L113:
 	.align	2
-.L54:
-	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC93+8)
+.L112:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC235+8)
 	.word	65535
-	.word	_ZN4_STLL8_LocInitE-(.LPIC91+8)
-	.word	_ZN4_STLL8_LocInitE-(.LPIC92+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC233+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC234+8)
 	.word	_ZN4_STL8ios_base9_Loc_initD1Ev(GOT)
-	.word	__dso_handle-(.LPIC94+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC95+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC96+8)
+	.word	__dso_handle-(.LPIC236+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC237+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC238+8)
 	.word	_ZN4_STL8ios_base4InitD1Ev(GOT)
-	.word	__dso_handle-(.LPIC97+8)
+	.word	__dso_handle-(.LPIC239+8)
 	.cfi_endproc
-.LFE3279:
+.LFE3282:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
 	.section	.text._GLOBAL__sub_I_menu.cpp,"ax",%progbits
 	.align	2
 	.type	_GLOBAL__sub_I_menu.cpp, %function
 _GLOBAL__sub_I_menu.cpp:
-.LFB3280:
-	.loc 2 136 0
+.LFB3283:
+	.loc 2 296 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
 	stmfd	sp!, {r3, lr}
-.LCFI11:
+.LCFI19:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 3, -8
 	.cfi_offset 14, -4
-	.loc 2 136 0
+	.loc 2 296 0
 	mov	r0, #1
-	ldr	r1, .L57
+	ldr	r1, .L115
 	bl	_Z41__static_initialization_and_destruction_0ii(PLT)
 	ldmfd	sp!, {r3, pc}
-.L58:
+.L116:
 	.align	2
-.L57:
+.L115:
 	.word	65535
 	.cfi_endproc
-.LFE3280:
+.LFE3283:
 	.size	_GLOBAL__sub_I_menu.cpp, .-_GLOBAL__sub_I_menu.cpp
 	.section	.init_array,"aw",%init_array
 	.align	2
@@ -1680,19 +7542,20 @@ _GLOBAL__sub_I_menu.cpp:
 	.file 46 "c:/marmalade/7.5/modules/iwgeom/h/IwGeomSqrt.h"
 	.file 47 "c:/marmalade/7.5/modules/iwutil/h/IwMenu.h"
 	.file 48 "c:/marmalade/7.5/modules/iwutil/h/IwTextParserITX.h"
-	.file 49 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
-	.file 50 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
+	.file 49 "d:/School/cs115/AmazingMaze/MazeGenerator.h"
+	.file 50 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
+	.file 51 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x686a
+	.4byte	0x6da5
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF1003
+	.4byte	.LASF1028
 	.byte	0x4
-	.4byte	.LASF1004
-	.4byte	.LASF1005
+	.4byte	.LASF1029
+	.4byte	.LASF1030
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -2738,9 +8601,9 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0
 	.uleb128 0x20
 	.ascii	"buf\000"
-	.byte	0x31
+	.byte	0x32
 	.byte	0x58
-	.4byte	.LASF1006
+	.4byte	.LASF1031
 	.4byte	0x1f4
 	.byte	0x1
 	.byte	0x1
@@ -2749,7 +8612,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x13
 	.2byte	0x125
 	.4byte	.LASF69
-	.4byte	0x6805
+	.4byte	0x6d40
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x21
@@ -2757,7 +8620,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x13
 	.2byte	0x126
 	.4byte	.LASF70
-	.4byte	0x6805
+	.4byte	0x6d40
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x22
@@ -2765,7 +8628,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x14
 	.byte	0x25
 	.4byte	.LASF73
-	.4byte	0x6810
+	.4byte	0x6d4b
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x22
@@ -2773,7 +8636,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x14
 	.byte	0x3f
 	.4byte	.LASF74
-	.4byte	0x6805
+	.4byte	0x6d40
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x23
@@ -5736,7 +11599,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0
 	.uleb128 0x36
 	.byte	0x4
-	.byte	0x32
+	.byte	0x33
 	.byte	0x26
 	.4byte	0x221e
 	.uleb128 0x7
@@ -5889,7 +11752,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x22ff
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x6831
+	.4byte	0x6d6c
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -7306,7 +13169,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"Pop\000"
 	.byte	0x21
 	.2byte	0x180
-	.4byte	.LASF1007
+	.4byte	.LASF1032
 	.4byte	0x22ff
 	.byte	0x1
 	.4byte	0x2f6d
@@ -7629,7 +13492,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x1eab
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x6843
+	.4byte	0x6d7e
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -8625,7 +14488,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x3af0
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x6855
+	.4byte	0x6d90
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -9555,7 +15418,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x3a44
 	.uleb128 0x3c
 	.4byte	.LASF419
-	.4byte	0x685b
+	.4byte	0x6d96
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -9597,7 +15460,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.sleb128 1
 	.byte	0
 	.uleb128 0x44
-	.4byte	.LASF1008
+	.4byte	.LASF1033
 	.byte	0x4
 	.byte	0x26
 	.2byte	0x279
@@ -9614,7 +15477,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.sleb128 2
 	.byte	0
 	.uleb128 0x45
-	.4byte	.LASF1009
+	.4byte	.LASF1034
 	.byte	0x8
 	.byte	0x26
 	.2byte	0x298
@@ -10795,7 +16658,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x4382
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x6861
+	.4byte	0x6d9c
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -11710,7 +17573,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x4d27
 	.uleb128 0x3c
 	.4byte	.LASF419
-	.4byte	0x6867
+	.4byte	0x6da2
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -11853,7 +17716,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LASF826
 	.byte	0x27
 	.byte	0x6a
-	.4byte	.LASF1010
+	.4byte	.LASF1035
 	.byte	0x1
 	.4byte	0x56f5
 	.uleb128 0x1b
@@ -13246,7 +19109,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x2c
 	.byte	0x2a
 	.uleb128 0x55
-	.4byte	.LASF1011
+	.4byte	.LASF1036
 	.byte	0x4
 	.byte	0x2d
 	.byte	0x2a
@@ -13397,7 +19260,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x63a1
 	.uleb128 0x59
 	.byte	0x4
-	.4byte	.LASF1012
+	.4byte	.LASF1037
 	.4byte	0x6390
 	.uleb128 0x10
 	.byte	0x4
@@ -13408,7 +19271,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x63bf
 	.4byte	0x63de
 	.uleb128 0x5b
-	.4byte	.LASF1013
+	.4byte	.LASF1038
 	.4byte	0x63de
 	.byte	0x1
 	.uleb128 0x5c
@@ -13426,7 +19289,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x1b77
 	.uleb128 0x5d
 	.4byte	0x63b1
-	.4byte	.LASF1014
+	.4byte	.LASF1039
 	.4byte	.LFB194
 	.4byte	.LFE194
 	.4byte	.LLST0
@@ -13451,16 +19314,16 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0
 	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF955
+	.4byte	.LASF957
 	.byte	0x2
 	.byte	0x14
-	.4byte	.LASF957
+	.4byte	.LASF959
 	.4byte	0x62
 	.4byte	.LFB2965
 	.4byte	.LFE2965
 	.4byte	.LLST1
 	.byte	0x1
-	.4byte	0x649e
+	.4byte	0x64ec
 	.uleb128 0x60
 	.4byte	.LASF950
 	.byte	0x2
@@ -13468,7 +19331,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -68
+	.sleb128 -108
 	.uleb128 0x60
 	.4byte	.LASF951
 	.byte	0x2
@@ -13476,7 +19339,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -72
+	.sleb128 -112
 	.uleb128 0x60
 	.4byte	.LASF952
 	.byte	0x2
@@ -13484,7 +19347,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -76
+	.sleb128 -116
 	.uleb128 0x60
 	.4byte	.LASF953
 	.byte	0x2
@@ -13492,116 +19355,164 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -80
-	.uleb128 0x61
-	.4byte	.LBB3
-	.4byte	.LBE3
-	.uleb128 0x62
+	.sleb128 -120
+	.uleb128 0x60
 	.4byte	.LASF954
 	.byte	0x2
-	.byte	0x15
-	.4byte	0x62
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -12
-	.uleb128 0x63
-	.ascii	"PBT\000"
-	.byte	0x2
-	.byte	0x16
-	.4byte	0x6320
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -16
-	.byte	0
-	.byte	0
-	.uleb128 0x5f
-	.byte	0x1
-	.4byte	.LASF956
-	.byte	0x2
-	.byte	0x28
-	.4byte	.LASF958
-	.4byte	0x62
-	.4byte	.LFB2966
-	.4byte	.LFE2966
-	.4byte	.LLST2
-	.byte	0x1
-	.4byte	0x65a0
-	.uleb128 0x60
-	.4byte	.LASF959
-	.byte	0x2
-	.byte	0x28
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -132
-	.uleb128 0x60
-	.4byte	.LASF960
-	.byte	0x2
-	.byte	0x28
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -136
-	.uleb128 0x60
-	.4byte	.LASF961
-	.byte	0x2
-	.byte	0x28
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -140
-	.uleb128 0x60
-	.4byte	.LASF962
-	.byte	0x2
-	.byte	0x28
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -144
-	.uleb128 0x60
-	.4byte	.LASF963
-	.byte	0x2
-	.byte	0x29
+	.byte	0x14
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 0
 	.uleb128 0x60
+	.4byte	.LASF955
+	.byte	0x2
+	.byte	0x14
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 4
+	.uleb128 0x61
+	.4byte	.LBB3
+	.4byte	.LBE3
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x16
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0x17
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0x18
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -40
+	.uleb128 0x63
+	.4byte	.LASF956
+	.byte	0x2
+	.byte	0x19
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x62
+	.ascii	"PBT\000"
+	.byte	0x2
+	.byte	0x1a
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x62
+	.ascii	"SBT\000"
+	.byte	0x2
+	.byte	0x1b
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.byte	0
+	.uleb128 0x5f
+	.byte	0x1
+	.4byte	.LASF958
+	.byte	0x2
+	.byte	0x30
+	.4byte	.LASF960
+	.4byte	0x62
+	.4byte	.LFB2966
+	.4byte	.LFE2966
+	.4byte	.LLST2
+	.byte	0x1
+	.4byte	0x6612
+	.uleb128 0x60
+	.4byte	.LASF961
+	.byte	0x2
+	.byte	0x30
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -148
+	.uleb128 0x60
+	.4byte	.LASF962
+	.byte	0x2
+	.byte	0x30
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -152
+	.uleb128 0x60
+	.4byte	.LASF963
+	.byte	0x2
+	.byte	0x30
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -156
+	.uleb128 0x60
 	.4byte	.LASF964
 	.byte	0x2
-	.byte	0x29
+	.byte	0x30
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -160
+	.uleb128 0x60
+	.4byte	.LASF965
+	.byte	0x2
+	.byte	0x31
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x60
+	.4byte	.LASF966
+	.byte	0x2
+	.byte	0x31
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 4
 	.uleb128 0x60
-	.4byte	.LASF965
+	.4byte	.LASF967
 	.byte	0x2
-	.byte	0x29
+	.byte	0x31
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 8
 	.uleb128 0x60
-	.4byte	.LASF966
+	.4byte	.LASF968
 	.byte	0x2
-	.byte	0x29
+	.byte	0x31
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 12
 	.uleb128 0x60
-	.4byte	.LASF967
+	.4byte	.LASF969
 	.byte	0x2
-	.byte	0x29
+	.byte	0x31
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 16
 	.uleb128 0x60
-	.4byte	.LASF968
+	.4byte	.LASF970
 	.byte	0x2
-	.byte	0x29
+	.byte	0x31
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
@@ -13609,42 +19520,66 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x61
 	.4byte	.LBB4
 	.4byte	.LBE4
-	.uleb128 0x63
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x33
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0x34
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -36
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0x35
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -48
+	.uleb128 0x62
 	.ascii	"BBT\000"
 	.byte	0x2
-	.byte	0x2a
+	.byte	0x36
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x63
+	.uleb128 0x62
 	.ascii	"EBT\000"
 	.byte	0x2
-	.byte	0x2b
+	.byte	0x37
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
-	.uleb128 0x63
+	.uleb128 0x62
 	.ascii	"MBT\000"
 	.byte	0x2
-	.byte	0x2c
+	.byte	0x38
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
-	.uleb128 0x63
+	.uleb128 0x62
 	.ascii	"HBT\000"
 	.byte	0x2
-	.byte	0x2d
+	.byte	0x39
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -24
-	.uleb128 0x62
-	.4byte	.LASF954
+	.uleb128 0x63
+	.4byte	.LASF956
 	.byte	0x2
-	.byte	0x2e
+	.byte	0x3a
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13653,47 +19588,87 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0
 	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF969
+	.4byte	.LASF971
 	.byte	0x2
-	.byte	0x58
-	.4byte	.LASF970
+	.byte	0x64
+	.4byte	.LASF972
 	.4byte	0x62
 	.4byte	.LFB2967
 	.4byte	.LFE2967
 	.4byte	.LLST3
 	.byte	0x1
-	.4byte	0x6604
+	.4byte	0x66b9
 	.uleb128 0x60
-	.4byte	.LASF971
+	.4byte	.LASF973
 	.byte	0x2
-	.byte	0x58
+	.byte	0x64
 	.4byte	0x6320
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -36
+	.sleb128 -68
 	.uleb128 0x60
-	.4byte	.LASF972
+	.4byte	.LASF974
 	.byte	0x2
-	.byte	0x58
+	.byte	0x64
 	.4byte	0x6320
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -40
+	.sleb128 -72
+	.uleb128 0x64
+	.ascii	"BG\000"
+	.byte	0x2
+	.byte	0x64
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -76
+	.uleb128 0x60
+	.4byte	.LASF975
+	.byte	0x2
+	.byte	0x64
+	.4byte	0x62
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -80
 	.uleb128 0x61
 	.4byte	.LBB5
 	.4byte	.LBE5
-	.uleb128 0x63
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x66
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0x67
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0x68
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x62
 	.ascii	"PBT\000"
 	.byte	0x2
-	.byte	0x59
+	.byte	0x69
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x62
-	.4byte	.LASF954
+	.uleb128 0x63
+	.4byte	.LASF956
 	.byte	0x2
-	.byte	0x5a
+	.byte	0x6a
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13702,76 +19677,76 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0
 	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF973
+	.4byte	.LASF976
 	.byte	0x2
-	.byte	0x69
-	.4byte	.LASF974
+	.byte	0x7b
+	.4byte	.LASF977
 	.4byte	0x62
 	.4byte	.LFB2968
 	.4byte	.LFE2968
 	.4byte	.LLST4
 	.byte	0x1
-	.4byte	0x66dc
-	.uleb128 0x60
-	.4byte	.LASF975
-	.byte	0x2
-	.byte	0x69
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -108
-	.uleb128 0x60
-	.4byte	.LASF976
-	.byte	0x2
-	.byte	0x69
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -112
-	.uleb128 0x60
-	.4byte	.LASF977
-	.byte	0x2
-	.byte	0x69
-	.4byte	0x6320
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -116
+	.4byte	0x67b5
 	.uleb128 0x60
 	.4byte	.LASF978
 	.byte	0x2
-	.byte	0x69
+	.byte	0x7b
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -120
+	.sleb128 -124
 	.uleb128 0x60
 	.4byte	.LASF979
 	.byte	0x2
-	.byte	0x6a
+	.byte	0x7b
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -128
+	.uleb128 0x60
+	.4byte	.LASF980
+	.byte	0x2
+	.byte	0x7b
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -132
+	.uleb128 0x60
+	.4byte	.LASF981
+	.byte	0x2
+	.byte	0x7b
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -136
+	.uleb128 0x60
+	.4byte	.LASF982
+	.byte	0x2
+	.byte	0x7c
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 0
 	.uleb128 0x60
-	.4byte	.LASF980
+	.4byte	.LASF983
 	.byte	0x2
-	.byte	0x6a
+	.byte	0x7c
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 4
 	.uleb128 0x60
-	.4byte	.LASF981
+	.4byte	.LASF984
 	.byte	0x2
-	.byte	0x6a
+	.byte	0x7c
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 8
 	.uleb128 0x60
-	.4byte	.LASF982
+	.4byte	.LASF985
 	.byte	0x2
-	.byte	0x6a
+	.byte	0x7c
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
@@ -13779,94 +19754,725 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x61
 	.4byte	.LBB6
 	.4byte	.LBE6
-	.uleb128 0x63
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x7e
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0x7f
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0x80
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -40
+	.uleb128 0x62
 	.ascii	"RBT\000"
 	.byte	0x2
-	.byte	0x6b
+	.byte	0x81
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x62
-	.4byte	.LASF983
+	.uleb128 0x63
+	.4byte	.LASF986
 	.byte	0x2
-	.byte	0x6c
+	.byte	0x82
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
-	.uleb128 0x62
-	.4byte	.LASF984
+	.uleb128 0x63
+	.4byte	.LASF987
 	.byte	0x2
-	.byte	0x6d
+	.byte	0x83
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
-	.uleb128 0x62
-	.4byte	.LASF954
+	.uleb128 0x63
+	.4byte	.LASF956
 	.byte	0x2
-	.byte	0x6e
+	.byte	0x84
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
 	.byte	0
-	.uleb128 0x64
+	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF1015
+	.4byte	.LASF988
 	.byte	0x2
-	.byte	0x86
-	.4byte	.LASF1016
+	.byte	0x9c
+	.4byte	.LASF989
 	.4byte	0x62
 	.4byte	.LFB2969
 	.4byte	.LFE2969
-	.byte	0x2
-	.byte	0x7d
-	.sleb128 0
-	.byte	0x1
-	.uleb128 0x65
-	.4byte	.LASF1017
-	.byte	0x1
-	.4byte	.LFB3279
-	.4byte	.LFE3279
 	.4byte	.LLST5
 	.byte	0x1
-	.4byte	0x672c
+	.4byte	0x68b1
+	.uleb128 0x60
+	.4byte	.LASF990
+	.byte	0x2
+	.byte	0x9c
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -124
+	.uleb128 0x60
+	.4byte	.LASF991
+	.byte	0x2
+	.byte	0x9c
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -128
+	.uleb128 0x60
+	.4byte	.LASF992
+	.byte	0x2
+	.byte	0x9c
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -132
+	.uleb128 0x60
+	.4byte	.LASF993
+	.byte	0x2
+	.byte	0x9c
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -136
+	.uleb128 0x60
+	.4byte	.LASF984
+	.byte	0x2
+	.byte	0x9d
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 0
 	.uleb128 0x60
 	.4byte	.LASF985
 	.byte	0x2
-	.byte	0x88
+	.byte	0x9d
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 4
+	.uleb128 0x60
+	.4byte	.LASF994
+	.byte	0x2
+	.byte	0x9d
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x60
+	.4byte	.LASF995
+	.byte	0x2
+	.byte	0x9d
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 12
+	.uleb128 0x61
+	.4byte	.LBB7
+	.4byte	.LBE7
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x9f
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0xa0
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0xa1
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -40
+	.uleb128 0x62
+	.ascii	"RBT\000"
+	.byte	0x2
+	.byte	0xa2
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x63
+	.4byte	.LASF987
+	.byte	0x2
+	.byte	0xa3
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x63
+	.4byte	.LASF996
+	.byte	0x2
+	.byte	0xa4
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x63
+	.4byte	.LASF956
+	.byte	0x2
+	.byte	0xa5
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.byte	0
+	.byte	0
+	.uleb128 0x5f
+	.byte	0x1
+	.4byte	.LASF997
+	.byte	0x2
+	.byte	0xbd
+	.4byte	.LASF998
+	.4byte	0x62
+	.4byte	.LFB2970
+	.4byte	.LFE2970
+	.4byte	.LLST6
+	.byte	0x1
+	.4byte	0x69d7
+	.uleb128 0x60
+	.4byte	.LASF999
+	.byte	0x2
+	.byte	0xbd
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -148
+	.uleb128 0x60
+	.4byte	.LASF1000
+	.byte	0x2
+	.byte	0xbd
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -152
+	.uleb128 0x60
+	.4byte	.LASF963
+	.byte	0x2
+	.byte	0xbd
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -156
+	.uleb128 0x60
+	.4byte	.LASF964
+	.byte	0x2
+	.byte	0xbd
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -160
+	.uleb128 0x60
+	.4byte	.LASF1001
+	.byte	0x2
+	.byte	0xbe
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x60
+	.4byte	.LASF1002
+	.byte	0x2
+	.byte	0xbe
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 4
+	.uleb128 0x60
+	.4byte	.LASF1003
+	.byte	0x2
+	.byte	0xbe
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x60
+	.4byte	.LASF1004
+	.byte	0x2
+	.byte	0xbe
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 12
+	.uleb128 0x60
+	.4byte	.LASF1005
+	.byte	0x2
+	.byte	0xbf
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 16
+	.uleb128 0x60
+	.4byte	.LASF1006
+	.byte	0x2
+	.byte	0xbf
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 20
+	.uleb128 0x61
+	.4byte	.LBB8
+	.4byte	.LBE8
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0xc1
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0xc2
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -36
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0xc3
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -48
+	.uleb128 0x62
+	.ascii	"BBT\000"
+	.byte	0x2
+	.byte	0xc4
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x62
+	.ascii	"EBT\000"
+	.byte	0x2
+	.byte	0xc5
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x62
+	.ascii	"MBT\000"
+	.byte	0x2
+	.byte	0xc6
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x62
+	.ascii	"HBT\000"
+	.byte	0x2
+	.byte	0xc7
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x63
+	.4byte	.LASF956
+	.byte	0x2
+	.byte	0xc8
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.byte	0
+	.byte	0
+	.uleb128 0x5f
+	.byte	0x1
+	.4byte	.LASF1007
+	.byte	0x2
+	.byte	0xe1
+	.4byte	.LASF1008
+	.4byte	0x62
+	.4byte	.LFB2971
+	.4byte	.LFE2971
+	.4byte	.LLST7
+	.byte	0x1
+	.4byte	0x6afd
+	.uleb128 0x60
+	.4byte	.LASF999
+	.byte	0x2
+	.byte	0xe1
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -148
+	.uleb128 0x60
+	.4byte	.LASF1000
+	.byte	0x2
+	.byte	0xe1
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -152
+	.uleb128 0x60
+	.4byte	.LASF963
+	.byte	0x2
+	.byte	0xe1
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -156
+	.uleb128 0x60
+	.4byte	.LASF964
+	.byte	0x2
+	.byte	0xe1
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -160
+	.uleb128 0x60
+	.4byte	.LASF1001
+	.byte	0x2
+	.byte	0xe2
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x60
+	.4byte	.LASF1002
+	.byte	0x2
+	.byte	0xe2
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 4
+	.uleb128 0x60
+	.4byte	.LASF1003
+	.byte	0x2
+	.byte	0xe2
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x60
+	.4byte	.LASF1004
+	.byte	0x2
+	.byte	0xe2
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 12
+	.uleb128 0x60
+	.4byte	.LASF1005
+	.byte	0x2
+	.byte	0xe3
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 16
+	.uleb128 0x60
+	.4byte	.LASF1006
+	.byte	0x2
+	.byte	0xe3
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 20
+	.uleb128 0x61
+	.4byte	.LBB9
+	.4byte	.LBE9
+	.uleb128 0x62
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0xe5
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x62
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0xe6
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -36
+	.uleb128 0x62
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0xe7
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -48
+	.uleb128 0x62
+	.ascii	"BBT\000"
+	.byte	0x2
+	.byte	0xe8
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x62
+	.ascii	"EBT\000"
+	.byte	0x2
+	.byte	0xe9
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x62
+	.ascii	"MBT\000"
+	.byte	0x2
+	.byte	0xea
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x62
+	.ascii	"HBT\000"
+	.byte	0x2
+	.byte	0xeb
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x63
+	.4byte	.LASF956
+	.byte	0x2
+	.byte	0xec
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.byte	0
+	.byte	0
+	.uleb128 0x65
+	.byte	0x1
+	.4byte	.LASF1009
+	.byte	0x2
+	.2byte	0x105
+	.4byte	.LASF1040
+	.4byte	0x62
+	.4byte	.LFB2972
+	.4byte	.LFE2972
+	.4byte	.LLST8
+	.byte	0x1
+	.4byte	0x6c36
+	.uleb128 0x66
+	.4byte	.LASF999
+	.byte	0x2
+	.2byte	0x105
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -148
+	.uleb128 0x66
+	.4byte	.LASF1000
+	.byte	0x2
+	.2byte	0x105
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -152
+	.uleb128 0x66
+	.4byte	.LASF963
+	.byte	0x2
+	.2byte	0x105
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -156
+	.uleb128 0x66
+	.4byte	.LASF964
+	.byte	0x2
+	.2byte	0x105
+	.4byte	0x6320
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -160
+	.uleb128 0x66
+	.4byte	.LASF1001
+	.byte	0x2
+	.2byte	0x106
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x66
+	.4byte	.LASF1002
+	.byte	0x2
+	.2byte	0x106
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 4
+	.uleb128 0x66
+	.4byte	.LASF1003
+	.byte	0x2
+	.2byte	0x106
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x66
+	.4byte	.LASF1004
+	.byte	0x2
+	.2byte	0x106
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 12
+	.uleb128 0x66
+	.4byte	.LASF1005
+	.byte	0x2
+	.2byte	0x107
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 16
+	.uleb128 0x66
+	.4byte	.LASF1006
+	.byte	0x2
+	.2byte	0x107
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 20
+	.uleb128 0x61
+	.4byte	.LBB10
+	.4byte	.LBE10
+	.uleb128 0x67
+	.ascii	"w\000"
+	.byte	0x2
+	.2byte	0x109
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -32
+	.uleb128 0x67
+	.ascii	"h\000"
+	.byte	0x2
+	.2byte	0x10a
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -36
+	.uleb128 0x67
+	.ascii	"g\000"
+	.byte	0x2
+	.2byte	0x10b
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -48
+	.uleb128 0x67
+	.ascii	"BBT\000"
+	.byte	0x2
+	.2byte	0x10c
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x67
+	.ascii	"EBT\000"
+	.byte	0x2
+	.2byte	0x10d
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x67
+	.ascii	"MBT\000"
+	.byte	0x2
+	.2byte	0x10e
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x67
+	.ascii	"HBT\000"
+	.byte	0x2
+	.2byte	0x10f
+	.4byte	0x6320
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x68
+	.4byte	.LASF956
+	.byte	0x2
+	.2byte	0x110
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.byte	0
+	.byte	0
+	.uleb128 0x69
+	.4byte	.LASF1041
+	.byte	0x1
+	.4byte	.LFB3282
+	.4byte	.LFE3282
+	.4byte	.LLST9
+	.byte	0x1
+	.4byte	0x6c6c
+	.uleb128 0x66
+	.4byte	.LASF1010
+	.byte	0x2
+	.2byte	0x128
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x60
-	.4byte	.LASF986
+	.uleb128 0x66
+	.4byte	.LASF1011
 	.byte	0x2
-	.byte	0x88
+	.2byte	0x128
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.byte	0
-	.uleb128 0x66
-	.4byte	.LASF1018
+	.uleb128 0x6a
+	.4byte	.LASF1042
 	.byte	0x1
-	.4byte	.LFB3280
-	.4byte	.LFE3280
-	.4byte	.LLST6
+	.4byte	.LFB3283
+	.4byte	.LFE3283
+	.4byte	.LLST10
 	.byte	0x1
-	.uleb128 0x67
-	.4byte	.LASF987
+	.uleb128 0x6b
+	.4byte	.LASF1012
 	.byte	0x17
 	.byte	0x47
 	.4byte	0x84f
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x67
-	.4byte	.LASF988
+	.uleb128 0x6b
+	.4byte	.LASF1013
 	.byte	0x17
 	.byte	0x48
 	.4byte	0x62
@@ -13874,69 +20480,67 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x62
-	.4byte	0x6764
-	.uleb128 0x68
+	.4byte	0x6ca4
+	.uleb128 0x6c
 	.byte	0
-	.uleb128 0x67
-	.4byte	.LASF989
+	.uleb128 0x6b
+	.4byte	.LASF1014
 	.byte	0x2e
 	.byte	0x4f
-	.4byte	0x6759
+	.4byte	0x6c99
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x67
-	.4byte	.LASF990
+	.uleb128 0x6b
+	.4byte	.LASF1015
 	.byte	0x2e
 	.byte	0xc5
-	.4byte	0x6759
+	.4byte	0x6c99
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x94b
-	.4byte	0x6789
-	.uleb128 0x68
+	.4byte	0x6cc9
+	.uleb128 0x6c
 	.byte	0
-	.uleb128 0x69
-	.4byte	.LASF991
+	.uleb128 0x6d
+	.4byte	.LASF1016
 	.byte	0x1a
 	.2byte	0x16d
-	.4byte	0x677e
+	.4byte	0x6cbe
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x69
-	.4byte	.LASF992
+	.uleb128 0x6d
+	.4byte	.LASF1017
 	.byte	0x2f
 	.2byte	0x1d4
-	.4byte	0x67a5
+	.4byte	0x6ce5
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.byte	0x4
 	.4byte	0x224d
-	.uleb128 0x69
-	.4byte	.LASF993
+	.uleb128 0x6d
+	.4byte	.LASF1018
 	.byte	0x30
 	.2byte	0x256
 	.4byte	0x63ab
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x69
-	.4byte	.LASF994
+	.uleb128 0x6d
+	.4byte	.LASF1019
 	.byte	0x26
 	.2byte	0x2ae
 	.4byte	0x55fd
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x6a
-	.4byte	.LASF995
-	.byte	0x2
+	.uleb128 0x6b
+	.4byte	.LASF1020
+	.byte	0x31
 	.byte	0x10
 	.4byte	0x62
 	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	MaxLevel
-	.uleb128 0x6b
+	.byte	0x1
+	.uleb128 0x6e
 	.ascii	"x\000"
 	.byte	0x2
 	.byte	0x11
@@ -13945,7 +20549,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x5
 	.byte	0x3
 	.4byte	x
-	.uleb128 0x6b
+	.uleb128 0x6e
 	.ascii	"y\000"
 	.byte	0x2
 	.byte	0x12
@@ -13954,59 +20558,59 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x5
 	.byte	0x3
 	.4byte	y
-	.uleb128 0x6c
-	.4byte	.LASF996
+	.uleb128 0x6f
+	.4byte	.LASF1021
 	.4byte	0xe4
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x144
-	.4byte	0x6810
-	.uleb128 0x68
+	.4byte	0x6d4b
+	.uleb128 0x6c
 	.byte	0
 	.uleb128 0x8
 	.4byte	0x29
-	.4byte	0x681b
-	.uleb128 0x68
+	.4byte	0x6d56
+	.uleb128 0x6c
 	.byte	0
-	.uleb128 0x6d
+	.uleb128 0x70
 	.4byte	0x800
 	.byte	0x5
 	.byte	0x3
 	.4byte	_ZN4_STLL8_LocInitE
-	.uleb128 0x6d
+	.uleb128 0x70
 	.4byte	0x80c
 	.byte	0x5
 	.byte	0x3
 	.4byte	_ZN4_STLL8_IosInitE
 	.uleb128 0x17
-	.4byte	.LASF997
+	.4byte	.LASF1022
 	.byte	0x1
-	.4byte	0x6843
+	.4byte	0x6d7e
 	.uleb128 0x37
 	.ascii	"T\000"
 	.4byte	0x22ff
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF998
+	.4byte	.LASF1023
 	.byte	0x1
-	.4byte	0x6855
+	.4byte	0x6d90
 	.uleb128 0x37
 	.ascii	"T\000"
 	.4byte	0x1eab
 	.byte	0
 	.uleb128 0x13
-	.4byte	.LASF999
+	.4byte	.LASF1024
 	.byte	0x1
 	.uleb128 0x13
-	.4byte	.LASF1000
+	.4byte	.LASF1025
 	.byte	0x1
 	.uleb128 0x13
-	.4byte	.LASF1001
+	.4byte	.LASF1026
 	.byte	0x1
 	.uleb128 0x13
-	.4byte	.LASF1002
+	.4byte	.LASF1027
 	.byte	0x1
 	.byte	0
 	.section	.debug_abbrev,"",%progbits
@@ -15532,7 +22136,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
-	.uleb128 0xe
+	.uleb128 0x8
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -15547,7 +22151,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
-	.uleb128 0x8
+	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -15559,8 +22163,23 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0
 	.byte	0
 	.uleb128 0x64
-	.uleb128 0x2e
+	.uleb128 0x5
 	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x65
+	.uleb128 0x2e
+	.byte	0x1
 	.uleb128 0x3f
 	.uleb128 0xc
 	.uleb128 0x3
@@ -15568,7 +22187,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
-	.uleb128 0xb
+	.uleb128 0x5
 	.uleb128 0x2007
 	.uleb128 0xe
 	.uleb128 0x49
@@ -15578,12 +22197,59 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x12
 	.uleb128 0x1
 	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
+	.uleb128 0x6
+	.uleb128 0x2116
 	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x65
+	.uleb128 0x66
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x67
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x68
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x69
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3
@@ -15602,7 +22268,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x66
+	.uleb128 0x6a
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3
@@ -15619,7 +22285,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x67
+	.uleb128 0x6b
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -15636,12 +22302,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x68
+	.uleb128 0x6c
 	.uleb128 0x21
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x69
+	.uleb128 0x6d
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -15658,24 +22324,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x6a
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x6b
+	.uleb128 0x6e
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -15692,7 +22341,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x6c
+	.uleb128 0x6f
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -15707,7 +22356,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x6d
+	.uleb128 0x70
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x47
@@ -15742,12 +22391,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LCFI2
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 4
+	.sleb128 8
 	.4byte	.LCFI2
 	.4byte	.LFE2965
 	.2byte	0x3
 	.byte	0x7d
-	.sleb128 88
+	.sleb128 128
 	.4byte	0
 	.4byte	0
 .LLST2:
@@ -15760,12 +22409,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LCFI4
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 4
+	.sleb128 8
 	.4byte	.LCFI4
 	.4byte	.LFE2966
 	.2byte	0x3
 	.byte	0x7d
-	.sleb128 152
+	.sleb128 168
 	.4byte	0
 	.4byte	0
 .LLST3:
@@ -15778,12 +22427,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LCFI6
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 4
+	.sleb128 8
 	.4byte	.LCFI6
 	.4byte	.LFE2967
-	.2byte	0x2
+	.2byte	0x3
 	.byte	0x7d
-	.sleb128 48
+	.sleb128 88
 	.4byte	0
 	.4byte	0
 .LLST4:
@@ -15796,16 +22445,16 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LCFI8
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 4
+	.sleb128 8
 	.4byte	.LCFI8
 	.4byte	.LFE2968
 	.2byte	0x3
 	.byte	0x7d
-	.sleb128 128
+	.sleb128 144
 	.4byte	0
 	.4byte	0
 .LLST5:
-	.4byte	.LFB3279
+	.4byte	.LFB2969
 	.4byte	.LCFI9
 	.2byte	0x2
 	.byte	0x7d
@@ -15816,27 +22465,99 @@ _GLOBAL__sub_I_menu.cpp:
 	.byte	0x7d
 	.sleb128 8
 	.4byte	.LCFI10
-	.4byte	.LFE3279
-	.2byte	0x2
+	.4byte	.LFE2969
+	.2byte	0x3
 	.byte	0x7d
-	.sleb128 16
+	.sleb128 144
 	.4byte	0
 	.4byte	0
 .LLST6:
-	.4byte	.LFB3280
+	.4byte	.LFB2970
 	.4byte	.LCFI11
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 0
 	.4byte	.LCFI11
-	.4byte	.LFE3280
+	.4byte	.LCFI12
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	.LCFI12
+	.4byte	.LFE2970
+	.2byte	0x3
+	.byte	0x7d
+	.sleb128 168
+	.4byte	0
+	.4byte	0
+.LLST7:
+	.4byte	.LFB2971
+	.4byte	.LCFI13
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI13
+	.4byte	.LCFI14
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	.LCFI14
+	.4byte	.LFE2971
+	.2byte	0x3
+	.byte	0x7d
+	.sleb128 168
+	.4byte	0
+	.4byte	0
+.LLST8:
+	.4byte	.LFB2972
+	.4byte	.LCFI15
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI15
+	.4byte	.LCFI16
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	.LCFI16
+	.4byte	.LFE2972
+	.2byte	0x3
+	.byte	0x7d
+	.sleb128 168
+	.4byte	0
+	.4byte	0
+.LLST9:
+	.4byte	.LFB3282
+	.4byte	.LCFI17
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI17
+	.4byte	.LCFI18
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 8
+	.4byte	.LCFI18
+	.4byte	.LFE3282
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 16
+	.4byte	0
+	.4byte	0
+.LLST10:
+	.4byte	.LFB3283
+	.4byte	.LCFI19
+	.2byte	0x2
+	.byte	0x7d
+	.sleb128 0
+	.4byte	.LCFI19
+	.4byte	.LFE3283
 	.2byte	0x2
 	.byte	0x7d
 	.sleb128 8
 	.4byte	0
 	.4byte	0
 	.section	.debug_aranges,"",%progbits
-	.4byte	0x54
+	.4byte	0x6c
 	.2byte	0x2
 	.4byte	.Ldebug_info0
 	.byte	0x4
@@ -15855,10 +22576,16 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LFE2968-.LFB2968
 	.4byte	.LFB2969
 	.4byte	.LFE2969-.LFB2969
-	.4byte	.LFB3279
-	.4byte	.LFE3279-.LFB3279
-	.4byte	.LFB3280
-	.4byte	.LFE3280-.LFB3280
+	.4byte	.LFB2970
+	.4byte	.LFE2970-.LFB2970
+	.4byte	.LFB2971
+	.4byte	.LFE2971-.LFB2971
+	.4byte	.LFB2972
+	.4byte	.LFE2972-.LFB2972
+	.4byte	.LFB3282
+	.4byte	.LFE3282-.LFB3282
+	.4byte	.LFB3283
+	.4byte	.LFE3283-.LFB3283
 	.4byte	0
 	.4byte	0
 	.section	.debug_ranges,"",%progbits
@@ -15875,10 +22602,16 @@ _GLOBAL__sub_I_menu.cpp:
 	.4byte	.LFE2968
 	.4byte	.LFB2969
 	.4byte	.LFE2969
-	.4byte	.LFB3279
-	.4byte	.LFE3279
-	.4byte	.LFB3280
-	.4byte	.LFE3280
+	.4byte	.LFB2970
+	.4byte	.LFE2970
+	.4byte	.LFB2971
+	.4byte	.LFE2971
+	.4byte	.LFB2972
+	.4byte	.LFE2972
+	.4byte	.LFB3282
+	.4byte	.LFE3282
+	.4byte	.LFB3283
+	.4byte	.LFE3283
 	.4byte	0
 	.4byte	0
 	.section	.debug_line,"",%progbits
@@ -15892,15 +22625,15 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"r_optimisedEv\000"
 .LASF268:
 	.ascii	"_ZN9CIwStringILi32EEpLERKS0_\000"
-.LASF254:
-	.ascii	"_ZNK9CIwStringILi32EE6lengthEv\000"
+.LASF1006:
+	.ascii	"HardScoresBtC\000"
 .LASF466:
 	.ascii	"GetSize\000"
 .LASF555:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
 	.ascii	"ush_backERKS1_\000"
-.LASF961:
+.LASF963:
 	.ascii	"BackBt\000"
 .LASF247:
 	.ascii	"m_Buffer\000"
@@ -15934,27 +22667,29 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"handle\000"
 .LASF458:
 	.ascii	"EraseFast\000"
-.LASF1017:
+.LASF1041:
 	.ascii	"__static_initialization_and_destruction_0\000"
 .LASF318:
 	.ascii	"allocate\000"
 .LASF272:
 	.ascii	"_ZNK9CIwStringILi32EEeqEPKc\000"
+.LASF1040:
+	.ascii	"_Z5HardMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_\000"
 .LASF187:
 	.ascii	"_ZN7CIwVec2aSERK8CIwFVec2\000"
-.LASF984:
+.LASF987:
 	.ascii	"CLBT\000"
 .LASF75:
 	.ascii	"_LocInit\000"
 .LASF692:
 	.ascii	"_ZN13CIwResManager6AddResEPKcP11CIwResource\000"
-.LASF976:
+.LASF979:
 	.ascii	"PausedTitle\000"
 .LASF61:
 	.ascii	"basefield\000"
 .LASF900:
 	.ascii	"getwc\000"
-.LASF978:
+.LASF981:
 	.ascii	"ResumeBtC\000"
 .LASF31:
 	.ascii	"fpos_t\000"
@@ -15972,7 +22707,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"ultIS1_S5_EE20find_and_remove_fastERKS1_\000"
 .LASF136:
 	.ascii	"GetLengthSafe\000"
-.LASF988:
+.LASF1013:
 	.ascii	"g_IwSerialiseContextValid\000"
 .LASF346:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -15980,7 +22715,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"liseHeaderEv\000"
 .LASF419:
 	.ascii	"REALLOCATE\000"
-.LASF990:
+.LASF1015:
 	.ascii	"g_InverseSqrtTable\000"
 .LASF286:
 	.ascii	"_ZN9CIwStringILi160EEaSEPKc\000"
@@ -16012,8 +22747,6 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
 	.ascii	"aultIS1_S5_EE4findERKS1_\000"
-.LASF970:
-	.ascii	"_Z7InGameMP10CIw2DImageS0_\000"
 .LASF227:
 	.ascii	"_ZNK8CIwFVec212IsNormalisedEv\000"
 .LASF852:
@@ -16064,7 +22797,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE1"
 	.ascii	"1MemoryUsageEv\000"
-.LASF958:
+.LASF960:
 	.ascii	"_Z6LevelMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_\000"
 .LASF180:
 	.ascii	"_ZN8CIwSVec2lSEi\000"
@@ -16122,6 +22855,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"m_LoadPaths\000"
 .LASF14:
 	.ascii	"uint8\000"
+.LASF992:
+	.ascii	"RetryBt\000"
 .LASF945:
 	.ascii	"_ZN10CIw2DImage11GetMaterialEv\000"
 .LASF454:
@@ -16144,7 +22879,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN13CIwResManager7SetModeENS_10GlobalModeE\000"
 .LASF77:
 	.ascii	"__std_alias\000"
-.LASF994:
+.LASF1019:
 	.ascii	"g_IwResManager\000"
 .LASF827:
 	.ascii	"strcoll\000"
@@ -16216,7 +22951,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"iwfixed\000"
 .LASF933:
 	.ascii	"wscanf\000"
-.LASF1005:
+.LASF1030:
 	.ascii	"d:\\\\School\\\\cs115\\\\AmazingMaze\\\\build_amazi"
 	.ascii	"ngmaze_vc12\000"
 .LASF385:
@@ -16334,14 +23069,14 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwFVec2ixEi\000"
 .LASF927:
 	.ascii	"wcsstr\000"
-.LASF985:
+.LASF1010:
 	.ascii	"__initialize_p\000"
 .LASF859:
 	.ascii	"fread\000"
 .LASF570:
 	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
 	.ascii	"1_EE10deallocateEPS1_j\000"
-.LASF964:
+.LASF966:
 	.ascii	"EasyBtC\000"
 .LASF718:
 	.ascii	"_ZN13CIwResManager13SetBuildStyleEPKc\000"
@@ -16446,6 +23181,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE12set_capacityEj\000"
+.LASF994:
+	.ascii	"MainMenuBt\000"
 .LASF145:
 	.ascii	"_ZN8CIwSVec29NormaliseEv\000"
 .LASF903:
@@ -16510,7 +23247,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
 	.ascii	"back_qtyERKS1_i\000"
-.LASF1002:
+.LASF1027:
 	.ascii	"ReallocateDefault<CIwResManager::CRemovedGroup, CIw"
 	.ascii	"Allocator<CIwResManager::CRemovedGroup, CIwMallocRo"
 	.ascii	"uter<CIwResManager::CRemovedGroup> > >\000"
@@ -16569,6 +23306,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN7CIwRect4MakeEssss\000"
 .LASF112:
 	.ascii	"_ZNK9CIwColoureqEj\000"
+.LASF959:
+	.ascii	"_Z6StartMP10CIw2DImageS0_S0_S0_S0_S0_\000"
 .LASF556:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
@@ -16591,7 +23330,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5eraseEjj\000"
-.LASF986:
+.LASF1011:
 	.ascii	"__priority\000"
 .LASF488:
 	.ascii	"IW_EVENT_NULL\000"
@@ -16625,7 +23364,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16"
 	.ascii	"resize_optimisedEj\000"
-.LASF1008:
+.LASF1033:
 	.ascii	"IwResGroupCollisionHandling\000"
 .LASF944:
 	.ascii	"GetMaterial\000"
@@ -16669,7 +23408,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN7CIwVec2lSEi\000"
 .LASF659:
 	.ascii	"AddHandler\000"
-.LASF969:
+.LASF971:
 	.ascii	"InGameM\000"
 .LASF510:
 	.ascii	"S3E_POINTER_BUTTON_MAX\000"
@@ -16753,7 +23492,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE12pop_back_getEv\000"
-.LASF967:
+.LASF969:
 	.ascii	"HardBt\000"
 .LASF566:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
@@ -16769,11 +23508,11 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"front\000"
 .LASF721:
 	.ascii	"LoadRes\000"
-.LASF954:
+.LASF956:
 	.ascii	"stage\000"
 .LASF46:
 	.ascii	"~Init\000"
-.LASF977:
+.LASF980:
 	.ascii	"ResumeBt\000"
 .LASF260:
 	.ascii	"_ZN9CIwStringILi32EE4findEPKc\000"
@@ -16805,7 +23544,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE9push_backERKS1_\000"
-.LASF972:
+.LASF974:
 	.ascii	"PauseBtC\000"
 .LASF820:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
@@ -16825,8 +23564,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"s3ePointerButton\000"
 .LASF311:
 	.ascii	"IW_TYPE_PAD_F\000"
+.LASF997:
+	.ascii	"EasyM\000"
 .LASF929:
 	.ascii	"wctob\000"
+.LASF893:
+	.ascii	"fgetws\000"
 .LASF897:
 	.ascii	"fwprintf\000"
 .LASF56:
@@ -16853,14 +23596,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"ultIS1_S5_EE11insert_slowERKS1_j\000"
 .LASF492:
 	.ascii	"IW_EVENT_GUI\000"
-.LASF974:
+.LASF977:
 	.ascii	"_Z6PauseMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_\000"
 .LASF220:
 	.ascii	"CIwFVec2\000"
-.LASF1012:
+.LASF1037:
 	.ascii	"__vtbl_ptr_type\000"
-.LASF957:
-	.ascii	"_Z6StartMP10CIw2DImageS0_S0_S0_\000"
 .LASF294:
 	.ascii	"_ZNK9CIwStringILi160EEeqERKS0_\000"
 .LASF463:
@@ -16924,7 +23665,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK8CIwSVec26IsZeroEv\000"
 .LASF922:
 	.ascii	"wcschr\000"
-.LASF998:
+.LASF1023:
 	.ascii	"CIwMallocRouter<CIwString<160> >\000"
 .LASF229:
 	.ascii	"_ZNK8CIwFVec26IsZeroEv\000"
@@ -16937,7 +23678,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"E\000"
 .LASF449:
 	.ascii	"_ZN14CIwManagedList3AddEP10CIwManagedb\000"
-.LASF1018:
+.LASF1042:
 	.ascii	"_GLOBAL__sub_I_menu.cpp\000"
 .LASF21:
 	.ascii	"S3E_ERROR_SHOW_STOP\000"
@@ -16962,7 +23703,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK13CIwResManager7GetModeEv\000"
 .LASF637:
 	.ascii	"m_DebugGroupBinCopyPath\000"
-.LASF1013:
+.LASF1038:
 	.ascii	"this\000"
 .LASF445:
 	.ascii	"GetObjHashed\000"
@@ -17026,6 +23767,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
 	.ascii	"erase_fastEii\000"
+.LASF999:
+	.ascii	"EasyBg\000"
 .LASF592:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find"
@@ -17036,9 +23779,9 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20"
 	.ascii	"find_and_remove_fastERKS1_\000"
-.LASF965:
+.LASF967:
 	.ascii	"MedBt\000"
-.LASF963:
+.LASF965:
 	.ascii	"EasyBt\000"
 .LASF378:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
@@ -17097,7 +23840,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"v\000"
 .LASF42:
 	.ascii	"_STL\000"
-.LASF1015:
+.LASF988:
 	.ascii	"PostM\000"
 .LASF74:
 	.ascii	"_ZN4_STL14__narrow_atomsE\000"
@@ -17147,6 +23890,8 @@ _GLOBAL__sub_I_menu.cpp:
 .LASF319:
 	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
 	.ascii	"_EE8allocateEj\000"
+.LASF991:
+	.ascii	"PostTitle\000"
 .LASF681:
 	.ascii	"_ZNK13CIwResManager10GetHandlerEPKcj\000"
 .LASF425:
@@ -17179,6 +23924,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	">, CIwMallocRouter<CIwString<160> > >, ReallocateDe"
 	.ascii	"fault<CIwString<160>, CIwAllocator<CIwString<160>, "
 	.ascii	"CIwMallocRouter<CIwString<160> > > > >\000"
+.LASF990:
+	.ascii	"PostBg\000"
 .LASF889:
 	.ascii	"tm_yday\000"
 .LASF793:
@@ -17191,7 +23938,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"sizetype\000"
 .LASF111:
 	.ascii	"_ZN9CIwColouraSEj\000"
-.LASF968:
+.LASF970:
 	.ascii	"HardBtC\000"
 .LASF611:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
@@ -17205,7 +23952,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
 	.ascii	"v\000"
-.LASF1007:
+.LASF1032:
 	.ascii	"_ZN14CIwManagedList3PopEv\000"
 .LASF2:
 	.ascii	"short unsigned int\000"
@@ -17214,7 +23961,7 @@ _GLOBAL__sub_I_menu.cpp:
 .LASF483:
 	.ascii	"ReallocateDefault<CIwManaged*, CIwAllocator<CIwMana"
 	.ascii	"ged*, CIwMallocRouter<CIwManaged*> > >\000"
-.LASF999:
+.LASF1024:
 	.ascii	"CIwMallocRouter<CIwResGroup*>\000"
 .LASF621:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
@@ -17252,10 +23999,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"back\000"
 .LASF87:
 	.ascii	"filename\000"
-.LASF1010:
+.LASF1035:
 	.ascii	"_ZN7CIwRect6RotateE16IwGxScreenOrientii\000"
 .LASF101:
 	.ascii	"_ZN9CIwColour3SetEhhhh\000"
+.LASF998:
+	.ascii	"_Z5EasyMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_\000"
 .LASF824:
 	.ascii	"Make\000"
 .LASF812:
@@ -17306,7 +24055,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
 	.ascii	"back_qtyEi\000"
-.LASF973:
+.LASF976:
 	.ascii	"PauseM\000"
 .LASF838:
 	.ascii	"mbstowcs\000"
@@ -17334,17 +24083,19 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"aultIS1_S5_EE8capacityEv\000"
 .LASF704:
 	.ascii	"_ZN13CIwResManager10MountGroupEPKcb\000"
+.LASF254:
+	.ascii	"_ZNK9CIwStringILi32EE6lengthEv\000"
 .LASF517:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3"
 	.ascii	"endEv\000"
-.LASF996:
+.LASF1021:
 	.ascii	"__dso_handle\000"
 .LASF78:
 	.ascii	"stlport\000"
 .LASF734:
 	.ascii	"DebugSetGroupBinCopyPath\000"
-.LASF987:
+.LASF1012:
 	.ascii	"g_IwSerialiseContext\000"
 .LASF299:
 	.ascii	"IW_TYPE_INT8\000"
@@ -17398,9 +24149,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"adjustfield\000"
 .LASF907:
 	.ascii	"vwprintf\000"
-.LASF757:
-	.ascii	"_ZN13CIwResManager25SetGroupCollisionHandlingENS_27"
-	.ascii	"IwResGroupCollisionHandlingE\000"
+.LASF993:
+	.ascii	"RetryBtC\000"
 .LASF344:
 	.ascii	"~CIwArray\000"
 .LASF441:
@@ -17443,13 +24193,13 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"eEj\000"
 .LASF89:
 	.ascii	"callbackPeriod\000"
-.LASF960:
+.LASF962:
 	.ascii	"LevelTitle\000"
 .LASF735:
 	.ascii	"_ZN13CIwResManager24DebugSetGroupBinCopyPathEPKc\000"
 .LASF625:
 	.ascii	"CIwResManager\000"
-.LASF955:
+.LASF957:
 	.ascii	"StartM\000"
 .LASF13:
 	.ascii	"intptr_t\000"
@@ -17464,6 +24214,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17rese"
 	.ascii	"rve_optimisedEi\000"
+.LASF1004:
+	.ascii	"MedScoresBtC\000"
 .LASF545:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
@@ -17505,7 +24257,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_EE10deallocateEPS1_j\000"
 .LASF670:
 	.ascii	"ReserveHandlers\000"
-.LASF989:
+.LASF1014:
 	.ascii	"g_SqrtTable\000"
 .LASF729:
 	.ascii	"ChangeExtension\000"
@@ -17531,7 +24283,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE5ShareEPS1_ii\000"
-.LASF980:
+.LASF983:
 	.ascii	"StartOverBtC\000"
 .LASF875:
 	.ascii	"tmpnam\000"
@@ -17547,12 +24299,14 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK8CIwFVec2miERKS_\000"
 .LASF732:
 	.ascii	"DebugAddMenuItems\000"
-.LASF966:
+.LASF968:
 	.ascii	"MedBtC\000"
-.LASF762:
-	.ascii	"OptimisedMountedGroups\000"
+.LASF1001:
+	.ascii	"EasyScoresBt\000"
 .LASF652:
 	.ascii	"m_GroupsMounted\000"
+.LASF762:
+	.ascii	"OptimisedMountedGroups\000"
 .LASF613:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
@@ -17561,12 +24315,16 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN14CIwManagedList9SerialiseEv\000"
 .LASF666:
 	.ascii	"_ZN13CIwResManager12DestroyGroupEPKc\000"
+.LASF1008:
+	.ascii	"_Z7MediumMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_S0_S0_\000"
 .LASF28:
 	.ascii	"char\000"
 .LASF717:
 	.ascii	"SetBuildStyle\000"
-.LASF1011:
+.LASF1036:
 	.ascii	"CIw2DImage\000"
+.LASF995:
+	.ascii	"MainMenuBtC\000"
 .LASF399:
 	.ascii	"push_back\000"
 .LASF366:
@@ -17587,7 +24345,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"Ev\000"
 .LASF677:
 	.ascii	"_ZNK13CIwResManager12GetNumGroupsEv\000"
-.LASF956:
+.LASF958:
 	.ascii	"LevelM\000"
 .LASF739:
 	.ascii	"_ZNK13CIwResManager18GetBuildStyleNamedEPKc\000"
@@ -17596,6 +24354,8 @@ _GLOBAL__sub_I_menu.cpp:
 .LASF755:
 	.ascii	"_ZN13CIwResManager16_TempRemoveGroupEP11CIwResGroup"
 	.ascii	"\000"
+.LASF989:
+	.ascii	"_Z5PostMP10CIw2DImageS0_S0_S0_S0_S0_S0_S0_\000"
 .LASF371:
 	.ascii	"find_and_remove_fast\000"
 .LASF324:
@@ -17618,11 +24378,13 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"ReserveGroups\000"
 .LASF125:
 	.ascii	"operator-=\000"
-.LASF982:
+.LASF985:
 	.ascii	"ChangeLevelBtC\000"
 .LASF310:
 	.ascii	"IW_TYPE_MAX_BIT\000"
-.LASF1014:
+.LASF954:
+	.ascii	"ScoresBt\000"
+.LASF1039:
 	.ascii	"_ZN8CIwFVec2C2Eff\000"
 .LASF664:
 	.ascii	"_ZN13CIwResManager8AddGroupEP11CIwResGroup\000"
@@ -17733,10 +24495,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN9CIwColourmlEi\000"
 .LASF51:
 	.ascii	"fixed\000"
-.LASF991:
-	.ascii	"g_IwGxColours\000"
 .LASF1016:
-	.ascii	"_Z5PostMv\000"
+	.ascii	"g_IwGxColours\000"
 .LASF778:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
@@ -17767,9 +24527,9 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"SetGrey\000"
 .LASF456:
 	.ascii	"Erase\000"
-.LASF992:
+.LASF1017:
 	.ascii	"g_IwMenuManager\000"
-.LASF997:
+.LASF1022:
 	.ascii	"CIwMallocRouter<CIwManaged*>\000"
 .LASF568:
 	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
@@ -17788,13 +24548,13 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"EPS1_ii\000"
 .LASF687:
 	.ascii	"GetResNamed\000"
-.LASF959:
+.LASF961:
 	.ascii	"LevelBg\000"
 .LASF500:
 	.ascii	"S3E_POINTER_STATE_PRESSED\000"
 .LASF131:
 	.ascii	"_ZN8CIwSVec2aSERK8CIwFVec2\000"
-.LASF1004:
+.LASF1029:
 	.ascii	"d:/School/cs115/AmazingMaze/menu.cpp\000"
 .LASF799:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
@@ -17812,7 +24572,9 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"m_GroupCurr\000"
 .LASF345:
 	.ascii	"SerialiseHeader\000"
-.LASF979:
+.LASF1005:
+	.ascii	"HardScoresBt\000"
+.LASF982:
 	.ascii	"StartOverBt\000"
 .LASF791:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
@@ -17838,7 +24600,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5clearE"
 	.ascii	"v\000"
-.LASF1003:
+.LASF1028:
 	.ascii	"GNU C++ 4.8.3 20140228 (release) [ARM/embedded-4_8-"
 	.ascii	"branch revision 208322] -fpreprocessed -mstructure-"
 	.ascii	"size-boundary=8 -march=armv6 -mfloat-abi=soft -mthu"
@@ -17848,7 +24610,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"inter -fmessage-length=0 -ffunction-sections -fvisi"
 	.ascii	"bility=hidden -fPIC -fvisibility-inlines-hidden -fn"
 	.ascii	"o-exceptions\000"
-.LASF1009:
+.LASF1034:
 	.ascii	"CRemovedGroup\000"
 .LASF450:
 	.ascii	"Insert\000"
@@ -17900,7 +24662,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"aultIS1_S5_EE5emptyEv\000"
 .LASF292:
 	.ascii	"_ZN9CIwStringILi160EEpLEc\000"
-.LASF1006:
+.LASF1031:
 	.ascii	"_ZN4_STL3bufE\000"
 .LASF662:
 	.ascii	"_ZN13CIwResManager13RemoveHandlerEPKc\000"
@@ -17964,6 +24726,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"dERKS1_\000"
 .LASF165:
 	.ascii	"_ZNK8CIwSVec2mlERKS_\000"
+.LASF1007:
+	.ascii	"MediumM\000"
 .LASF753:
 	.ascii	"_ZN13CIwResManager17GetUniqueRunStampEv\000"
 .LASF804:
@@ -18006,7 +24770,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"AddBuildStyle\000"
 .LASF934:
 	.ascii	"wmemcpy\000"
-.LASF995:
+.LASF1020:
 	.ascii	"MaxLevel\000"
 .LASF616:
 	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
@@ -18031,9 +24795,11 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"160EERS2_ILi32EES6_\000"
 .LASF43:
 	.ascii	"Init\000"
+.LASF975:
+	.ascii	"currentLevel\000"
 .LASF464:
 	.ascii	"CopyList\000"
-.LASF975:
+.LASF978:
 	.ascii	"PausedBg\000"
 .LASF952:
 	.ascii	"PlayBtC\000"
@@ -18086,10 +24852,12 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"num_p\000"
 .LASF50:
 	.ascii	"internal\000"
-.LASF1001:
+.LASF1026:
 	.ascii	"CIwMallocRouter<CIwResManager::CRemovedGroup>\000"
 .LASF208:
 	.ascii	"_ZNK7CIwVec2eqERKS_\000"
+.LASF972:
+	.ascii	"_Z7InGameMP10CIw2DImageS0_S0_i\000"
 .LASF832:
 	.ascii	"getenv\000"
 .LASF892:
@@ -18106,18 +24874,21 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"__ap\000"
 .LASF170:
 	.ascii	"_ZN8CIwSVec2mLEi\000"
-.LASF893:
-	.ascii	"fgetws\000"
+.LASF1009:
+	.ascii	"HardM\000"
 .LASF499:
 	.ascii	"S3E_POINTER_STATE_DOWN\000"
 .LASF192:
 	.ascii	"_ZNK7CIwVec225GetLengthSquaredUnshiftedEv\000"
 .LASF157:
 	.ascii	"_ZNK9CIwColour3GetEv\000"
-.LASF981:
+.LASF984:
 	.ascii	"ChangeLevelBt\000"
 .LASF179:
 	.ascii	"operator<<=\000"
+.LASF757:
+	.ascii	"_ZN13CIwResManager25SetGroupCollisionHandlingENS_27"
+	.ascii	"IwResGroupCollisionHandlingE\000"
 .LASF88:
 	.ascii	"bytesRead\000"
 .LASF206:
@@ -18134,6 +24905,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"EPS1_\000"
 .LASF435:
 	.ascii	"_ZN14CIwManagedList11ResolvePtrsERKS_\000"
+.LASF1003:
+	.ascii	"MedScoresBt\000"
 .LASF235:
 	.ascii	"_ZN8CIwFVec2mIERKS_\000"
 .LASF912:
@@ -18222,7 +24995,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZNK7CIwVec213GetNormalisedEv\000"
 .LASF487:
 	.ascii	"IW_EVENT_TABLE_GLOBAL\000"
-.LASF962:
+.LASF964:
 	.ascii	"BackBtC\000"
 .LASF233:
 	.ascii	"_ZN8CIwFVec2pLERKS_\000"
@@ -18234,7 +25007,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
 	.ascii	"ultIS1_S5_EE11insert_slowERS8_j\000"
-.LASF1000:
+.LASF1025:
 	.ascii	"ReallocateDefault<CIwResGroup*, CIwAllocator<CIwRes"
 	.ascii	"Group*, CIwMallocRouter<CIwResGroup*> > >\000"
 .LASF506:
@@ -18248,6 +25021,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"ackERKS1_\000"
 .LASF196:
 	.ascii	"_ZN7CIwVec213NormaliseSafeEv\000"
+.LASF996:
+	.ascii	"MMBT\000"
 .LASF727:
 	.ascii	"GetPathName\000"
 .LASF365:
@@ -18291,7 +25066,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"m_List\000"
 .LASF479:
 	.ascii	"Reserve\000"
-.LASF983:
+.LASF986:
 	.ascii	"SOBT\000"
 .LASF352:
 	.ascii	"MemoryUsage\000"
@@ -18311,7 +25086,7 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"fflush\000"
 .LASF645:
 	.ascii	"m_PathName\000"
-.LASF993:
+.LASF1018:
 	.ascii	"g_IwTextParserITX\000"
 .LASF622:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
@@ -18349,6 +25124,8 @@ _GLOBAL__sub_I_menu.cpp:
 	.ascii	"_ZN17ReallocateDefaultI9CIwStringILi160EE12CIwAlloc"
 	.ascii	"atorIS1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1"
 	.ascii	"_RS5_\000"
+.LASF955:
+	.ascii	"ScoresBtC\000"
 .LASF672:
 	.ascii	"GetGroupNamed\000"
 .LASF800:
@@ -18362,11 +25139,15 @@ _GLOBAL__sub_I_menu.cpp:
 .LASF511:
 	.ascii	"CIwAllocator<CIwString<160>, CIwMallocRouter<CIwStr"
 	.ascii	"ing<160> > >\000"
+.LASF1000:
+	.ascii	"EasyTitle\000"
+.LASF1002:
+	.ascii	"EasyScoresBtC\000"
 .LASF302:
 	.ascii	"IW_TYPE_UINT16\000"
 .LASF267:
 	.ascii	"_ZN9CIwStringILi32EEpLEPKc\000"
-.LASF971:
+.LASF973:
 	.ascii	"PauseBt\000"
 .LASF342:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"

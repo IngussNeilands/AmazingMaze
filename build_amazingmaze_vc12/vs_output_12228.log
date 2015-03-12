@@ -1,0 +1,7 @@
+1>------ Build started: Project: AmazingMaze_vc12, Configuration: x86 Debug Win32 ------
+1>  AmazingMaze.cpp
+1>  menu.cpp
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(118): error C2065: 'it' : undeclared identifier
+1>d:\school\cs115\amazingmaze\amazingmaze.cpp(202): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+

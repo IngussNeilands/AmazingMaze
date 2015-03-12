@@ -1,0 +1,824 @@
+# coding=utf-8
+# Auto-generated scons script for building 'AmazingMaze'
+# for the '('S3E', 'SCONS', 'X86')' target
+#
+# ***WARNING***: if you edit this file your changes will be lost next time your
+# ***WARNING***: run the mkb.
+
+import os
+import sys
+import socket
+import SCons
+from os.path import join
+
+SetOption("implicit_cache" ,1)
+
+target_name = 'AmazingMaze'
+target_name_debug = 'AmazingMaze'
+target_name_rvct = 'AmazingMaze'
+target_name_debug_rvct = 'AmazingMaze'
+sdk_root = '/Applications/Marmalade.app/Contents'
+
+scons_version = SCons.__version__.split(".")[:2]
+scons_version = [int(x) for x in scons_version]
+strip = 1
+
+scons1_2 = scons_version >= [1,2]
+if not scons1_2:
+    BoolVariable = BoolOption
+    Variables = Options
+
+opts = Variables('build.conf')
+opts.Add('CC', 'The C compiler.')
+opts.Add('CXX', 'The C++ compiler.')
+if not scons1_2:
+    opts.AddVariables = opts.AddOptions
+opts.AddVariables(
+    BoolVariable('dist', 'use distcc compiler.', 0),
+    BoolVariable('debug', 'use debug defines.', 0),
+    BoolVariable('verbose', 'show command output', 0),
+    BoolVariable('profile', 'add profiling support to all generated code', 0),
+)
+
+def SplitN(str):
+    return filter(lambda x: x, str.split("\n"))
+
+includes = SplitN(r'''
+/Applications/Marmalade.app/Contents/modules/iwutil/h
+/Applications/Marmalade.app/Contents/modules/third_party/libjpeg/h
+/Applications/Marmalade.app/Contents/modules/third_party/zlib/h
+/Applications/Marmalade.app/Contents/modules/third_party/libpng/h
+/Applications/Marmalade.app/Contents/modules/iw2dscenegraphcore/h
+/Applications/Marmalade.app/Contents/modules/iw2dscenegraph/h
+/Applications/Marmalade.app/Contents/modules/iw2d/h
+/Applications/Marmalade.app/Contents/modules/iwgx/h
+/Applications/Marmalade.app/Contents/modules/iwgl/h
+/Applications/Marmalade.app/Contents/modules/iwgeom/h
+/Applications/Marmalade.app/Contents/modules/iwresmanager/h
+/Applications/Marmalade.app/Contents/extensions/PVRTexTool/h
+/Applications/Marmalade.app/Contents/modules/iwgxfont/h
+/Applications/Marmalade.app/Contents/modules/third_party/tiniconv/source
+/Applications/Marmalade.app/Contents/modules/iwtween/h
+/Applications/Marmalade.app/Contents/s3e/h
+/Applications/Marmalade.app/Contents/s3e/h/ext
+/Applications/Marmalade.app/Contents/s3e/h/std
+/Applications/Marmalade.app/Contents/s3e/h/std/c++
+/Applications/Marmalade.app/Contents/s3e/h/ext_legacy
+/Applications/Marmalade.app/Contents/s3e/h/legacy
+''')
+
+libraries = SplitN(r'''
+iwutil
+jpeg
+z
+png
+iw2d
+iwgx
+iwgl
+iwgeom
+iwresmanager
+iwgxfont
+tiniconv
+s3e_cpp
+s3e
+s3e_api_iwgl
+stdc++
+c
+m
+gcc
+stdc++
+''')
+
+libraries_d = SplitN(r'''
+iwutil_d
+jpeg_d
+z_d
+png_d
+iw2d_d
+iwgx_d
+iwgl_d
+iwgeom_d
+iwresmanager_d
+iwgxfont_d
+tiniconv_d
+s3e_cpp_d
+s3e_d
+s3e_api_iwgl
+stdc++
+c
+m
+gcc
+stdc++
+''')
+
+libraries_rvct = SplitN(r'''
+iwutil.lib
+jpeg.lib
+z.lib
+png.lib
+iw2d.lib
+iwgx.lib
+iwgl.lib
+iwgeom.lib
+iwresmanager.lib
+iwgxfont.lib
+tiniconv.lib
+s3e_cpp.lib
+s3e.lib
+s3e_api_iwgl.lib
+stdc++
+c
+m
+gcc
+''')
+
+libraries_rvct_d = SplitN(r'''
+iwutil_d.lib
+jpeg_d.lib
+z_d.lib
+png_d.lib
+iw2d_d.lib
+iwgx_d.lib
+iwgl_d.lib
+iwgeom_d.lib
+iwresmanager_d.lib
+iwgxfont_d.lib
+tiniconv_d.lib
+s3e_cpp_d.lib
+s3e_d.lib
+s3e_api_iwgl.lib
+stdc++
+c
+m
+gcc
+''')
+
+extra_objects = SplitN(r'''
+
+''')
+
+libpath = SplitN(r'''
+/Applications/Marmalade.app/Contents/modules/iwutil/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/third_party/libjpeg/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/third_party/zlib/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/third_party/libpng/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/iw2d/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/iwgx/atitools
+/Applications/Marmalade.app/Contents/modules/iwgx/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/iwgl/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/iwgeom/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/iwresmanager/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/iwgxfont/lib/x86/android
+/Applications/Marmalade.app/Contents/modules/third_party/tiniconv/lib/x86/android
+/Applications/Marmalade.app/Contents/s3e/lib/x86/android
+''')
+
+Extensions_sources = SplitN(r'''
+/Applications/Marmalade.app/Contents/extensions/PVRTexTool/interface/PVRTexTool_interface.cpp
+''')
+
+__Marmalade_Studio__sources = SplitN(r'''
+/Applications/Marmalade.app/Contents/modules/iw2dscenegraph/source/Iw2DSceneGraph.cpp
+/Applications/Marmalade.app/Contents/modules/iw2dscenegraphcore/source/Iw2DSceneGraphCore.cpp
+''')
+
+root_sources = SplitN(r'''
+../AmazingMaze.cpp
+../MazeDrawer.cpp
+../MazeGenerator.cpp
+../PlayerMovement.cpp
+../menu.cpp
+''')
+
+iwtween_sources = SplitN(r'''
+/Applications/Marmalade.app/Contents/modules/iwtween/source/IwTween.cpp
+''')
+
+
+# Map of all libraries that we need to build
+build_libs = {
+}
+
+
+build_libs_debug = {
+}
+
+
+# Map of all sources to build
+modules = {
+    'Extensions' : Extensions_sources,
+    '__Marmalade_Studio_' : __Marmalade_Studio__sources,
+    'root' : root_sources,
+    'iwtween' : iwtween_sources,
+
+}
+
+
+source_flags = {
+}
+
+# Environment variables set by the mkb system
+export_map = {
+    'GCC_THUMB_SUPPORT' : 'NO',
+}
+
+exports = Split("""
+S3E_DIR
+MARMALADE_ROOT
+P4PASSWD
+P4CONFIG
+P4USER
+P4CLIENT
+P4TICKETS
+ARMLMD_LICENSE_FILE
+LM_LICENSE_FILE
+CCACHE_LOGFILE
+CCACHE_TEMPDIR
+CCACHE_DIR
+HOME
+BTILDIR
+TEMP
+TMP
+LIB
+INCLUDE
+DMUCS_SERVER
+DISTCC_HOSTS
+DISTCC_VERBOSE
+CODESIGN_ALLOCATE
+IPHONEOS_DEPLOYMENT_TARGET
+MAXOSX_DEPLOYMENT_TARGET
+SYSTEMROOT
+SYSTEMDRIVE
+""")
+
+for export in exports:
+    if export not in export_map and export in os.environ:
+        export_map[export] = os.environ[export]
+
+arch = "X86"
+
+gcc_variants = ["gcc", "arm-none-linux-gnueabi-gcc", "arm-linux-gnu-gcc", "arm-none-eabi-gcc", "aarch64-none-elf-gcc", 'mipsel-linux-uclibc-gcc', 'mips-linux-gnu-gcc', 'clang', 'i686-linux-android-gcc', 'i386-linux-gnueabi-gcc']
+
+#
+# Figure out what compiler to use
+#
+compiler = 'i686-linux-android-gcc'
+if 'compiler' in ARGUMENTS:
+    compiler = ARGUMENTS['compiler']
+
+if compiler == 'rvct':
+    target_name = target_name_rvct
+    target_name_debug = target_name_debug_rvct
+    includes += "."
+
+if compiler == 'msvc':
+    tools = ['msvc', 'mslink', 'mslib']
+else:
+    tools = ['gcc', 'g++', 'ar', 'link', 'as']
+
+
+paths = [
+    r'/Applications/Marmalade.app/Contents/tools/gcc/x86/android_osx/bin',
+    r'/Applications/Xcode.app/Contents/Developer/usr/bin',
+    r'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin',
+    r'/opt/local/bin',
+]
+
+path = []
+
+def add_to_path(p, prepend=0):
+    global path
+    if prepend:
+        path.insert(0, p)
+    else:
+        path.append(p)
+
+if os.name == 'nt':
+    add_to_path("C:\windows\system32")
+
+if os.name == 'posix':
+    add_to_path("/bin")
+    add_to_path("/usr/bin")
+    add_to_path("/usr/sbin")
+
+for p in reversed(paths):
+    add_to_path(p, prepend=1)
+
+os.environ['PATH'] = os.pathsep.join(path)
+
+env=Environment(
+tools=tools,
+options=opts,
+ENV={'PATH':path},
+MSVC_VERSION="6.0",
+CPPPATH=includes,
+LIBPATH=libpath,
+PLFLAGS=[],
+STATIC_AND_SHARED_OBJECTS_ARE_THE_SAME='true',
+_CPPINCFLAGS='$( ${_concat(INCPREFIX, CPPPATH, INCSUFFIX, __env__)} $)',
+)
+
+
+Help(opts.GenerateHelpText(env))
+
+if env['debug']:
+    build_libs = build_libs_debug
+    temp_defines = 'temp_defines_debug.h'
+    builddir = "debug"
+    target_name = target_name_debug
+    libraries = libraries_d
+    libraries_rvct = libraries_rvct_d
+else:
+    temp_defines = 'temp_defines_release.h'
+    builddir = "release"
+
+if compiler == "rvct":
+    libraries = libraries_rvct
+    builddir += "_rvct"
+
+
+if 1:
+
+    env.Append(LINKFLAGS=['-Wl,--as-needed', '-m32', '--sysroot=/Applications/Marmalade.app/Contents/s3e/../tools/gcc/x86/android_osx/android-14/arch-x86', '-Wl,--no-undefined', '-shared', '-static-libgcc', '-nostdlib', '-fuse-ld=bfd', '-Wl,-Tandroid_x86_linker_script', '-Wl,-init', '-Wl,iwcrt_android_x86_init', '-Wl,-fini', '-Wl,iwcrt_android_x86_fini', '-frtti', '-Wl,-u_IwAppEntry', '-Wl,-u_IwAppVersionMajor', '-Wl,-u_IwAppVersionMinor', '-Wl,--entry=_IwAppEntry', '-Wl,-init', '-Wl,iwcrt_android_x86_init'])
+    if env['debug']:
+        env.Append(CCFLAGS=['-g', '-O0', '-include', 'temp_defines_debug.h'])
+        env.Append(LINKFLAGS=['-Wl,-Map=AmazingMaze.map'])
+        env.Append(PLFLAGS=['-d'])
+    else:
+        env.Append(CCFLAGS=['-O3', '-include', 'temp_defines_release.h'])
+        env.Append(LINKFLAGS=['-Wl,-Map=AmazingMaze.map'])
+    env.Append(CCFLAGS=['-funsigned-char', '-fno-strict-aliasing', '-fno-stack-protector', '-fno-short-enums', '-fshort-wchar', '-Wall', '-fmessage-length=0', '-Wno-unused', '-Wno-parentheses', '-save-temps', '-m32', '-fasynchronous-unwind-tables', '-fPIC', '-Wno-switch', '-fvisibility=hidden', '-nostdinc'])
+    env.Append(CFLAGS=['-std=gnu99'])
+    env.Append(CXXFLAGS=['-Wno-reorder', '-fvisibility-inlines-hidden', '-fno-exceptions', '-frtti', '-nostdinc++'])
+    env['ARFLAGS'] = ['rc']
+    env['ASFLAGS'] = ['-m32', '-c', '-x', 'assembler-with-cpp']
+    env['ASPPFLAGS'] = ['-x', 'assembler-with-cpp']
+    env['STRIPFLAGS'] = []
+    env['CXXCOM'] = '$CXX -o $TARGET -c $CCFLAGS $CXXFLAGS $_CCCOMCOM $SOURCES'
+    env['SHCXXCOM'] = '$SHCXX -o $TARGET -c $SHCCFLAGS $SHCXXFLAGS $_CCCOMCOM $SOURCES'
+    env['SHLINKFLAGS'] = '$LINKFLAGS'
+
+
+env.Append(ENV=export_map)
+
+if env['dist'] and compiler != "msvc":
+    if 'DISTCC_HOSTS' not in env['ENV']:
+        if env['verbose']:
+            print "not using distcc as DISTCC_HOSTS is not set"
+        env['dist'] = 0
+    elif not env.WhereIs("distcc"):
+        if env['verbose']:
+            print "not using distcc as distcc not found in PATH"
+        env['dist'] = 0
+
+if not env['verbose']:
+    env.Replace(
+    CXXCOMSTR   ='Compiling [$CXX] $SOURCE',
+    ASCOMSTR    ='Assembling [$AS] $SOURCE',
+    ASPPCOMSTR  ='Assembling (with cpp) [$AS] $SOURCE',
+    CCCOMSTR    ='Compiling [$CC] $SOURCE',
+    SHCXXCOMSTR ='Compiling [$CXX] $SOURCE',
+    SHCCCOMSTR  ='Compiling [$CC] $SOURCE',
+    LINKCOMSTR  ='Linking   [$LINK] $TARGET',
+    ARCOMSTR    ='Librarian [$AR] $TARGET',
+    SHLINKCOMSTR='Linking   [$SHLINK] $TARGET')
+
+if env['debug']:
+    strip = 0
+
+
+if env['PLATFORM'] == 'win32':
+    try:
+        import win32file
+        import win32event
+        import win32process
+        import win32security
+        import string
+
+        def my_spawn(sh, escape, cmd, args, spawnenv):
+            if cmd[0] == '"' and cmd[-1] != '"':
+               while 1:
+                   arg = args[1]
+                   cmd = cmd + " " + arg
+                   del(args[1])
+                   if arg.endswith('"'):
+                       break
+               args[0] = cmd
+
+            for var in spawnenv:
+                spawnenv[var] = spawnenv[var].encode('ascii', 'replace')
+
+            sAttrs = win32security.SECURITY_ATTRIBUTES()
+            StartupInfo = win32process.STARTUPINFO()
+            newargsl = map(escape, args[1:])
+
+            #Strip off excess intverted commas inserted by various bits trying to get windows paths right
+            #logic is 'while arg is surrounded by quotes, and there is a quote still in the rest of it,
+            #get rid of surrounding quotes
+            i = 0
+            for arg in newargsl:
+                 while len(arg)>= 2 and arg[0] == '"' and arg[-1] == '"' and '"' in arg[1:-1]:
+                    arg = arg[1:-1]
+                 newargsl[i] = arg
+                 i += 1
+
+            newargs = string.join(newargsl, ' ')
+
+            cmdline = cmd + " " + newargs
+
+            # CreateProcess has a hard limit on the length of command it will accept.
+            # In this case, attempt to use a command file. This only works for some tools.
+            if len(cmdline) >= 32767:
+                print "Command line exceeds 32k"
+                # gcc will only accept forward slashes in a command file
+                cmdline = cmdline.replace("\\", "/")
+                cmds = cmdline.split(" ", 1)
+                cmdpath = "spawn.cmd"
+                cmdline = "%s @%s" % (cmds[0], cmdpath)
+                cmdfile = open(cmdpath, "w")
+                cmdfile.write(cmds[1])
+                cmdfile.close()
+
+            # check for any special operating system commands
+            if cmd == 'del':
+                for arg in args[1:]:
+                    win32file.DeleteFile(arg)
+                exit_code = 0
+            else:
+                # otherwise execute the command.
+                try:
+                    hProcess, hThread, dwPid, dwTid = win32process.CreateProcess(None, cmdline, None, None, 1, 0, spawnenv, None, StartupInfo)
+                except:
+                    print "Couldn't run "+cmdline+"\n"
+                    return -1
+                win32event.WaitForSingleObject(hProcess, win32event.INFINITE)
+                exit_code = win32process.GetExitCodeProcess(hProcess)
+                win32file.CloseHandle(hProcess)
+                win32file.CloseHandle(hThread)
+            return exit_code
+
+        env['SPAWN'] = my_spawn
+    except ImportError:
+        pass
+
+
+def mod_target(target, source, env):
+    target = os.path.basename(str(target[0]))
+    target = [join(builddir, target)]
+    return (target, source)
+
+builders = {}
+
+
+import shlex
+
+def scanner(node, env, path, arg):
+    rtn = []
+    for command in arg:
+         command = shlex.split(command)
+         if 'python' in command[0].lower():
+            rtn.append(command[1])
+    return rtn
+
+action = []
+action.append(""""/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" "/Applications/Marmalade.app/Contents/modules/iwgx/tools/compile_shaders.py" ${SOURCE}""")
+
+action.append(Touch('${TARGET}'))
+b = Builder(action=action, suffix=".stamp", emitter=mod_target, source_scanner=Scanner(function=scanner, argument=['"/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python" "/Applications/Marmalade.app/Contents/modules/iwgx/tools/compile_shaders.py" ${SOURCE}']))
+builders['VP'] = b
+env.Append(BUILDERS=builders)
+
+
+if compiler == 'rvct':
+    # Emitter specified tools:
+    env['CC']     = ''
+    env['CXX']    = ''
+    env['LINK']   = ''
+    env['AR']     = ''
+    env['AS']     = ''
+    env['STRIP']  = ''
+    env['RANLIB'] = ''
+elif compiler == 'clang':
+    # Emitter specified tools:
+    env['CC']     = ''
+    env['CXX']    = ''
+    env['LINK']   = ''
+    env['AR']     = ''
+    env['AS']     = ''
+    env['STRIP']  = ''
+    env['RANLIB'] = ''
+else:
+    # Emitter specified tools:
+    env['CC']     = 'i686-linux-android-gcc'
+    env['CXX']    = 'i686-linux-android-g++'
+    env['LINK']   = 'i686-linux-android-g++'
+    env['AR']     = 'i686-linux-android-ar'
+    env['AS']     = 'gcc'
+    env['STRIP']  = 'i686-linux-android-strip'
+    env['RANLIB'] = 'i686-linux-android-ranlib'
+
+# compiler settings for all ARM targets
+env['FROMELF'] = 'fromelf'
+
+if compiler == 'rvct':
+    env['ENV']['CCACHE_EXTENSION'] = 'c'
+    env['INCPREFIX'] = "-I"
+    env['OBJSUFFIX'] = ".o"
+    env['LIBSUFFIX'] = ".a"
+    env['LIBPREFIX'] = ""
+    env['CPPDEFPREFIX'] = "-D"
+    env['CPPFLAGS'] = ""
+    env['RANLIBCOM'] = ''
+    env['LIBLINKPREFIX'] = ""
+    env['SHCCFLAGS'] = "$CCFLAGS"
+    env['SHCXXFLAGS'] = "$CXXFLAGS"
+    env['LINKCOM'] = '$LINK -o $TARGET $LINKFLAGS $( $_LIBDIRFLAGS $) $_LIBFLAGS $_PDB $SOURCES'
+    env['SHLINKCOM'] = '$LINK -o $TARGET $LINKFLAGS $( $_LIBDIRFLAGS $) $_LIBFLAGS $_PDB $SOURCES'
+    env['CCCOMFLAGS'] = "-c $CPPFLAGS $_CPPINCFLAGS $_CPPDEFFLAGS -o$TARGET $SOURCES $CCPCHFLAGS $CCPDBFLAGS"
+    env['ARCOM'] = "${TEMPFILE('$AR $ARFLAGS $TARGET $SOURCES')}"
+    env['_LIBFLAGS'] = "$LIBS"
+    if libpath:
+        env['LINKFLAGS'] += Split('--userlibpath "%s"' % ','.join(libpath))
+    env['CXXFLAGS'] = ["--cpp"]
+    env['SHLINKFLAGS'] = "$LINKFLAGS"
+    env['LIBPATH'] = []
+    env['TEMPFILEPREFIX'] = '--via='
+
+if compiler == 'clang':
+    # Emitter specified tools:
+    env['CC']     = ''
+    env['CXX']    = ''
+    env['LINK']   = ''
+    env['AR']     = ''
+    env['AS']     = ''
+    env['STRIP']  = ''
+    env['RANLIB'] = ''
+else:
+    # Emitter specified tools:
+    env['CC']     = 'i686-linux-android-gcc'
+    env['CXX']    = 'i686-linux-android-g++'
+    env['LINK']   = 'i686-linux-android-g++'
+    env['AR']     = 'i686-linux-android-ar'
+    env['AS']     = 'gcc'
+    env['STRIP']  = 'i686-linux-android-strip'
+    env['RANLIB'] = 'i686-linux-android-ranlib'
+
+
+if 'g++' in env['CXX']:
+    env['LINK'] = env['CXX']
+env['PROGSUFFIX'] = '.so'
+
+if 1:
+    # Emitter specified tools:
+    env['CC']     = 'i686-linux-android-gcc'
+    env['CXX']    = 'i686-linux-android-g++'
+    env['LINK']   = 'i686-linux-android-g++'
+
+if 1:
+    # Emitter specified tools:
+    env['AR']     = 'i686-linux-android-ar'
+    env['AS']     = 'gcc'
+    env['STRIP']  = 'i686-linux-android-strip'
+    env['RANLIB'] = 'i686-linux-android-ranlib'
+
+# Set a sensible default number of jobs, unless the user has specified
+# a non-default number on the commandline.
+if GetOption('num_jobs') == 1:
+    # setup distcc where available
+    if compiler in gcc_variants and env['dist']:
+        # when doing parallel build use 2 * number of hosts as the numbre
+        # if parallel jobs
+        jobs = len(export_map['DISTCC_HOSTS'].split()) * 2
+        print "Performing parallel build with %d jobs" % jobs
+        SetOption('num_jobs', jobs)
+        env['LD']  =  env['CC']
+        env['CC']  = 'distcc %s' % env['CC']
+        env['CXX'] = 'distcc %s' % env['CXX']
+        if 'DMUCS_SERVER' in os.environ:
+            env['CC']  = 'gethost %s' % env['CC']
+            env['CXX'] = 'gethost %s' % env['CXX']
+            SetOption('num_jobs', 6)
+    elif compiler == 'rvct':
+        pass
+    else:
+        try:
+            # we still use python2.5 on win32 and multiprocessing is
+            # not available.
+            import multiprocessing
+            maxjobs = multiprocessing.cpu_count() * 2
+        except:
+            maxjobs = 2
+            if sys.platform == 'win32':
+                try:
+                    maxjobs = int(os.environ['NUMBER_OF_PROCESSORS']) * 2
+                except (ValueError, KeyError):
+                    pass
+        SetOption('num_jobs', maxjobs)
+
+if env.WhereIs("ccache"):
+    env['CC']  = "ccache " + env['CC']
+    env['CXX'] = "ccache " + env['CXX']
+
+
+def remove(env, setting, flag):
+    if flag in env[setting]:
+        new_settings = list(env[setting])
+        while flag in new_settings:
+            new_settings.remove(flag)
+        env[setting] = new_settings
+
+if env['profile']:
+    env.Append(CXXFLAGS="-pg", LINKFLAGS="-pg")
+
+#
+# this is the code the tells scons that we want all object files
+# to go in our build dir.  Otherwise the object files end up in
+# the same place as the source.
+#
+
+if not os.path.dirname(target_name):
+    target_name = join(builddir, target_name)
+
+nowarn_env = env.Clone()
+arm_env = env.Clone()
+thumb_env = env.Clone()
+vfp_env = env.Clone()
+
+if '-Wall' in nowarn_env['CCFLAGS'] or '-Wc,-Wall' in nowarn_env['CCFLAGS']:
+    nowarn_env['CCFLAGS'] = list(nowarn_env['CCFLAGS'])
+    remove(nowarn_env, 'CCFLAGS', '-Wall')
+    remove(nowarn_env, 'CCFLAGS', '-Wc,-Wall')
+    nowarn_env.Append(CCFLAGS='-w')
+
+
+if env['verbose']:
+    print "CCFLAGS   = %s" % env['CCFLAGS']
+    print "CXXFLAGS  = %s" % env['CXXFLAGS']
+    #print "CPPFLAGS = %s" % env['CPPFLAGS']
+    print "LINKFLAGS = %s" % env['LINKFLAGS']
+    print "SHLINKFLAGS = %s" % env['SHLINKFLAGS']
+    print "CC        = %s" % env['CC']
+    print "CXX       = %s" % env['CXX']
+    if 'DISTCC_HOSTS' in env['ENV']:
+        print "DISTCC_HOSTS = %s" % env['ENV']['DISTCC_HOSTS']
+
+
+objectivec_env = env.Clone()
+objectivec_env.Append(CFLAGS=['-std=c99', '-x', 'objective-c'])
+
+objectivecpp_env = env.Clone()
+objectivecpp_env.Append(CXXFLAGS=['-x', 'objective-c++'])
+
+def get_env(source):
+    if source.endswith(".mm"):
+        return objectivecpp_env
+    if source.endswith(".m"):
+        return objectivec_env
+    flags = source_flags.get(source)
+    if flags:
+        if 'rvct' in flags and 'rvct' not in compiler:
+            return None
+        if 'gcc' in flags:
+            if "ARM" not in arch:
+                return None
+            if 'gcc' not in compiler and 'qcc' not in compiler:
+                return None
+
+        if 'gccnowarn' in flags:
+            return nowarn_env
+        if 'vfp' in flags:
+            return vfp_env
+        if 'arm' in flags:
+            return arm_env
+        if 'thumb' in flags:
+            return thumb_env
+    return env
+
+shared_objects = []
+objects = []
+objnames = []
+for module in modules:
+    for source in modules[module]:
+        basename = os.path.basename(source)
+        objname = os.path.splitext(basename)[0]
+        objname = join(builddir, objname)
+        if objname in objnames:
+            i = 1
+            orig = objname
+            while objname in objnames:
+                objname = orig + ("_%s" % i)
+                i += 1
+        objnames.append(objname)
+        use_env = get_env(source)
+        if use_env:
+            objects.append(use_env.Object(objname, source))
+            shared_objects.append(use_env.SharedObject(objname, source))
+
+lib_build_targets=[]
+libs = []
+for lib in build_libs:
+    objs = []
+    libname = os.path.basename(lib)
+    if libname in libraries:
+        libraries.remove(libname)
+    for source in build_libs[lib]:
+        basename = os.path.basename(source)
+        objname = os.path.splitext(basename)[0]
+        objname = join(builddir, "lib_" + os.path.basename(lib), objname)
+        use_env = get_env(source)
+        obj = use_env.Object(objname, source)
+        objs.append(obj)
+    library = env.Library(lib, objs)
+    env.Default(library)
+    libs.append(library)
+    if os.name == 'nt':
+        library = str(library[0]).replace('\\', '/')
+    lib_build_targets.append(library)
+
+libs = []
+for l in libraries:
+    if compiler == 'rvct':
+        if os.name == 'posix':
+            l = l.replace("(", "\(")
+            l = l.replace(")", "\)")
+    else:
+        # if we not using the arm compiler we strip of any extenation on library names
+        base, ext = os.path.splitext(l)
+        if ext in ['.lib', '.a']:
+            l = base
+    libs.append(l)
+
+libraries = libs
+
+env.Append(LIBS=libraries + lib_build_targets )
+
+#
+# Declare a program target for this project.
+#
+
+program = env.Program(target_name, objects + extra_objects)
+env.Depends(program, temp_defines)
+
+#
+# Declare a shared library target for this project.
+#
+
+shared_library = env.SharedLibrary(join(builddir, 'AmazingMaze'), shared_objects + extra_objects)
+env.Depends(shared_library, temp_defines)
+
+#
+# Declare a static library target for this project.
+#
+
+static_library = env.Library('AmazingMaze', objects + extra_objects)
+env.Depends(static_library, temp_defines)
+
+#
+# Declare the *default* target(s) for this build
+#
+
+
+mapfile = "AmazingMaze.map"
+env['LINKFLAGS'] = [f.replace(mapfile, join(builddir, mapfile)) for f in env['LINKFLAGS']]
+
+if compiler in gcc_variants:
+    env['_LIBFLAGS'] = []
+    for x in env['LIBS']:
+        parts = x.split()
+        if parts[0].startswith("-force_load"):
+            parts[1] += '.a'
+        if parts[0].startswith("-Wl,--whole-archive") or parts[0].startswith("-force_load"):
+            for l in parts:
+                env['_LIBFLAGS'].append(l)
+        else:
+            env['_LIBFLAGS'].append("-l"+x)
+
+    env['_LIBFLAGS'].insert(0, "-Wl,--start-group")
+    env['_LIBFLAGS'].append("-Wl,--end-group")
+
+default_target = program
+
+env['_LIBFLAGS'].append('/Applications/Marmalade.app/Contents/s3e/lib/x86/android/libc.a')
+
+env['_LIBFLAGS'].append('/Applications/Marmalade.app/Contents/s3e/lib/x86/android/libm.a')
+if default_target:
+    env.Default(default_target)
+    env.Depends(default_target, temp_defines)
+
+    # Uncoment this if you always want to link the final target
+    #env.AlwaysBuild(default_target)
+
+# Post-build actions
+
+def subst(action):
+    if default_target:
+        t = default_target[0].abspath
+        action = action.replace("$(TargetPath)", t)
+        action = action.replace("$(TargetDir)", join("/Users/xiaolilillytang/Desktop/AmazingMaze/build_amazingmaze_scons_x86", builddir))
+    action = action.replace("%S3E_DIR%", "/Applications/Marmalade.app/Contents/s3e")
+    return action
+
+action = env.Action(subst(r'/System/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python ./process_map.py "$(TargetPath)"'), chdir='/Applications/Marmalade.app/Contents/s3e/tools')
+env.AddPostAction(default_target, action)
+action = env.Action(subst(r'/Applications/Marmalade.app/Contents/s3e/bin/s3e_plink -l "$(TargetPath)"'))
+env.AddPostAction(default_target, action)

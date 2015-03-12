@@ -57,8 +57,7 @@ sS'disable-runtime-checks'
 p26
 NsS'release'
 p27
-I01
-sS'no-make'
+NsS'no-make'
 p28
 NsS'xcode-x86-build-settings'
 p29
@@ -178,7 +177,8 @@ p77
 g13
 sS'debug'
 p78
-NsS'xcode-build-order'
+I01
+sS'xcode-build-order'
 p79
 g4
 sS'gcc_aarch64_rel_rtsm_args'
@@ -360,7 +360,7 @@ aS'D:/School/cs115/AmazingMaze/AmazingMaze.mkb'
 p155
 aS'--buildenv=VC12'
 p156
-aS'--release'
+aS'--debug'
 p157
 aS'--x86'
 p158

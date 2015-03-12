@@ -1,7 +1,7 @@
 -c
-c:/marmalade/7.5/extensions/pvrtextool/interface/PVRTexTool_interface.cpp
+d:/School/cs115/AmazingMaze/menu.cpp
 -o
-Debug_AmazingMaze_vc12_gcc_x86_android//PVRTexTool_interface.obj
+Debug_AmazingMaze_vc12_gcc_x86_android//menu.obj
 -Ic:/marmalade/7.5/modules/iwutil/h
 -Ic:/marmalade/7.5/modules/third_party/libjpeg/h
 -Ic:/marmalade/7.5/modules/third_party/zlib/h

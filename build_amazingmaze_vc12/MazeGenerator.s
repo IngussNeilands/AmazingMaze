@@ -28,7 +28,7 @@ _ZN4_STLL8_IosInitE:
 _Z15MazeInitializerv:
 .LFB2965:
 	.file 1 "d:/School/cs115/AmazingMaze/MazeGenerator.cpp"
-	.loc 1 21 0
+	.loc 1 22 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 16
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -41,26 +41,26 @@ _Z15MazeInitializerv:
 	add	r1, pc, r1
 .LBB2:
 .LBB3:
-	.loc 1 22 0
+	.loc 1 23 0
 	mov	r3, #0
 	str	r3, [sp, #12]
 	b	.L2
 .L7:
 .LBB4:
 .LBB5:
-	.loc 1 23 0
+	.loc 1 24 0
 	mov	r3, #0
 	str	r3, [sp, #8]
 	b	.L3
 .L6:
 .LBB6:
 .LBB7:
-	.loc 1 24 0
+	.loc 1 25 0
 	mov	r3, #0
 	str	r3, [sp, #4]
 	b	.L4
 .L5:
-	.loc 1 25 0 discriminator 2
+	.loc 1 26 0 discriminator 2
 	ldr	r3, .L8+4
 	ldr	r0, [r1, r3]
 	ldr	r2, [sp, #8]
@@ -75,40 +75,40 @@ _Z15MazeInitializerv:
 	add	r3, r2, r3
 	ldr	r2, .L8+8
 	str	r2, [r0, r3, asl #2]	@ float
-	.loc 1 24 0 discriminator 2
+	.loc 1 25 0 discriminator 2
 	ldr	r3, [sp, #4]
 	add	r3, r3, #1
 	str	r3, [sp, #4]
 .L4:
-	.loc 1 24 0 is_stmt 0 discriminator 1
+	.loc 1 25 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #14
 	ble	.L5
 .LBE7:
 .LBE6:
-	.loc 1 23 0 is_stmt 1
+	.loc 1 24 0 is_stmt 1
 	ldr	r3, [sp, #8]
 	add	r3, r3, #1
 	str	r3, [sp, #8]
 .L3:
-	.loc 1 23 0 is_stmt 0 discriminator 1
+	.loc 1 24 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #8]
 	cmp	r3, #19
 	ble	.L6
 .LBE5:
 .LBE4:
-	.loc 1 22 0 is_stmt 1
+	.loc 1 23 0 is_stmt 1
 	ldr	r3, [sp, #12]
 	add	r3, r3, #1
 	str	r3, [sp, #12]
 .L2:
-	.loc 1 22 0 is_stmt 0 discriminator 1
+	.loc 1 23 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #12]
 	cmp	r3, #8
 	ble	.L7
 .LBE3:
 .LBE2:
-	.loc 1 29 0 is_stmt 1
+	.loc 1 30 0 is_stmt 1
 	add	sp, sp, #16
 	@ sp needed
 	bx	lr
@@ -155,7 +155,7 @@ _Z15MazeInitializerv:
 	.type	_Z13DoorGeneratorv, %function
 _Z13DoorGeneratorv:
 .LFB2966:
-	.loc 1 31 0
+	.loc 1 32 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 80
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -172,10 +172,10 @@ _Z13DoorGeneratorv:
 .LPIC1:
 	add	r4, pc, r4
 .LBB8:
-	.loc 1 33 0
+	.loc 1 34 0
 	mov	r3, #0
 	str	r3, [sp, #76]	@ float
-	.loc 1 38 0
+	.loc 1 39 0
 	ldr	r3, .L43+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
@@ -186,19 +186,19 @@ _Z13DoorGeneratorv:
 	mov	r1, r3
 	bl	printf(PLT)
 .LBB9:
-	.loc 1 39 0
+	.loc 1 40 0
 	mov	r3, #1
 	str	r3, [sp, #68]
 	b	.L11
 .L36:
 .LBB10:
-	.loc 1 40 0
+	.loc 1 41 0
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 41 0
+	.loc 1 42 0
 	bl	rand(PLT)
 	mov	r2, r0
 	ldr	r3, [sp, #68]
@@ -209,17 +209,17 @@ _Z13DoorGeneratorv:
 	mov	r3, r1
 	add	r3, r3, #2
 	str	r3, [sp, #64]
-	.loc 1 42 0
+	.loc 1 43 0
 	ldr	r3, [sp, #68]
 	cmp	r3, #1
 	beq	.L12
-	.loc 1 43 0
+	.loc 1 44 0
 	ldr	r0, [sp, #68]
 	ldr	r1, [sp, #72]
 	bl	_Z17AssignParentChildii(PLT)
 	str	r0, [sp, #64]
 .L12:
-	.loc 1 45 0
+	.loc 1 46 0
 	ldr	r3, .L43+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
@@ -231,28 +231,28 @@ _Z13DoorGeneratorv:
 	mov	r2, r3
 	bl	printf(PLT)
 .LBB11:
-	.loc 1 46 0
+	.loc 1 47 0
 	mov	r3, #1
 	str	r3, [sp, #60]
 	b	.L13
 .L35:
 .LBB12:
 .LBB13:
-	.loc 1 47 0
+	.loc 1 48 0
 	ldr	r3, [sp, #68]
 	cmp	r3, #1
 	bne	.L14
-	.loc 1 48 0
+	.loc 1 49 0
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 49 0
+	.loc 1 50 0
 	ldr	r3, [sp, #60]
 	cmp	r3, #1
 	bne	.L15
-	.loc 1 49 0 is_stmt 0 discriminator 1
+	.loc 1 50 0 is_stmt 0 discriminator 1
 	bl	rand(PLT)
 	mov	r5, r0
 	mov	r0, #628
@@ -270,17 +270,17 @@ _Z13DoorGeneratorv:
 	mov	r3, r0
 	str	r3, [sp, #76]	@ float
 .L15:
-	.loc 1 51 0 is_stmt 1
+	.loc 1 52 0 is_stmt 1
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 52 0
+	.loc 1 53 0
 	ldr	r3, [sp, #60]
 	cmp	r3, #1
 	beq	.L16
-	.loc 1 52 0 is_stmt 0 discriminator 1
+	.loc 1 53 0 is_stmt 0 discriminator 1
 	bl	rand(PLT)
 	mov	r5, r0
 	mov	r0, #628
@@ -305,7 +305,7 @@ _Z13DoorGeneratorv:
 	mov	r3, r0
 	str	r3, [sp, #76]	@ float
 .L16:
-	.loc 1 53 0 is_stmt 1 discriminator 1
+	.loc 1 54 0 is_stmt 1 discriminator 1
 	ldr	r0, [sp, #76]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -315,7 +315,7 @@ _Z13DoorGeneratorv:
 	add	r1, pc, r1
 	mov	r0, r1
 	bl	printf(PLT)
-	.loc 1 54 0 discriminator 1
+	.loc 1 55 0 discriminator 1
 	ldr	r3, [sp, #60]
 	sub	r5, r3, #1
 	ldr	r0, [sp, #76]	@ float
@@ -337,7 +337,7 @@ _Z13DoorGeneratorv:
 	add	r3, r0, r3
 	add	r3, r3, r1
 	str	r2, [r3]	@ float
-	.loc 1 55 0 discriminator 1
+	.loc 1 56 0 discriminator 1
 	ldr	r3, [sp, #60]
 	sub	r2, r3, #1
 	ldr	r3, .L43+24
@@ -353,7 +353,7 @@ _Z13DoorGeneratorv:
 	add	r3, r1, r3
 	mov	r2, #-1073741824
 	str	r2, [r3]	@ float
-	.loc 1 56 0 discriminator 1
+	.loc 1 57 0 discriminator 1
 	ldr	r3, [sp, #60]
 	sub	r2, r3, #1
 	ldr	r3, .L43+24
@@ -371,7 +371,7 @@ _Z13DoorGeneratorv:
 	add	r3, r3, r1
 	mov	r2, #-1073741824
 	str	r2, [r3]	@ float
-	.loc 1 57 0 discriminator 1
+	.loc 1 58 0 discriminator 1
 	ldr	r3, [sp, #60]
 	sub	r2, r3, #1
 	ldr	r3, .L43+24
@@ -392,13 +392,13 @@ _Z13DoorGeneratorv:
 	b	.L17
 .L14:
 .LBB14:
-	.loc 1 60 0
+	.loc 1 61 0
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 61 0
+	.loc 1 62 0
 	ldr	r3, [sp, #60]
 	sub	r2, r3, #1
 	ldr	r3, .L43+24
@@ -416,7 +416,7 @@ _Z13DoorGeneratorv:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #44]	@ float
-	.loc 1 62 0
+	.loc 1 63 0
 	ldr	r3, [sp, #60]
 	sub	r2, r3, #1
 	ldr	r3, .L43+24
@@ -434,20 +434,20 @@ _Z13DoorGeneratorv:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #40]	@ float
-	.loc 1 63 0
+	.loc 1 64 0
 	ldr	r0, [sp, #40]	@ float
 	ldr	r1, [sp, #44]	@ float
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #56]	@ float
-	.loc 1 64 0
+	.loc 1 65 0
 	ldr	r0, [sp, #56]	@ float
 	mov	r1, #0
 	bl	__aeabi_fcmple(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L18
-	.loc 1 65 0
+	.loc 1 66 0
 	ldr	r0, [sp, #40]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -464,14 +464,14 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #40]	@ float
-	.loc 1 66 0
+	.loc 1 67 0
 	ldr	r0, [sp, #40]	@ float
 	ldr	r1, [sp, #44]	@ float
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #56]	@ float
 .L18:
-	.loc 1 68 0
+	.loc 1 69 0
 	ldr	r3, [sp, #60]
 	sub	r2, r3, #1
 	ldr	r3, .L43+24
@@ -490,7 +490,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #36]
-	.loc 1 69 0
+	.loc 1 70 0
 	ldr	r3, [sp, #68]
 	sub	ip, r3, #1
 	ldr	r3, .L43+24
@@ -512,12 +512,12 @@ _Z13DoorGeneratorv:
 	mov	r3, r0
 	str	r3, [sp, #32]
 .LBB15:
-	.loc 1 70 0
+	.loc 1 71 0
 	ldr	r3, [sp, #32]
 	cmp	r3, #1
 	bne	.L20
 .LBB16:
-	.loc 1 71 0
+	.loc 1 72 0
 	ldr	r0, [sp, #56]	@ float
 	ldr	r1, .L43+20
 	bl	__aeabi_fmul(PLT)
@@ -527,7 +527,7 @@ _Z13DoorGeneratorv:
 	mov	r3, r0
 	sub	r3, r3, #50
 	str	r3, [sp, #28]
-	.loc 1 72 0
+	.loc 1 73 0
 	bl	rand(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -546,14 +546,14 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	str	r3, [sp, #76]	@ float
-	.loc 1 73 0
+	.loc 1 74 0
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+36
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L21
-	.loc 1 73 0 is_stmt 0 discriminator 1
+	.loc 1 74 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+36
 	bl	__aeabi_fsub(PLT)
@@ -561,7 +561,7 @@ _Z13DoorGeneratorv:
 	str	r3, [sp, #76]	@ float
 .L21:
 .LBB17:
-	.loc 1 74 0 is_stmt 1
+	.loc 1 75 0 is_stmt 1
 	ldr	r3, .L43+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
@@ -569,7 +569,7 @@ _Z13DoorGeneratorv:
 	cmp	r2, r3
 	bne	.L23
 .LBB18:
-	.loc 1 75 0
+	.loc 1 76 0
 	ldr	r3, .L43+24
 	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #36]
@@ -593,7 +593,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #24]
-	.loc 1 76 0
+	.loc 1 77 0
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+20
 	bl	__aeabi_fmul(PLT)
@@ -602,7 +602,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #20]
-	.loc 1 77 0
+	.loc 1 78 0
 	ldr	r3, .L43+24
 	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #36]
@@ -626,30 +626,30 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #16]
-	.loc 1 78 0
+	.loc 1 79 0
 	b	.L24
 .L26:
-	.loc 1 79 0
+	.loc 1 80 0
 	ldr	r3, .L43+40
 .LPIC5:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	puts(PLT)
 .L24:
-	.loc 1 78 0 discriminator 1
+	.loc 1 79 0 discriminator 1
 	ldr	r2, [sp, #20]
 	ldr	r3, [sp, #16]
 	rsb	r3, r3, r2
 	cmn	r3, #69
 	blt	.L25
-	.loc 1 78 0 is_stmt 0 discriminator 2
+	.loc 1 79 0 is_stmt 0 discriminator 2
 	ldr	r2, [sp, #20]
 	ldr	r3, [sp, #16]
 	rsb	r3, r3, r2
 	cmp	r3, #69
 	ble	.L26
 .L25:
-	.loc 1 80 0 is_stmt 1
+	.loc 1 81 0 is_stmt 1
 	bl	rand(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -668,7 +668,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	str	r3, [sp, #76]	@ float
-	.loc 1 81 0
+	.loc 1 82 0
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+20
 	bl	__aeabi_fmul(PLT)
@@ -677,7 +677,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #20]
-	.loc 1 82 0
+	.loc 1 83 0
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+36
 	bl	__aeabi_fcmpgt(PLT)
@@ -688,7 +688,7 @@ _Z13DoorGeneratorv:
 	b	.L23
 .L40:
 .LBB19:
-	.loc 1 82 0 is_stmt 0 discriminator 1
+	.loc 1 83 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+36
 	bl	__aeabi_fsub(PLT)
@@ -697,7 +697,7 @@ _Z13DoorGeneratorv:
 .L23:
 .LBE19:
 .LBE17:
-	.loc 1 84 0 is_stmt 1 discriminator 1
+	.loc 1 85 0 is_stmt 1 discriminator 1
 	ldr	r3, [sp, #60]
 	sub	r5, r3, #1
 	ldr	r0, [sp, #76]	@ float
@@ -728,12 +728,12 @@ _Z13DoorGeneratorv:
 .L20:
 .LBB20:
 .LBB21:
-	.loc 1 86 0
+	.loc 1 87 0
 	ldr	r3, [sp, #32]
 	cmp	r3, #1
 	ble	.L17
 .LBB22:
-	.loc 1 87 0
+	.loc 1 88 0
 	ldr	r0, [sp, #56]	@ float
 	ldr	r1, .L43+20
 	bl	__aeabi_fmul(PLT)
@@ -742,7 +742,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #12]
-	.loc 1 88 0
+	.loc 1 89 0
 	ldr	r0, [sp, #12]
 	ldr	r1, [sp, #32]
 	bl	__aeabi_idiv(PLT)
@@ -751,16 +751,16 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #8]	@ float
-	.loc 1 89 0
+	.loc 1 90 0
 	mov	r3, #0
 	str	r3, [sp, #52]
 .LBB23:
-	.loc 1 90 0
+	.loc 1 91 0
 	mov	r3, #6
 	str	r3, [sp, #48]
 	b	.L29
 .L32:
-	.loc 1 91 0
+	.loc 1 92 0
 	ldr	r3, [sp, #68]
 	sub	r0, r3, #1
 	ldr	r3, .L43+24
@@ -786,24 +786,24 @@ _Z13DoorGeneratorv:
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L30
-	.loc 1 92 0
+	.loc 1 93 0
 	ldr	r3, [sp, #48]
 	sub	r3, r3, #5
 	str	r3, [sp, #52]
 .L30:
-	.loc 1 90 0
+	.loc 1 91 0
 	ldr	r3, [sp, #48]
 	add	r3, r3, #1
 	str	r3, [sp, #48]
 .L29:
-	.loc 1 90 0 is_stmt 0 discriminator 1
+	.loc 1 91 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #32]
 	add	r2, r3, #6
 	ldr	r3, [sp, #48]
 	cmp	r2, r3
 	bgt	.L32
 .LBE23:
-	.loc 1 95 0 is_stmt 1
+	.loc 1 96 0 is_stmt 1
 	ldr	r0, [sp, #44]	@ float
 	ldr	r1, .L43+20
 	bl	__aeabi_fmul(PLT)
@@ -826,7 +826,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #4]
-	.loc 1 96 0
+	.loc 1 97 0
 	ldr	r0, [sp, #44]	@ float
 	ldr	r1, .L43+20
 	bl	__aeabi_fmul(PLT)
@@ -851,7 +851,7 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_f2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp]
-	.loc 1 97 0
+	.loc 1 98 0
 	bl	rand(PLT)
 	mov	r2, r0
 	ldr	r1, [sp]
@@ -868,21 +868,21 @@ _Z13DoorGeneratorv:
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #76]	@ float
-	.loc 1 98 0
+	.loc 1 99 0
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+36
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L33
-	.loc 1 98 0 is_stmt 0 discriminator 1
+	.loc 1 99 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #76]	@ float
 	ldr	r1, .L43+36
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #76]	@ float
 .L33:
-	.loc 1 99 0 is_stmt 1 discriminator 1
+	.loc 1 100 0 is_stmt 1 discriminator 1
 	ldr	r3, [sp, #60]
 	sub	r5, r3, #1
 	ldr	r0, [sp, #76]	@ float
@@ -916,31 +916,31 @@ _Z13DoorGeneratorv:
 .LBE14:
 .LBE13:
 .LBE12:
-	.loc 1 46 0
+	.loc 1 47 0
 	ldr	r3, [sp, #60]
 	add	r3, r3, #1
 	str	r3, [sp, #60]
 .L13:
-	.loc 1 46 0 is_stmt 0 discriminator 1
+	.loc 1 47 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp, #60]
 	ldr	r3, [sp, #64]
 	cmp	r2, r3
 	ble	.L35
 .LBE11:
-	.loc 1 103 0 is_stmt 1
+	.loc 1 104 0 is_stmt 1
 	ldr	r3, [sp, #64]
 	str	r3, [sp, #72]
-	.loc 1 104 0
+	.loc 1 105 0
 	ldr	r0, [sp, #68]
 	ldr	r1, [sp, #72]
 	bl	_Z14BlockGeneratorii(PLT)
 .LBE10:
-	.loc 1 39 0
+	.loc 1 40 0
 	ldr	r3, [sp, #68]
 	add	r3, r3, #1
 	str	r3, [sp, #68]
 .L11:
-	.loc 1 39 0 is_stmt 0 discriminator 1
+	.loc 1 40 0 is_stmt 0 discriminator 1
 	ldr	r3, .L43+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
@@ -948,10 +948,10 @@ _Z13DoorGeneratorv:
 	cmp	r2, r3
 	ble	.L36
 .LBE9:
-	.loc 1 106 0 is_stmt 1
+	.loc 1 107 0 is_stmt 1
 	mov	r3, #1
 .LBE8:
-	.loc 1 107 0
+	.loc 1 108 0
 	mov	r0, r3
 	add	sp, sp, #84
 	@ sp needed
@@ -994,7 +994,7 @@ _Z13DoorGeneratorv:
 	.type	_Z17AssignParentChildii, %function
 _Z17AssignParentChildii:
 .LFB2967:
-	.loc 1 109 0
+	.loc 1 110 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 48
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1013,21 +1013,21 @@ _Z17AssignParentChildii:
 .LPIC6:
 	add	r4, pc, r4
 .LBB24:
-	.loc 1 111 0
+	.loc 1 112 0
 	mov	r3, #0
 	str	r3, [sp, #44]
-	.loc 1 116 0
+	.loc 1 117 0
 	mov	r3, #6
 	str	r3, [sp, #28]
 .LBB25:
-	.loc 1 117 0
+	.loc 1 118 0
 	mov	r3, #0
 	str	r3, [sp, #24]
 	b	.L46
 .L58:
 .LBB26:
 .LBB27:
-	.loc 1 118 0
+	.loc 1 119 0
 	ldr	r3, .L61+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
@@ -1035,13 +1035,13 @@ _Z17AssignParentChildii:
 	cmp	r2, r3
 	bne	.L47
 .LBB28:
-	.loc 1 119 0
+	.loc 1 120 0
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 120 0
+	.loc 1 121 0
 	bl	rand(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -1049,7 +1049,7 @@ _Z17AssignParentChildii:
 	bl	__aeabi_idivmod(PLT)
 	mov	r3, r1
 	str	r3, [sp, #16]
-	.loc 1 121 0
+	.loc 1 122 0
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, [sp]
@@ -1068,11 +1068,11 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #36]	@ float
-	.loc 1 122 0
+	.loc 1 123 0
 	ldr	r3, [sp, #16]
 	cmp	r3, #0
 	beq	.L48
-	.loc 1 122 0 is_stmt 0 discriminator 1
+	.loc 1 123 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, [sp, #16]
@@ -1092,7 +1092,7 @@ _Z17AssignParentChildii:
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #36]	@ float
 .L48:
-	.loc 1 123 0 is_stmt 1
+	.loc 1 124 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, .L61+8
@@ -1110,7 +1110,7 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #40]	@ float
-	.loc 1 124 0
+	.loc 1 125 0
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, .L61+8
@@ -1128,7 +1128,7 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	mov	r2, #0
 	str	r2, [r3]	@ float
-	.loc 1 125 0
+	.loc 1 126 0
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, .L61+8
@@ -1146,7 +1146,7 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	mov	r2, #1065353216
 	str	r2, [r3]	@ float
-	.loc 1 126 0
+	.loc 1 127 0
 	ldr	r0, [sp, #16]
 	bl	__aeabi_i2f(PLT)
 	mov	r2, r0
@@ -1157,7 +1157,7 @@ _Z17AssignParentChildii:
 	mul	r3, r0, r3
 	add	r3, r1, r3
 	str	r2, [r3]	@ float
-	.loc 1 127 0
+	.loc 1 128 0
 	ldr	r3, .L61+8
 	ldr	r1, [r4, r3]
 	ldr	r2, [sp, #4]
@@ -1168,7 +1168,7 @@ _Z17AssignParentChildii:
 	add	r3, r2, r3
 	ldr	r2, [sp, #36]	@ float
 	str	r2, [r3]	@ float
-	.loc 1 128 0
+	.loc 1 129 0
 	ldr	r3, .L61+8
 	ldr	r1, [r4, r3]
 	ldr	r2, [sp, #4]
@@ -1179,13 +1179,13 @@ _Z17AssignParentChildii:
 	add	r3, r2, r3
 	ldr	r2, [sp, #40]	@ float
 	str	r2, [r3]	@ float
-	.loc 1 129 0
+	.loc 1 130 0
 	mov	r3, #1
 	b	.L49
 .L47:
 .LBE28:
 .LBE27:
-	.loc 1 131 0
+	.loc 1 132 0
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, [sp]
@@ -1204,11 +1204,11 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #36]	@ float
-	.loc 1 132 0
+	.loc 1 133 0
 	ldr	r3, [sp, #24]
 	cmp	r3, #0
 	beq	.L50
-	.loc 1 132 0 is_stmt 0 discriminator 1
+	.loc 1 133 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, [sp, #24]
@@ -1228,7 +1228,7 @@ _Z17AssignParentChildii:
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #36]	@ float
 .L50:
-	.loc 1 133 0 is_stmt 1
+	.loc 1 134 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, .L61+8
@@ -1246,20 +1246,20 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	str	r3, [sp, #40]	@ float
-	.loc 1 134 0
+	.loc 1 135 0
 	ldr	r0, [sp, #40]	@ float
 	ldr	r1, [sp, #36]	@ float
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #32]	@ float
-	.loc 1 135 0
+	.loc 1 136 0
 	ldr	r0, [sp, #32]	@ float
 	mov	r1, #0
 	bl	__aeabi_fcmple(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L51
-	.loc 1 135 0 is_stmt 0 discriminator 1
+	.loc 1 136 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #32]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -1277,11 +1277,11 @@ _Z17AssignParentChildii:
 	mov	r3, r0
 	str	r3, [sp, #32]	@ float
 .L51:
-	.loc 1 136 0 is_stmt 1
+	.loc 1 137 0 is_stmt 1
 	ldr	r3, [sp]
 	cmp	r3, #1
 	bne	.L53
-	.loc 1 137 0
+	.loc 1 138 0
 	ldr	r0, [sp, #36]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -1298,14 +1298,14 @@ _Z17AssignParentChildii:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #40]	@ float
-	.loc 1 138 0
+	.loc 1 139 0
 	ldr	r0, [sp, #40]	@ float
 	ldr	r1, [sp, #36]	@ float
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #32]	@ float
 .L53:
-	.loc 1 140 0
+	.loc 1 141 0
 	ldr	r0, [sp, #32]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -1322,10 +1322,10 @@ _Z17AssignParentChildii:
 	bl	__aeabi_d2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #12]
-	.loc 1 141 0
+	.loc 1 142 0
 	mov	r3, #6
 	str	r3, [sp, #28]
-	.loc 1 142 0
+	.loc 1 143 0
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
 	ldr	r3, .L61+8
@@ -1344,23 +1344,23 @@ _Z17AssignParentChildii:
 	mov	r2, #0
 	str	r2, [r3]	@ float
 .LBB29:
-	.loc 1 143 0
+	.loc 1 144 0
 	mov	r3, #0
 	str	r3, [sp, #20]
 	b	.L54
 .L57:
 .LBB30:
-	.loc 1 145 0
+	.loc 1 146 0
 	bl	rand(PLT)
 	str	r0, [sp, #8]
-	.loc 1 146 0
+	.loc 1 147 0
 	ldr	r3, .L61+36
 .LPIC7:
 	add	r3, pc, r3
 	mov	r0, r3
 	ldr	r1, [sp, #8]
 	bl	printf(PLT)
-	.loc 1 147 0
+	.loc 1 148 0
 	ldr	r2, [sp, #8]
 	ldr	r3, .L61+12
 	smull	r1, r3, r3, r2
@@ -1372,7 +1372,7 @@ _Z17AssignParentChildii:
 	rsb	r3, r3, r2
 	cmp	r3, #74
 	bgt	.L55
-	.loc 1 148 0
+	.loc 1 149 0
 	ldr	r3, [sp, #4]
 	sub	r5, r3, #1
 	ldr	r0, [sp, #44]
@@ -1389,7 +1389,7 @@ _Z17AssignParentChildii:
 	ldr	r3, [sp, #28]
 	add	r3, r2, r3
 	str	r0, [r1, r3, asl #2]	@ float
-	.loc 1 149 0
+	.loc 1 150 0
 	ldr	r3, [sp, #4]
 	sub	r5, r3, #1
 	ldr	r3, .L61+8
@@ -1425,7 +1425,7 @@ _Z17AssignParentChildii:
 	add	r3, ip, r3
 	add	r3, r3, r0
 	str	r1, [r3]	@ float
-	.loc 1 151 0
+	.loc 1 152 0
 	ldr	r0, [sp, #24]
 	bl	__aeabi_i2f(PLT)
 	mov	r1, r0
@@ -1442,7 +1442,7 @@ _Z17AssignParentChildii:
 	add	r3, r3, r2
 	add	r3, r0, r3
 	str	r1, [r3]	@ float
-	.loc 1 152 0
+	.loc 1 153 0
 	ldr	r3, .L61+8
 	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #44]
@@ -1459,7 +1459,7 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	ldr	r2, [sp, #36]	@ float
 	str	r2, [r3]	@ float
-	.loc 1 153 0
+	.loc 1 154 0
 	ldr	r3, .L61+8
 	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #44]
@@ -1476,17 +1476,17 @@ _Z17AssignParentChildii:
 	add	r3, r3, r1
 	ldr	r2, [sp, #40]	@ float
 	str	r2, [r3]	@ float
-	.loc 1 154 0
+	.loc 1 155 0
 	ldr	r3, [sp, #44]
 	add	r3, r3, #1
 	str	r3, [sp, #44]
-	.loc 1 155 0
+	.loc 1 156 0
 	ldr	r3, [sp, #28]
 	add	r3, r3, #1
 	str	r3, [sp, #28]
 	b	.L56
 .L55:
-	.loc 1 158 0
+	.loc 1 159 0
 	ldr	r3, .L61+40
 .LPIC8:
 	add	r3, pc, r3
@@ -1494,52 +1494,52 @@ _Z17AssignParentChildii:
 	bl	puts(PLT)
 .L56:
 .LBE30:
-	.loc 1 143 0
+	.loc 1 144 0
 	ldr	r3, [sp, #20]
 	add	r3, r3, #1
 	str	r3, [sp, #20]
 .L54:
-	.loc 1 143 0 is_stmt 0 discriminator 1
+	.loc 1 144 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp, #20]
 	ldr	r3, [sp, #12]
 	cmp	r2, r3
 	blt	.L57
 .LBE29:
 .LBE26:
-	.loc 1 117 0 is_stmt 1
+	.loc 1 118 0 is_stmt 1
 	ldr	r3, [sp, #24]
 	add	r3, r3, #1
 	str	r3, [sp, #24]
 .L46:
-	.loc 1 117 0 is_stmt 0 discriminator 1
+	.loc 1 118 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp, #24]
 	ldr	r3, [sp]
 	cmp	r2, r3
 	blt	.L58
 .LBE25:
-	.loc 1 163 0 is_stmt 1
+	.loc 1 164 0 is_stmt 1
 	ldr	r3, .L61+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
 	ldr	r2, [sp, #4]
 	cmp	r2, r3
 	beq	.L59
-	.loc 1 163 0 is_stmt 0 discriminator 1
+	.loc 1 164 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #44]
 	cmp	r3, #0
 	bne	.L59
-	.loc 1 164 0 is_stmt 1
+	.loc 1 165 0 is_stmt 1
 	ldr	r0, [sp, #4]
 	ldr	r1, [sp]
 	bl	_Z17AssignParentChildii(PLT)
 	mov	r3, r0
 	b	.L49
 .L59:
-	.loc 1 166 0
+	.loc 1 167 0
 	ldr	r3, [sp, #44]
 .L49:
 .LBE24:
-	.loc 1 167 0
+	.loc 1 168 0
 	mov	r0, r3
 	add	sp, sp, #52
 	@ sp needed
@@ -1576,7 +1576,7 @@ _Z17AssignParentChildii:
 	.type	_Z14BlockGeneratorii, %function
 _Z14BlockGeneratorii:
 .LFB2968:
-	.loc 1 170 0
+	.loc 1 171 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 32
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1596,19 +1596,19 @@ _Z14BlockGeneratorii:
 	add	r4, pc, r4
 .LBB31:
 .LBB32:
-	.loc 1 172 0
+	.loc 1 173 0
 	mov	r3, #1
 	str	r3, [sp, #24]
 	b	.L64
 .L69:
 .LBB33:
-	.loc 1 173 0
+	.loc 1 174 0
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 174 0
+	.loc 1 175 0
 	ldr	r3, [sp, #24]
 	sub	r2, r3, #1
 	ldr	r3, .L71+4
@@ -1648,14 +1648,14 @@ _Z14BlockGeneratorii:
 	bl	__aeabi_d2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #12]
-	.loc 1 175 0
+	.loc 1 176 0
 	ldr	r3, .L71+20
 .LPIC10:
 	add	r3, pc, r3
 	mov	r0, r3
 	ldr	r1, [sp, #12]
 	bl	printf(PLT)
-	.loc 1 176 0
+	.loc 1 177 0
 	ldr	r3, .L71+4
 	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #24]
@@ -1694,12 +1694,12 @@ _Z14BlockGeneratorii:
 	bl	__aeabi_d2iz(PLT)
 	mov	r3, r0
 	str	r3, [sp, #20]
-	.loc 1 177 0
+	.loc 1 178 0
 	ldr	r2, [sp, #24]
 	ldr	r3, [sp]
 	cmp	r2, r3
 	bne	.L65
-	.loc 1 177 0 is_stmt 0 discriminator 1
+	.loc 1 178 0 is_stmt 0 discriminator 1
 	ldr	r3, .L71+4
 	ldr	r1, [r4, r3]
 	ldr	r2, [sp, #4]
@@ -1733,21 +1733,21 @@ _Z14BlockGeneratorii:
 	mov	r3, r0
 	str	r3, [sp, #20]
 .L65:
-	.loc 1 178 0 is_stmt 1
+	.loc 1 179 0 is_stmt 1
 	ldr	r2, [sp, #20]
 	ldr	r3, [sp, #12]
 	rsb	r3, r3, r2
 	str	r3, [sp, #16]
-	.loc 1 179 0
+	.loc 1 180 0
 	ldr	r3, [sp, #16]
 	cmp	r3, #0
 	bgt	.L66
-	.loc 1 179 0 is_stmt 0 discriminator 1
+	.loc 1 180 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #16]
 	add	r3, r3, #628
 	str	r3, [sp, #16]
 .L66:
-	.loc 1 180 0 is_stmt 1
+	.loc 1 181 0 is_stmt 1
 	bl	rand(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -1761,21 +1761,21 @@ _Z14BlockGeneratorii:
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #28]	@ float
-	.loc 1 181 0
+	.loc 1 182 0
 	ldr	r0, [sp, #28]	@ float
 	ldr	r1, .L71+24
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L67
-	.loc 1 181 0 is_stmt 0 discriminator 1
+	.loc 1 182 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #28]	@ float
 	ldr	r1, .L71+24
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #28]	@ float
 .L67:
-	.loc 1 182 0 is_stmt 1
+	.loc 1 183 0 is_stmt 1
 	ldr	r0, [sp, #28]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -1785,7 +1785,7 @@ _Z14BlockGeneratorii:
 	add	r1, pc, r1
 	mov	r0, r1
 	bl	printf(PLT)
-	.loc 1 183 0
+	.loc 1 184 0
 	ldr	r3, [sp, #24]
 	sub	r5, r3, #1
 	ldr	r0, [sp, #28]	@ float
@@ -1808,19 +1808,19 @@ _Z14BlockGeneratorii:
 	add	r3, r3, r1
 	str	r2, [r3]	@ float
 .LBE33:
-	.loc 1 172 0
+	.loc 1 173 0
 	ldr	r3, [sp, #24]
 	add	r3, r3, #1
 	str	r3, [sp, #24]
 .L64:
-	.loc 1 172 0 is_stmt 0 discriminator 1
+	.loc 1 173 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp, #24]
 	ldr	r3, [sp]
 	cmp	r2, r3
 	ble	.L69
 .LBE32:
 .LBE31:
-	.loc 1 185 0 is_stmt 1
+	.loc 1 186 0 is_stmt 1
 	add	sp, sp, #36
 	@ sp needed
 	ldmfd	sp!, {r4, r5, pc}
@@ -1846,7 +1846,7 @@ _Z14BlockGeneratorii:
 	.type	_Z14setDifficulityi, %function
 _Z14setDifficulityi:
 .LFB2969:
-	.loc 1 187 0
+	.loc 1 188 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1862,27 +1862,27 @@ _Z14setDifficulityi:
 	ldr	r4, .L78
 .LPIC12:
 	add	r4, pc, r4
-	.loc 1 188 0
+	.loc 1 189 0
 	mov	r0, #0
 	bl	time(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	srand(PLT)
-	.loc 1 189 0
+	.loc 1 190 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
 	bne	.L74
-	.loc 1 189 0 is_stmt 0 discriminator 1
+	.loc 1 190 0 is_stmt 0 discriminator 1
 	ldr	r3, .L78+4
 	ldr	r3, [r4, r3]
 	mov	r2, #3
 	str	r2, [r3]
 .L74:
-	.loc 1 190 0 is_stmt 1
+	.loc 1 191 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #2
 	bne	.L75
-	.loc 1 190 0 is_stmt 0 discriminator 1
+	.loc 1 191 0 is_stmt 0 discriminator 1
 	bl	rand(PLT)
 	mov	r2, r0
 	mov	r3, r2, asr #31
@@ -1895,11 +1895,11 @@ _Z14setDifficulityi:
 	ldr	r3, [r4, r3]
 	str	r2, [r3]
 .L75:
-	.loc 1 191 0 is_stmt 1
+	.loc 1 192 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #3
 	bne	.L76
-	.loc 1 191 0 is_stmt 0 discriminator 1
+	.loc 1 192 0 is_stmt 0 discriminator 1
 	bl	rand(PLT)
 	mov	r2, r0
 	mov	r3, r2, asr #31
@@ -1912,11 +1912,11 @@ _Z14setDifficulityi:
 	ldr	r3, [r4, r3]
 	str	r2, [r3]
 .L76:
-	.loc 1 193 0 is_stmt 1
+	.loc 1 194 0 is_stmt 1
 	ldr	r3, .L78+4
 	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
-	.loc 1 194 0
+	.loc 1 195 0
 	mov	r0, r3
 	add	sp, sp, #8
 	@ sp needed
@@ -1934,7 +1934,7 @@ _Z14setDifficulityi:
 	.type	_Z41__static_initialization_and_destruction_0ii, %function
 _Z41__static_initialization_and_destruction_0ii:
 .LFB3279:
-	.loc 1 194 0
+	.loc 1 195 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1951,11 +1951,11 @@ _Z41__static_initialization_and_destruction_0ii:
 	ldr	r4, .L82
 .LPIC15:
 	add	r4, pc, r4
-	.loc 1 194 0
+	.loc 1 195 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
 	bne	.L80
-	.loc 1 194 0 is_stmt 0 discriminator 1
+	.loc 1 195 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp]
 	ldr	r3, .L82+4
 	cmp	r2, r3
@@ -1998,7 +1998,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 .L80:
-	.loc 1 194 0
+	.loc 1 195 0
 	add	sp, sp, #8
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
@@ -2023,7 +2023,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	.type	_GLOBAL__sub_I_MazeGenerator.cpp, %function
 _GLOBAL__sub_I_MazeGenerator.cpp:
 .LFB3280:
-	.loc 1 194 0
+	.loc 1 195 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -2032,7 +2032,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 3, -8
 	.cfi_offset 14, -4
-	.loc 1 194 0
+	.loc 1 195 0
 	mov	r0, #1
 	ldr	r1, .L85
 	bl	_Z41__static_initialization_and_destruction_0ii(PLT)
@@ -11907,7 +11907,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.byte	0x1
 	.4byte	.LASF811
 	.byte	0x1
-	.byte	0x15
+	.byte	0x16
 	.4byte	.LASF845
 	.4byte	.LFB2965
 	.4byte	.LFE2965
@@ -11920,7 +11920,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF812
 	.byte	0x1
-	.byte	0x16
+	.byte	0x17
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -11931,7 +11931,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF813
 	.byte	0x1
-	.byte	0x17
+	.byte	0x18
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -11942,7 +11942,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x58
 	.ascii	"sec\000"
 	.byte	0x1
-	.byte	0x18
+	.byte	0x19
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -11955,7 +11955,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.byte	0x1
 	.4byte	.LASF831
 	.byte	0x1
-	.byte	0x1f
+	.byte	0x20
 	.4byte	.LASF833
 	.4byte	0x62
 	.4byte	.LFB2966
@@ -11969,7 +11969,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF814
 	.byte	0x1
-	.byte	0x21
+	.byte	0x22
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -11977,7 +11977,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF815
 	.byte	0x1
-	.byte	0x22
+	.byte	0x23
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -11988,7 +11988,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF816
 	.byte	0x1
-	.byte	0x27
+	.byte	0x28
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -11999,7 +11999,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF817
 	.byte	0x1
-	.byte	0x29
+	.byte	0x2a
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12010,7 +12010,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF818
 	.byte	0x1
-	.byte	0x2e
+	.byte	0x2f
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12021,7 +12021,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF819
 	.byte	0x1
-	.byte	0x3d
+	.byte	0x3e
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12029,7 +12029,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF820
 	.byte	0x1
-	.byte	0x3e
+	.byte	0x3f
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12037,7 +12037,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF821
 	.byte	0x1
-	.byte	0x3f
+	.byte	0x40
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12045,7 +12045,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF822
 	.byte	0x1
-	.byte	0x44
+	.byte	0x45
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12053,7 +12053,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF823
 	.byte	0x1
-	.byte	0x45
+	.byte	0x46
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12065,7 +12065,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF824
 	.byte	0x1
-	.byte	0x47
+	.byte	0x48
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12075,7 +12075,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF825
 	.byte	0x1
-	.byte	0x4b
+	.byte	0x4c
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12083,7 +12083,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF826
 	.byte	0x1
-	.byte	0x4c
+	.byte	0x4d
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12091,7 +12091,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF827
 	.byte	0x1
-	.byte	0x4d
+	.byte	0x4e
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12104,7 +12104,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF824
 	.byte	0x1
-	.byte	0x57
+	.byte	0x58
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12112,7 +12112,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x58
 	.ascii	"avg\000"
 	.byte	0x1
-	.byte	0x58
+	.byte	0x59
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
@@ -12120,7 +12120,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF828
 	.byte	0x1
-	.byte	0x59
+	.byte	0x5a
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12128,7 +12128,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF829
 	.byte	0x1
-	.byte	0x5f
+	.byte	0x60
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12136,7 +12136,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF830
 	.byte	0x1
-	.byte	0x60
+	.byte	0x61
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
@@ -12147,7 +12147,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x58
 	.ascii	"x\000"
 	.byte	0x1
-	.byte	0x5a
+	.byte	0x5b
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12164,7 +12164,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.byte	0x1
 	.4byte	.LASF832
 	.byte	0x1
-	.byte	0x6d
+	.byte	0x6e
 	.4byte	.LASF834
 	.4byte	0x62
 	.4byte	.LFB2967
@@ -12175,7 +12175,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF835
 	.byte	0x1
-	.byte	0x6d
+	.byte	0x6e
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12183,7 +12183,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF815
 	.byte	0x1
-	.byte	0x6d
+	.byte	0x6e
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12194,7 +12194,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF836
 	.byte	0x1
-	.byte	0x6f
+	.byte	0x70
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12202,7 +12202,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF837
 	.byte	0x1
-	.byte	0x70
+	.byte	0x71
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12210,7 +12210,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF838
 	.byte	0x1
-	.byte	0x71
+	.byte	0x72
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12218,7 +12218,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF825
 	.byte	0x1
-	.byte	0x72
+	.byte	0x73
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12226,7 +12226,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF839
 	.byte	0x1
-	.byte	0x73
+	.byte	0x74
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12234,7 +12234,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x58
 	.ascii	"loc\000"
 	.byte	0x1
-	.byte	0x74
+	.byte	0x75
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12245,7 +12245,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF840
 	.byte	0x1
-	.byte	0x75
+	.byte	0x76
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12257,7 +12257,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF841
 	.byte	0x1
-	.byte	0x78
+	.byte	0x79
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12269,7 +12269,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF842
 	.byte	0x1
-	.byte	0x8f
+	.byte	0x90
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12280,7 +12280,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF843
 	.byte	0x1
-	.byte	0x91
+	.byte	0x92
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12294,7 +12294,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.byte	0x1
 	.4byte	.LASF844
 	.byte	0x1
-	.byte	0xaa
+	.byte	0xab
 	.4byte	.LASF846
 	.4byte	.LFB2968
 	.4byte	.LFE2968
@@ -12304,7 +12304,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF835
 	.byte	0x1
-	.byte	0xaa
+	.byte	0xab
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12312,7 +12312,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF847
 	.byte	0x1
-	.byte	0xaa
+	.byte	0xab
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12323,7 +12323,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF848
 	.byte	0x1
-	.byte	0xab
+	.byte	0xac
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -12334,7 +12334,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF840
 	.byte	0x1
-	.byte	0xac
+	.byte	0xad
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12345,7 +12345,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF819
 	.byte	0x1
-	.byte	0xae
+	.byte	0xaf
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12353,7 +12353,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF820
 	.byte	0x1
-	.byte	0xb0
+	.byte	0xb1
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12361,7 +12361,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x57
 	.4byte	.LASF821
 	.byte	0x1
-	.byte	0xb2
+	.byte	0xb3
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12374,7 +12374,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.byte	0x1
 	.4byte	.LASF849
 	.byte	0x1
-	.byte	0xbb
+	.byte	0xbc
 	.4byte	.LASF850
 	.4byte	0x62
 	.4byte	.LFB2969
@@ -12385,7 +12385,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF851
 	.byte	0x1
-	.byte	0xbb
+	.byte	0xbc
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12402,7 +12402,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF852
 	.byte	0x1
-	.byte	0xc2
+	.byte	0xc3
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -12410,7 +12410,7 @@ _GLOBAL__sub_I_MazeGenerator.cpp:
 	.uleb128 0x5c
 	.4byte	.LASF853
 	.byte	0x1
-	.byte	0xc2
+	.byte	0xc3
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91

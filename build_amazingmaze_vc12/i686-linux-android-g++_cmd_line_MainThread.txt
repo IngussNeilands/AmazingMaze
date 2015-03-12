@@ -4,7 +4,11 @@ Debug_AmazingMaze_vc12_gcc_x86_android/AmazingMaze.obj
 Debug_AmazingMaze_vc12_gcc_x86_android/Iw2DSceneGraph.obj
 Debug_AmazingMaze_vc12_gcc_x86_android/Iw2DSceneGraphCore.obj
 Debug_AmazingMaze_vc12_gcc_x86_android/IwTween.obj
+Debug_AmazingMaze_vc12_gcc_x86_android/MazeDrawer.obj
+Debug_AmazingMaze_vc12_gcc_x86_android/MazeGenerator.obj
 Debug_AmazingMaze_vc12_gcc_x86_android/PVRTexTool_interface.obj
+Debug_AmazingMaze_vc12_gcc_x86_android/PlayerMovement.obj
+Debug_AmazingMaze_vc12_gcc_x86_android/menu.obj
 -Wl,--as-needed
 -m32
 --sysroot=c:/marmalade/7.5/s3e/../tools/gcc/x86/android_windows/android-14/arch-x86

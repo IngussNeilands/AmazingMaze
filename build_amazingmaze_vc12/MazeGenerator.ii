@@ -35750,6 +35750,7 @@ void BlockGenerator(int curlevel, int doors);
 
 
 
+
 void MazeInitializer(){
  for (int leveler = 0; leveler < 9; leveler++){
   for (int doorr = 0; doorr < 20; doorr++){

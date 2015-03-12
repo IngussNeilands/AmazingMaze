@@ -87,20 +87,6 @@ _ZN4_STLL8_LocInitE:
 	.align	2
 _ZN4_STLL8_IosInitE:
 	.space	1
-	.hidden	level
-	.global	level
-	.align	2
-	.type	level, %object
-	.size	level, 10800
-level:
-	.space	10800
-	.hidden	MaxLevel
-	.global	MaxLevel
-	.align	2
-	.type	MaxLevel, %object
-	.size	MaxLevel, 4
-MaxLevel:
-	.space	4
 	.hidden	sign
 	.global	sign
 	.data
@@ -137,20 +123,25 @@ _Z10DrawPlayerifP10CIw2DImage:
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 96
 	@ frame_needed = 0, uses_anonymous_args = 0
-	stmfd	sp!, {r4, r5, r6, r7, lr}
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, lr}
 .LCFI2:
-	.cfi_def_cfa_offset 20
-	.cfi_offset 4, -20
-	.cfi_offset 5, -16
-	.cfi_offset 6, -12
-	.cfi_offset 7, -8
+	.cfi_def_cfa_offset 28
+	.cfi_offset 4, -28
+	.cfi_offset 5, -24
+	.cfi_offset 6, -20
+	.cfi_offset 7, -16
+	.cfi_offset 8, -12
+	.cfi_offset 9, -8
 	.cfi_offset 14, -4
 	sub	sp, sp, #108
 .LCFI3:
-	.cfi_def_cfa_offset 128
+	.cfi_def_cfa_offset 136
 	str	r0, [sp, #20]
 	str	r1, [sp, #16]	@ float
 	str	r2, [sp, #12]
+	ldr	r4, .L32
+.LPIC0:
+	add	r4, pc, r4
 .LBB3:
 	.loc 2 27 0
 	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
@@ -165,11 +156,11 @@ _Z10DrawPlayerifP10CIw2DImage:
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, .L32
+	ldr	r1, .L32+4
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, .L32+4
+	ldr	r1, .L32+8
 	bl	__aeabi_fdiv(PLT)
 	mov	r3, r0
 	str	r3, [sp, #72]	@ float
@@ -189,7 +180,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r3, #2
 	bne	.L9
 	.loc 2 32 0 is_stmt 0 discriminator 1
-	ldr	r3, .L32+8
+	ldr	r3, .L32+12
 	str	r3, [sp, #100]	@ float
 .L9:
 	.loc 2 33 0 is_stmt 1
@@ -197,7 +188,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r3, #3
 	bne	.L10
 	.loc 2 33 0 is_stmt 0 discriminator 1
-	ldr	r3, .L32+12
+	ldr	r3, .L32+16
 	str	r3, [sp, #100]	@ float
 .L10:
 	.loc 2 34 0 is_stmt 1
@@ -205,7 +196,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r3, #4
 	bne	.L11
 	.loc 2 34 0 is_stmt 0 discriminator 1
-	ldr	r3, .L32+16
+	ldr	r3, .L32+20
 	str	r3, [sp, #100]	@ float
 .L11:
 	.loc 2 35 0 is_stmt 1
@@ -213,7 +204,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r3, #5
 	bne	.L12
 	.loc 2 35 0 is_stmt 0 discriminator 1
-	ldr	r3, .L32+20
+	ldr	r3, .L32+24
 	str	r3, [sp, #100]	@ float
 .L12:
 	.loc 2 36 0 is_stmt 1
@@ -221,7 +212,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r3, #6
 	bne	.L13
 	.loc 2 36 0 is_stmt 0 discriminator 1
-	ldr	r3, .L32+24
+	ldr	r3, .L32+28
 	str	r3, [sp, #100]	@ float
 .L13:
 	.loc 2 37 0 is_stmt 1
@@ -229,13 +220,12 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r3, #7
 	bne	.L14
 	.loc 2 37 0 is_stmt 0 discriminator 1
-	ldr	r3, .L32+28
+	ldr	r3, .L32+32
 	str	r3, [sp, #100]	@ float
 .L14:
 	.loc 2 38 0 is_stmt 1
-	ldr	r3, .L32+32
-.LPIC0:
-	add	r3, pc, r3
+	ldr	r3, .L32+36
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
 	add	r2, r3, #1
 	ldr	r3, [sp, #20]
@@ -246,7 +236,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	str	r3, [sp, #100]	@ float
 .L15:
 	.loc 2 39 0 is_stmt 1
-	ldr	r3, .L32+36
+	ldr	r3, .L32+40
 .LPIC1:
 	add	r3, pc, r3
 	ldr	r3, [r3]
@@ -267,9 +257,8 @@ _Z10DrawPlayerifP10CIw2DImage:
 	add	r3, r3, #1
 	str	r3, [sp, #96]
 	.loc 2 45 0
-	ldr	r3, .L32+40
-.LPIC2:
-	add	r3, pc, r3
+	ldr	r3, .L32+36
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
 	ldr	r2, [sp, #20]
 	cmp	r2, r3
@@ -289,16 +278,15 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r3, r0
 	str	r3, [sp, #92]	@ float
 	.loc 2 47 0
-	ldr	r3, .L32+44
-.LPIC3:
-	add	r3, pc, r3
+	ldr	r3, .L32+36
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
 	ldr	r2, [sp, #20]
 	cmp	r2, r3
 	bne	.L17
 	.loc 2 47 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #92]	@ float
-	ldr	r1, .L32+48
+	ldr	r1, .L32+44
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #92]	@ float
@@ -350,14 +338,14 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	bl	cos(PLT)
-	mov	r4, r0
-	mov	r5, r1
+	mov	r6, r0
+	mov	r7, r1
 	ldr	r0, [sp, #56]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
+	mov	r0, r6
+	mov	r1, r7
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -374,14 +362,14 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	bl	sin(PLT)
-	mov	r4, r0
-	mov	r5, r1
+	mov	r6, r0
+	mov	r7, r1
 	ldr	r0, [sp, #56]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
+	mov	r0, r6
+	mov	r1, r7
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -391,7 +379,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r3, r0
 	str	r3, [sp, #32]	@ float
 	.loc 2 55 0
-	ldr	r4, [sp, #32]	@ float
+	ldr	r5, [sp, #32]	@ float
 	ldr	r3, [sp, #76]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -399,18 +387,18 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	mov	r0, r4
+	mov	r0, r5
 	mov	r1, r3
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	r0, [sp, #56]	@ float
-	bl	__aeabi_f2d(PLT)
 	mov	r6, r0
 	mov	r7, r1
+	ldr	r0, [sp, #56]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r8, r0
+	mov	r9, r1
 	ldr	r0, [sp, #20]
 	bl	__aeabi_i2d(PLT)
 	mov	r2, r0
@@ -418,7 +406,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L32+52
+	ldr	r3, .L32+48
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -427,13 +415,13 @@ _Z10DrawPlayerifP10CIw2DImage:
 	bl	__aeabi_dadd(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r6
-	mov	r1, r7
+	mov	r0, r8
+	mov	r1, r9
 	bl	__aeabi_ddiv(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
+	mov	r0, r6
+	mov	r1, r7
 	bl	__aeabi_dsub(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -443,7 +431,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r3, r0
 	str	r3, [sp, #32]	@ float
 	.loc 2 56 0
-	ldr	r4, [sp, #28]	@ float
+	ldr	r5, [sp, #28]	@ float
 	ldr	r3, [sp, #80]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -451,18 +439,18 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	mov	r0, r4
+	mov	r0, r5
 	mov	r1, r3
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	r0, [sp, #56]	@ float
-	bl	__aeabi_f2d(PLT)
 	mov	r6, r0
 	mov	r7, r1
+	ldr	r0, [sp, #56]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r8, r0
+	mov	r9, r1
 	ldr	r0, [sp, #20]
 	bl	__aeabi_i2d(PLT)
 	mov	r2, r0
@@ -470,7 +458,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L32+52
+	ldr	r3, .L32+48
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -479,13 +467,13 @@ _Z10DrawPlayerifP10CIw2DImage:
 	bl	__aeabi_dadd(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r6
-	mov	r1, r7
+	mov	r0, r8
+	mov	r1, r9
 	bl	__aeabi_ddiv(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
+	mov	r0, r6
+	mov	r1, r7
 	bl	__aeabi_dsub(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -502,14 +490,14 @@ _Z10DrawPlayerifP10CIw2DImage:
 	str	r3, [sp, #16]	@ float
 	.loc 2 58 0
 	ldr	r0, [sp, #16]	@ float
-	ldr	r1, .L32+4
+	ldr	r1, .L32+8
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L18
 	.loc 2 59 0
 	ldr	r0, [sp, #16]	@ float
-	ldr	r1, .L32+4
+	ldr	r1, .L32+8
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
 	str	r3, [sp, #16]	@ float
@@ -523,7 +511,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	beq	.L20
 	.loc 2 62 0
 	ldr	r0, [sp, #16]	@ float
-	ldr	r1, .L32+4
+	ldr	r1, .L32+8
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	str	r3, [sp, #16]	@ float
@@ -545,28 +533,28 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #1610612736
-	ldr	r3, .L32+56
+	ldr	r3, .L32+52
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L32+60
+	ldr	r3, .L32+56
 	bl	__aeabi_ddiv(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L32+64
-	ldr	r3, .L32+68
+	ldr	r2, .L32+60
+	ldr	r3, .L32+64
 	bl	__aeabi_dadd(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L32+72
+	ldr	r3, .L32+68
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -603,9 +591,8 @@ _Z10DrawPlayerifP10CIw2DImage:
 	.loc 2 69 0
 	ldr	r3, [sp, #20]
 	sub	ip, r3, #1
-	ldr	r0, .L32+76
-.LPIC4:
-	add	r0, pc, r0
+	ldr	r3, .L32+72
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #84]
 	mov	r1, #8
 	mov	r3, r2
@@ -619,7 +606,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
 	mov	r0, r3
-	ldr	r1, .L32+80
+	ldr	r1, .L32+76
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -635,7 +622,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 .L25:
 	.loc 2 72 0 is_stmt 1
 	ldr	r0, [sp, #100]	@ float
-	ldr	r1, .L32+84
+	ldr	r1, .L32+80
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -657,13 +644,13 @@ _Z10DrawPlayerifP10CIw2DImage:
 	cmp	r2, r3
 	bgt	.L27
 	.loc 2 77 0
-	ldr	r3, .L32+88
-.LPIC5:
+	ldr	r3, .L32+84
+.LPIC2:
 	add	r3, pc, r3
 	ldr	r3, [r3]
 	rsb	r2, r3, #0
-	ldr	r3, .L32+92
-.LPIC6:
+	ldr	r3, .L32+88
+.LPIC3:
 	add	r3, pc, r3
 	str	r2, [r3]
 .L27:
@@ -694,7 +681,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L32+52
+	ldr	r3, .L32+48
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -718,7 +705,7 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r2
 	mov	r1, r3
 	mov	r2, #0
-	ldr	r3, .L32+52
+	ldr	r3, .L32+48
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -750,10 +737,11 @@ _Z10DrawPlayerifP10CIw2DImage:
 	mov	r0, r3
 	add	sp, sp, #108
 	@ sp needed
-	ldmfd	sp!, {r4, r5, r6, r7, pc}
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, pc}
 .L33:
 	.align	2
 .L32:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC0+8)
 	.word	1078530011
 	.word	1135869952
 	.word	1072147988
@@ -762,10 +750,8 @@ _Z10DrawPlayerifP10CIw2DImage:
 	.word	1066611507
 	.word	1064849900
 	.word	1060823368
-	.word	MaxLevel-(.LPIC0+8)
+	.word	MaxLevel(GOT)
 	.word	sign-(.LPIC1+8)
-	.word	MaxLevel-(.LPIC2+8)
-	.word	MaxLevel-(.LPIC3+8)
 	.word	1106247680
 	.word	1074528256
 	.word	1074340347
@@ -773,11 +759,11 @@ _Z10DrawPlayerifP10CIw2DImage:
 	.word	524447255
 	.word	1073255169
 	.word	1079574528
-	.word	level-(.LPIC4+8)
+	.word	level(GOT)
 	.word	1120403456
-	.word	1086324736
-	.word	sign-(.LPIC5+8)
-	.word	sign-(.LPIC6+8)
+	.word	1082130432
+	.word	sign-(.LPIC2+8)
+	.word	sign-(.LPIC3+8)
 	.cfi_endproc
 .LFE2965:
 	.size	_Z10DrawPlayerifP10CIw2DImage, .-_Z10DrawPlayerifP10CIw2DImage
@@ -790,38 +776,53 @@ _Z10PlayerMoveifP10CIw2DImageS0_S0_S0_:
 .LFB2966:
 	.loc 2 91 0
 	.cfi_startproc
-	@ args = 8, pretend = 0, frame = 80
+	@ args = 8, pretend = 0, frame = 88
 	@ frame_needed = 0, uses_anonymous_args = 0
 	stmfd	sp!, {r4, lr}
 .LCFI4:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #88
+	sub	sp, sp, #96
 .LCFI5:
-	.cfi_def_cfa_offset 96
+	.cfi_def_cfa_offset 104
 	str	r0, [sp, #20]
 	str	r1, [sp, #16]	@ float
 	str	r2, [sp, #12]
 	str	r3, [sp, #8]
 .LBB6:
 	.loc 2 92 0
-	ldr	r3, [sp, #12]
-	str	r3, [sp, #84]
+	bl	_Z8Iw2DInitv(PLT)
 	.loc 2 93 0
-	ldr	r3, [sp, #96]
-	str	r3, [sp, #80]
-	.loc 2 94 0
-	ldr	r3, [sp, #20]
-	str	r3, [sp, #76]
-	.loc 2 95 0
 	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
-	str	r0, [sp, #72]
-	.loc 2 96 0
+	str	r0, [sp, #80]
+	.loc 2 94 0
 	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
-	str	r0, [sp, #68]
-.LBB7:
+	str	r0, [sp, #76]
+	.loc 2 95 0
+	ldr	r0, [sp, #80]
+	bl	__aeabi_i2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	mov	r2, #0
+	ldr	r3, .L39
+	bl	__aeabi_ddiv(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	strd	r2, [sp, #64]
+	.loc 2 96 0
+	ldr	r3, [sp, #12]
+	str	r3, [sp, #92]
 	.loc 2 97 0
+	ldr	r3, [sp, #104]
+	str	r3, [sp, #88]
+	.loc 2 98 0
+	ldr	r3, [sp, #20]
+	str	r3, [sp, #84]
+.LBB7:
+	.loc 2 99 0
 	mov	r0, #0
 	bl	s3ePointerGetState(PLT)
 	mov	r3, r0
@@ -833,145 +834,297 @@ _Z10PlayerMoveifP10CIw2DImageS0_S0_S0_:
 	cmp	r3, #0
 	beq	.L35
 .LBB8:
-	.loc 2 98 0
+	.loc 2 100 0
 	bl	s3ePointerGetX(PLT)
-	str	r0, [sp, #64]
-	.loc 2 99 0
-	bl	s3ePointerGetY(PLT)
 	str	r0, [sp, #60]
 	.loc 2 101 0
-	ldr	r3, [sp, #64]
-	cmp	r3, #8
-	ble	.L36
-	.loc 2 101 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #68]
-	sub	r2, r3, #80
+	bl	s3ePointerGetY(PLT)
+	str	r0, [sp, #56]
+	.loc 2 103 0
+	ldr	r3, [sp, #80]
+	mov	r3, r3, asl #1
+	ldr	r2, .L39+4
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
 	ldr	r3, [sp, #60]
 	cmp	r2, r3
 	bge	.L36
-	ldr	r3, [sp, #64]
-	cmp	r3, #151
-	bgt	.L36
-	ldr	r3, [sp, #68]
-	sub	r2, r3, #8
+	.loc 2 103 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #76]
+	ldr	r2, .L39+8
+	mul	r3, r2, r3
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, [sp, #56]
+	cmp	r2, r3
+	bge	.L36
+	ldr	r2, [sp, #80]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	ldr	r2, .L39+4
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
 	ldr	r3, [sp, #60]
 	cmp	r2, r3
 	ble	.L36
-	.loc 2 102 0 is_stmt 1
+	ldr	r2, [sp, #76]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, [sp, #56]
+	cmp	r2, r3
+	ble	.L36
+	.loc 2 104 0 is_stmt 1
 	ldr	r3, [sp, #8]
-	str	r3, [sp, #84]
-	.loc 2 103 0
+	str	r3, [sp, #92]
+	.loc 2 105 0
 	ldr	r0, [sp, #20]
 	ldr	r1, [sp, #16]	@ float
 	bl	_Z8moveDownif(PLT)
-	str	r0, [sp, #76]
+	str	r0, [sp, #84]
 .L36:
-	.loc 2 105 0
-	ldr	r3, [sp, #72]
-	sub	r2, r3, #152
-	ldr	r3, [sp, #64]
-	cmp	r2, r3
-	bge	.L37
-	.loc 2 105 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #68]
-	sub	r2, r3, #80
-	ldr	r3, [sp, #60]
-	cmp	r2, r3
-	bge	.L37
-	ldr	r3, [sp, #72]
-	sub	r2, r3, #8
-	ldr	r3, [sp, #64]
-	cmp	r2, r3
-	ble	.L37
-	ldr	r3, [sp, #68]
-	sub	r2, r3, #8
-	ldr	r3, [sp, #60]
-	cmp	r2, r3
-	ble	.L37
-	.loc 2 106 0 is_stmt 1
-	ldr	r3, [sp, #100]
-	str	r3, [sp, #80]
 	.loc 2 107 0
+	ldr	r2, [sp, #80]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	add	r3, r3, r2
+	ldr	r2, .L39+4
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, [sp, #60]
+	cmp	r2, r3
+	bge	.L37
+	.loc 2 107 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #80]
+	ldr	r2, .L39+8
+	mul	r3, r2, r3
+	ldr	r2, .L39+4
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, [sp, #56]
+	cmp	r2, r3
+	bge	.L37
+	ldr	r2, [sp, #80]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L39+4
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, [sp, #60]
+	cmp	r2, r3
+	ble	.L37
+	ldr	r2, [sp, #76]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r2, r3, r2
+	ldr	r3, [sp, #56]
+	cmp	r2, r3
+	ble	.L37
+	.loc 2 108 0 is_stmt 1
+	ldr	r3, [sp, #108]
+	str	r3, [sp, #88]
+	.loc 2 109 0
 	ldr	r0, [sp, #20]
 	ldr	r1, [sp, #16]	@ float
 	bl	_Z6moveUpif(PLT)
-	str	r0, [sp, #76]
+	str	r0, [sp, #84]
 .L37:
 .L35:
 .LBE8:
 .LBE7:
-	.loc 2 110 0
-	ldr	r3, [sp, #68]
-	sub	r3, r3, #80
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #28
-	mov	r0, r2
-	mov	r1, #1090519040
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #36
-	mov	r0, r3
-	ldr	r1, .L39
+	.loc 2 112 0
+	ldr	r3, [sp, #80]
+	mov	r3, r3, asl #1
 	ldr	r2, .L39+4
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #40]
-	str	r3, [sp]
-	ldr	r3, [sp, #36]
-	ldr	r0, [sp, #84]
-	add	r2, sp, #28
-	ldmia	r2, {r1, r2}
-	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 111 0
-	ldr	r3, [sp, #72]
-	sub	r3, r3, #152
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r4, r0
-	ldr	r3, [sp, #68]
-	sub	r3, r3, #80
+	ldr	r3, [sp, #76]
+	ldr	r2, .L39+8
+	mul	r3, r2, r3
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	add	r2, sp, #44
+	add	r2, sp, #24
 	mov	r0, r2
 	mov	r1, r4
 	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #52
+	ldrd	r0, [sp, #64]
+	mov	r2, #0
+	ldr	r3, .L39+16
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #76]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	ldr	r1, .L39
-	ldr	r2, .L39+4
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #32
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #56]
+	ldr	r3, [sp, #36]
 	str	r3, [sp]
-	ldr	r3, [sp, #52]
-	ldr	r0, [sp, #80]
-	add	r2, sp, #44
+	ldr	r3, [sp, #32]
+	ldr	r0, [sp, #92]
+	add	r2, sp, #24
 	ldmia	r2, {r1, r2}
 	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
-	.loc 2 112 0
-	ldr	r3, [sp, #76]
-.LBE6:
 	.loc 2 113 0
+	ldr	r2, [sp, #80]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #5
+	add	r3, r3, r2
+	ldr	r2, .L39+4
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
 	mov	r0, r3
-	add	sp, sp, #88
+	bl	__aeabi_i2f(PLT)
+	mov	r4, r0
+	ldr	r3, [sp, #76]
+	ldr	r2, .L39+8
+	mul	r3, r2, r3
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #40
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldrd	r0, [sp, #64]
+	mov	r2, #0
+	ldr	r3, .L39+16
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r4, r0
+	ldr	r2, [sp, #76]
+	mov	r3, r2
+	mov	r3, r3, asl #2
+	add	r3, r3, r2
+	mov	r3, r3, asl #4
+	ldr	r2, .L39+12
+	smull	r1, r2, r2, r3
+	add	r2, r2, r3
+	mov	r2, r2, asr #8
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	add	r2, sp, #48
+	mov	r0, r2
+	mov	r1, r4
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #52]
+	str	r3, [sp]
+	ldr	r3, [sp, #48]
+	ldr	r0, [sp, #88]
+	add	r2, sp, #40
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+	.loc 2 114 0
+	ldr	r3, [sp, #84]
+.LBE6:
+	.loc 2 115 0
+	mov	r0, r3
+	add	sp, sp, #96
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
 .L40:
 	.align	2
 .L39:
-	.word	1125122048
-	.word	1116733440
+	.word	1081344000
+	.word	1717986919
+	.word	398
+	.word	-2004318071
+	.word	1080270848
 	.cfi_endproc
 .LFE2966:
 	.size	_Z10PlayerMoveifP10CIw2DImageS0_S0_S0_, .-_Z10PlayerMoveifP10CIw2DImageS0_S0_S0_
 	.global	__aeabi_dcmpgt
-	.section	.rodata
-	.align	2
-.LC0:
-	.ascii	"radian = %f\012\000"
 	.global	__aeabi_fcmpge
 	.global	__aeabi_fcmple
 	.section	.text._Z6moveUpif,"ax",%progbits
@@ -981,32 +1134,36 @@ _Z10PlayerMoveifP10CIw2DImageS0_S0_S0_:
 	.type	_Z6moveUpif, %function
 _Z6moveUpif:
 .LFB2967:
-	.loc 2 115 0
+	.loc 2 117 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 32
 	@ frame_needed = 0, uses_anonymous_args = 0
-	str	lr, [sp, #-4]!
+	stmfd	sp!, {r4, lr}
 .LCFI6:
-	.cfi_def_cfa_offset 4
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #36
+	sub	sp, sp, #32
 .LCFI7:
 	.cfi_def_cfa_offset 40
 	str	r0, [sp, #4]
 	str	r1, [sp]	@ float
+	ldr	r4, .L65
+.LPIC4:
+	add	r4, pc, r4
 .LBB9:
-	.loc 2 116 0
+	.loc 2 118 0
 	ldr	r3, [sp]	@ float
 	mov	r0, r3
 	mov	r1, r3
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, .L65
+	ldr	r1, .L65+4
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, .L65+4
+	ldr	r1, .L65+8
 	bl	__aeabi_fdiv(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -1015,8 +1172,8 @@ _Z6moveUpif:
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L65+8
-	ldr	r3, .L65+12
+	ldr	r2, .L65+12
+	ldr	r3, .L65+16
 	bl	__aeabi_dadd(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -1025,28 +1182,28 @@ _Z6moveUpif:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #28]	@ float
-	.loc 2 117 0
+	.loc 2 119 0
 	ldr	r0, [sp, #28]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L65+16
-	ldr	r3, .L65+20
+	ldr	r2, .L65+20
+	ldr	r3, .L65+24
 	bl	__aeabi_dcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L42
-	.loc 2 117 0 is_stmt 0 discriminator 1
+	.loc 2 119 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #28]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L65+16
-	ldr	r3, .L65+20
+	ldr	r2, .L65+20
+	ldr	r3, .L65+24
 	bl	__aeabi_dsub(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -1056,89 +1213,78 @@ _Z6moveUpif:
 	mov	r3, r0
 	str	r3, [sp, #28]	@ float
 .L42:
-	.loc 2 118 0 is_stmt 1
-	ldr	r0, [sp, #28]	@ float
-	bl	__aeabi_f2d(PLT)
-	mov	r2, r0
-	mov	r3, r1
-	ldr	r1, .L65+24
-.LPIC7:
-	add	r1, pc, r1
-	mov	r0, r1
-	bl	printf(PLT)
-	.loc 2 119 0
+	.loc 2 121 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	str	r3, [sp, #24]
-	.loc 2 120 0
+	.loc 2 122 0
 	ldr	r3, .L65+28
 	str	r3, [sp, #20]	@ float
-	.loc 2 121 0
+	.loc 2 123 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
 	bne	.L44
-	.loc 2 121 0 is_stmt 0 discriminator 1
+	.loc 2 123 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+28
 	str	r3, [sp, #20]	@ float
 .L44:
-	.loc 2 122 0 is_stmt 1
+	.loc 2 124 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #2
 	bne	.L45
-	.loc 2 122 0 is_stmt 0 discriminator 1
+	.loc 2 124 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+32
 	str	r3, [sp, #20]	@ float
 .L45:
-	.loc 2 123 0 is_stmt 1
+	.loc 2 125 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #3
 	bne	.L46
-	.loc 2 123 0 is_stmt 0 discriminator 1
+	.loc 2 125 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+36
 	str	r3, [sp, #20]	@ float
 .L46:
-	.loc 2 124 0 is_stmt 1
+	.loc 2 126 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #4
 	bne	.L47
-	.loc 2 124 0 is_stmt 0 discriminator 1
+	.loc 2 126 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+40
 	str	r3, [sp, #20]	@ float
 .L47:
-	.loc 2 125 0 is_stmt 1
+	.loc 2 127 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #5
 	bne	.L48
-	.loc 2 125 0 is_stmt 0 discriminator 1
+	.loc 2 127 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+44
 	str	r3, [sp, #20]	@ float
 .L48:
-	.loc 2 126 0 is_stmt 1
+	.loc 2 128 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #6
 	bne	.L49
-	.loc 2 126 0 is_stmt 0 discriminator 1
+	.loc 2 128 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+48
 	str	r3, [sp, #20]	@ float
 .L49:
-	.loc 2 127 0 is_stmt 1
+	.loc 2 129 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #7
 	bne	.L50
-	.loc 2 127 0 is_stmt 0 discriminator 1
+	.loc 2 129 0 is_stmt 0 discriminator 1
 	ldr	r3, .L65+52
 	str	r3, [sp, #20]	@ float
 .L50:
 .LBB10:
-	.loc 2 129 0 is_stmt 1
+	.loc 2 131 0 is_stmt 1
 	mov	r3, #0
 	str	r3, [sp, #16]
 	b	.L51
 .L58:
 .LBB11:
-	.loc 2 130 0
-	ldr	r0, .L65+56
-.LPIC8:
-	add	r0, pc, r0
+	.loc 2 132 0
+	ldr	r3, .L65+56
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #16]
 	ldr	ip, [sp, #4]
 	mov	r1, #4
@@ -1168,17 +1314,17 @@ _Z6moveUpif:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #12]	@ float
-	.loc 2 131 0
+	.loc 2 133 0
 	ldr	r0, [sp, #12]	@ float
 	mov	r1, #-1090519040
 	bl	__aeabi_fcmplt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L64
-	.loc 2 131 0 is_stmt 0 discriminator 1
+	.loc 2 133 0 is_stmt 0 discriminator 1
 	b	.L54
 .L64:
-	.loc 2 132 0 is_stmt 1
+	.loc 2 134 0 is_stmt 1
 	ldr	r0, [sp, #12]	@ float
 	ldr	r1, [sp, #20]	@ float
 	bl	__aeabi_fadd(PLT)
@@ -1199,14 +1345,14 @@ _Z6moveUpif:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #8]	@ float
-	.loc 2 134 0
+	.loc 2 136 0
 	ldr	r0, [sp, #28]	@ float
 	ldr	r1, [sp, #12]	@ float
 	bl	__aeabi_fcmpge(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L55
-	.loc 2 134 0 is_stmt 0 discriminator 1
+	.loc 2 136 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #28]	@ float
 	ldr	r1, [sp, #8]	@ float
 	bl	__aeabi_fcmple(PLT)
@@ -1218,35 +1364,35 @@ _Z6moveUpif:
 	str	r3, [sp, #24]
 .L55:
 .LBE11:
-	.loc 2 129 0 is_stmt 1
+	.loc 2 131 0 is_stmt 1
 	ldr	r3, [sp, #16]
 	add	r3, r3, #1
 	str	r3, [sp, #16]
 .L51:
-	.loc 2 129 0 is_stmt 0 discriminator 1
+	.loc 2 131 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #16]
 	cmp	r3, #19
 	ble	.L58
 .L54:
 .LBE10:
-	.loc 2 136 0 is_stmt 1
+	.loc 2 138 0 is_stmt 1
 	ldr	r3, [sp, #24]
 .LBE9:
-	.loc 2 137 0
+	.loc 2 139 0
 	mov	r0, r3
-	add	sp, sp, #36
+	add	sp, sp, #32
 	@ sp needed
-	ldr	pc, [sp], #4
+	ldmfd	sp!, {r4, pc}
 .L66:
 	.align	2
 .L65:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC4+8)
 	.word	1078530011
 	.word	1135869952
 	.word	1258028219
 	.word	1073288431
 	.word	1374389535
 	.word	1075388088
-	.word	.LC0-(.LPIC7+8)
 	.word	1050253722
 	.word	1045220557
 	.word	1040744396
@@ -1254,7 +1400,7 @@ _Z6moveUpif:
 	.word	1030924758
 	.word	1025623695
 	.word	1025758986
-	.word	level-(.LPIC8+8)
+	.word	level(GOT)
 	.word	-1717986918
 	.word	1069128089
 	.cfi_endproc
@@ -1267,32 +1413,36 @@ _Z6moveUpif:
 	.type	_Z8moveDownif, %function
 _Z8moveDownif:
 .LFB2968:
-	.loc 2 139 0
+	.loc 2 141 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 32
 	@ frame_needed = 0, uses_anonymous_args = 0
-	str	lr, [sp, #-4]!
+	stmfd	sp!, {r4, lr}
 .LCFI8:
-	.cfi_def_cfa_offset 4
+	.cfi_def_cfa_offset 8
+	.cfi_offset 4, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #36
+	sub	sp, sp, #32
 .LCFI9:
 	.cfi_def_cfa_offset 40
 	str	r0, [sp, #4]
 	str	r1, [sp]	@ float
+	ldr	r4, .L91
+.LPIC5:
+	add	r4, pc, r4
 .LBB12:
-	.loc 2 140 0
+	.loc 2 142 0
 	ldr	r3, [sp]	@ float
 	mov	r0, r3
 	mov	r1, r3
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, .L91
+	ldr	r1, .L91+4
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, .L91+4
+	ldr	r1, .L91+8
 	bl	__aeabi_fdiv(PLT)
 	mov	r3, r0
 	mov	r0, r3
@@ -1301,8 +1451,8 @@ _Z8moveDownif:
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L91+8
-	ldr	r3, .L91+12
+	ldr	r2, .L91+12
+	ldr	r3, .L91+16
 	bl	__aeabi_dadd(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -1311,28 +1461,28 @@ _Z8moveDownif:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #28]	@ float
-	.loc 2 141 0
+	.loc 2 143 0
 	ldr	r0, [sp, #28]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L91+16
-	ldr	r3, .L91+20
+	ldr	r2, .L91+20
+	ldr	r3, .L91+24
 	bl	__aeabi_dcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L68
-	.loc 2 141 0 is_stmt 0 discriminator 1
+	.loc 2 143 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #28]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	ldr	r2, .L91+16
-	ldr	r3, .L91+20
+	ldr	r2, .L91+20
+	ldr	r3, .L91+24
 	bl	__aeabi_dsub(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -1342,91 +1492,80 @@ _Z8moveDownif:
 	mov	r3, r0
 	str	r3, [sp, #28]	@ float
 .L68:
-	.loc 2 142 0 is_stmt 1
-	ldr	r0, [sp, #28]	@ float
-	bl	__aeabi_f2d(PLT)
-	mov	r2, r0
-	mov	r3, r1
-	ldr	r1, .L91+24
-.LPIC9:
-	add	r1, pc, r1
-	mov	r0, r1
-	bl	printf(PLT)
-	.loc 2 143 0
+	.loc 2 145 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	str	r3, [sp, #24]
-	.loc 2 144 0
+	.loc 2 146 0
 	ldr	r3, .L91+28
 	str	r3, [sp, #20]	@ float
-	.loc 2 145 0
+	.loc 2 147 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
 	bne	.L70
-	.loc 2 145 0 is_stmt 0 discriminator 1
+	.loc 2 147 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+28
 	str	r3, [sp, #20]	@ float
 .L70:
-	.loc 2 146 0 is_stmt 1
+	.loc 2 148 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #2
 	bne	.L71
-	.loc 2 146 0 is_stmt 0 discriminator 1
+	.loc 2 148 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+32
 	str	r3, [sp, #20]	@ float
 .L71:
-	.loc 2 147 0 is_stmt 1
+	.loc 2 149 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #3
 	bne	.L72
-	.loc 2 147 0 is_stmt 0 discriminator 1
+	.loc 2 149 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+36
 	str	r3, [sp, #20]	@ float
 .L72:
-	.loc 2 148 0 is_stmt 1
+	.loc 2 150 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #4
 	bne	.L73
-	.loc 2 148 0 is_stmt 0 discriminator 1
+	.loc 2 150 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+40
 	str	r3, [sp, #20]	@ float
 .L73:
-	.loc 2 149 0 is_stmt 1
+	.loc 2 151 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #5
 	bne	.L74
-	.loc 2 149 0 is_stmt 0 discriminator 1
+	.loc 2 151 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+44
 	str	r3, [sp, #20]	@ float
 .L74:
-	.loc 2 150 0 is_stmt 1
+	.loc 2 152 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #6
 	bne	.L75
-	.loc 2 150 0 is_stmt 0 discriminator 1
+	.loc 2 152 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+48
 	str	r3, [sp, #20]	@ float
 .L75:
-	.loc 2 151 0 is_stmt 1
+	.loc 2 153 0 is_stmt 1
 	ldr	r3, [sp, #4]
 	cmp	r3, #7
 	bne	.L76
-	.loc 2 151 0 is_stmt 0 discriminator 1
+	.loc 2 153 0 is_stmt 0 discriminator 1
 	ldr	r3, .L91+52
 	str	r3, [sp, #20]	@ float
 .L76:
 .LBB13:
-	.loc 2 153 0 is_stmt 1
+	.loc 2 155 0 is_stmt 1
 	mov	r3, #0
 	str	r3, [sp, #16]
 	b	.L77
 .L84:
 .LBB14:
-	.loc 2 154 0
+	.loc 2 156 0
 	ldr	r3, [sp, #4]
 	sub	ip, r3, #1
-	ldr	r0, .L91+56
-.LPIC10:
-	add	r0, pc, r0
+	ldr	r3, .L91+56
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #16]
 	mov	r1, #4
 	mov	r3, r2
@@ -1455,17 +1594,17 @@ _Z8moveDownif:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #12]	@ float
-	.loc 2 155 0
+	.loc 2 157 0
 	ldr	r0, [sp, #12]	@ float
 	mov	r1, #-1090519040
 	bl	__aeabi_fcmplt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L90
-	.loc 2 155 0 is_stmt 0 discriminator 1
+	.loc 2 157 0 is_stmt 0 discriminator 1
 	b	.L80
 .L90:
-	.loc 2 156 0 is_stmt 1
+	.loc 2 158 0 is_stmt 1
 	ldr	r0, [sp, #12]	@ float
 	ldr	r1, [sp, #20]	@ float
 	bl	__aeabi_fadd(PLT)
@@ -1486,14 +1625,14 @@ _Z8moveDownif:
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
 	str	r3, [sp, #8]	@ float
-	.loc 2 158 0
+	.loc 2 160 0
 	ldr	r0, [sp, #28]	@ float
 	ldr	r1, [sp, #12]	@ float
 	bl	__aeabi_fcmpge(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L81
-	.loc 2 158 0 is_stmt 0 discriminator 1
+	.loc 2 160 0 is_stmt 0 discriminator 1
 	ldr	r0, [sp, #28]	@ float
 	ldr	r1, [sp, #8]	@ float
 	bl	__aeabi_fcmple(PLT)
@@ -1505,35 +1644,35 @@ _Z8moveDownif:
 	str	r3, [sp, #24]
 .L81:
 .LBE14:
-	.loc 2 153 0 is_stmt 1
+	.loc 2 155 0 is_stmt 1
 	ldr	r3, [sp, #16]
 	add	r3, r3, #1
 	str	r3, [sp, #16]
 .L77:
-	.loc 2 153 0 is_stmt 0 discriminator 1
+	.loc 2 155 0 is_stmt 0 discriminator 1
 	ldr	r3, [sp, #16]
 	cmp	r3, #19
 	ble	.L84
 .L80:
 .LBE13:
-	.loc 2 160 0 is_stmt 1
+	.loc 2 162 0 is_stmt 1
 	ldr	r3, [sp, #24]
 .LBE12:
-	.loc 2 161 0
+	.loc 2 163 0
 	mov	r0, r3
-	add	sp, sp, #36
+	add	sp, sp, #32
 	@ sp needed
-	ldr	pc, [sp], #4
+	ldmfd	sp!, {r4, pc}
 .L92:
 	.align	2
 .L91:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC5+8)
 	.word	1078530011
 	.word	1135869952
 	.word	1258028219
 	.word	1073288431
 	.word	1374389535
 	.word	1075388088
-	.word	.LC0-(.LPIC9+8)
 	.word	1050253722
 	.word	1045220557
 	.word	1040744396
@@ -1541,7 +1680,7 @@ _Z8moveDownif:
 	.word	1030924758
 	.word	1025623695
 	.word	1025758986
-	.word	level-(.LPIC10+8)
+	.word	level(GOT)
 	.word	-1717986918
 	.word	1069128089
 	.cfi_endproc
@@ -1552,7 +1691,7 @@ _Z8moveDownif:
 	.type	_Z41__static_initialization_and_destruction_0ii, %function
 _Z41__static_initialization_and_destruction_0ii:
 .LFB3278:
-	.loc 2 161 0
+	.loc 2 163 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1567,13 +1706,13 @@ _Z41__static_initialization_and_destruction_0ii:
 	str	r0, [sp, #4]
 	str	r1, [sp]
 	ldr	r4, .L95
-.LPIC13:
+.LPIC8:
 	add	r4, pc, r4
-	.loc 2 161 0
+	.loc 2 163 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
 	bne	.L93
-	.loc 2 161 0 is_stmt 0 discriminator 1
+	.loc 2 163 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp]
 	ldr	r3, .L95+4
 	cmp	r2, r3
@@ -1581,58 +1720,58 @@ _Z41__static_initialization_and_destruction_0ii:
 	.file 3 "c:/marmalade/7.5/s3e/h/std/c++/iostream"
 	.loc 3 69 0 is_stmt 1
 	ldr	r3, .L95+8
-.LPIC11:
+.LPIC6:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base9_Loc_initC1Ev(PLT)
 	ldr	r3, .L95+12
-.LPIC12:
+.LPIC7:
 	add	r3, pc, r3
 	mov	r0, r3
 	ldr	r3, .L95+16
 	ldr	r3, [r4, r3]
 	mov	r1, r3
 	ldr	r3, .L95+20
-.LPIC14:
+.LPIC9:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 	.loc 3 75 0
 	ldr	r3, .L95+24
-.LPIC15:
+.LPIC10:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base4InitC1Ev(PLT)
 	ldr	r3, .L95+28
-.LPIC16:
+.LPIC11:
 	add	r3, pc, r3
 	mov	r0, r3
 	ldr	r3, .L95+32
 	ldr	r3, [r4, r3]
 	mov	r1, r3
 	ldr	r3, .L95+36
-.LPIC17:
+.LPIC12:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 .L93:
-	.loc 2 161 0
+	.loc 2 163 0
 	add	sp, sp, #8
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
 .L96:
 	.align	2
 .L95:
-	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC13+8)
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC8+8)
 	.word	65535
-	.word	_ZN4_STLL8_LocInitE-(.LPIC11+8)
-	.word	_ZN4_STLL8_LocInitE-(.LPIC12+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC6+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC7+8)
 	.word	_ZN4_STL8ios_base9_Loc_initD1Ev(GOT)
-	.word	__dso_handle-(.LPIC14+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC15+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC16+8)
+	.word	__dso_handle-(.LPIC9+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC10+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC11+8)
 	.word	_ZN4_STL8ios_base4InitD1Ev(GOT)
-	.word	__dso_handle-(.LPIC17+8)
+	.word	__dso_handle-(.LPIC12+8)
 	.cfi_endproc
 .LFE3278:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
@@ -1641,7 +1780,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	.type	_GLOBAL__sub_I_PlayerMovement.cpp, %function
 _GLOBAL__sub_I_PlayerMovement.cpp:
 .LFB3279:
-	.loc 2 161 0
+	.loc 2 163 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1650,7 +1789,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 3, -8
 	.cfi_offset 14, -4
-	.loc 2 161 0
+	.loc 2 163 0
 	mov	r0, #1
 	ldr	r1, .L98
 	bl	_Z41__static_initialization_and_destruction_0ii(PLT)
@@ -1712,8 +1851,9 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.file 46 "c:/marmalade/7.5/modules/iwgeom/h/IwGeomSqrt.h"
 	.file 47 "c:/marmalade/7.5/modules/iwutil/h/IwMenu.h"
 	.file 48 "c:/marmalade/7.5/modules/iwutil/h/IwTextParserITX.h"
-	.file 49 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
-	.file 50 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
+	.file 49 "d:/School/cs115/AmazingMaze/MazeGenerator.h"
+	.file 50 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
+	.file 51 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
 	.4byte	0x698d
@@ -2770,7 +2910,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.byte	0
 	.uleb128 0x20
 	.ascii	"buf\000"
-	.byte	0x31
+	.byte	0x32
 	.byte	0x58
 	.4byte	.LASF1012
 	.4byte	0x1f4
@@ -5768,7 +5908,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.byte	0
 	.uleb128 0x36
 	.byte	0x4
-	.byte	0x32
+	.byte	0x33
 	.byte	0x26
 	.4byte	0x221e
 	.uleb128 0x7
@@ -13517,7 +13657,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LFE2965
 	.4byte	.LLST2
 	.byte	0x1
-	.4byte	0x65ad
+	.4byte	0x65af
 	.uleb128 0x60
 	.4byte	.LASF953
 	.byte	0x2
@@ -13525,7 +13665,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -108
+	.sleb128 -116
 	.uleb128 0x60
 	.4byte	.LASF954
 	.byte	0x2
@@ -13533,7 +13673,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -112
+	.sleb128 -120
 	.uleb128 0x60
 	.4byte	.LASF955
 	.byte	0x2
@@ -13541,7 +13681,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -116
+	.sleb128 -124
 	.uleb128 0x61
 	.4byte	.LBB3
 	.4byte	.LBE3
@@ -13552,7 +13692,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -48
+	.sleb128 -56
 	.uleb128 0x62
 	.4byte	.LASF957
 	.byte	0x2
@@ -13560,7 +13700,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -52
+	.sleb128 -60
 	.uleb128 0x62
 	.4byte	.LASF958
 	.byte	0x2
@@ -13568,7 +13708,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -56
+	.sleb128 -64
 	.uleb128 0x62
 	.4byte	.LASF959
 	.byte	0x2
@@ -13576,7 +13716,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -28
+	.sleb128 -36
 	.uleb128 0x62
 	.4byte	.LASF960
 	.byte	0x2
@@ -13584,7 +13724,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x1729
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -100
+	.sleb128 -108
 	.uleb128 0x62
 	.4byte	.LASF961
 	.byte	0x2
@@ -13592,7 +13732,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -32
+	.sleb128 -40
 	.uleb128 0x62
 	.4byte	.LASF962
 	.byte	0x2
@@ -13600,23 +13740,23 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -36
+	.sleb128 -44
 	.uleb128 0x63
 	.ascii	"avg\000"
 	.byte	0x2
 	.byte	0x30
 	.4byte	0x939
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -60
+	.sleb128 -68
 	.uleb128 0x62
 	.4byte	.LASF963
 	.byte	0x2
 	.byte	0x31
 	.4byte	0x939
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -64
+	.sleb128 -72
 	.uleb128 0x62
 	.4byte	.LASF964
 	.byte	0x2
@@ -13624,7 +13764,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -68
+	.sleb128 -76
 	.uleb128 0x62
 	.4byte	.LASF965
 	.byte	0x2
@@ -13632,7 +13772,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -72
+	.sleb128 -80
 	.uleb128 0x62
 	.4byte	.LASF966
 	.byte	0x2
@@ -13640,7 +13780,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -40
+	.sleb128 -48
 	.uleb128 0x62
 	.4byte	.LASF967
 	.byte	0x2
@@ -13648,7 +13788,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -76
+	.sleb128 -84
 	.uleb128 0x61
 	.4byte	.LBB4
 	.4byte	.LBE4
@@ -13659,7 +13799,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -44
+	.sleb128 -52
 	.uleb128 0x61
 	.4byte	.LBB5
 	.4byte	.LBE5
@@ -13670,7 +13810,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -80
+	.sleb128 -88
 	.uleb128 0x62
 	.4byte	.LASF970
 	.byte	0x2
@@ -13678,7 +13818,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -84
+	.sleb128 -92
 	.byte	0
 	.byte	0
 	.byte	0
@@ -13694,7 +13834,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LFE2966
 	.4byte	.LLST3
 	.byte	0x1
-	.4byte	0x669b
+	.4byte	0x66a5
 	.uleb128 0x60
 	.4byte	.LASF953
 	.byte	0x2
@@ -13702,7 +13842,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -76
+	.sleb128 -84
 	.uleb128 0x60
 	.4byte	.LASF954
 	.byte	0x2
@@ -13710,7 +13850,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -80
+	.sleb128 -88
 	.uleb128 0x60
 	.4byte	.LASF975
 	.byte	0x2
@@ -13718,7 +13858,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -84
+	.sleb128 -92
 	.uleb128 0x60
 	.4byte	.LASF976
 	.byte	0x2
@@ -13726,7 +13866,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x6320
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -88
+	.sleb128 -96
 	.uleb128 0x60
 	.4byte	.LASF977
 	.byte	0x2
@@ -13747,9 +13887,33 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LBB6
 	.4byte	.LBE6
 	.uleb128 0x63
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x5d
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x63
+	.ascii	"h\000"
+	.byte	0x2
+	.byte	0x5e
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x63
+	.ascii	"g\000"
+	.byte	0x2
+	.byte	0x5f
+	.4byte	0x57cc
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -40
+	.uleb128 0x63
 	.ascii	"IBT\000"
 	.byte	0x2
-	.byte	0x5c
+	.byte	0x60
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
@@ -13757,7 +13921,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x63
 	.ascii	"OBT\000"
 	.byte	0x2
-	.byte	0x5d
+	.byte	0x61
 	.4byte	0x6320
 	.byte	0x2
 	.byte	0x91
@@ -13765,46 +13929,30 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF979
 	.byte	0x2
-	.byte	0x5e
+	.byte	0x62
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -20
-	.uleb128 0x62
-	.4byte	.LASF956
-	.byte	0x2
-	.byte	0x5f
-	.4byte	0x62
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -24
-	.uleb128 0x62
-	.4byte	.LASF957
-	.byte	0x2
-	.byte	0x60
-	.4byte	0x62
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -28
 	.uleb128 0x61
 	.4byte	.LBB8
 	.4byte	.LBE8
 	.uleb128 0x63
 	.ascii	"xx\000"
 	.byte	0x2
-	.byte	0x62
+	.byte	0x64
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -32
+	.sleb128 -44
 	.uleb128 0x63
 	.ascii	"yy\000"
 	.byte	0x2
-	.byte	0x63
+	.byte	0x65
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -36
+	.sleb128 -48
 	.byte	0
 	.byte	0
 	.byte	0
@@ -13812,18 +13960,18 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.byte	0x1
 	.4byte	.LASF980
 	.byte	0x2
-	.byte	0x73
+	.byte	0x75
 	.4byte	.LASF981
 	.4byte	0x62
 	.4byte	.LFB2967
 	.4byte	.LFE2967
 	.4byte	.LLST4
 	.byte	0x1
-	.4byte	0x674b
+	.4byte	0x6755
 	.uleb128 0x60
 	.4byte	.LASF982
 	.byte	0x2
-	.byte	0x73
+	.byte	0x75
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13831,7 +13979,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x60
 	.4byte	.LASF954
 	.byte	0x2
-	.byte	0x73
+	.byte	0x75
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13842,7 +13990,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF958
 	.byte	0x2
-	.byte	0x74
+	.byte	0x76
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13850,7 +13998,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF983
 	.byte	0x2
-	.byte	0x77
+	.byte	0x79
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13858,7 +14006,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF984
 	.byte	0x2
-	.byte	0x78
+	.byte	0x7a
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13869,7 +14017,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF968
 	.byte	0x2
-	.byte	0x81
+	.byte	0x83
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13880,7 +14028,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF985
 	.byte	0x2
-	.byte	0x82
+	.byte	0x84
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13888,7 +14036,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF986
 	.byte	0x2
-	.byte	0x84
+	.byte	0x86
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13901,18 +14049,18 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.byte	0x1
 	.4byte	.LASF987
 	.byte	0x2
-	.byte	0x8b
+	.byte	0x8d
 	.4byte	.LASF988
 	.4byte	0x62
 	.4byte	.LFB2968
 	.4byte	.LFE2968
 	.4byte	.LLST5
 	.byte	0x1
-	.4byte	0x67fb
+	.4byte	0x6805
 	.uleb128 0x60
 	.4byte	.LASF982
 	.byte	0x2
-	.byte	0x8b
+	.byte	0x8d
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13920,7 +14068,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x60
 	.4byte	.LASF954
 	.byte	0x2
-	.byte	0x8b
+	.byte	0x8d
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13931,7 +14079,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF958
 	.byte	0x2
-	.byte	0x8c
+	.byte	0x8e
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13939,7 +14087,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF983
 	.byte	0x2
-	.byte	0x8f
+	.byte	0x91
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13947,7 +14095,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF984
 	.byte	0x2
-	.byte	0x90
+	.byte	0x92
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13958,7 +14106,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF968
 	.byte	0x2
-	.byte	0x99
+	.byte	0x9b
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -13969,7 +14117,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF985
 	.byte	0x2
-	.byte	0x9a
+	.byte	0x9c
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13977,7 +14125,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x62
 	.4byte	.LASF986
 	.byte	0x2
-	.byte	0x9c
+	.byte	0x9e
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
@@ -13993,11 +14141,11 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LFE3278
 	.4byte	.LLST6
 	.byte	0x1
-	.4byte	0x682f
+	.4byte	0x6839
 	.uleb128 0x60
 	.4byte	.LASF989
 	.byte	0x2
-	.byte	0xa1
+	.byte	0xa3
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -14005,7 +14153,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.uleb128 0x60
 	.4byte	.LASF990
 	.byte	0x2
-	.byte	0xa1
+	.byte	0xa3
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
@@ -14034,40 +14182,40 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x62
-	.4byte	0x6867
+	.4byte	0x6871
 	.uleb128 0x67
 	.byte	0
 	.uleb128 0x66
 	.4byte	.LASF993
 	.byte	0x2e
 	.byte	0x4f
-	.4byte	0x685c
+	.4byte	0x6866
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x66
 	.4byte	.LASF994
 	.byte	0x2e
 	.byte	0xc5
-	.4byte	0x685c
+	.4byte	0x6866
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x94b
-	.4byte	0x688c
+	.4byte	0x6896
 	.uleb128 0x67
 	.byte	0
 	.uleb128 0x68
 	.4byte	.LASF995
 	.byte	0x1a
 	.2byte	0x16d
-	.4byte	0x6881
+	.4byte	0x688b
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x68
 	.4byte	.LASF996
 	.byte	0x2f
 	.2byte	0x1d4
-	.4byte	0x68a8
+	.4byte	0x68b2
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
@@ -14089,7 +14237,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x939
-	.4byte	0x68e6
+	.4byte	0x68f0
 	.uleb128 0x9
 	.4byte	0x13d
 	.byte	0x8
@@ -14100,24 +14248,20 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	0x13d
 	.byte	0xe
 	.byte	0
-	.uleb128 0x69
+	.uleb128 0x66
 	.4byte	.LASF999
-	.byte	0x2
-	.byte	0x11
-	.4byte	0x68ca
+	.byte	0x31
+	.byte	0xf
+	.4byte	0x68d4
 	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	level
-	.uleb128 0x69
+	.byte	0x1
+	.uleb128 0x66
 	.4byte	.LASF1000
-	.byte	0x2
-	.byte	0x12
+	.byte	0x31
+	.byte	0x10
 	.4byte	0x62
 	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	MaxLevel
+	.byte	0x1
 	.uleb128 0x69
 	.4byte	.LASF1001
 	.byte	0x2
@@ -15886,12 +16030,12 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LCFI3
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 20
+	.sleb128 28
 	.4byte	.LCFI3
 	.4byte	.LFE2965
 	.2byte	0x3
 	.byte	0x7d
-	.sleb128 128
+	.sleb128 136
 	.4byte	0
 	.4byte	0
 .LLST3:
@@ -15909,7 +16053,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LFE2966
 	.2byte	0x3
 	.byte	0x7d
-	.sleb128 96
+	.sleb128 104
 	.4byte	0
 	.4byte	0
 .LLST4:
@@ -15922,7 +16066,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LCFI7
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 4
+	.sleb128 8
 	.4byte	.LCFI7
 	.4byte	.LFE2967
 	.2byte	0x2
@@ -15940,7 +16084,7 @@ _GLOBAL__sub_I_PlayerMovement.cpp:
 	.4byte	.LCFI9
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 4
+	.sleb128 8
 	.4byte	.LCFI9
 	.4byte	.LFE2968
 	.2byte	0x2

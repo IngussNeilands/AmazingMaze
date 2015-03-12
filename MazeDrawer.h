@@ -14,5 +14,5 @@
 
 
 void printall();
-void DrawMaze(int curLevel);
+void DrawMaze(int curLevel, CIw2DImage* Color[8], CIw2DImage* bg, CIw2DImage* Overlay);
 #endif

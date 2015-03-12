@@ -1,0 +1,48 @@
+﻿Build started 3/11/2015 10:51:51 PM.
+     1>Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" on node 2 (Build target(s)).
+     1>CustomBuild:
+         Performing Custom Build Tools
+         msg: option 'default-buildenv' overridden by command line
+         C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --mips --default-buildenv=vc12 --msvc-project
+         Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
+         done
+       ClCompile:
+         C:\Marmalade\7.5\s3e\bin\CL.exe /c /Ic:/marmalade/7.5/modules/iwutil/h /Ic:/marmalade/7.5/modules/third_party/libjpeg/h /Ic:/marmalade/7.5/modules/third_party/zlib/h /Ic:/marmalade/7.5/modules/third_party/libpng/h /Ic:/marmalade/7.5/modules/iw2dscenegraphcore/h /Ic:/marmalade/7.5/modules/iw2dscenegraph/h /Ic:/marmalade/7.5/modules/iw2d/h /Ic:/marmalade/7.5/modules/iwgx/h /Ic:/marmalade/7.5/modules/iwgl/h /Ic:/marmalade/7.5/modules/iwgeom/h /Ic:/marmalade/7.5/modules/iwresmanager/h /Ic:/marmalade/7.5/extensions/pvrtextool/h /Ic:/marmalade/7.5/modules/iwgxfont/h /Ic:/marmalade/7.5/modules/third_party/tiniconv/source /Ic:/marmalade/7.5/modules/iwtween/h /Ic:/marmalade/7.5/s3e/h /Ic:/marmalade/7.5/s3e/h/ext /Ic:/marmalade/7.5/s3e/h/std /Ic:/marmalade/7.5/s3e/h/std/c++ /Ic:/marmalade/7.5/s3e/h/ext_legacy /Ic:/marmalade/7.5/s3e/h/legacy /I. /Z7 /nologo /W3 /WX- /MP /Od /Oy- /X /Gm- /EHsc /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug_AmazingMaze_vc12_gcc_mips\\" /Fd"Debug_AmazingMaze_vc12_gcc_mips\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /S3Eproject /J /Fe"s3e-custom-tool='c:/marmalade/7.5/tools/gcc/mips/android_mips_windows/bin/mipsel-linux-android-gcc.exe' tooltype=gcc_mips_compiler -funsigned-char -fno-strict-aliasing -fno-stack-protector -fno-short-enums -fshort-wchar -Wall -fmessage-length=0 -Wno-unused -Wno-parentheses -save-temps -fPIC -EL -mips1 -mabi=32 -Wno-switch -nostdinc -fPIC --cppflag=-Wno-reorder --cppflag=-fvisibility-inlines-hidden --cppflag=-fno-exceptions --cppflag=-frtti --cppflag=-nostdinc++ -g -O0" /FD  /FI"d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\temp_defines_debug.h" ..\AmazingMaze.cpp c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp ..\MazeDrawer.cpp ..\MazeGenerator.cpp c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ..\PlayerMovement.cpp ..\menu.cpp
+         MIPS Compiling(GCC) d:\School\cs115\AmazingMaze\AmazingMaze.cpp ...
+         MIPS Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraph\source\Iw2DSceneGraph.cpp ...
+         MIPS Compiling(GCC) c:\marmalade\7.5\modules\iw2dscenegraphcore\source\Iw2DSceneGraphCore.cpp ...
+         MIPS Compiling(GCC) c:\marmalade\7.5\modules\iwtween\source\IwTween.cpp ...
+         MIPS Compiling(GCC) d:\School\cs115\AmazingMaze\MazeDrawer.cpp ...
+         MIPS Compiling(GCC) d:\School\cs115\AmazingMaze\MazeGenerator.cpp ...
+         MIPS Compiling(GCC) c:\marmalade\7.5\extensions\pvrtextool\interface\PVRTexTool_interface.cpp ...
+         MIPS Compiling(GCC) d:\School\cs115\AmazingMaze\PlayerMovement.cpp ...
+         MIPS Compiling(GCC) d:\School\cs115\AmazingMaze\menu.cpp ...
+       Link:
+         C:\Marmalade\7.5\s3e\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so" /INCREMENTAL /NOLOGO /LIBPATH:c:/marmalade/7.5/modules/iwutil/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/third_party/libjpeg/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/third_party/zlib/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/third_party/libpng/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/iw2d/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/iwgx/atitools /LIBPATH:c:/marmalade/7.5/modules/iwgx/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/iwgl/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/iwgeom/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/iwresmanager/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/iwgxfont/lib/mips/linux /LIBPATH:c:/marmalade/7.5/modules/third_party/tiniconv/lib/mips/linux /LIBPATH:c:/marmalade/7.5/s3e/lib/mips/linux /NODEFAULTLIB:libcmt /MANIFEST:NO /PDB:"Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.pdb" /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.lib" /MACHINE:X86  /include:_IwMain /include:_raise /include:_DllEntryPoint@12 /force:multiple /COMMENT:"s3e-custom-tool='c:/marmalade/7.5/tools/gcc/mips/android_mips_windows/bin/mipsel-linux-android-g++.exe' tooltype=gcc_mips_linker -Wl,--as-needed --sysroot=c:/marmalade/7.5/s3e\..\tools\gcc\mips\android_mips_windows/android-14/arch-mips -Wl,--no-undefined -shared -EL -mips1 -mabi=32 -static-libgcc -nodefaultlibs -Wl,--entry=_IwMain -frtti -Wl,-Tmips_linker_script -Wl,-init -Wl,iwcrt_mips_init -Wl,-fini -Wl,iwcrt_mips_fini -Wl,--no-undefined -Wl,-u_IwAppEntry -Wl,-u_IwAppVersionMajor -Wl,-u_IwAppVersionMinor -Wl,--entry=_IwAppEntry -shared -Wl,-Map='Debug_AmazingMaze_vc12_gcc_mips\/AmazingMaze.map' -Wl,--start-group -liwutil_d -ljpeg_d -lz_d -lpng_d -liw2d_d -liwgx_d -liwgl_d -liwgeom_d -liwresmanager_d -liwgxfont_d -ltiniconv_d -ls3e_cpp_d -ls3e_d -ls3e_api_iwgl -lstdc++ -lc -lm -lgcc -Wl,--end-group --plink:-i" /DLL Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.obj
+         Debug_AmazingMaze_vc12_gcc_mips\Iw2DSceneGraph.obj
+         Debug_AmazingMaze_vc12_gcc_mips\Iw2DSceneGraphCore.obj
+         Debug_AmazingMaze_vc12_gcc_mips\IwTween.obj
+         Debug_AmazingMaze_vc12_gcc_mips\MazeDrawer.obj
+         Debug_AmazingMaze_vc12_gcc_mips\MazeGenerator.obj
+         Debug_AmazingMaze_vc12_gcc_mips\PVRTexTool_interface.obj
+         Debug_AmazingMaze_vc12_gcc_mips\PlayerMovement.obj
+         Debug_AmazingMaze_vc12_gcc_mips\menu.obj
+         MIPS Linking(GCC) ...
+         opening input file for writing
+         AmazingMaze_vc12.vcxproj -> d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so
+       PostBuildEvent:
+         echo C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so"
+         chdir /d "c:\marmalade\7.5\s3e\tools"
+         C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so"
+         echo "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so" 
+         chdir /d "c:\marmalade\7.5\s3e\bin"
+         "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so" 
+         
+         :VCEnd
+         C:\Marmalade\7.5\s3e\python\python.exe .\process_map.py "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so"
+         "s3e_plink" -l "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\Debug_AmazingMaze_vc12_gcc_mips\AmazingMaze.so" 
+     1>Done Building Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:13.70

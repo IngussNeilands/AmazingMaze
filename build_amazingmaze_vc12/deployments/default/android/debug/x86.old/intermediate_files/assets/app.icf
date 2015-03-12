@@ -1,0 +1,17 @@
+# comments and whitespace stripped by deployment tool
+[S3E]
+MemSize=212992000
+MemSizeDebug=212992000
+MemMgrMaxAllocWarning=0
+[GX]
+VertCacheSize=80000
+DataCacheSize=800000
+[2D]
+MaxBatch = 2000
+[GL]
+EGL_DEPTH_SIZE = 24
+EGL_BUFFER_SIZE  = 2000
+AllowNoDepthBufferClear=1
+[s3e]
+SysAppVersion=0.0.1
+SysAppCaption="AmazingMaze"

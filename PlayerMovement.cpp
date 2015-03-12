@@ -69,7 +69,7 @@ float DrawPlayer(int curLevel,float angle, CIw2DImage* player){
 		wall = level[curLevel - 1][doors][2] * 100;
 		if (wall == -100) break;
 		//printf("nextL = %i, wall = %i\n", nextlocation, wall);
-		int limit = abs(int(factor * 6));
+		int limit = abs(int(factor*4));
 		int difference = abs(nextlocation - wall);
 		//printf("difference %i <= limit %i \n", difference, limit);
 		if (difference <= limit){
@@ -89,33 +89,35 @@ float DrawPlayer(int curLevel,float angle, CIw2DImage* player){
 
 
 int PlayerMove(int curLevel, float angle, CIw2DImage* InBt, CIw2DImage* InBtC, CIw2DImage* OutBt, CIw2DImage* OutBtC){
+	Iw2DInit();
+	int w = Iw2DGetSurfaceWidth();
+	int h = Iw2DGetSurfaceHeight();
+	double g = (double)w / 320;
 	CIw2DImage* IBT = InBt;
 	CIw2DImage* OBT = OutBt;
 	int Levle = curLevel;
-	int surface_width = Iw2DGetSurfaceWidth();
-	int surface_height = Iw2DGetSurfaceHeight();
 	if (s3ePointerGetState(S3E_POINTER_BUTTON_SELECT) & S3E_POINTER_STATE_PRESSED){
 		int xx = s3ePointerGetX();
 		int yy = s3ePointerGetY();
 
-		if (xx > 8 && yy > surface_height - 80 && xx < 152 && yy < surface_height - 8) {
+		if (xx > 2 * w / 320 && yy > 398 * h / 480 && xx < 159 * w / 320 && yy < 478 * h / 480) {
 		IBT = InBtC;
 		Levle = moveDown(curLevel, angle);
 		}
-		if (xx > surface_width - 152 && yy > surface_height - 80 && xx < surface_width - 8 && yy < surface_height - 8){
+		if (xx > 161 * w / 320 && yy > 398 * w / 320 && xx < 318 * w / 320 && yy < 478 * h / 480){
 		OBT = OutBtC;
 		Levle = moveUp(curLevel, angle);
 		}
 	}
-	Iw2DDrawImage(IBT, CIwFVec2(8, surface_height - 80), CIwFVec2(144, 72));
-	Iw2DDrawImage(OBT, CIwFVec2(surface_width - 152, surface_height - 80), CIwFVec2(144, 72));
+	Iw2DDrawImage(IBT, CIwFVec2(2 * w / 320, 398 * h / 480), CIwFVec2(157 * g, 80 * h / 480));
+	Iw2DDrawImage(OBT, CIwFVec2(161 * w / 320, 398 * h / 480), CIwFVec2(157 * g, 80 * h / 480));
 	return Levle;
 }
 
 int moveUp(int currentLevel, float angle){
 	float radian = angle * 2 * PI / 360 + 1.56761102;
 	if (radian > 6.28) radian = radian - 6.28;
-	printf("radian = %f\n", radian);
+	//printf("radian = %f\n", radian);
 	int moveTo = currentLevel;
 	float doorsizes = 0.3;
 	if (currentLevel == 1) doorsizes = 0.3;
@@ -139,7 +141,7 @@ int moveUp(int currentLevel, float angle){
 int moveDown(int currentLevel, float angle){
 	float radian = angle * 2 * PI / 360 + 1.56761102;
 	if (radian > 6.28) radian = radian - 6.28;
-	printf("radian = %f\n", radian);
+	//printf("radian = %f\n", radian);
 	int moveTo = currentLevel;
 	float doorsizes = 0.3;
 	if (currentLevel == 1) doorsizes = 0.3;

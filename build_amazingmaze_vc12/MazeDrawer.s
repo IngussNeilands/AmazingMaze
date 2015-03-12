@@ -59,20 +59,6 @@ _ZN4_STLL8_LocInitE:
 	.align	2
 _ZN4_STLL8_IosInitE:
 	.space	1
-	.hidden	level
-	.global	level
-	.align	2
-	.type	level, %object
-	.size	level, 10800
-level:
-	.space	10800
-	.hidden	MaxLevel
-	.global	MaxLevel
-	.align	2
-	.type	MaxLevel, %object
-	.size	MaxLevel, 4
-MaxLevel:
-	.space	4
 	.global	__aeabi_fcmpgt
 	.global	__aeabi_f2d
 	.section	.rodata
@@ -108,6 +94,9 @@ _Z8printallv:
 	sub	sp, sp, #84
 .LCFI2:
 	.cfi_def_cfa_offset 120
+	ldr	r4, .L12
+.LPIC0:
+	add	r4, pc, r4
 .LBB3:
 .LBB4:
 	.loc 2 21 0
@@ -124,9 +113,8 @@ _Z8printallv:
 .L9:
 .LBB7:
 	.loc 2 24 0
-	ldr	r0, .L12
-.LPIC0:
-	add	r0, pc, r0
+	ldr	r3, .L12+4
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #72]
 	ldr	ip, [sp, #76]
 	mov	r1, #8
@@ -143,20 +131,17 @@ _Z8printallv:
 	str	r3, [sp, #68]	@ float
 	.loc 2 25 0
 	ldr	r0, [sp, #68]	@ float
-	ldr	r1, .L12+4
+	ldr	r1, .L12+8
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L7
 	.loc 2 27 0
-	ldr	r3, .L12+8
-.LPIC1:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	str	r3, [sp, #60]
-	ldr	r0, .L12+12
-.LPIC2:
-	add	r0, pc, r0
+	ldr	r3, .L12+12
+	ldr	r3, [r4, r3]
+	ldr	r5, [r3]
+	ldr	r3, .L12+4
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #72]
 	ldr	ip, [sp, #76]
 	mov	r1, #4
@@ -172,10 +157,9 @@ _Z8printallv:
 	ldr	r3, [r3]	@ float
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	strd	r0, [sp, #48]
-	ldr	r0, .L12+16
-.LPIC3:
-	add	r0, pc, r0
+	strd	r0, [sp, #56]
+	ldr	r3, .L12+4
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #72]
 	ldr	ip, [sp, #76]
 	mov	r1, #8
@@ -191,11 +175,9 @@ _Z8printallv:
 	ldr	r3, [r3]	@ float
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r10, r0
-	mov	fp, r1
-	ldr	r1, .L12+20
-.LPIC4:
-	add	r1, pc, r1
+	strd	r0, [sp, #48]
+	ldr	r3, .L12+4
+	ldr	r1, [r4, r3]
 	ldr	r2, [sp, #72]
 	ldr	r0, [sp, #76]
 	mov	r3, r2
@@ -209,11 +191,10 @@ _Z8printallv:
 	ldr	r3, [r3]	@ float
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r8, r0
-	mov	r9, r1
-	ldr	r0, .L12+24
-.LPIC5:
-	add	r0, pc, r0
+	mov	r10, r0
+	mov	fp, r1
+	ldr	r3, .L12+4
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #72]
 	ldr	ip, [sp, #76]
 	mov	r1, #20
@@ -229,11 +210,10 @@ _Z8printallv:
 	ldr	r3, [r3]	@ float
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r6, r0
-	mov	r7, r1
-	ldr	r0, .L12+28
-.LPIC6:
-	add	r0, pc, r0
+	mov	r8, r0
+	mov	r9, r1
+	ldr	r3, .L12+4
+	ldr	r0, [r4, r3]
 	ldr	r2, [sp, #72]
 	ldr	ip, [sp, #76]
 	mov	r1, #12
@@ -249,21 +229,21 @@ _Z8printallv:
 	ldr	r3, [r3]	@ float
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	ip, .L12+32
-.LPIC7:
-	add	ip, pc, ip
-	ldr	r2, [sp, #72]
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L12+4
+	ldr	ip, [r4, r3]
+	ldr	r3, [sp, #72]
 	ldr	r1, [sp, #76]
 	mov	r0, #16
-	mov	r3, r2
-	mov	r3, r3, asl #4
-	rsb	r3, r2, r3
-	mov	r3, r3, asl #2
-	mov	r2, #1200
-	mul	r2, r2, r1
-	add	r3, r3, r2
+	mov	r2, r3
+	mov	r2, r2, asl #4
+	rsb	r2, r3, r2
+	mov	r3, r2, asl #2
+	mov	r2, r3
+	mov	r3, #1200
+	mul	r3, r3, r1
+	add	r3, r2, r3
 	add	r3, ip, r3
 	add	r3, r3, r0
 	ldr	r3, [r3]	@ float
@@ -271,18 +251,19 @@ _Z8printallv:
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	ldrd	r0, [sp, #48]
+	ldrd	r0, [sp, #56]
 	strd	r0, [sp]
-	strd	r10, [sp, #8]
-	strd	r8, [sp, #16]
-	strd	r6, [sp, #24]
-	strd	r4, [sp, #32]
+	ldrd	r0, [sp, #48]
+	strd	r0, [sp, #8]
+	strd	r10, [sp, #16]
+	strd	r8, [sp, #24]
+	strd	r6, [sp, #32]
 	strd	r2, [sp, #40]
-	ldr	r3, .L12+36
-.LPIC8:
+	ldr	r3, .L12+16
+.LPIC1:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r1, [sp, #60]
+	mov	r1, r5
 	ldr	r2, [sp, #76]
 	ldr	r3, [sp, #72]
 	bl	printf(PLT)
@@ -305,9 +286,8 @@ _Z8printallv:
 	str	r3, [sp, #76]
 .L5:
 	.loc 2 21 0 is_stmt 0 discriminator 1
-	ldr	r3, .L12+40
-.LPIC9:
-	add	r3, pc, r3
+	ldr	r3, .L12+12
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
 	ldr	r2, [sp, #76]
 	cmp	r2, r3
@@ -321,17 +301,11 @@ _Z8printallv:
 .L13:
 	.align	2
 .L12:
-	.word	level-(.LPIC0+8)
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC0+8)
+	.word	level(GOT)
 	.word	-1082130432
-	.word	MaxLevel-(.LPIC1+8)
-	.word	level-(.LPIC2+8)
-	.word	level-(.LPIC3+8)
-	.word	level-(.LPIC4+8)
-	.word	level-(.LPIC5+8)
-	.word	level-(.LPIC6+8)
-	.word	level-(.LPIC7+8)
-	.word	.LC0-(.LPIC8+8)
-	.word	MaxLevel-(.LPIC9+8)
+	.word	MaxLevel(GOT)
+	.word	.LC0-(.LPIC1+8)
 	.cfi_endproc
 .LFE2965:
 	.size	_Z8printallv, .-_Z8printallv
@@ -342,428 +316,347 @@ _Z8printallv:
 	.global	__aeabi_fadd
 	.global	__aeabi_dmul
 	.global	__aeabi_d2f
-	.section	.text._Z8DrawMazei,"ax",%progbits
+	.global	__aeabi_fcmple
+	.global	__aeabi_dadd
+	.global	__aeabi_fcmplt
+	.global	__aeabi_dcmple
+	.section	.text._Z8DrawMazeiPP10CIw2DImageS0_S0_,"ax",%progbits
 	.align	2
-	.global	_Z8DrawMazei
-	.hidden	_Z8DrawMazei
-	.type	_Z8DrawMazei, %function
-_Z8DrawMazei:
+	.global	_Z8DrawMazeiPP10CIw2DImageS0_S0_
+	.hidden	_Z8DrawMazeiPP10CIw2DImageS0_S0_
+	.type	_Z8DrawMazeiPP10CIw2DImageS0_S0_, %function
+_Z8DrawMazeiPP10CIw2DImageS0_S0_:
 .LFB2966:
 	.loc 2 33 0
 	.cfi_startproc
-	@ args = 0, pretend = 0, frame = 256
+	@ args = 0, pretend = 0, frame = 248
 	@ frame_needed = 0, uses_anonymous_args = 0
-	stmfd	sp!, {r4, r5, lr}
+	stmfd	sp!, {r4, r5, r6, r7, lr}
 .LCFI3:
-	.cfi_def_cfa_offset 12
-	.cfi_offset 4, -12
-	.cfi_offset 5, -8
+	.cfi_def_cfa_offset 20
+	.cfi_offset 4, -20
+	.cfi_offset 5, -16
+	.cfi_offset 6, -12
+	.cfi_offset 7, -8
 	.cfi_offset 14, -4
-	sub	sp, sp, #276
+	sub	sp, sp, #268
 .LCFI4:
 	.cfi_def_cfa_offset 288
-	str	r0, [sp, #20]
+	str	r0, [sp, #28]
+	str	r1, [sp, #24]
+	str	r2, [sp, #20]
+	str	r3, [sp, #16]
+	ldr	r4, .L49
+.LPIC2:
+	add	r4, pc, r4
 .LBB8:
 	.loc 2 34 0
 	bl	_Z8Iw2DInitv(PLT)
 	.loc 2 35 0
-	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
-	str	r0, [sp, #236]
+	ldr	r3, [sp, #24]
+	ldr	r3, [r3, #4]
+	str	r3, [sp, #208]
 	.loc 2 36 0
-	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
-	str	r0, [sp, #232]
-.LBB9:
+	bl	_Z19Iw2DGetSurfaceWidthv(PLT)
+	str	r0, [sp, #204]
 	.loc 2 37 0
+	bl	_Z20Iw2DGetSurfaceHeightv(PLT)
+	str	r0, [sp, #200]
+.LBB9:
+	.loc 2 38 0
 	mov	r3, #1
-	str	r3, [sp, #268]
+	str	r3, [sp, #260]
 	b	.L15
 .L20:
 .LBB10:
-	.loc 2 38 0
-	ldr	r3, [sp, #20]
-	add	r3, r3, #1
-	str	r3, [sp, #264]
 	.loc 2 39 0
-	ldr	r3, .L38
-.LPIC10:
-	add	r3, pc, r3
+	ldr	r3, [sp, #260]
+	mov	r3, r3, asl #2
+	ldr	r2, [sp, #24]
+	add	r3, r2, r3
 	ldr	r3, [r3]
-	ldr	r2, [sp, #20]
+	str	r3, [sp, #208]
+	.loc 2 40 0
+	ldr	r3, [sp, #28]
+	add	r3, r3, #1
+	str	r3, [sp, #256]
+	.loc 2 41 0
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
+	ldr	r3, [r3]
+	ldr	r2, [sp, #28]
 	cmp	r2, r3
 	bne	.L16
-	.loc 2 39 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #20]
-	str	r3, [sp, #264]
+	.loc 2 41 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #28]
+	str	r3, [sp, #256]
 .L16:
-	.loc 2 40 0 is_stmt 1
-	ldr	r3, [sp, #236]
-	sub	r3, r3, #30
+	.loc 2 42 0 is_stmt 1
+	ldr	r2, [sp, #204]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L49+8
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	ldr	r2, [sp, #204]
+	rsb	r3, r3, r2
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	str	r3, [sp, #260]	@ float
-	.loc 2 41 0
-	ldr	r3, .L38+4
-.LPIC11:
-	add	r3, pc, r3
+	str	r3, [sp, #252]	@ float
+	.loc 2 43 0
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
-	ldr	r2, [sp, #20]
+	ldr	r2, [sp, #28]
 	cmp	r2, r3
 	bne	.L17
-	.loc 2 41 0 is_stmt 0 discriminator 1
-	ldr	r0, [sp, #260]	@ float
-	ldr	r1, .L38+8
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	str	r3, [sp, #260]	@ float
-.L17:
-	.loc 2 42 0 is_stmt 1
-	ldr	r0, [sp, #264]
+	.loc 2 43 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #204]
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #1
+	ldr	r2, .L49+8
+	smull	r1, r2, r2, r3
+	mov	r2, r2, asr #7
+	mov	r3, r3, asr #31
+	rsb	r3, r3, r2
+	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	ldr	r0, [sp, #260]	@ float
+	ldr	r0, [sp, #252]	@ float
+	mov	r1, r3
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	str	r3, [sp, #252]	@ float
+.L17:
+	.loc 2 44 0 is_stmt 1
+	ldr	r0, [sp, #256]
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	ldr	r0, [sp, #252]	@ float
 	mov	r1, r3
 	bl	__aeabi_fdiv(PLT)
 	mov	r3, r0
-	str	r3, [sp, #228]	@ float
-	.loc 2 43 0
-	ldr	r0, [sp, #268]
+	str	r3, [sp, #196]	@ float
+	.loc 2 45 0
+	ldr	r0, [sp, #260]
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, [sp, #228]	@ float
+	ldr	r1, [sp, #196]	@ float
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
-	str	r3, [sp, #224]	@ float
-	.loc 2 45 0
-	ldr	r0, .L38+12
-	bl	_Z13Iw2DSetColourj(PLT)
+	str	r3, [sp, #192]	@ float
 	.loc 2 46 0
-	ldr	r3, .L38+16
-.LPIC12:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	ldr	r2, [sp, #268]
-	cmp	r2, r3
-	bgt	.L18
+	ldr	r0, [sp, #192]	@ float
+	mov	r1, #1073741824
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	str	r3, [sp, #188]	@ float
 	.loc 2 47 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
+	ldr	r3, [sp, #204]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	add	r2, sp, #28
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #36
 	mov	r0, r3
-	ldr	r1, [sp, #224]	@ float
-	ldr	r2, [sp, #224]	@ float
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	mov	r3, #0
-	str	r3, [sp]	@ float
-	ldr	r3, .L38+20
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #28
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #36
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
+	ldr	r1, [sp, #188]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	str	r3, [sp, #184]	@ float
 	.loc 2 48 0
-	ldr	r3, [sp, #236]
+	ldr	r3, [sp, #200]
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
 	mov	r3, r3, asr #1
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
+	mov	r3, r0
 	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
+	ldr	r1, [sp, #188]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	str	r3, [sp, #180]	@ float
+	.loc 2 50 0
+	mvn	r0, #0
+	bl	_Z13Iw2DSetColourj(PLT)
+	.loc 2 51 0
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
+	ldr	r3, [r3]
+	ldr	r2, [sp, #260]
+	cmp	r2, r3
+	bgt	.L18
+	.loc 2 52 0
+	add	r3, sp, #36
+	mov	r0, r3
+	ldr	r1, [sp, #184]	@ float
+	ldr	r2, [sp, #180]	@ float
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #188]	@ float
+	mov	r0, r3
+	mov	r1, r3
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #188]	@ float
+	mov	r0, r3
+	mov	r1, r3
+	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	add	r2, sp, #44
 	mov	r0, r2
-	mov	r1, r4
+	mov	r1, r5
 	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
+	ldr	r3, [sp, #48]
+	str	r3, [sp]
+	ldr	r3, [sp, #44]
+	ldr	r0, [sp, #208]
+	add	r2, sp, #36
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
+.L18:
+	.loc 2 57 0
+	ldr	r2, [sp, #260]
+	ldr	r3, [sp, #28]
+	cmp	r2, r3
+	bne	.L19
+	.loc 2 57 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
+	ldr	r3, [r3]
+	ldr	r2, [sp, #260]
+	cmp	r2, r3
+	bge	.L19
+	.loc 2 58 0 is_stmt 1
+	ldr	r3, [sp, #260]
+	add	r3, r3, #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #196]	@ float
+	bl	__aeabi_fmul(PLT)
+	mov	r3, r0
+	str	r3, [sp, #192]	@ float
+	.loc 2 59 0
+	ldr	r0, [sp, #192]	@ float
+	mov	r1, #1073741824
 	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
-	mov	r4, r3
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fadd(PLT)
+	str	r3, [sp, #188]	@ float
+	.loc 2 60 0
+	ldr	r3, [sp, #204]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	add	r2, sp, #52
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	mov	r3, #0
-	str	r3, [sp]	@ float
-	ldr	r3, .L38+20
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #44
-	ldmia	r3, {r0, r1}
+	mov	r0, r3
+	ldr	r1, [sp, #192]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	str	r3, [sp, #184]	@ float
+	.loc 2 61 0
+	ldr	r3, [sp, #200]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #192]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	str	r3, [sp, #180]	@ float
+	.loc 2 62 0
+	ldr	r3, [sp, #260]
+	add	r3, r3, #1
+	mov	r3, r3, asl #2
+	ldr	r2, [sp, #24]
+	add	r3, r2, r3
+	ldr	r3, [r3]
+	str	r3, [sp, #208]
+	.loc 2 63 0
 	add	r3, sp, #52
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 49 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
 	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
+	ldr	r1, [sp, #184]	@ float
+	ldr	r2, [sp, #180]	@ float
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #188]	@ float
 	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
+	mov	r1, r3
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #188]	@ float
+	mov	r0, r3
+	mov	r1, r3
+	bl	__aeabi_fadd(PLT)
 	mov	r3, r0
 	add	r2, sp, #60
 	mov	r0, r2
-	mov	r1, r4
+	mov	r1, r5
 	mov	r2, r3
 	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	add	r2, sp, #68
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	mov	r3, #0
-	str	r3, [sp]	@ float
-	ldr	r3, .L38+20
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #60
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #68
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-.L18:
-	.loc 2 51 0
-	ldr	r2, [sp, #268]
-	ldr	r3, [sp, #20]
-	cmp	r2, r3
-	bne	.L19
-	.loc 2 51 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+24
-.LPIC13:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	ldr	r2, [sp, #268]
-	cmp	r2, r3
-	bge	.L19
-	.loc 2 52 0 is_stmt 1
-	ldr	r3, [sp, #268]
-	add	r3, r3, #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	mov	r0, r3
-	ldr	r1, [sp, #228]	@ float
-	bl	__aeabi_fmul(PLT)
-	mov	r3, r0
-	str	r3, [sp, #224]	@ float
-	.loc 2 53 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #76
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #84
-	mov	r0, r3
-	ldr	r1, [sp, #224]	@ float
-	ldr	r2, [sp, #224]	@ float
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	mov	r3, #0
-	str	r3, [sp]	@ float
-	ldr	r3, .L38+20
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #76
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #84
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 54 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #92
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	add	r2, sp, #100
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	mov	r3, #0
-	str	r3, [sp]	@ float
-	ldr	r3, .L38+20
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #92
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #100
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 55 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #108
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r0, [sp, #224]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	add	r2, sp, #116
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	mov	r3, #0
-	str	r3, [sp]	@ float
-	ldr	r3, .L38+20
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #108
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #116
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
+	ldr	r3, [sp, #64]
+	str	r3, [sp]
+	ldr	r3, [sp, #60]
+	ldr	r0, [sp, #208]
+	add	r2, sp, #52
+	ldmia	r2, {r1, r2}
+	bl	_Z13Iw2DDrawImageP10CIw2DImage8CIwFVec2S1_(PLT)
 .L19:
 .LBE10:
-	.loc 2 37 0
-	ldr	r3, [sp, #268]
+	.loc 2 38 0
+	ldr	r3, [sp, #260]
 	add	r3, r3, #1
-	str	r3, [sp, #268]
+	str	r3, [sp, #260]
 .L15:
-	.loc 2 37 0 is_stmt 0 discriminator 1
-	ldr	r2, [sp, #268]
-	ldr	r3, [sp, #20]
+	.loc 2 38 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #260]
+	ldr	r3, [sp, #28]
 	cmp	r2, r3
 	ble	.L20
 .LBE9:
 .LBB11:
-	.loc 2 58 0 is_stmt 1
+	.loc 2 69 0 is_stmt 1
 	mov	r3, #1
-	str	r3, [sp, #256]
+	str	r3, [sp, #248]
 	b	.L21
-.L36:
+.L47:
 .LBB12:
-	.loc 2 59 0
-	ldr	r3, [sp, #20]
+	.loc 2 70 0
+	ldr	r3, [sp, #28]
 	add	r3, r3, #1
-	str	r3, [sp, #252]
-	.loc 2 60 0
-	ldr	r3, .L38+28
-.LPIC14:
-	add	r3, pc, r3
+	str	r3, [sp, #244]
+	.loc 2 71 0
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
-	ldr	r2, [sp, #20]
+	ldr	r2, [sp, #28]
 	cmp	r2, r3
 	bne	.L22
-	.loc 2 60 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #20]
-	str	r3, [sp, #252]
+	.loc 2 71 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #28]
+	str	r3, [sp, #244]
 .L22:
-	.loc 2 61 0 is_stmt 1
-	ldr	r3, [sp, #236]
+	.loc 2 72 0 is_stmt 1
+	ldr	r3, [sp, #204]
 	sub	r3, r3, #30
 	mov	r2, r3, lsr #31
 	add	r3, r2, r3
@@ -771,123 +664,121 @@ _Z8DrawMazei:
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	str	r3, [sp, #248]	@ float
-	.loc 2 62 0
-	ldr	r3, .L38+32
-.LPIC15:
-	add	r3, pc, r3
+	str	r3, [sp, #240]	@ float
+	.loc 2 73 0
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
 	ldr	r3, [r3]
-	ldr	r2, [sp, #20]
+	ldr	r2, [sp, #28]
 	cmp	r2, r3
 	bne	.L23
-	.loc 2 62 0 is_stmt 0 discriminator 1
-	ldr	r0, [sp, #248]	@ float
-	ldr	r1, .L38+8
+	.loc 2 73 0 is_stmt 0 discriminator 1
+	ldr	r0, [sp, #240]	@ float
+	ldr	r1, .L49+12
 	bl	__aeabi_fsub(PLT)
 	mov	r3, r0
-	str	r3, [sp, #248]	@ float
+	str	r3, [sp, #240]	@ float
 .L23:
-	.loc 2 63 0 is_stmt 1
-	ldr	r0, [sp, #252]
+	.loc 2 74 0 is_stmt 1
+	ldr	r0, [sp, #244]
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
-	ldr	r0, [sp, #248]	@ float
+	ldr	r0, [sp, #240]	@ float
 	mov	r1, r3
 	bl	__aeabi_fdiv(PLT)
 	mov	r3, r0
-	str	r3, [sp, #220]	@ float
-	.loc 2 64 0
-	ldr	r0, [sp, #256]
+	str	r3, [sp, #176]	@ float
+	.loc 2 75 0
+	ldr	r0, [sp, #248]
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, [sp, #220]	@ float
+	ldr	r1, [sp, #176]	@ float
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
-	str	r3, [sp, #216]	@ float
-	.loc 2 65 0
-	ldr	r3, [sp, #256]
+	str	r3, [sp, #172]	@ float
+	.loc 2 76 0
+	ldr	r3, [sp, #248]
 	add	r3, r3, #1
 	mov	r0, r3
 	bl	__aeabi_i2f(PLT)
 	mov	r3, r0
 	mov	r0, r3
-	ldr	r1, [sp, #220]	@ float
+	ldr	r1, [sp, #176]	@ float
 	bl	__aeabi_fmul(PLT)
 	mov	r3, r0
-	str	r3, [sp, #212]	@ float
-	.loc 2 66 0
-	ldr	r3, .L38+36
-	str	r3, [sp, #244]	@ float
-	.loc 2 67 0
-	ldr	r3, [sp, #256]
+	str	r3, [sp, #168]	@ float
+	.loc 2 77 0
+	ldr	r3, .L49+16
+	str	r3, [sp, #236]	@ float
+	.loc 2 78 0
+	ldr	r3, [sp, #248]
 	cmp	r3, #1
 	bne	.L24
-	.loc 2 67 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+36
-	str	r3, [sp, #244]	@ float
+	.loc 2 78 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+16
+	str	r3, [sp, #236]	@ float
 .L24:
-	.loc 2 68 0 is_stmt 1
-	ldr	r3, [sp, #256]
+	.loc 2 79 0 is_stmt 1
+	ldr	r3, [sp, #248]
 	cmp	r3, #2
 	bne	.L25
-	.loc 2 68 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+40
-	str	r3, [sp, #244]	@ float
+	.loc 2 79 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+20
+	str	r3, [sp, #236]	@ float
 .L25:
-	.loc 2 69 0 is_stmt 1
-	ldr	r3, [sp, #256]
+	.loc 2 80 0 is_stmt 1
+	ldr	r3, [sp, #248]
 	cmp	r3, #3
 	bne	.L26
-	.loc 2 69 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+44
-	str	r3, [sp, #244]	@ float
+	.loc 2 80 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+24
+	str	r3, [sp, #236]	@ float
 .L26:
-	.loc 2 70 0 is_stmt 1
-	ldr	r3, [sp, #256]
+	.loc 2 81 0 is_stmt 1
+	ldr	r3, [sp, #248]
 	cmp	r3, #4
 	bne	.L27
-	.loc 2 70 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+48
-	str	r3, [sp, #244]	@ float
+	.loc 2 81 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+28
+	str	r3, [sp, #236]	@ float
 .L27:
-	.loc 2 71 0 is_stmt 1
-	ldr	r3, [sp, #256]
+	.loc 2 82 0 is_stmt 1
+	ldr	r3, [sp, #248]
 	cmp	r3, #5
 	bne	.L28
-	.loc 2 71 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+52
-	str	r3, [sp, #244]	@ float
+	.loc 2 82 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+32
+	str	r3, [sp, #236]	@ float
 .L28:
-	.loc 2 72 0 is_stmt 1
-	ldr	r3, [sp, #256]
+	.loc 2 83 0 is_stmt 1
+	ldr	r3, [sp, #248]
 	cmp	r3, #6
 	bne	.L29
-	.loc 2 72 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+56
-	str	r3, [sp, #244]	@ float
+	.loc 2 83 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+36
+	str	r3, [sp, #236]	@ float
 .L29:
-	.loc 2 73 0 is_stmt 1
-	ldr	r3, [sp, #256]
+	.loc 2 84 0 is_stmt 1
+	ldr	r3, [sp, #248]
 	cmp	r3, #7
 	bne	.L30
-	.loc 2 73 0 is_stmt 0 discriminator 1
-	ldr	r3, .L38+60
-	str	r3, [sp, #244]	@ float
+	.loc 2 84 0 is_stmt 0 discriminator 1
+	ldr	r3, .L49+40
+	str	r3, [sp, #236]	@ float
 .L30:
 .LBB13:
-	.loc 2 74 0 is_stmt 1
+	.loc 2 85 0 is_stmt 1
 	mov	r3, #0
-	str	r3, [sp, #240]
+	str	r3, [sp, #232]
 	b	.L31
-.L35:
+.L46:
 .LBB14:
-	.loc 2 75 0
-	ldr	r0, .L38+64
-.LPIC16:
-	add	r0, pc, r0
-	ldr	r2, [sp, #240]
-	ldr	ip, [sp, #256]
+	.loc 2 86 0
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
 	mov	r1, #4
 	mov	r3, r2
 	mov	r3, r3, asl #4
@@ -899,13 +790,12 @@ _Z8DrawMazei:
 	add	r3, r0, r3
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
-	str	r3, [sp, #208]	@ float
-	.loc 2 76 0
-	ldr	r0, .L38+68
-.LPIC17:
-	add	r0, pc, r0
-	ldr	r2, [sp, #240]
-	ldr	ip, [sp, #256]
+	str	r3, [sp, #164]	@ float
+	.loc 2 87 0
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
 	mov	r1, #8
 	mov	r3, r2
 	mov	r3, r3, asl #4
@@ -917,27 +807,47 @@ _Z8DrawMazei:
 	add	r3, r0, r3
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
-	str	r3, [sp, #204]	@ float
+	str	r3, [sp, #160]	@ float
 .LBB15:
-	.loc 2 77 0
-	ldr	r0, [sp, #204]	@ float
-	ldr	r1, .L38+72
+	.loc 2 89 0
+	ldr	r0, [sp, #160]	@ float
+	ldr	r1, .L49+44
 	bl	__aeabi_fcmpgt(PLT)
 	mov	r3, r0
 	cmp	r3, #0
 	beq	.L32
 .LBB16:
-	.loc 2 80 0
-	ldr	r0, [sp, #216]	@ float
+.LBB17:
+	.loc 2 92 0
+	mov	r3, #0
+	str	r3, [sp, #228]	@ float
+	b	.L34
+.L37:
+.LBB18:
+.LBB19:
+	.loc 2 93 0
+	ldr	r3, .L49+48
+	str	r3, [sp, #224]	@ float
+	b	.L35
+.L36:
+.LBB20:
+	.loc 2 95 0 discriminator 2
+	mvn	r0, #0
+	bl	_Z13Iw2DSetColourj(PLT)
+	.loc 2 96 0 discriminator 2
+	ldr	r0, [sp, #172]	@ float
+	ldr	r1, [sp, #224]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	r0, .L38+76
-.LPIC18:
-	add	r0, pc, r0
-	ldr	r2, [sp, #240]
-	ldr	ip, [sp, #256]
-	mov	r1, #8
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #4
 	mov	r3, r2
 	mov	r3, r3, asl #4
 	rsb	r3, r2, r3
@@ -948,6 +858,10 @@ _Z8DrawMazei:
 	add	r3, r0, r3
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #228]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -957,8 +871,8 @@ _Z8DrawMazei:
 	bl	sin(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
+	mov	r0, r6
+	mov	r1, r7
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -966,18 +880,21 @@ _Z8DrawMazei:
 	mov	r1, r3
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
-	str	r3, [sp, #200]	@ float
-	.loc 2 81 0
-	ldr	r0, [sp, #216]	@ float
+	str	r3, [sp, #156]	@ float
+	.loc 2 97 0 discriminator 2
+	ldr	r0, [sp, #172]	@ float
+	ldr	r1, [sp, #224]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	r0, .L38+80
-.LPIC19:
-	add	r0, pc, r0
-	ldr	r2, [sp, #240]
-	ldr	ip, [sp, #256]
-	mov	r1, #8
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #4
 	mov	r3, r2
 	mov	r3, r3, asl #4
 	rsb	r3, r2, r3
@@ -988,6 +905,10 @@ _Z8DrawMazei:
 	add	r3, r0, r3
 	add	r3, r3, r1
 	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #228]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
 	mov	r0, r3
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
@@ -997,8 +918,8 @@ _Z8DrawMazei:
 	bl	cos(PLT)
 	mov	r2, r0
 	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
+	mov	r0, r6
+	mov	r1, r7
 	bl	__aeabi_dmul(PLT)
 	mov	r2, r0
 	mov	r3, r1
@@ -1006,342 +927,130 @@ _Z8DrawMazei:
 	mov	r1, r3
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
-	str	r3, [sp, #196]	@ float
-	.loc 2 82 0
-	ldr	r0, [sp, #212]	@ float
-	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	r0, .L38+84
-.LPIC20:
-	add	r0, pc, r0
-	ldr	r2, [sp, #240]
-	ldr	ip, [sp, #256]
-	mov	r1, #8
-	mov	r3, r2
-	mov	r3, r3, asl #4
-	rsb	r3, r2, r3
-	mov	r3, r3, asl #2
-	mov	r2, #1200
-	mul	r2, r2, ip
-	add	r3, r3, r2
-	add	r3, r0, r3
-	add	r3, r3, r1
-	ldr	r3, [r3]	@ float
+	str	r3, [sp, #152]	@ float
+	.loc 2 98 0 discriminator 2
+	ldr	r3, [sp, #204]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
 	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #156]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #200]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #152]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	add	r2, sp, #68
+	mov	r0, r2
+	mov	r1, r5
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r0, [sp, #156]	@ float
+	ldr	r1, .L49+52
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r0, .L49+56
+	ldr	r1, [sp, #152]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	add	r2, sp, #76
+	mov	r0, r2
+	mov	r1, r5
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	add	r3, sp, #84
+	mov	r0, r3
+	mov	r1, #1069547520
+	mov	r2, #1069547520
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	add	r2, sp, #4
+	add	r3, sp, #84
+	ldmia	r3, {r0, r1}
+	stmia	r2, {r0, r1}
+	ldr	r3, [sp, #80]
+	str	r3, [sp]
+	ldr	r3, [sp, #76]
+	ldr	r0, [sp, #20]
+	add	r2, sp, #68
+	ldmia	r2, {r1, r2}
+	bl	_Z19Iw2DDrawImageRegionP10CIw2DImage8CIwFVec2S1_S1_(PLT)
+.LBE20:
+	.loc 2 93 0 discriminator 2
+	ldr	r0, [sp, #224]	@ float
+	mov	r1, #1065353216
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	str	r3, [sp, #224]	@ float
+.L35:
+	.loc 2 93 0 is_stmt 0 discriminator 1
+	ldr	r0, [sp, #224]	@ float
+	ldr	r1, .L49+60
+	bl	__aeabi_fcmple(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	bne	.L36
+.LBE19:
+.LBE18:
+	.loc 2 92 0 is_stmt 1
+	ldr	r0, [sp, #228]	@ float
 	bl	__aeabi_f2d(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
-	bl	sin(PLT)
-	mov	r2, r0
-	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
-	bl	__aeabi_dmul(PLT)
+	ldr	r2, .L49+112
+	ldr	r3, .L49+64
+	bl	__aeabi_dadd(PLT)
 	mov	r2, r0
 	mov	r3, r1
 	mov	r0, r2
 	mov	r1, r3
 	bl	__aeabi_d2f(PLT)
 	mov	r3, r0
-	str	r3, [sp, #192]	@ float
-	.loc 2 83 0
-	ldr	r0, [sp, #212]	@ float
-	bl	__aeabi_f2d(PLT)
-	mov	r4, r0
-	mov	r5, r1
-	ldr	r0, .L38+88
-.LPIC21:
-	add	r0, pc, r0
-	ldr	r2, [sp, #240]
-	ldr	ip, [sp, #256]
-	mov	r1, #8
-	mov	r3, r2
-	mov	r3, r3, asl #4
-	rsb	r3, r2, r3
-	mov	r3, r3, asl #2
-	mov	r2, #1200
-	mul	r2, r2, ip
-	add	r3, r3, r2
-	add	r3, r0, r3
-	add	r3, r3, r1
-	ldr	r3, [r3]	@ float
-	mov	r0, r3
-	bl	__aeabi_f2d(PLT)
-	mov	r2, r0
-	mov	r3, r1
-	mov	r0, r2
-	mov	r1, r3
-	bl	cos(PLT)
-	mov	r2, r0
-	mov	r3, r1
-	mov	r0, r4
-	mov	r1, r5
-	bl	__aeabi_dmul(PLT)
-	mov	r2, r0
-	mov	r3, r1
-	mov	r0, r2
-	mov	r1, r3
-	bl	__aeabi_d2f(PLT)
-	mov	r3, r0
-	str	r3, [sp, #188]	@ float
-	.loc 2 85 0
-	mov	r0, #-16777216
-	bl	_Z13Iw2DSetColourj(PLT)
-	.loc 2 86 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #124
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #132
-	mov	r0, r3
-	ldr	r1, [sp, #216]	@ float
-	ldr	r2, [sp, #216]	@ float
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #208]	@ float
-	ldr	r1, [sp, #244]	@ float
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	ldr	r2, [sp, #208]	@ float
-	str	r2, [sp]	@ float
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #124
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #132
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 87 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #140
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #216]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r0, [sp, #216]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	add	r2, sp, #148
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #208]	@ float
-	ldr	r1, [sp, #244]	@ float
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	ldr	r2, [sp, #208]	@ float
-	str	r2, [sp]	@ float
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #140
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #148
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 88 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r4, r0
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	add	r2, sp, #156
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #216]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r0, [sp, #216]	@ float
-	mov	r1, #1065353216
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	add	r2, sp, #164
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r0, [sp, #208]	@ float
-	ldr	r1, [sp, #244]	@ float
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	ldr	r2, [sp, #208]	@ float
-	str	r2, [sp]	@ float
-	str	r3, [sp, #4]	@ float
-	mov	r3, #0
-	str	r3, [sp, #8]
-	add	r3, sp, #156
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #164
-	ldmia	r3, {r2, r3}
-	bl	_Z11Iw2DDrawArc8CIwFVec2S_ffi(PLT)
-	.loc 2 89 0
-	ldr	r3, .L38+92
-.LPIC22:
-	add	r3, pc, r3
-	ldr	r3, [r3]
-	ldr	r2, [sp, #256]
-	cmp	r2, r3
-	beq	.L34
-	.loc 2 90 0
-	ldr	r0, .L38+12
-	bl	_Z13Iw2DSetColourj(PLT)
-	.loc 2 91 0
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	mov	r0, r3
-	ldr	r1, [sp, #200]	@ float
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	mov	r0, r3
-	ldr	r1, [sp, #196]	@ float
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	add	r2, sp, #172
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	ldr	r3, [sp, #236]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	mov	r0, r3
-	ldr	r1, [sp, #192]	@ float
-	bl	__aeabi_fadd(PLT)
-	mov	r3, r0
-	mov	r4, r3
-	ldr	r3, [sp, #232]
-	mov	r2, r3, lsr #31
-	add	r3, r2, r3
-	mov	r3, r3, asr #1
-	mov	r0, r3
-	bl	__aeabi_i2f(PLT)
-	mov	r3, r0
-	mov	r0, r3
-	ldr	r1, [sp, #188]	@ float
-	bl	__aeabi_fsub(PLT)
-	mov	r3, r0
-	add	r2, sp, #180
-	mov	r0, r2
-	mov	r1, r4
-	mov	r2, r3
-	bl	_ZN8CIwFVec2C1Eff(PLT)
-	add	r3, sp, #172
-	ldmia	r3, {r0, r1}
-	add	r3, sp, #180
-	ldmia	r3, {r2, r3}
-	bl	_Z12Iw2DDrawLine8CIwFVec2S_(PLT)
+	str	r3, [sp, #228]	@ float
 .L34:
-.L32:
-.LBE16:
-.LBE15:
-.LBE14:
-	.loc 2 74 0
-	ldr	r3, [sp, #240]
-	add	r3, r3, #1
-	str	r3, [sp, #240]
-.L31:
-	.loc 2 74 0 is_stmt 0 discriminator 1
-	ldr	r3, [sp, #240]
-	cmp	r3, #19
-	ble	.L35
-.LBE13:
-.LBE12:
-	.loc 2 58 0 is_stmt 1
-	ldr	r3, [sp, #256]
-	add	r3, r3, #1
-	str	r3, [sp, #256]
-.L21:
-	.loc 2 58 0 is_stmt 0 discriminator 1
-	ldr	r2, [sp, #256]
-	ldr	r3, [sp, #20]
+	.loc 2 92 0 is_stmt 0 discriminator 1
+	ldr	r0, [sp, #228]	@ float
+	ldr	r1, [sp, #236]	@ float
+	bl	__aeabi_fcmplt(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	bne	.L37
+.LBE17:
+.LBB21:
+	.loc 2 105 0 is_stmt 1
+	ldr	r3, .L49+4
+	ldr	r3, [r4, r3]
+	ldr	r3, [r3]
+	ldr	r2, [sp, #248]
 	cmp	r2, r3
-	ble	.L36
-.LBE11:
-.LBE8:
-	.loc 2 99 0 is_stmt 1
-	add	sp, sp, #276
-	@ sp needed
-	ldmfd	sp!, {r4, r5, pc}
-.L39:
+	beq	.L38
+.LBB22:
+.LBB23:
+	.loc 2 106 0
+	ldr	r3, .L49+68
+	str	r3, [sp, #220]	@ float
+	b	.L39
+.L50:
 	.align	2
-.L38:
-	.word	MaxLevel-(.LPIC10+8)
-	.word	MaxLevel-(.LPIC11+8)
+.L49:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC2+8)
+	.word	MaxLevel(GOT)
+	.word	1717986919
 	.word	1106247680
-	.word	-10027162
-	.word	MaxLevel-(.LPIC12+8)
-	.word	1086918619
-	.word	MaxLevel-(.LPIC13+8)
-	.word	MaxLevel-(.LPIC14+8)
-	.word	MaxLevel-(.LPIC15+8)
 	.word	1050253722
 	.word	1045220557
 	.word	1040744396
@@ -1349,23 +1058,565 @@ _Z8DrawMazei:
 	.word	1030924758
 	.word	1025623695
 	.word	1025758986
-	.word	level-(.LPIC16+8)
-	.word	level-(.LPIC17+8)
 	.word	-1082130432
-	.word	level-(.LPIC18+8)
-	.word	level-(.LPIC19+8)
-	.word	level-(.LPIC20+8)
-	.word	level-(.LPIC21+8)
-	.word	MaxLevel-(.LPIC22+8)
+	.word	-1059061760
+	.word	1126170624
+	.word	1131413504
+	.word	1088421888
+	.word	1064598241
+	.word	-1130113270
+	.word	level(GOT)
+	.word	-8026625
+	.word	-11816714
+	.word	-7343617
+	.word	-9636527
+	.word	-2461
+	.word	-30621
+	.word	-25404
+	.word	-755914244
+	.word	1063281229
+	.word	1202590843
+	.word	1066695393
+.L45:
+.LBB24:
+	.loc 2 107 0
+	ldr	r0, [sp, #168]	@ float
+	ldr	r1, [sp, #172]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	mov	r1, #1073741824
+	bl	__aeabi_fdiv(PLT)
+	mov	r3, r0
+	str	r3, [sp, #148]	@ float
+	.loc 2 108 0
+	ldr	r0, [sp, #172]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #8
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	mov	r2, #1200
+	mul	r2, r2, ip
+	add	r3, r3, r2
+	add	r3, r0, r3
+	add	r3, r3, r1
+	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #220]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	sin(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #144]	@ float
+	.loc 2 109 0
+	ldr	r0, [sp, #172]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #8
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	mov	r2, #1200
+	mul	r2, r2, ip
+	add	r3, r3, r2
+	add	r3, r0, r3
+	add	r3, r3, r1
+	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #220]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	cos(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #140]	@ float
+	.loc 2 110 0
+	ldr	r0, [sp, #148]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #8
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	mov	r2, #1200
+	mul	r2, r2, ip
+	add	r3, r3, r2
+	add	r3, r0, r3
+	add	r3, r3, r1
+	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #220]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	sin(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #136]	@ float
+	.loc 2 111 0
+	ldr	r0, [sp, #148]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #8
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	mov	r2, #1200
+	mul	r2, r2, ip
+	add	r3, r3, r2
+	add	r3, r0, r3
+	add	r3, r3, r1
+	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #220]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	cos(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #132]	@ float
+	.loc 2 112 0
+	ldr	r0, [sp, #168]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #8
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	mov	r2, #1200
+	mul	r2, r2, ip
+	add	r3, r3, r2
+	add	r3, r0, r3
+	add	r3, r3, r1
+	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #220]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	sin(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #128]	@ float
+	.loc 2 113 0
+	ldr	r0, [sp, #168]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r6, r0
+	mov	r7, r1
+	ldr	r3, .L49+72
+	ldr	r0, [r4, r3]
+	ldr	r2, [sp, #232]
+	ldr	ip, [sp, #248]
+	mov	r1, #8
+	mov	r3, r2
+	mov	r3, r3, asl #4
+	rsb	r3, r2, r3
+	mov	r3, r3, asl #2
+	mov	r2, #1200
+	mul	r2, r2, ip
+	add	r3, r3, r2
+	add	r3, r0, r3
+	add	r3, r3, r1
+	ldr	r3, [r3]	@ float
+	mov	r0, r3
+	ldr	r1, [sp, #220]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	cos(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_dmul(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #124]	@ float
+	.loc 2 114 0
+	ldr	r3, .L49+76
+	str	r3, [sp, #216]
+	.loc 2 115 0
+	ldr	r3, .L49+80
+	str	r3, [sp, #212]
+	.loc 2 116 0
+	ldr	r3, [sp, #248]
+	cmp	r3, #2
+	bne	.L40
+	.loc 2 117 0
+	ldr	r3, .L49+80
+	str	r3, [sp, #216]
+	.loc 2 118 0
+	ldr	r3, .L49+84
+	str	r3, [sp, #212]
+.L40:
+	.loc 2 120 0
+	ldr	r3, [sp, #248]
+	cmp	r3, #3
+	bne	.L41
+	.loc 2 121 0
+	ldr	r3, .L49+84
+	str	r3, [sp, #216]
+	.loc 2 122 0
+	ldr	r3, .L49+88
+	str	r3, [sp, #212]
+.L41:
+	.loc 2 124 0
+	ldr	r3, [sp, #248]
+	cmp	r3, #4
+	bne	.L42
+	.loc 2 125 0
+	ldr	r3, .L49+88
+	str	r3, [sp, #216]
+	.loc 2 126 0
+	ldr	r3, .L49+92
+	str	r3, [sp, #212]
+.L42:
+	.loc 2 128 0
+	ldr	r3, [sp, #248]
+	cmp	r3, #5
+	bne	.L43
+	.loc 2 129 0
+	ldr	r3, .L49+92
+	str	r3, [sp, #216]
+	.loc 2 130 0
+	ldr	r3, .L49+96
+	str	r3, [sp, #212]
+.L43:
+	.loc 2 132 0
+	ldr	r3, [sp, #248]
+	cmp	r3, #6
+	bne	.L44
+	.loc 2 133 0
+	ldr	r3, .L49+96
+	str	r3, [sp, #216]
+	.loc 2 134 0
+	ldr	r3, .L49+100
+	str	r3, [sp, #212]
+.L44:
+	.loc 2 136 0
+	ldr	r0, [sp, #216]
+	bl	_Z13Iw2DSetColourj(PLT)
+	.loc 2 137 0
+	ldr	r3, [sp, #204]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #144]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #200]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #140]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	add	r2, sp, #92
+	mov	r0, r2
+	mov	r1, r5
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #204]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #136]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #200]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #132]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	add	r2, sp, #100
+	mov	r0, r2
+	mov	r1, r5
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	add	r3, sp, #92
+	ldmia	r3, {r0, r1}
+	add	r3, sp, #100
+	ldmia	r3, {r2, r3}
+	bl	_Z12Iw2DDrawLine8CIwFVec2S_(PLT)
+	.loc 2 138 0
+	ldr	r0, [sp, #212]
+	bl	_Z13Iw2DSetColourj(PLT)
+	.loc 2 139 0
+	ldr	r3, [sp, #204]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #136]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #200]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #132]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	add	r2, sp, #108
+	mov	r0, r2
+	mov	r1, r5
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	ldr	r3, [sp, #204]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #128]	@ float
+	bl	__aeabi_fadd(PLT)
+	mov	r3, r0
+	mov	r5, r3
+	ldr	r3, [sp, #200]
+	mov	r2, r3, lsr #31
+	add	r3, r2, r3
+	mov	r3, r3, asr #1
+	mov	r0, r3
+	bl	__aeabi_i2f(PLT)
+	mov	r3, r0
+	mov	r0, r3
+	ldr	r1, [sp, #124]	@ float
+	bl	__aeabi_fsub(PLT)
+	mov	r3, r0
+	add	r2, sp, #116
+	mov	r0, r2
+	mov	r1, r5
+	mov	r2, r3
+	bl	_ZN8CIwFVec2C1Eff(PLT)
+	add	r3, sp, #108
+	ldmia	r3, {r0, r1}
+	add	r3, sp, #116
+	ldmia	r3, {r2, r3}
+	bl	_Z12Iw2DDrawLine8CIwFVec2S_(PLT)
+	.loc 2 140 0
+	ldr	r3, [sp, #212]
+	str	r3, [sp, #216]
+.LBE24:
+	.loc 2 106 0
+	ldr	r0, [sp, #220]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	ldr	r2, .L49+104
+	ldr	r3, .L49+108
+	bl	__aeabi_dadd(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	bl	__aeabi_d2f(PLT)
+	mov	r3, r0
+	str	r3, [sp, #220]	@ float
+.L39:
+	.loc 2 106 0 is_stmt 0 discriminator 1
+	ldr	r0, [sp, #220]	@ float
+	bl	__aeabi_f2d(PLT)
+	mov	r2, r0
+	mov	r3, r1
+	mov	r0, r2
+	mov	r1, r3
+	ldr	r2, .L49+112
+	ldr	r3, .L49+116
+	bl	__aeabi_dcmple(PLT)
+	mov	r3, r0
+	cmp	r3, #0
+	bne	.L45
+.L38:
+.L32:
+.LBE23:
+.LBE22:
+.LBE21:
+.LBE16:
+.LBE15:
+.LBE14:
+	.loc 2 85 0 is_stmt 1
+	ldr	r3, [sp, #232]
+	add	r3, r3, #1
+	str	r3, [sp, #232]
+.L31:
+	.loc 2 85 0 is_stmt 0 discriminator 1
+	ldr	r3, [sp, #232]
+	cmp	r3, #9
+	ble	.L46
+.LBE13:
+.LBE12:
+	.loc 2 69 0 is_stmt 1
+	ldr	r3, [sp, #248]
+	add	r3, r3, #1
+	str	r3, [sp, #248]
+.L21:
+	.loc 2 69 0 is_stmt 0 discriminator 1
+	ldr	r2, [sp, #248]
+	ldr	r3, [sp, #28]
+	cmp	r2, r3
+	ble	.L47
+.LBE11:
+.LBE8:
+	.loc 2 149 0 is_stmt 1
+	add	sp, sp, #268
+	@ sp needed
+	ldmfd	sp!, {r4, r5, r6, r7, pc}
 	.cfi_endproc
 .LFE2966:
-	.size	_Z8DrawMazei, .-_Z8DrawMazei
+	.size	_Z8DrawMazeiPP10CIw2DImageS0_S0_, .-_Z8DrawMazeiPP10CIw2DImageS0_S0_
 	.section	.text._Z41__static_initialization_and_destruction_0ii,"ax",%progbits
 	.align	2
 	.type	_Z41__static_initialization_and_destruction_0ii, %function
 _Z41__static_initialization_and_destruction_0ii:
 .LFB3276:
-	.loc 2 99 0
+	.loc 2 149 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 8
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1379,73 +1630,73 @@ _Z41__static_initialization_and_destruction_0ii:
 	.cfi_def_cfa_offset 16
 	str	r0, [sp, #4]
 	str	r1, [sp]
-	ldr	r4, .L42
-.LPIC25:
+	ldr	r4, .L53
+.LPIC5:
 	add	r4, pc, r4
-	.loc 2 99 0
+	.loc 2 149 0
 	ldr	r3, [sp, #4]
 	cmp	r3, #1
-	bne	.L40
-	.loc 2 99 0 is_stmt 0 discriminator 1
+	bne	.L51
+	.loc 2 149 0 is_stmt 0 discriminator 1
 	ldr	r2, [sp]
-	ldr	r3, .L42+4
+	ldr	r3, .L53+4
 	cmp	r2, r3
-	bne	.L40
+	bne	.L51
 	.file 3 "c:/marmalade/7.5/s3e/h/std/c++/iostream"
 	.loc 3 69 0 is_stmt 1
-	ldr	r3, .L42+8
-.LPIC23:
+	ldr	r3, .L53+8
+.LPIC3:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base9_Loc_initC1Ev(PLT)
-	ldr	r3, .L42+12
-.LPIC24:
+	ldr	r3, .L53+12
+.LPIC4:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r3, .L42+16
+	ldr	r3, .L53+16
 	ldr	r3, [r4, r3]
 	mov	r1, r3
-	ldr	r3, .L42+20
-.LPIC26:
+	ldr	r3, .L53+20
+.LPIC6:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
 	.loc 3 75 0
-	ldr	r3, .L42+24
-.LPIC27:
+	ldr	r3, .L53+24
+.LPIC7:
 	add	r3, pc, r3
 	mov	r0, r3
 	bl	_ZN4_STL8ios_base4InitC1Ev(PLT)
-	ldr	r3, .L42+28
-.LPIC28:
+	ldr	r3, .L53+28
+.LPIC8:
 	add	r3, pc, r3
 	mov	r0, r3
-	ldr	r3, .L42+32
+	ldr	r3, .L53+32
 	ldr	r3, [r4, r3]
 	mov	r1, r3
-	ldr	r3, .L42+36
-.LPIC29:
+	ldr	r3, .L53+36
+.LPIC9:
 	add	r3, pc, r3
 	mov	r2, r3
 	bl	__aeabi_atexit(PLT)
-.L40:
-	.loc 2 99 0
+.L51:
+	.loc 2 149 0
 	add	sp, sp, #8
 	@ sp needed
 	ldmfd	sp!, {r4, pc}
-.L43:
+.L54:
 	.align	2
-.L42:
-	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC25+8)
+.L53:
+	.word	_GLOBAL_OFFSET_TABLE_-(.LPIC5+8)
 	.word	65535
-	.word	_ZN4_STLL8_LocInitE-(.LPIC23+8)
-	.word	_ZN4_STLL8_LocInitE-(.LPIC24+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC3+8)
+	.word	_ZN4_STLL8_LocInitE-(.LPIC4+8)
 	.word	_ZN4_STL8ios_base9_Loc_initD1Ev(GOT)
-	.word	__dso_handle-(.LPIC26+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC27+8)
-	.word	_ZN4_STLL8_IosInitE-(.LPIC28+8)
+	.word	__dso_handle-(.LPIC6+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC7+8)
+	.word	_ZN4_STLL8_IosInitE-(.LPIC8+8)
 	.word	_ZN4_STL8ios_base4InitD1Ev(GOT)
-	.word	__dso_handle-(.LPIC29+8)
+	.word	__dso_handle-(.LPIC9+8)
 	.cfi_endproc
 .LFE3276:
 	.size	_Z41__static_initialization_and_destruction_0ii, .-_Z41__static_initialization_and_destruction_0ii
@@ -1454,7 +1705,7 @@ _Z41__static_initialization_and_destruction_0ii:
 	.type	_GLOBAL__sub_I_MazeDrawer.cpp, %function
 _GLOBAL__sub_I_MazeDrawer.cpp:
 .LFB3277:
-	.loc 2 99 0
+	.loc 2 149 0
 	.cfi_startproc
 	@ args = 0, pretend = 0, frame = 0
 	@ frame_needed = 0, uses_anonymous_args = 0
@@ -1463,14 +1714,14 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 3, -8
 	.cfi_offset 14, -4
-	.loc 2 99 0
+	.loc 2 149 0
 	mov	r0, #1
-	ldr	r1, .L45
+	ldr	r1, .L56
 	bl	_Z41__static_initialization_and_destruction_0ii(PLT)
 	ldmfd	sp!, {r3, pc}
-.L46:
+.L57:
 	.align	2
-.L45:
+.L56:
 	.word	65535
 	.cfi_endproc
 .LFE3277:
@@ -1520,22 +1771,24 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.file 41 "c:/marmalade/7.5/s3e/h/ext/../std/wchar.h"
 	.file 42 "c:/marmalade/7.5/modules/iw2dscenegraphcore/h/Iw2DSceneGraphCore.h"
 	.file 43 "c:/marmalade/7.5/modules/iw2dscenegraph/h/Iw2DSceneGraph.h"
-	.file 44 "c:/marmalade/7.5/modules/iwgeom/h/IwGeomSqrt.h"
-	.file 45 "c:/marmalade/7.5/modules/iwutil/h/IwMenu.h"
-	.file 46 "c:/marmalade/7.5/modules/iwutil/h/IwTextParserITX.h"
-	.file 47 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
-	.file 48 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
+	.file 44 "c:/marmalade/7.5/modules/iw2d/h/Iw2D.h"
+	.file 45 "c:/marmalade/7.5/modules/iwgeom/h/IwGeomSqrt.h"
+	.file 46 "c:/marmalade/7.5/modules/iwutil/h/IwMenu.h"
+	.file 47 "c:/marmalade/7.5/modules/iwutil/h/IwTextParserITX.h"
+	.file 48 "d:/School/cs115/AmazingMaze/MazeGenerator.h"
+	.file 49 "c:/marmalade/7.5/s3e/h/std/c++/stl/_stdio_file.h"
+	.file 50 "c:/marmalade/7.5/modules/iwutil/h/IwTypes.h"
 	.section	.debug_info,"",%progbits
 .Ldebug_info0:
-	.4byte	0x6672
+	.4byte	0x6868
 	.2byte	0x2
 	.4byte	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.4byte	.LASF967
+	.4byte	.LASF984
 	.byte	0x4
-	.4byte	.LASF968
-	.4byte	.LASF969
+	.4byte	.LASF985
+	.4byte	.LASF986
 	.4byte	.Ldebug_ranges0+0
 	.4byte	0
 	.4byte	0
@@ -1697,7 +1950,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0
 	.4byte	0x170
 	.uleb128 0xb
-	.4byte	.LASF970
+	.4byte	.LASF924
 	.4byte	0xe4
 	.byte	0x2
 	.byte	0x23
@@ -2311,12 +2564,12 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	.LASF43
 	.byte	0x12
 	.2byte	0x107
-	.4byte	0x6203
+	.4byte	0x62c2
 	.byte	0x1
 	.4byte	0x5c4
 	.4byte	0x5cb
 	.uleb128 0x1b
-	.4byte	0x6203
+	.4byte	0x62c2
 	.byte	0x1
 	.byte	0
 	.uleb128 0x1c
@@ -2328,7 +2581,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x1
 	.4byte	0x5dd
 	.uleb128 0x1b
-	.4byte	0x6203
+	.4byte	0x62c2
 	.byte	0x1
 	.uleb128 0x1b
 	.4byte	0x62
@@ -2354,12 +2607,12 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	.LASF44
 	.byte	0x12
 	.2byte	0x111
-	.4byte	0x6209
+	.4byte	0x62c8
 	.byte	0x1
 	.4byte	0x61d
 	.4byte	0x624
 	.uleb128 0x1b
-	.4byte	0x6209
+	.4byte	0x62c8
 	.byte	0x1
 	.byte	0
 	.uleb128 0x1c
@@ -2371,7 +2624,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x1
 	.4byte	0x636
 	.uleb128 0x1b
-	.4byte	0x6209
+	.4byte	0x62c8
 	.byte	0x1
 	.uleb128 0x1b
 	.4byte	0x62
@@ -2581,9 +2834,9 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0
 	.uleb128 0x20
 	.ascii	"buf\000"
-	.byte	0x2f
+	.byte	0x31
 	.byte	0x58
-	.4byte	.LASF971
+	.4byte	.LASF987
 	.4byte	0x1f4
 	.byte	0x1
 	.byte	0x1
@@ -2592,7 +2845,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x13
 	.2byte	0x125
 	.4byte	.LASF69
-	.4byte	0x660d
+	.4byte	0x6803
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x21
@@ -2600,7 +2853,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x13
 	.2byte	0x126
 	.4byte	.LASF70
-	.4byte	0x660d
+	.4byte	0x6803
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x22
@@ -2608,7 +2861,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x14
 	.byte	0x25
 	.4byte	.LASF73
-	.4byte	0x6618
+	.4byte	0x680e
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x22
@@ -2616,7 +2869,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x14
 	.byte	0x3f
 	.4byte	.LASF74
-	.4byte	0x660d
+	.4byte	0x6803
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x23
@@ -5579,7 +5832,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0
 	.uleb128 0x36
 	.byte	0x4
-	.byte	0x30
+	.byte	0x32
 	.byte	0x26
 	.4byte	0x221e
 	.uleb128 0x7
@@ -5732,7 +5985,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x22ff
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x6639
+	.4byte	0x682f
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -7149,7 +7402,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.ascii	"Pop\000"
 	.byte	0x21
 	.2byte	0x180
-	.4byte	.LASF972
+	.4byte	.LASF988
 	.4byte	0x22ff
 	.byte	0x1
 	.4byte	0x2f6d
@@ -7422,7 +7675,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x1eab
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x664b
+	.4byte	0x6841
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -8328,7 +8581,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x3123
 	.uleb128 0x3c
 	.4byte	.LASF419
-	.4byte	0x621d
+	.4byte	0x62dc
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -8418,7 +8671,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x3a8c
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x665d
+	.4byte	0x6853
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -9348,7 +9601,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x39e0
 	.uleb128 0x3c
 	.4byte	.LASF419
-	.4byte	0x6663
+	.4byte	0x6859
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -9390,7 +9643,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.sleb128 1
 	.byte	0
 	.uleb128 0x44
-	.4byte	.LASF973
+	.4byte	.LASF989
 	.byte	0x4
 	.byte	0x25
 	.2byte	0x279
@@ -9407,7 +9660,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.sleb128 2
 	.byte	0
 	.uleb128 0x45
-	.4byte	.LASF974
+	.4byte	.LASF990
 	.byte	0x8
 	.byte	0x25
 	.2byte	0x298
@@ -10588,7 +10841,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x431e
 	.uleb128 0x37
 	.ascii	"M\000"
-	.4byte	0x6669
+	.4byte	0x685f
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -11503,7 +11756,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x4cc3
 	.uleb128 0x3c
 	.4byte	.LASF419
-	.4byte	0x666f
+	.4byte	0x6865
 	.byte	0
 	.uleb128 0x10
 	.byte	0x4
@@ -11646,7 +11899,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	.LASF812
 	.byte	0x26
 	.byte	0x6a
-	.4byte	.LASF975
+	.4byte	.LASF991
 	.byte	0x1
 	.4byte	0x5691
 	.uleb128 0x1b
@@ -13038,6 +13291,98 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	.LASF923
 	.byte	0x2b
 	.byte	0x2a
+	.uleb128 0x55
+	.4byte	.LASF992
+	.byte	0x4
+	.byte	0x2c
+	.byte	0x2a
+	.4byte	0x6203
+	.4byte	0x62bc
+	.uleb128 0xb
+	.4byte	.LASF925
+	.4byte	0x6337
+	.byte	0x2
+	.byte	0x23
+	.uleb128 0
+	.byte	0x1
+	.uleb128 0x56
+	.byte	0x1
+	.4byte	.LASF926
+	.byte	0x2c
+	.byte	0x33
+	.4byte	.LASF928
+	.4byte	0x939
+	.byte	0x1
+	.byte	0x2
+	.byte	0x10
+	.uleb128 0
+	.4byte	0x6203
+	.byte	0x1
+	.4byte	0x6241
+	.4byte	0x6248
+	.uleb128 0x1b
+	.4byte	0x62bc
+	.byte	0x1
+	.byte	0
+	.uleb128 0x56
+	.byte	0x1
+	.4byte	.LASF927
+	.byte	0x2c
+	.byte	0x3b
+	.4byte	.LASF929
+	.4byte	0x939
+	.byte	0x1
+	.byte	0x2
+	.byte	0x10
+	.uleb128 0x1
+	.4byte	0x6203
+	.byte	0x1
+	.4byte	0x6269
+	.4byte	0x6270
+	.uleb128 0x1b
+	.4byte	0x62bc
+	.byte	0x1
+	.byte	0
+	.uleb128 0x56
+	.byte	0x1
+	.4byte	.LASF930
+	.byte	0x2c
+	.byte	0x43
+	.4byte	.LASF931
+	.4byte	0x55bc
+	.byte	0x1
+	.byte	0x2
+	.byte	0x10
+	.uleb128 0x2
+	.4byte	0x6203
+	.byte	0x1
+	.4byte	0x6291
+	.4byte	0x6298
+	.uleb128 0x1b
+	.4byte	0x62bc
+	.byte	0x1
+	.byte	0
+	.uleb128 0x57
+	.byte	0x1
+	.4byte	.LASF932
+	.byte	0x2c
+	.byte	0x45
+	.4byte	0xe4
+	.byte	0x1
+	.4byte	0x6203
+	.byte	0x1
+	.4byte	0x62ae
+	.uleb128 0x1b
+	.4byte	0x62bc
+	.byte	0x1
+	.uleb128 0x1b
+	.4byte	0x62
+	.byte	0x1
+	.byte	0
+	.byte	0
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	0x6203
 	.uleb128 0x10
 	.byte	0x4
 	.4byte	0x592
@@ -13047,26 +13392,26 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x2
 	.byte	0x8
 	.byte	0x4
-	.4byte	.LASF924
-	.uleb128 0x55
+	.4byte	.LASF933
+	.uleb128 0x58
 	.byte	0x2
 	.byte	0xd
 	.4byte	0x242
 	.uleb128 0x26
-	.4byte	.LASF925
+	.4byte	.LASF934
 	.byte	0x1
 	.byte	0x20
 	.byte	0x31
-	.4byte	0x6267
+	.4byte	0x6326
 	.uleb128 0x41
 	.byte	0x1
 	.4byte	.LASF484
 	.byte	0x20
 	.byte	0x34
-	.4byte	.LASF926
+	.4byte	.LASF935
 	.4byte	0x2b49
 	.byte	0x1
-	.4byte	0x6258
+	.4byte	0x6317
 	.uleb128 0x2a
 	.4byte	0xb1
 	.uleb128 0x2a
@@ -13076,7 +13421,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x2a
 	.4byte	0x2b49
 	.uleb128 0x2a
-	.4byte	0x6267
+	.4byte	0x6326
 	.byte	0
 	.uleb128 0x37
 	.ascii	"X\000"
@@ -13088,24 +13433,36 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x2f
 	.byte	0x4
 	.4byte	0x3123
+	.uleb128 0x4e
+	.4byte	0x62
+	.4byte	0x6337
+	.uleb128 0x54
+	.byte	0
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	0x633d
+	.uleb128 0x59
+	.byte	0x4
+	.4byte	.LASF993
+	.4byte	0x632c
 	.uleb128 0x10
 	.byte	0x4
 	.4byte	0x3112
-	.uleb128 0x56
+	.uleb128 0x5a
 	.4byte	0x1790
 	.byte	0x2
-	.4byte	0x6281
-	.4byte	0x62a0
-	.uleb128 0x57
-	.4byte	.LASF976
-	.4byte	0x62a0
+	.4byte	0x635b
+	.4byte	0x637a
+	.uleb128 0x5b
+	.4byte	.LASF994
+	.4byte	0x637a
 	.byte	0x1
-	.uleb128 0x58
+	.uleb128 0x5c
 	.ascii	"_x\000"
 	.byte	0x1
 	.byte	0x48
 	.4byte	0x939
-	.uleb128 0x58
+	.uleb128 0x5c
 	.ascii	"_y\000"
 	.byte	0x1
 	.byte	0x48
@@ -13113,69 +13470,69 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0
 	.uleb128 0x11
 	.4byte	0x1b77
-	.uleb128 0x59
-	.4byte	0x6273
-	.4byte	.LASF977
+	.uleb128 0x5d
+	.4byte	0x634d
+	.4byte	.LASF995
 	.4byte	.LFB194
 	.4byte	.LFE194
 	.4byte	.LLST0
-	.4byte	0x62c3
+	.4byte	0x639d
 	.byte	0x1
-	.4byte	0x62dc
-	.uleb128 0x5a
-	.4byte	0x6281
+	.4byte	0x63b6
+	.uleb128 0x5e
+	.4byte	0x635b
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -4
-	.uleb128 0x5a
-	.4byte	0x628b
+	.uleb128 0x5e
+	.4byte	0x6365
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -8
-	.uleb128 0x5a
-	.4byte	0x6295
+	.uleb128 0x5e
+	.4byte	0x636f
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
 	.byte	0
-	.uleb128 0x5b
+	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF927
+	.4byte	.LASF936
 	.byte	0x2
 	.byte	0x14
-	.4byte	.LASF932
+	.4byte	.LASF941
 	.4byte	.LFB2965
 	.4byte	.LFE2965
 	.4byte	.LLST1
 	.byte	0x1
-	.4byte	0x6342
-	.uleb128 0x5c
+	.4byte	0x641c
+	.uleb128 0x60
 	.4byte	.LBB4
 	.4byte	.LBE4
-	.uleb128 0x5d
-	.4byte	.LASF928
+	.uleb128 0x61
+	.4byte	.LASF937
 	.byte	0x2
 	.byte	0x15
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -44
-	.uleb128 0x5c
+	.uleb128 0x60
 	.4byte	.LBB6
 	.4byte	.LBE6
-	.uleb128 0x5d
-	.4byte	.LASF929
+	.uleb128 0x61
+	.4byte	.LASF938
 	.byte	0x2
 	.byte	0x16
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -48
-	.uleb128 0x5c
+	.uleb128 0x60
 	.4byte	.LBB7
 	.4byte	.LBE7
-	.uleb128 0x5d
-	.4byte	.LASF930
+	.uleb128 0x61
+	.4byte	.LASF939
 	.byte	0x2
 	.byte	0x18
 	.4byte	0x939
@@ -13186,268 +13543,424 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x5b
+	.uleb128 0x5f
 	.byte	0x1
-	.4byte	.LASF931
+	.4byte	.LASF940
 	.byte	0x2
 	.byte	0x21
-	.4byte	.LASF933
+	.4byte	.LASF942
 	.4byte	.LFB2966
 	.4byte	.LFE2966
 	.4byte	.LLST2
 	.byte	0x1
-	.4byte	0x64f2
-	.uleb128 0x5e
-	.4byte	.LASF947
+	.4byte	0x66ec
+	.uleb128 0x62
+	.4byte	.LASF943
 	.byte	0x2
 	.byte	0x21
 	.4byte	0x62
 	.byte	0x3
 	.byte	0x91
+	.sleb128 -260
+	.uleb128 0x62
+	.4byte	.LASF944
+	.byte	0x2
+	.byte	0x21
+	.4byte	0x66ec
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -264
+	.uleb128 0x63
+	.ascii	"bg\000"
+	.byte	0x2
+	.byte	0x21
+	.4byte	0x62bc
+	.byte	0x3
+	.byte	0x91
 	.sleb128 -268
-	.uleb128 0x5c
+	.uleb128 0x62
+	.4byte	.LASF945
+	.byte	0x2
+	.byte	0x21
+	.4byte	0x62bc
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -272
+	.uleb128 0x60
 	.4byte	.LBB8
 	.4byte	.LBE8
-	.uleb128 0x5d
-	.4byte	.LASF934
+	.uleb128 0x61
+	.4byte	.LASF946
 	.byte	0x2
 	.byte	0x23
-	.4byte	0x62
-	.byte	0x2
+	.4byte	0x62bc
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -52
-	.uleb128 0x5d
-	.4byte	.LASF935
+	.sleb128 -80
+	.uleb128 0x61
+	.4byte	.LASF947
 	.byte	0x2
 	.byte	0x24
 	.4byte	0x62
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -56
-	.uleb128 0x5f
-	.4byte	.LBB9
-	.4byte	.LBE9
-	.4byte	0x63f1
-	.uleb128 0x5d
-	.4byte	.LASF928
+	.sleb128 -84
+	.uleb128 0x61
+	.4byte	.LASF948
 	.byte	0x2
 	.byte	0x25
 	.4byte	0x62
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -20
-	.uleb128 0x5c
-	.4byte	.LBB10
-	.4byte	.LBE10
-	.uleb128 0x5d
-	.4byte	.LASF936
+	.sleb128 -88
+	.uleb128 0x64
+	.4byte	.LBB9
+	.4byte	.LBE9
+	.4byte	0x6533
+	.uleb128 0x61
+	.4byte	.LASF937
 	.byte	0x2
 	.byte	0x26
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -24
-	.uleb128 0x5d
-	.4byte	.LASF937
+	.sleb128 -28
+	.uleb128 0x60
+	.4byte	.LBB10
+	.4byte	.LBE10
+	.uleb128 0x61
+	.4byte	.LASF949
 	.byte	0x2
 	.byte	0x28
-	.4byte	0x939
+	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -28
-	.uleb128 0x5d
-	.4byte	.LASF938
+	.sleb128 -32
+	.uleb128 0x61
+	.4byte	.LASF950
 	.byte	0x2
 	.byte	0x2a
 	.4byte	0x939
 	.byte	0x2
 	.byte	0x91
-	.sleb128 -60
-	.uleb128 0x5d
-	.4byte	.LASF939
+	.sleb128 -36
+	.uleb128 0x61
+	.4byte	.LASF951
 	.byte	0x2
-	.byte	0x2b
+	.byte	0x2c
 	.4byte	0x939
-	.byte	0x2
+	.byte	0x3
 	.byte	0x91
-	.sleb128 -64
+	.sleb128 -92
+	.uleb128 0x61
+	.4byte	.LASF952
+	.byte	0x2
+	.byte	0x2d
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -96
+	.uleb128 0x61
+	.4byte	.LASF953
+	.byte	0x2
+	.byte	0x2e
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -100
+	.uleb128 0x65
+	.ascii	"X\000"
+	.byte	0x2
+	.byte	0x2f
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -104
+	.uleb128 0x65
+	.ascii	"Y\000"
+	.byte	0x2
+	.byte	0x30
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -108
 	.byte	0
 	.byte	0
-	.uleb128 0x5c
+	.uleb128 0x60
 	.4byte	.LBB11
 	.4byte	.LBE11
-	.uleb128 0x5d
-	.4byte	.LASF928
-	.byte	0x2
-	.byte	0x3a
-	.4byte	0x62
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -32
-	.uleb128 0x5c
-	.4byte	.LBB12
-	.4byte	.LBE12
-	.uleb128 0x5d
-	.4byte	.LASF936
-	.byte	0x2
-	.byte	0x3b
-	.4byte	0x62
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -36
-	.uleb128 0x5d
+	.uleb128 0x61
 	.4byte	.LASF937
 	.byte	0x2
-	.byte	0x3d
-	.4byte	0x939
+	.byte	0x45
+	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -40
-	.uleb128 0x5d
-	.4byte	.LASF938
+	.uleb128 0x60
+	.4byte	.LBB12
+	.4byte	.LBE12
+	.uleb128 0x61
+	.4byte	.LASF949
 	.byte	0x2
-	.byte	0x3f
-	.4byte	0x939
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -68
-	.uleb128 0x5d
-	.4byte	.LASF939
-	.byte	0x2
-	.byte	0x40
-	.4byte	0x939
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -72
-	.uleb128 0x5d
-	.4byte	.LASF940
-	.byte	0x2
-	.byte	0x41
-	.4byte	0x939
-	.byte	0x3
-	.byte	0x91
-	.sleb128 -76
-	.uleb128 0x5d
-	.4byte	.LASF941
-	.byte	0x2
-	.byte	0x42
-	.4byte	0x939
-	.byte	0x2
-	.byte	0x91
-	.sleb128 -44
-	.uleb128 0x5c
-	.4byte	.LBB13
-	.4byte	.LBE13
-	.uleb128 0x5d
-	.4byte	.LASF929
-	.byte	0x2
-	.byte	0x4a
+	.byte	0x46
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
+	.sleb128 -44
+	.uleb128 0x61
+	.4byte	.LASF950
+	.byte	0x2
+	.byte	0x48
+	.4byte	0x939
+	.byte	0x2
+	.byte	0x91
 	.sleb128 -48
-	.uleb128 0x5c
-	.4byte	.LBB14
-	.4byte	.LBE14
-	.uleb128 0x5d
-	.4byte	.LASF942
+	.uleb128 0x61
+	.4byte	.LASF951
+	.byte	0x2
+	.byte	0x4a
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -112
+	.uleb128 0x61
+	.4byte	.LASF952
 	.byte	0x2
 	.byte	0x4b
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -80
-	.uleb128 0x5d
-	.4byte	.LASF930
+	.sleb128 -116
+	.uleb128 0x61
+	.4byte	.LASF953
 	.byte	0x2
 	.byte	0x4c
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -84
-	.uleb128 0x5c
-	.4byte	.LBB16
-	.4byte	.LBE16
-	.uleb128 0x5d
-	.4byte	.LASF943
+	.sleb128 -120
+	.uleb128 0x61
+	.4byte	.LASF954
 	.byte	0x2
-	.byte	0x50
+	.byte	0x4d
+	.4byte	0x939
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -52
+	.uleb128 0x60
+	.4byte	.LBB13
+	.4byte	.LBE13
+	.uleb128 0x61
+	.4byte	.LASF938
+	.byte	0x2
+	.byte	0x55
+	.4byte	0x62
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -56
+	.uleb128 0x60
+	.4byte	.LBB14
+	.4byte	.LBE14
+	.uleb128 0x61
+	.4byte	.LASF955
+	.byte	0x2
+	.byte	0x56
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -88
-	.uleb128 0x5d
-	.4byte	.LASF944
+	.sleb128 -124
+	.uleb128 0x61
+	.4byte	.LASF939
 	.byte	0x2
-	.byte	0x51
+	.byte	0x57
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -92
-	.uleb128 0x5d
-	.4byte	.LASF945
+	.sleb128 -128
+	.uleb128 0x64
+	.4byte	.LBB17
+	.4byte	.LBE17
+	.4byte	0x663e
+	.uleb128 0x65
+	.ascii	"x\000"
 	.byte	0x2
-	.byte	0x52
+	.byte	0x5c
+	.4byte	0x939
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -60
+	.uleb128 0x60
+	.4byte	.LBB19
+	.4byte	.LBE19
+	.uleb128 0x65
+	.ascii	"y\000"
+	.byte	0x2
+	.byte	0x5d
+	.4byte	0x939
+	.byte	0x2
+	.byte	0x91
+	.sleb128 -64
+	.uleb128 0x60
+	.4byte	.LBB20
+	.4byte	.LBE20
+	.uleb128 0x65
+	.ascii	"xx\000"
+	.byte	0x2
+	.byte	0x60
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -96
-	.uleb128 0x5d
-	.4byte	.LASF946
+	.sleb128 -132
+	.uleb128 0x65
+	.ascii	"yy\000"
 	.byte	0x2
-	.byte	0x53
+	.byte	0x61
 	.4byte	0x939
 	.byte	0x3
 	.byte	0x91
-	.sleb128 -100
-	.byte	0
-	.byte	0
-	.byte	0
-	.byte	0
+	.sleb128 -136
 	.byte	0
 	.byte	0
 	.byte	0
 	.uleb128 0x60
-	.4byte	.LASF978
+	.4byte	.LBB23
+	.4byte	.LBE23
+	.uleb128 0x65
+	.ascii	"w\000"
+	.byte	0x2
+	.byte	0x6a
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -68
+	.uleb128 0x60
+	.4byte	.LBB24
+	.4byte	.LBE24
+	.uleb128 0x61
+	.4byte	.LASF956
+	.byte	0x2
+	.byte	0x6b
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -140
+	.uleb128 0x61
+	.4byte	.LASF957
+	.byte	0x2
+	.byte	0x6c
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -144
+	.uleb128 0x61
+	.4byte	.LASF958
+	.byte	0x2
+	.byte	0x6d
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -148
+	.uleb128 0x61
+	.4byte	.LASF959
+	.byte	0x2
+	.byte	0x6e
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -152
+	.uleb128 0x61
+	.4byte	.LASF960
+	.byte	0x2
+	.byte	0x6f
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -156
+	.uleb128 0x61
+	.4byte	.LASF961
+	.byte	0x2
+	.byte	0x70
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -160
+	.uleb128 0x61
+	.4byte	.LASF962
+	.byte	0x2
+	.byte	0x71
+	.4byte	0x939
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -164
+	.uleb128 0x61
+	.4byte	.LASF963
+	.byte	0x2
+	.byte	0x72
+	.4byte	0xb1
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -72
+	.uleb128 0x61
+	.4byte	.LASF964
+	.byte	0x2
+	.byte	0x73
+	.4byte	0xb1
+	.byte	0x3
+	.byte	0x91
+	.sleb128 -76
+	.byte	0
+	.byte	0
+	.byte	0
+	.byte	0
+	.byte	0
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	0x62bc
+	.uleb128 0x66
+	.4byte	.LASF996
 	.byte	0x1
 	.4byte	.LFB3276
 	.4byte	.LFE3276
 	.4byte	.LLST3
 	.byte	0x1
-	.4byte	0x6526
-	.uleb128 0x5e
-	.4byte	.LASF948
+	.4byte	0x6726
+	.uleb128 0x62
+	.4byte	.LASF965
 	.byte	0x2
-	.byte	0x63
+	.byte	0x95
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -12
-	.uleb128 0x5e
-	.4byte	.LASF949
+	.uleb128 0x62
+	.4byte	.LASF966
 	.byte	0x2
-	.byte	0x63
+	.byte	0x95
 	.4byte	0x62
 	.byte	0x2
 	.byte	0x91
 	.sleb128 -16
 	.byte	0
-	.uleb128 0x61
-	.4byte	.LASF979
+	.uleb128 0x67
+	.4byte	.LASF997
 	.byte	0x1
 	.4byte	.LFB3277
 	.4byte	.LFE3277
 	.4byte	.LLST4
 	.byte	0x1
-	.uleb128 0x62
-	.4byte	.LASF950
+	.uleb128 0x68
+	.4byte	.LASF967
 	.byte	0x17
 	.byte	0x47
 	.4byte	0x84f
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x62
-	.4byte	.LASF951
+	.uleb128 0x68
+	.4byte	.LASF968
 	.byte	0x17
 	.byte	0x48
 	.4byte	0x62
@@ -13455,54 +13968,54 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x62
-	.4byte	0x655e
-	.uleb128 0x63
+	.4byte	0x675e
+	.uleb128 0x69
 	.byte	0
-	.uleb128 0x62
-	.4byte	.LASF952
-	.byte	0x2c
+	.uleb128 0x68
+	.4byte	.LASF969
+	.byte	0x2d
 	.byte	0x4f
-	.4byte	0x6553
+	.4byte	0x6753
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x62
-	.4byte	.LASF953
-	.byte	0x2c
+	.uleb128 0x68
+	.4byte	.LASF970
+	.byte	0x2d
 	.byte	0xc5
-	.4byte	0x6553
+	.4byte	0x6753
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x94b
-	.4byte	0x6583
-	.uleb128 0x63
+	.4byte	0x6783
+	.uleb128 0x69
 	.byte	0
-	.uleb128 0x64
-	.4byte	.LASF954
+	.uleb128 0x6a
+	.4byte	.LASF971
 	.byte	0x1a
 	.2byte	0x16d
-	.4byte	0x6578
+	.4byte	0x6778
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x64
-	.4byte	.LASF955
-	.byte	0x2d
+	.uleb128 0x6a
+	.4byte	.LASF972
+	.byte	0x2e
 	.2byte	0x1d4
-	.4byte	0x659f
+	.4byte	0x679f
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x10
 	.byte	0x4
 	.4byte	0x224d
-	.uleb128 0x64
-	.4byte	.LASF956
-	.byte	0x2e
+	.uleb128 0x6a
+	.4byte	.LASF973
+	.byte	0x2f
 	.2byte	0x256
-	.4byte	0x626d
+	.4byte	0x6347
 	.byte	0x1
 	.byte	0x1
-	.uleb128 0x64
-	.4byte	.LASF957
+	.uleb128 0x6a
+	.4byte	.LASF974
 	.byte	0x25
 	.2byte	0x2ae
 	.4byte	0x5599
@@ -13510,7 +14023,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x939
-	.4byte	0x65dd
+	.4byte	0x67dd
 	.uleb128 0x9
 	.4byte	0x13d
 	.byte	0x8
@@ -13521,77 +14034,73 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	0x13d
 	.byte	0xe
 	.byte	0
-	.uleb128 0x65
-	.4byte	.LASF958
-	.byte	0x2
-	.byte	0x10
-	.4byte	0x65c1
+	.uleb128 0x68
+	.4byte	.LASF975
+	.byte	0x30
+	.byte	0xf
+	.4byte	0x67c1
 	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	level
-	.uleb128 0x65
-	.4byte	.LASF959
-	.byte	0x2
-	.byte	0x11
+	.byte	0x1
+	.uleb128 0x68
+	.4byte	.LASF976
+	.byte	0x30
+	.byte	0x10
 	.4byte	0x62
 	.byte	0x1
-	.byte	0x5
-	.byte	0x3
-	.4byte	MaxLevel
-	.uleb128 0x66
-	.4byte	.LASF960
+	.byte	0x1
+	.uleb128 0x6b
+	.4byte	.LASF977
 	.4byte	0xe4
 	.byte	0x1
 	.byte	0x1
 	.byte	0x1
 	.uleb128 0x8
 	.4byte	0x144
-	.4byte	0x6618
-	.uleb128 0x63
+	.4byte	0x680e
+	.uleb128 0x69
 	.byte	0
 	.uleb128 0x8
 	.4byte	0x29
-	.4byte	0x6623
-	.uleb128 0x63
+	.4byte	0x6819
+	.uleb128 0x69
 	.byte	0
-	.uleb128 0x67
+	.uleb128 0x6c
 	.4byte	0x800
 	.byte	0x5
 	.byte	0x3
 	.4byte	_ZN4_STLL8_LocInitE
-	.uleb128 0x67
+	.uleb128 0x6c
 	.4byte	0x80c
 	.byte	0x5
 	.byte	0x3
 	.4byte	_ZN4_STLL8_IosInitE
 	.uleb128 0x17
-	.4byte	.LASF961
+	.4byte	.LASF978
 	.byte	0x1
-	.4byte	0x664b
+	.4byte	0x6841
 	.uleb128 0x37
 	.ascii	"T\000"
 	.4byte	0x22ff
 	.byte	0
 	.uleb128 0x17
-	.4byte	.LASF962
+	.4byte	.LASF979
 	.byte	0x1
-	.4byte	0x665d
+	.4byte	0x6853
 	.uleb128 0x37
 	.ascii	"T\000"
 	.4byte	0x1eab
 	.byte	0
 	.uleb128 0x13
-	.4byte	.LASF963
+	.4byte	.LASF980
 	.byte	0x1
 	.uleb128 0x13
-	.4byte	.LASF964
+	.4byte	.LASF981
 	.byte	0x1
 	.uleb128 0x13
-	.4byte	.LASF965
+	.4byte	.LASF982
 	.byte	0x1
 	.uleb128 0x13
-	.4byte	.LASF966
+	.4byte	.LASF983
 	.byte	0x1
 	.byte	0
 	.section	.debug_abbrev,"",%progbits
@@ -14905,6 +15414,75 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.byte	0
 	.byte	0
 	.uleb128 0x55
+	.uleb128 0x2
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x1d
+	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x56
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x2007
+	.uleb128 0xe
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x4c
+	.uleb128 0xb
+	.uleb128 0x4d
+	.uleb128 0xa
+	.uleb128 0x1d
+	.uleb128 0x13
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x64
+	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x57
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x4c
+	.uleb128 0xb
+	.uleb128 0x1d
+	.uleb128 0x13
+	.uleb128 0x3c
+	.uleb128 0xc
+	.uleb128 0x64
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x58
 	.uleb128 0x3a
 	.byte	0
 	.uleb128 0x3a
@@ -14915,7 +15493,18 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x56
+	.uleb128 0x59
+	.uleb128 0xf
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x5a
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x47
@@ -14928,7 +15517,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x57
+	.uleb128 0x5b
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -14939,7 +15528,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x58
+	.uleb128 0x5c
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -14952,7 +15541,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x59
+	.uleb128 0x5d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x31
@@ -14973,7 +15562,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5a
+	.uleb128 0x5e
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x31
@@ -14982,7 +15571,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x5b
+	.uleb128 0x5f
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -15007,135 +15596,126 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5c
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.byte	0
-	.byte	0
-	.uleb128 0x5d
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x5e
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x5f
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
 	.uleb128 0x60
-	.uleb128 0x2e
+	.uleb128 0xb
 	.byte	0x1
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x34
-	.uleb128 0xc
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
 	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0x6
-	.uleb128 0x2116
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x61
-	.uleb128 0x2e
+	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0xe
-	.uleb128 0x34
-	.uleb128 0xc
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x62
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x63
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x64
+	.uleb128 0xb
+	.byte	0x1
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
 	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0x6
-	.uleb128 0x2116
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x62
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
+	.uleb128 0x1
 	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
-	.byte	0
-	.byte	0
-	.uleb128 0x63
-	.uleb128 0x21
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x64
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3c
-	.uleb128 0xc
 	.byte	0
 	.byte	0
 	.uleb128 0x65
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x66
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x34
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0x6
+	.uleb128 0x2116
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x67
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x34
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0x6
+	.uleb128 0x2116
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x68
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
 	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
@@ -15145,11 +15725,33 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0x13
 	.uleb128 0x3f
 	.uleb128 0xc
-	.uleb128 0x2
-	.uleb128 0xa
+	.uleb128 0x3c
+	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x66
+	.uleb128 0x69
+	.uleb128 0x21
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x6a
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3c
+	.uleb128 0xc
+	.byte	0
+	.byte	0
+	.uleb128 0x6b
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -15164,7 +15766,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.uleb128 0xc
 	.byte	0
 	.byte	0
-	.uleb128 0x67
+	.uleb128 0x6c
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x47
@@ -15217,7 +15819,7 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.4byte	.LCFI4
 	.2byte	0x2
 	.byte	0x7d
-	.sleb128 12
+	.sleb128 20
 	.4byte	.LCFI4
 	.4byte	.LFE2966
 	.2byte	0x3
@@ -15293,545 +15895,514 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.section	.debug_line,"",%progbits
 .Ldebug_line0:
 	.section	.debug_str,"MS",%progbits,1
-.LASF447:
-	.ascii	"GetObjHashedNextIt\000"
-.LASF841:
-	.ascii	"fgetc\000"
-.LASF269:
-	.ascii	"_ZN9CIwStringILi32EEplEPKc\000"
-.LASF973:
-	.ascii	"IwResGroupCollisionHandling\000"
-.LASF216:
-	.ascii	"_ZNK7CIwVec2lsEi\000"
-.LASF708:
-	.ascii	"_ZN13CIwResManager7LoadResEPKcS1_j\000"
-.LASF759:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE4sizeEv\000"
-.LASF26:
-	.ascii	"size_t\000"
-.LASF483:
-	.ascii	"ReallocateDefault<CIwManaged*, CIwAllocator<CIwMana"
-	.ascii	"ged*, CIwMallocRouter<CIwManaged*> > >\000"
-.LASF193:
-	.ascii	"_ZN7CIwVec213NormaliseSlowEv\000"
-.LASF477:
-	.ascii	"GetEnd\000"
-.LASF843:
-	.ascii	"fgets\000"
-.LASF870:
-	.ascii	"tm_hour\000"
-.LASF391:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
-	.ascii	"v\000"
-.LASF201:
-	.ascii	"_ZNK7CIwVec23DotERKS_\000"
-.LASF366:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4findE"
-	.ascii	"RKS1_\000"
-.LASF22:
-	.ascii	"S3E_ERROR_SHOW_IGNORE\000"
-.LASF771:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE12resize_quickEj\000"
-.LASF658:
-	.ascii	"GetGroupNamed\000"
-.LASF598:
+.LASF907:
+	.ascii	"wcspbrk\000"
+.LASF568:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
-	.ascii	"backERKS1_\000"
-.LASF309:
-	.ascii	"IW_TYPE_MAX\000"
-.LASF529:
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15clea"
+	.ascii	"r_optimisedEv\000"
+.LASF268:
+	.ascii	"_ZN9CIwStringILi32EEpLERKS0_\000"
+.LASF254:
+	.ascii	"_ZNK9CIwStringILi32EE6lengthEv\000"
+.LASF466:
+	.ascii	"GetSize\000"
+.LASF541:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
-	.ascii	"raseEi\000"
-.LASF765:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE15clear_optimisedEv\000"
-.LASF792:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5frontEv\000"
-.LASF265:
-	.ascii	"_ZN9CIwStringILi32EEaSEPKc\000"
-.LASF31:
-	.ascii	"fpos_t\000"
-.LASF302:
-	.ascii	"IW_TYPE_UINT16\000"
-.LASF408:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5ShareE"
-	.ascii	"PS1_ii\000"
-.LASF53:
-	.ascii	"boolalpha\000"
-.LASF786:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5eraseEPS1_S9_\000"
-.LASF434:
-	.ascii	"ResolvePtrs\000"
-.LASF1:
-	.ascii	"signed char\000"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
+	.ascii	"ush_backERKS1_\000"
+.LASF247:
+	.ascii	"m_Buffer\000"
+.LASF58:
+	.ascii	"unitbuf\000"
+.LASF47:
+	.ascii	"~_Loc_init\000"
 .LASF705:
 	.ascii	"GetBuildStyleCurrName\000"
-.LASF631:
-	.ascii	"m_PathName\000"
-.LASF214:
-	.ascii	"_ZNK7CIwVec2rsEi\000"
-.LASF620:
-	.ascii	"m_Flags\000"
-.LASF824:
-	.ascii	"mbstowcs\000"
-.LASF52:
-	.ascii	"scientific\000"
-.LASF500:
-	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
-	.ascii	"erIS1_EE10deallocateEPS1_j\000"
-.LASF623:
-	.ascii	"m_DebugGroupBinCopyPath\000"
-.LASF97:
-	.ascii	"iwfixed\000"
-.LASF774:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE8containsERKS1_\000"
-.LASF603:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5Share"
-	.ascii	"ERKS8_\000"
-.LASF963:
-	.ascii	"CIwMallocRouter<CIwResGroup*>\000"
-.LASF454:
-	.ascii	"RemoveFast\000"
-.LASF15:
-	.ascii	"uint32\000"
+.LASF296:
+	.ascii	"IW_TYPE_NONE\000"
+.LASF127:
+	.ascii	"g_Zero\000"
+.LASF81:
+	.ascii	"IwSerialiseUserCallback\000"
+.LASF269:
+	.ascii	"_ZN9CIwStringILi32EEplEPKc\000"
+.LASF246:
+	.ascii	"CIwString<32>\000"
+.LASF728:
+	.ascii	"BuildResources\000"
+.LASF729:
+	.ascii	"_ZN13CIwResManager14BuildResourcesEv\000"
+.LASF53:
+	.ascii	"boolalpha\000"
+.LASF868:
+	.ascii	"tm_sec\000"
+.LASF674:
+	.ascii	"_ZNK13CIwResManager11GetResNamedEPKcS1_j\000"
+.LASF86:
+	.ascii	"handle\000"
+.LASF458:
+	.ascii	"EraseFast\000"
+.LASF996:
+	.ascii	"__static_initialization_and_destruction_0\000"
+.LASF318:
+	.ascii	"allocate\000"
+.LASF272:
+	.ascii	"_ZNK9CIwStringILi32EEeqEPKc\000"
+.LASF187:
+	.ascii	"_ZN7CIwVec2aSERK8CIwFVec2\000"
+.LASF937:
+	.ascii	"leveler\000"
+.LASF882:
+	.ascii	"fwide\000"
+.LASF75:
+	.ascii	"_LocInit\000"
+.LASF678:
+	.ascii	"_ZN13CIwResManager6AddResEPKcP11CIwResource\000"
+.LASF61:
+	.ascii	"basefield\000"
+.LASF886:
+	.ascii	"getwc\000"
+.LASF226:
+	.ascii	"_ZNK8CIwFVec213GetNormalisedEv\000"
 .LASF939:
-	.ascii	"radius\000"
-.LASF796:
+	.ascii	"block\000"
+.LASF31:
+	.ascii	"fpos_t\000"
+.LASF36:
+	.ascii	"ldiv_t\000"
+.LASF664:
+	.ascii	"GetGroup\000"
+.LASF411:
+	.ascii	"LockSize\000"
+.LASF68:
+	.ascii	"__hex_char_table_hi\000"
+.LASF776:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE9push_backEv\000"
-.LASF902:
-	.ascii	"wcscspn\000"
-.LASF186:
-	.ascii	"_ZN7CIwVec2aSERK8CIwSVec2\000"
-.LASF473:
-	.ascii	"_ZN14CIwManagedList6GetTopEv\000"
-.LASF635:
-	.ascii	"m_UniqueRunStamp\000"
+	.ascii	"ultIS1_S5_EE20find_and_remove_fastERKS1_\000"
+.LASF136:
+	.ascii	"GetLengthSafe\000"
+.LASF968:
+	.ascii	"g_IwSerialiseContextValid\000"
+.LASF346:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15Seria"
+	.ascii	"liseHeaderEv\000"
+.LASF419:
+	.ascii	"REALLOCATE\000"
+.LASF970:
+	.ascii	"g_InverseSqrtTable\000"
+.LASF286:
+	.ascii	"_ZN9CIwStringILi160EEaSEPKc\000"
+.LASF594:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5fron"
+	.ascii	"tEv\000"
+.LASF360:
+	.ascii	"reserve_optimised\000"
+.LASF413:
+	.ascii	"set_capacity\000"
+.LASF766:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE11MemoryUsageEv\000"
+.LASF271:
+	.ascii	"_ZN9CIwStringILi32EEpLEc\000"
+.LASF905:
+	.ascii	"wcsncmp\000"
+.LASF527:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
+	.ascii	"erase_fastEPS1_\000"
+.LASF84:
+	.ascii	"read\000"
+.LASF926:
+	.ascii	"GetWidth\000"
+.LASF773:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE4findERKS1_\000"
+.LASF227:
+	.ascii	"_ZNK8CIwFVec212IsNormalisedEv\000"
+.LASF838:
+	.ascii	"feof\000"
+.LASF565:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15Seri"
+	.ascii	"aliseHeaderEv\000"
+.LASF800:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5ShareERKS8_\000"
+.LASF424:
+	.ascii	"_CheckGet\000"
+.LASF99:
+	.ascii	"Serialise\000"
+.LASF11:
+	.ascii	"uint16_t\000"
+.LASF525:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
+	.ascii	"erase_fastEi\000"
+.LASF45:
+	.ascii	"_S_count\000"
+.LASF303:
+	.ascii	"IW_TYPE_INT32\000"
+.LASF470:
+	.ascii	"Push\000"
+.LASF236:
+	.ascii	"_ZNK8CIwFVec2mlERKS_\000"
+.LASF242:
+	.ascii	"_ZNK8CIwFVec2dvEf\000"
+.LASF356:
+	.ascii	"optimise_capacity\000"
+.LASF938:
+	.ascii	"door\000"
+.LASF569:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11Mem"
+	.ascii	"oryUsageEv\000"
+.LASF253:
+	.ascii	"length\000"
+.LASF799:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EEixEi\000"
+.LASF512:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE1"
+	.ascii	"1MemoryUsageEv\000"
+.LASF180:
+	.ascii	"_ZN8CIwSVec2lSEi\000"
+.LASF468:
+	.ascii	"GetCapacity\000"
+.LASF601:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push"
+	.ascii	"_back_qtyEi\000"
 .LASF753:
 	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
 	.ascii	"5CIwMallocRouterIS1_EE10reallocateEPS1_j\000"
-.LASF209:
-	.ascii	"_ZNK7CIwVec2neERKS_\000"
+.LASF555:
+	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
+	.ascii	"1_EE10reallocateEPS1_j\000"
+.LASF426:
+	.ascii	"~CIwManagedList\000"
+.LASF322:
+	.ascii	"deallocate\000"
+.LASF108:
+	.ascii	"_ZN9CIwColour7SetGreyEh\000"
+.LASF772:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE6resizeEj\000"
+.LASF876:
+	.ascii	"tm_isdst\000"
+.LASF506:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8"
+	.ascii	"capacityEv\000"
+.LASF418:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4swapER"
+	.ascii	"S8_\000"
+.LASF681:
+	.ascii	"GetCurrentGroup\000"
+.LASF144:
+	.ascii	"Normalise\000"
+.LASF313:
+	.ascii	"CIwMenu\000"
+.LASF186:
+	.ascii	"_ZN7CIwVec2aSERK8CIwSVec2\000"
+.LASF295:
+	.ascii	"_ZN9CIwStringILi160EE9SerialiseEv\000"
+.LASF340:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8capac"
+	.ascii	"ityEv\000"
+.LASF285:
+	.ascii	"_ZNK9CIwStringILi160EEixEi\000"
+.LASF621:
+	.ascii	"m_LoadPaths\000"
+.LASF14:
+	.ascii	"uint8\000"
+.LASF931:
+	.ascii	"_ZN10CIw2DImage11GetMaterialEv\000"
+.LASF454:
+	.ascii	"RemoveFast\000"
+.LASF583:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
+	.ascii	"e_fastEii\000"
+.LASF257:
+	.ascii	"setLength\000"
+.LASF95:
+	.ascii	"bool\000"
+.LASF821:
+	.ascii	"atoi\000"
+.LASF822:
+	.ascii	"atol\000"
+.LASF283:
+	.ascii	"_ZNK9CIwStringILi160EE6substrEii\000"
+.LASF642:
+	.ascii	"_ZN13CIwResManager7SetModeENS_10GlobalModeE\000"
+.LASF77:
+	.ascii	"__std_alias\000"
+.LASF974:
+	.ascii	"g_IwResManager\000"
+.LASF813:
+	.ascii	"strcoll\000"
+.LASF434:
+	.ascii	"ResolvePtrs\000"
+.LASF909:
+	.ascii	"wcsspn\000"
+.LASF701:
+	.ascii	"GetAtlasMaterial\000"
+.LASF103:
+	.ascii	"_ZN9CIwColour3SetES_\000"
+.LASF273:
+	.ascii	"_ZNK9CIwStringILi32EEeqERKS0_\000"
+.LASF91:
+	.ascii	"headBit\000"
+.LASF175:
+	.ascii	"operator>>=\000"
+.LASF768:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE17optimise_capacityEv\000"
+.LASF212:
+	.ascii	"_ZN7CIwVec2mLEi\000"
 .LASF558:
 	.ascii	"CIwArray<CIwResGroup*, CIwAllocator<CIwResGroup*, C"
 	.ascii	"IwMallocRouter<CIwResGroup*> >, ReallocateDefault<C"
 	.ascii	"IwResGroup*, CIwAllocator<CIwResGroup*, CIwMallocRo"
 	.ascii	"uter<CIwResGroup*> > > >\000"
-.LASF151:
-	.ascii	"_ZNK8CIwSVec217GetNormalisedSafeEv\000"
-.LASF233:
-	.ascii	"_ZN8CIwFVec2pLERKS_\000"
-.LASF467:
-	.ascii	"_ZNK14CIwManagedList7GetSizeEv\000"
-.LASF415:
-	.ascii	"truncate\000"
-.LASF672:
-	.ascii	"_ZN13CIwResManager13SplitPathNameEPKcR9CIwStringILi"
-	.ascii	"160EERS2_ILi32EES6_\000"
-.LASF281:
-	.ascii	"_ZN9CIwStringILi160EE9setLengthEi\000"
-.LASF699:
-	.ascii	"ResolveResPtr\000"
-.LASF167:
-	.ascii	"_ZNK8CIwSVec2neERKS_\000"
-.LASF71:
-	.ascii	"__digit_val_table\000"
-.LASF725:
-	.ascii	"_ZNK13CIwResManager18GetBuildStyleNamedEPKc\000"
-.LASF767:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE16resize_optimisedEj\000"
-.LASF810:
-	.ascii	"Make\000"
-.LASF300:
-	.ascii	"IW_TYPE_UINT8\000"
-.LASF137:
-	.ascii	"_ZNK8CIwSVec213GetLengthSafeEv\000"
-.LASF478:
-	.ascii	"_ZNK14CIwManagedList6GetEndEv\000"
-.LASF690:
-	.ascii	"_ZN13CIwResManager10MountGroupEPKcb\000"
-.LASF861:
-	.ascii	"tmpnam\000"
-.LASF528:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
-	.ascii	"erase_fastEPS1_S9_\000"
-.LASF172:
-	.ascii	"_ZNK8CIwSVec2dvEi\000"
-.LASF142:
-	.ascii	"NormaliseSlow\000"
-.LASF409:
-	.ascii	"CanResize\000"
-.LASF956:
-	.ascii	"g_IwTextParserITX\000"
-.LASF20:
-	.ascii	"S3E_ERROR_SHOW_CONTINUE\000"
-.LASF940:
-	.ascii	"radius2\000"
-.LASF472:
-	.ascii	"GetTop\000"
-.LASF246:
-	.ascii	"CIwString<32>\000"
-.LASF677:
-	.ascii	"AddRes\000"
-.LASF741:
-	.ascii	"_ZN13CIwResManager16_TempRemoveGroupEP11CIwResGroup"
-	.ascii	"\000"
-.LASF543:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13"
-	.ascii	"push_back_qtyERKS1_i\000"
-.LASF693:
-	.ascii	"SetBuildGroupCallbackPre\000"
-.LASF365:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6resize"
-	.ascii	"Ej\000"
-.LASF139:
-	.ascii	"_ZNK8CIwSVec220GetLengthSquaredSafeEv\000"
-.LASF369:
-	.ascii	"find_and_remove\000"
-.LASF555:
-	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
-	.ascii	"1_EE10reallocateEPS1_j\000"
-.LASF63:
-	.ascii	"goodbit\000"
-.LASF908:
-	.ascii	"wcschr\000"
-.LASF790:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE4backEv\000"
-.LASF724:
-	.ascii	"GetBuildStyleNamed\000"
-.LASF67:
-	.ascii	"__hex_char_table_lo\000"
-.LASF40:
-	.ascii	"bad_typeid\000"
-.LASF66:
-	.ascii	"failbit\000"
-.LASF474:
-	.ascii	"_ZNK14CIwManagedListixEi\000"
-.LASF804:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE12set_capacityEj\000"
-.LASF597:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6appen"
-	.ascii	"dERS8_\000"
-.LASF111:
-	.ascii	"_ZN9CIwColouraSEj\000"
-.LASF304:
-	.ascii	"IW_TYPE_UINT32\000"
-.LASF583:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
-	.ascii	"e_fastEii\000"
-.LASF405:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EEixEi\000"
-.LASF21:
-	.ascii	"S3E_ERROR_SHOW_STOP\000"
-.LASF211:
-	.ascii	"_ZNK7CIwVec2mlEi\000"
-.LASF505:
+.LASF519:
 	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
 	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
-	.ascii	"sizeEv\000"
-.LASF439:
-	.ascii	"Clear\000"
-.LASF330:
-	.ascii	"max_p\000"
-.LASF959:
-	.ascii	"MaxLevel\000"
-.LASF168:
-	.ascii	"_ZNK8CIwSVec2ngEv\000"
-.LASF81:
-	.ascii	"IwSerialiseUserCallback\000"
-.LASF927:
-	.ascii	"printall\000"
-.LASF933:
-	.ascii	"_Z8DrawMazei\000"
-.LASF588:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
-	.ascii	"EPS1_\000"
-.LASF94:
-	.ascii	"callback\000"
-.LASF842:
-	.ascii	"fgetpos\000"
-.LASF292:
-	.ascii	"_ZN9CIwStringILi160EEpLEc\000"
-.LASF764:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5clearEv\000"
-.LASF751:
-	.ascii	"CIwAllocator<CIwResManager::CRemovedGroup, CIwMallo"
-	.ascii	"cRouter<CIwResManager::CRemovedGroup> >\000"
-.LASF697:
-	.ascii	"SerialiseResPtr\000"
-.LASF479:
-	.ascii	"Reserve\000"
-.LASF734:
-	.ascii	"SetAltasOwner\000"
-.LASF342:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4dataEv"
-	.ascii	"\000"
-.LASF206:
-	.ascii	"_ZN7CIwVec2mIERKS_\000"
-.LASF806:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE4swapERS8_\000"
-.LASF57:
-	.ascii	"skipws\000"
-.LASF630:
-	.ascii	"m_GroupCurr\000"
-.LASF150:
-	.ascii	"GetNormalisedSafe\000"
-.LASF160:
-	.ascii	"_ZNK8CIwSVec2plERKS_\000"
-.LASF379:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
-	.ascii	"_fastEii\000"
-.LASF937:
-	.ascii	"drawWidth\000"
-.LASF711:
-	.ascii	"ClearLoadPaths\000"
-.LASF59:
-	.ascii	"uppercase\000"
-.LASF244:
-	.ascii	"_ZNK8CIwFVec2ixEi\000"
-.LASF436:
-	.ascii	"_ZN14CIwManagedList15SerialiseHeaderEv\000"
-.LASF962:
-	.ascii	"CIwMallocRouter<CIwString<160> >\000"
-.LASF39:
-	.ascii	"type_info\000"
-.LASF618:
-	.ascii	"m_Index\000"
-.LASF819:
-	.ascii	"atof\000"
-.LASF821:
-	.ascii	"atoi\000"
-.LASF666:
-	.ascii	"GetHandler\000"
-.LASF822:
-	.ascii	"atol\000"
-.LASF638:
-	.ascii	"m_GroupsMounted\000"
-.LASF550:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
-	.ascii	"set_capacityEj\000"
-.LASF793:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE6appendERKS1_\000"
-.LASF329:
-	.ascii	"num_p\000"
-.LASF898:
-	.ascii	"wcsrchr\000"
-.LASF353:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11Memo"
-	.ascii	"ryUsageEv\000"
-.LASF926:
-	.ascii	"_ZN17ReallocateDefaultI9CIwStringILi160EE12CIwAlloc"
-	.ascii	"atorIS1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1"
-	.ascii	"_RS5_\000"
-.LASF655:
-	.ascii	"_ZN13CIwResManager13ReserveGroupsEi\000"
-.LASF48:
-	.ascii	"left\000"
-.LASF418:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4swapER"
-	.ascii	"S8_\000"
-.LASF770:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE17reserve_optimisedEi\000"
-.LASF10:
-	.ascii	"long int\000"
-.LASF293:
-	.ascii	"_ZNK9CIwStringILi160EEeqEPKc\000"
-.LASF199:
-	.ascii	"_ZN7CIwVec29SerialiseEv\000"
-.LASF942:
-	.ascii	"leftpt\000"
-.LASF311:
-	.ascii	"IW_TYPE_PAD_F\000"
-.LASF234:
-	.ascii	"_ZNK8CIwFVec2miERKS_\000"
-.LASF195:
-	.ascii	"_ZNK7CIwVec213GetNormalisedEv\000"
-.LASF4:
-	.ascii	"s3e_int16_t\000"
-.LASF813:
-	.ascii	"strcoll\000"
-.LASF282:
-	.ascii	"_ZN9CIwStringILi160EE4findEPKc\000"
-.LASF811:
-	.ascii	"_ZN7CIwRect4MakeEssss\000"
-.LASF388:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inser"
-	.ascii	"t_slowERKS1_j\000"
-.LASF893:
-	.ascii	"vwprintf\000"
-.LASF637:
-	.ascii	"m_RemovedGroups\000"
-.LASF334:
-	.ascii	"begin\000"
-.LASF328:
-	.ascii	"CIwArray<CIwManaged*, CIwAllocator<CIwManaged*, CIw"
-	.ascii	"MallocRouter<CIwManaged*> >, ReallocateDefault<CIwM"
-	.ascii	"anaged*, CIwAllocator<CIwManaged*, CIwMallocRouter<"
-	.ascii	"CIwManaged*> > > >\000"
-.LASF809:
-	.ascii	"CIwRect\000"
-.LASF831:
-	.ascii	"wctomb\000"
-.LASF766:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE11MemoryUsageEv\000"
-.LASF710:
-	.ascii	"_ZN13CIwResManager11AddLoadPathERK9CIwStringILi160E"
-	.ascii	"E\000"
-.LASF645:
-	.ascii	"AddHandler\000"
-.LASF387:
-	.ascii	"insert_slow\000"
-.LASF972:
-	.ascii	"_ZN14CIwManagedList3PopEv\000"
-.LASF701:
-	.ascii	"GetAtlasMaterial\000"
-.LASF522:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20"
-	.ascii	"find_and_remove_fastERKS1_\000"
-.LASF600:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push"
-	.ascii	"_back_qtyERKS1_i\000"
-.LASF332:
-	.ascii	"no_grow\000"
-.LASF141:
-	.ascii	"_ZNK8CIwSVec225GetLengthSquaredUnshiftedEv\000"
-.LASF105:
-	.ascii	"_ZN9CIwColour9SerialiseEv\000"
-.LASF851:
-	.ascii	"rand\000"
-.LASF979:
-	.ascii	"_GLOBAL__sub_I_MazeDrawer.cpp\000"
-.LASF735:
-	.ascii	"_ZN13CIwResManager13SetAltasOwnerEP11CIwResGroup\000"
-.LASF732:
-	.ascii	"ClearAtlasOwner\000"
-.LASF865:
-	.ascii	"IW_GX_ORIENT_90\000"
-.LASF103:
-	.ascii	"_ZN9CIwColour3SetES_\000"
+	.ascii	"findERKS1_\000"
 .LASF394:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5front"
 	.ascii	"Ev\000"
-.LASF877:
-	.ascii	"mbstate_t\000"
-.LASF653:
-	.ascii	"_ZN13CIwResManager12DestroyGroupEP11CIwResGroup\000"
-.LASF222:
-	.ascii	"_ZN8CIwFVec2aSERK7CIwVec2\000"
-.LASF545:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEi"
-	.ascii	"xEi\000"
-.LASF444:
-	.ascii	"_ZNK14CIwManagedList11GetObjNamedEPKcb\000"
+.LASF363:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12resiz"
+	.ascii	"e_quickEj\000"
+.LASF581:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12pop_"
+	.ascii	"back_getEv\000"
+.LASF570:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16resi"
+	.ascii	"ze_optimisedEj\000"
+.LASF560:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3endE"
+	.ascii	"v\000"
+.LASF783:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5eraseEi\000"
+.LASF455:
+	.ascii	"_ZN14CIwManagedList10RemoveFastEP10CIwManaged\000"
+.LASF490:
+	.ascii	"IW_EVENT_ENGINE\000"
+.LASF489:
+	.ascii	"IW_EVENT_GX\000"
+.LASF546:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5S"
+	.ascii	"hareERKS8_\000"
+.LASF451:
+	.ascii	"_ZN14CIwManagedList6InsertEP10CIwManagedjb\000"
+.LASF97:
+	.ascii	"iwfixed\000"
+.LASF919:
+	.ascii	"wscanf\000"
+.LASF986:
+	.ascii	"d:\\\\School\\\\cs115\\\\AmazingMaze\\\\build_amazi"
+	.ascii	"ngmaze_vc12\000"
+.LASF385:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
+	.ascii	"PS1_\000"
+.LASF498:
+	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
+	.ascii	"erIS1_EE8allocateEj\000"
+.LASF547:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5S"
+	.ascii	"hareEPS1_ii\000"
+.LASF256:
+	.ascii	"_ZNK9CIwStringILi32EE8capacityEv\000"
+.LASF161:
+	.ascii	"_ZN8CIwSVec2pLERKS_\000"
 .LASF384:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
 	.ascii	"jj\000"
-.LASF341:
-	.ascii	"data\000"
-.LASF335:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5begin"
-	.ascii	"Ev\000"
-.LASF70:
-	.ascii	"_ZN4_STL19__hex_char_table_hiE\000"
-.LASF262:
-	.ascii	"_ZNK9CIwStringILi32EE6substrEii\000"
-.LASF156:
-	.ascii	"_ZNK8CIwSVec26IsZeroEv\000"
-.LASF69:
-	.ascii	"_ZN4_STL19__hex_char_table_loE\000"
-.LASF650:
-	.ascii	"_ZN13CIwResManager8AddGroupEP11CIwResGroup\000"
-.LASF120:
-	.ascii	"_ZN9CIwColourmlEi\000"
-.LASF273:
-	.ascii	"_ZNK9CIwStringILi32EEeqERKS0_\000"
-.LASF242:
-	.ascii	"_ZNK8CIwFVec2dvEf\000"
-.LASF532:
+.LASF521:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
-	.ascii	"raseEPS1_S9_\000"
-.LASF794:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE6appendERS8_\000"
-.LASF619:
-	.ascii	"m_Group\000"
-.LASF89:
-	.ascii	"callbackPeriod\000"
-.LASF608:
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
+	.ascii	"find_and_removeERKS1_\000"
+.LASF22:
+	.ascii	"S3E_ERROR_SHOW_IGNORE\000"
+.LASF598:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8trunc"
-	.ascii	"ateEj\000"
-.LASF516:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17"
-	.ascii	"reserve_optimisedEi\000"
-.LASF773:
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
+	.ascii	"backERKS1_\000"
+.LASF372:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20find_"
+	.ascii	"and_remove_fastERKS1_\000"
+.LASF35:
+	.ascii	"6ldiv_t\000"
+.LASF791:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE4findERKS1_\000"
-.LASF679:
-	.ascii	"SetCurrentGroup\000"
-.LASF969:
-	.ascii	"d:\\\\School\\\\cs115\\\\AmazingMaze\\\\build_amazi"
-	.ascii	"ngmaze_vc12\000"
-.LASF964:
-	.ascii	"ReallocateDefault<CIwResGroup*, CIwAllocator<CIwRes"
-	.ascii	"Group*, CIwMallocRouter<CIwResGroup*> > >\000"
+	.ascii	"aultIS1_S5_EE5frontEv\000"
+.LASF735:
+	.ascii	"_ZN13CIwResManager13SetAltasOwnerEP11CIwResGroup\000"
+.LASF696:
+	.ascii	"_ZN13CIwResManager25SetBuildGroupCallbackPostEPFvvE"
+	.ascii	"\000"
+.LASF308:
+	.ascii	"IW_TYPE_COMPOUND\000"
+.LASF831:
+	.ascii	"wctomb\000"
+.LASF383:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
+	.ascii	"i\000"
+.LASF640:
+	.ascii	"BuildGroupCallbackPost\000"
+.LASF494:
+	.ascii	"IW_EVENT_ALLOCATION_MASK\000"
+.LASF577:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8cont"
+	.ascii	"ainsERKS1_\000"
+.LASF151:
+	.ascii	"_ZNK8CIwSVec217GetNormalisedSafeEv\000"
+.LASF634:
+	.ascii	"m_BuildStyleCurr\000"
+.LASF520:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8"
+	.ascii	"containsERKS1_\000"
+.LASF677:
+	.ascii	"AddRes\000"
+.LASF582:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
+	.ascii	"e_fastEi\000"
+.LASF619:
+	.ascii	"m_Group\000"
+.LASF856:
+	.ascii	"rename\000"
+.LASF150:
+	.ascii	"GetNormalisedSafe\000"
+.LASF949:
+	.ascii	"levelamount\000"
+.LASF327:
+	.ascii	"ArrayIt\000"
+.LASF248:
+	.ascii	"CIwString\000"
+.LASF320:
+	.ascii	"reallocate\000"
+.LASF137:
+	.ascii	"_ZNK8CIwSVec213GetLengthSafeEv\000"
+.LASF64:
+	.ascii	"badbit\000"
+.LASF586:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
+	.ascii	"Ei\000"
+.LASF932:
+	.ascii	"~CIw2DImage\000"
+.LASF325:
+	.ascii	"CIwManaged\000"
+.LASF473:
+	.ascii	"_ZN14CIwManagedList6GetTopEv\000"
+.LASF243:
+	.ascii	"_ZN8CIwFVec2ixEi\000"
+.LASF913:
+	.ascii	"wcsstr\000"
+.LASF965:
+	.ascii	"__initialize_p\000"
+.LASF845:
+	.ascii	"fread\000"
+.LASF556:
+	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
+	.ascii	"1_EE10deallocateEPS1_j\000"
+.LASF704:
+	.ascii	"_ZN13CIwResManager13SetBuildStyleEPKc\000"
+.LASF152:
+	.ascii	"IsNormalised\000"
+.LASF985:
+	.ascii	"d:/School/cs115/AmazingMaze/MazeDrawer.cpp\000"
+.LASF386:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
+	.ascii	"PS1_S9_\000"
+.LASF517:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
+	.ascii	"resize_quickEj\000"
+.LASF855:
+	.ascii	"remove\000"
+.LASF911:
+	.ascii	"wcstod\000"
+.LASF779:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE10erase_fastEi\000"
+.LASF896:
+	.ascii	"wcstok\000"
+.LASF912:
+	.ascii	"wcstol\000"
+.LASF511:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
+	.ascii	"clear_optimisedEv\000"
+.LASF846:
+	.ascii	"freopen\000"
+.LASF647:
+	.ascii	"RemoveHandler\000"
+.LASF617:
+	.ascii	"IW_RES_GROUP_COLLISION_PATCH_F\000"
+.LASF723:
+	.ascii	"_ZN13CIwResManager13AddBuildStyleEP16CIwResBuildSty"
+	.ascii	"le\000"
+.LASF55:
+	.ascii	"showpoint\000"
+.LASF693:
+	.ascii	"SetBuildGroupCallbackPre\000"
+.LASF440:
+	.ascii	"_ZN14CIwManagedList5ClearEv\000"
+.LASF733:
+	.ascii	"_ZN13CIwResManager15ClearAtlasOwnerEv\000"
+.LASF610:
+	.ascii	"CIwResHandler\000"
+.LASF839:
+	.ascii	"ferror\000"
+.LASF347:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaSERKS8"
+	.ascii	"_\000"
+.LASF925:
+	.ascii	"_vptr.CIw2DImage\000"
+.LASF633:
+	.ascii	"m_BuildStyles\000"
+.LASF52:
+	.ascii	"scientific\000"
+.LASF215:
+	.ascii	"_ZN7CIwVec2rSEi\000"
+.LASF428:
+	.ascii	"Resolve\000"
 .LASF118:
 	.ascii	"operator*\000"
 .LASF121:
@@ -15840,531 +16411,1407 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.ascii	"operator-\000"
 .LASF171:
 	.ascii	"operator/\000"
-.LASF957:
-	.ascii	"g_IwResManager\000"
-.LASF761:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE4dataEv\000"
-.LASF736:
-	.ascii	"GetAtlasOwner\000"
-.LASF855:
-	.ascii	"remove\000"
-.LASF829:
-	.ascii	"system\000"
-.LASF440:
-	.ascii	"_ZN14CIwManagedList5ClearEv\000"
-.LASF698:
-	.ascii	"_ZN13CIwResManager15SerialiseResPtrERP10CIwManagedP"
-	.ascii	"Kcb\000"
-.LASF109:
-	.ascii	"operator=\000"
-.LASF359:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7reserv"
-	.ascii	"eEj\000"
-.LASF590:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inse"
-	.ascii	"rt_slowERKS1_j\000"
-.LASF586:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
-	.ascii	"Ei\000"
-.LASF885:
-	.ascii	"getwchar\000"
-.LASF625:
-	.ascii	"m_ChildBuildScale\000"
-.LASF647:
-	.ascii	"RemoveHandler\000"
-.LASF511:
+.LASF532:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
-	.ascii	"clear_optimisedEv\000"
-.LASF777:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE8pop_backEv\000"
-.LASF879:
-	.ascii	"fgetws\000"
-.LASF80:
-	.ascii	"__XXFILE\000"
-.LASF374:
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
+	.ascii	"raseEPS1_S9_\000"
+.LASF416:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8pop_ba"
-	.ascii	"ckEv\000"
-.LASF191:
-	.ascii	"_ZNK7CIwVec220GetLengthSquaredSafeEv\000"
-.LASF239:
-	.ascii	"_ZNK8CIwFVec2ngEv\000"
-.LASF183:
-	.ascii	"_ZN9CIwColourmIERKS_\000"
-.LASF975:
-	.ascii	"_ZN7CIwRect6RotateE16IwGxScreenOrientii\000"
-.LASF974:
-	.ascii	"CRemovedGroup\000"
-.LASF837:
-	.ascii	"fclose\000"
-.LASF914:
-	.ascii	"wmemchr\000"
-.LASF763:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EEaSERKS8_\000"
-.LASF280:
-	.ascii	"_ZNK9CIwStringILi160EE8capacityEv\000"
-.LASF462:
-	.ascii	"Find\000"
-.LASF659:
-	.ascii	"_ZNK13CIwResManager13GetGroupNamedEPKcj\000"
-.LASF807:
-	.ascii	"CIwResBuildStyle\000"
-.LASF419:
-	.ascii	"REALLOCATE\000"
-.LASF350:
-	.ascii	"clear_optimised\000"
-.LASF578:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find"
-	.ascii	"_and_removeERKS1_\000"
-.LASF890:
-	.ascii	"swprintf\000"
-.LASF425:
-	.ascii	"_ZNK14CIwManagedList9_CheckGetEjb\000"
-.LASF258:
-	.ascii	"_ZN9CIwStringILi32EE9setLengthEi\000"
-.LASF252:
-	.ascii	"_ZNK9CIwStringILi32EE4sizeEv\000"
-.LASF907:
-	.ascii	"wcspbrk\000"
-.LASF345:
-	.ascii	"SerialiseHeader\000"
-.LASF450:
-	.ascii	"Insert\000"
-.LASF249:
-	.ascii	"c_str\000"
-.LASF104:
-	.ascii	"SetOpaque\000"
-.LASF729:
-	.ascii	"_ZN13CIwResManager14BuildResourcesEv\000"
-.LASF616:
-	.ascii	"IW_RES_GROUP_COLLISION_REPLACE_F\000"
-.LASF460:
-	.ascii	"Contains\000"
-.LASF241:
-	.ascii	"_ZN8CIwFVec2mLEf\000"
-.LASF279:
-	.ascii	"_ZNK9CIwStringILi160EE6lengthEv\000"
-.LASF324:
-	.ascii	"ios_base\000"
-.LASF887:
-	.ascii	"ungetwc\000"
-.LASF126:
-	.ascii	"CIwSVec2\000"
-.LASF28:
-	.ascii	"char\000"
-.LASF715:
-	.ascii	"ChangeExtension\000"
-.LASF313:
-	.ascii	"CIwMenu\000"
-.LASF339:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4sizeE"
-	.ascii	"v\000"
-.LASF557:
-	.ascii	"CIwResGroup\000"
-.LASF288:
-	.ascii	"_ZN9CIwStringILi160EEpLEPKc\000"
-.LASF833:
-	.ascii	"ldiv\000"
-.LASF270:
-	.ascii	"_ZN9CIwStringILi32EEplERKS0_\000"
-.LASF564:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4dataE"
-	.ascii	"v\000"
-.LASF519:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
-	.ascii	"findERKS1_\000"
-.LASF680:
-	.ascii	"_ZN13CIwResManager15SetCurrentGroupEP11CIwResGroup\000"
-.LASF968:
-	.ascii	"d:/School/cs115/AmazingMaze/MazeDrawer.cpp\000"
-.LASF411:
-	.ascii	"LockSize\000"
-.LASF389:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inser"
-	.ascii	"t_slowERS8_j\000"
-.LASF312:
-	.ascii	"IW_TYPE_FREE_BIT\000"
-.LASF573:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17rese"
-	.ascii	"rve_optimisedEi\000"
-.LASF669:
-	.ascii	"_ZNK13CIwResManager10GetResTypeEPKcj\000"
-.LASF347:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaSERKS8"
-	.ascii	"_\000"
-.LASF255:
-	.ascii	"capacity\000"
-.LASF905:
-	.ascii	"wcsncmp\000"
-.LASF687:
-	.ascii	"LoadGroupFromMemory\000"
-.LASF574:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12resi"
-	.ascii	"ze_quickEj\000"
-.LASF599:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
-	.ascii	"backEv\000"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8trunca"
+	.ascii	"teEj\000"
+.LASF182:
+	.ascii	"_ZN8CIwSVec2ixEi\000"
 .LASF917:
 	.ascii	"wmemmove\000"
-.LASF610:
-	.ascii	"CIwResHandler\000"
-.LASF87:
-	.ascii	"filename\000"
-.LASF179:
-	.ascii	"operator<<=\000"
-.LASF924:
-	.ascii	"long double\000"
-.LASF149:
-	.ascii	"_ZN8CIwSVec213NormaliseSafeEv\000"
-.LASF34:
-	.ascii	"5div_t\000"
-.LASF850:
-	.ascii	"getc\000"
-.LASF563:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8capa"
-	.ascii	"cityEv\000"
-.LASF362:
-	.ascii	"resize_quick\000"
-.LASF461:
-	.ascii	"_ZNK14CIwManagedList8ContainsEP10CIwManaged\000"
-.LASF326:
-	.ascii	"Array\000"
-.LASF298:
-	.ascii	"IW_TYPE_BOOL\000"
-.LASF107:
-	.ascii	"SetGrey\000"
-.LASF116:
-	.ascii	"_ZNK9CIwColourneERKS_\000"
-.LASF869:
-	.ascii	"tm_min\000"
-.LASF351:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15clear"
-	.ascii	"_optimisedEv\000"
-.LASF853:
-	.ascii	"gets\000"
-.LASF633:
-	.ascii	"m_BuildStyles\000"
-.LASF719:
-	.ascii	"_ZN13CIwResManager17DebugAddMenuItemsEP7CIwMenu\000"
-.LASF466:
-	.ascii	"GetSize\000"
-.LASF392:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backEv"
-	.ascii	"\000"
-.LASF681:
-	.ascii	"GetCurrentGroup\000"
-.LASF220:
-	.ascii	"CIwFVec2\000"
-.LASF849:
-	.ascii	"ftell\000"
-.LASF327:
-	.ascii	"ArrayIt\000"
-.LASF490:
-	.ascii	"IW_EVENT_ENGINE\000"
-.LASF971:
-	.ascii	"_ZN4_STL3bufE\000"
+.LASF921:
+	.ascii	"wmemset\000"
+.LASF523:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8p"
+	.ascii	"op_backEv\000"
+.LASF109:
+	.ascii	"operator=\000"
+.LASF685:
+	.ascii	"LoadGroup\000"
+.LASF207:
+	.ascii	"_ZNK7CIwVec2mlERKS_\000"
+.LASF100:
+	.ascii	"_ZN9CIwColour3SetEj\000"
+.LASF626:
+	.ascii	"m_AtlasParentGroup\000"
+.LASF265:
+	.ascii	"_ZN9CIwStringILi32EEaSEPKc\000"
+.LASF964:
+	.ascii	"second\000"
+.LASF145:
+	.ascii	"_ZN8CIwSVec29NormaliseEv\000"
+.LASF889:
+	.ascii	"putwchar\000"
 .LASF453:
 	.ascii	"_ZN14CIwManagedList10RemoveSlowEP10CIwManaged\000"
-.LASF268:
-	.ascii	"_ZN9CIwStringILi32EEpLERKS0_\000"
-.LASF356:
-	.ascii	"optimise_capacity\000"
-.LASF782:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE10erase_fastEPS1_S9_\000"
-.LASF768:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE17optimise_capacityEv\000"
-.LASF755:
-	.ascii	"CIwArray<CIwResManager::CRemovedGroup, CIwAllocator"
-	.ascii	"<CIwResManager::CRemovedGroup, CIwMallocRouter<CIwR"
-	.ascii	"esManager::CRemovedGroup> >, ReallocateDefault<CIwR"
-	.ascii	"esManager::CRemovedGroup, CIwAllocator<CIwResManage"
-	.ascii	"r::CRemovedGroup, CIwMallocRouter<CIwResManager::CR"
-	.ascii	"emovedGroup> > > >\000"
-.LASF412:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8LockSi"
-	.ascii	"zeEb\000"
-.LASF696:
-	.ascii	"_ZN13CIwResManager25SetBuildGroupCallbackPostEPFvvE"
-	.ascii	"\000"
-.LASF546:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5S"
-	.ascii	"hareERKS8_\000"
+.LASF79:
+	.ascii	"s3eFile\000"
+.LASF135:
+	.ascii	"_ZNK8CIwSVec216GetLengthSquaredEv\000"
 .LASF584:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
 	.ascii	"e_fastEPS1_\000"
-.LASF236:
-	.ascii	"_ZNK8CIwFVec2mlERKS_\000"
-.LASF504:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
-	.ascii	"emptyEv\000"
-.LASF237:
-	.ascii	"_ZNK8CIwFVec2eqERKS_\000"
-.LASF664:
-	.ascii	"GetGroup\000"
-.LASF689:
-	.ascii	"MountGroup\000"
-.LASF144:
-	.ascii	"Normalise\000"
-.LASF296:
-	.ascii	"IW_TYPE_NONE\000"
-.LASF247:
-	.ascii	"m_Buffer\000"
-.LASF317:
-	.ascii	"pointer\000"
-.LASF130:
-	.ascii	"_ZN8CIwSVec2aSERK7CIwVec2\000"
-.LASF286:
-	.ascii	"_ZN9CIwStringILi160EEaSEPKc\000"
-.LASF385:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
-	.ascii	"PS1_\000"
-.LASF396:
-	.ascii	"append\000"
-.LASF112:
-	.ascii	"_ZNK9CIwColoureqEj\000"
-.LASF448:
-	.ascii	"_ZNK14CIwManagedList18GetObjHashedNextItEjPP10CIwMa"
-	.ascii	"nagedb\000"
-.LASF547:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5S"
-	.ascii	"hareEPS1_ii\000"
-.LASF541:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
-	.ascii	"ush_backERKS1_\000"
-.LASF322:
-	.ascii	"deallocate\000"
-.LASF757:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE3endEv\000"
-.LASF871:
-	.ascii	"tm_mday\000"
-.LASF779:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE10erase_fastEi\000"
-.LASF481:
-	.ascii	"_ZN14CIwManagedList8LockSizeEb\000"
-.LASF368:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8conta"
-	.ascii	"insERKS1_\000"
-.LASF61:
-	.ascii	"basefield\000"
-.LASF560:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3endE"
-	.ascii	"v\000"
-.LASF791:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE5frontEv\000"
-.LASF901:
-	.ascii	"wcscpy\000"
-.LASF51:
-	.ascii	"fixed\000"
-.LASF756:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE5beginEv\000"
-.LASF459:
-	.ascii	"_ZN14CIwManagedList9EraseFastEj\000"
-.LASF894:
-	.ascii	"vswprintf\000"
-.LASF358:
-	.ascii	"reserve\000"
-.LASF92:
-	.ascii	"version\000"
-.LASF828:
-	.ascii	"strtoul\000"
-.LASF90:
-	.ascii	"buffer\000"
-.LASF383:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
-	.ascii	"i\000"
-.LASF758:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE5emptyEv\000"
-.LASF803:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE8LockSizeEb\000"
-.LASF921:
-	.ascii	"wmemset\000"
-.LASF965:
-	.ascii	"CIwMallocRouter<CIwResManager::CRemovedGroup>\000"
-.LASF435:
-	.ascii	"_ZN14CIwManagedList11ResolvePtrsERKS_\000"
-.LASF775:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE15find_and_removeERKS1_\000"
-.LASF936:
-	.ascii	"levelamount\000"
-.LASF482:
-	.ascii	"_AddHashAsPointer\000"
-.LASF882:
-	.ascii	"fwide\000"
-.LASF812:
-	.ascii	"Rotate\000"
-.LASF883:
-	.ascii	"fwprintf\000"
-.LASF377:
-	.ascii	"erase_fast\000"
-.LASF441:
-	.ascii	"ClearAndFree\000"
-.LASF437:
-	.ascii	"Delete\000"
-.LASF498:
-	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
-	.ascii	"erIS1_EE8allocateEj\000"
-.LASF23:
-	.ascii	"S3E_ERROR_SHOW_AGAIN\000"
-.LASF612:
-	.ascii	"GlobalMode\000"
-.LASF922:
-	.ascii	"Iw2DSceneGraphCore\000"
-.LASF348:
-	.ascii	"clear\000"
-.LASF78:
-	.ascii	"stlport\000"
-.LASF876:
-	.ascii	"tm_isdst\000"
-.LASF678:
-	.ascii	"_ZN13CIwResManager6AddResEPKcP11CIwResource\000"
-.LASF605:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9CanRe"
-	.ascii	"sizeEv\000"
-.LASF517:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
-	.ascii	"resize_quickEj\000"
-.LASF906:
-	.ascii	"wcsncpy\000"
-.LASF393:
-	.ascii	"front\000"
+.LASF475:
+	.ascii	"GetBegin\000"
+.LASF945:
+	.ascii	"Overlay\000"
 .LASF706:
 	.ascii	"_ZNK13CIwResManager21GetBuildStyleCurrNameEv\000"
-.LASF257:
-	.ascii	"setLength\000"
-.LASF136:
-	.ascii	"GetLengthSafe\000"
-.LASF872:
-	.ascii	"tm_mon\000"
-.LASF743:
-	.ascii	"_ZN13CIwResManager25SetGroupCollisionHandlingENS_27"
-	.ascii	"IwResGroupCollisionHandlingE\000"
-.LASF889:
-	.ascii	"putwchar\000"
-.LASF83:
-	.ascii	"IwSerialiseContext\000"
-.LASF891:
-	.ascii	"swscanf\000"
-.LASF446:
-	.ascii	"_ZNK14CIwManagedList12GetObjHashedEjb\000"
-.LASF177:
-	.ascii	"operator<<\000"
-.LASF319:
-	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
-	.ascii	"_EE8allocateEj\000"
-.LASF916:
-	.ascii	"wmemcmp\000"
-.LASF709:
-	.ascii	"AddLoadPath\000"
-.LASF119:
-	.ascii	"_ZN9CIwColourmLERKS_\000"
-.LASF223:
-	.ascii	"_ZNK8CIwFVec29GetLengthEv\000"
+.LASF794:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE6appendERS8_\000"
+.LASF398:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
+	.ascii	"ERS8_\000"
+.LASF72:
+	.ascii	"__narrow_atoms\000"
+.LASF122:
+	.ascii	"_ZN9CIwColourplES_\000"
+.LASF947:
+	.ascii	"surface_width\000"
+.LASF261:
+	.ascii	"substr\000"
+.LASF929:
+	.ascii	"_ZN10CIw2DImage9GetHeightEv\000"
+.LASF537:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
+	.ascii	"frontEv\000"
+.LASF185:
+	.ascii	"CIwVec2\000"
+.LASF529:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
+	.ascii	"raseEi\000"
+.LASF662:
+	.ascii	"GetNumGroups\000"
+.LASF124:
+	.ascii	"_ZN9CIwColourpLERKS_\000"
+.LASF0:
+	.ascii	"unsigned char\000"
+.LASF309:
+	.ascii	"IW_TYPE_MAX\000"
+.LASF298:
+	.ascii	"IW_TYPE_BOOL\000"
+.LASF59:
+	.ascii	"uppercase\000"
 .LASF508:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
 	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
 	.ascii	"SerialiseHeaderEv\000"
-.LASF44:
-	.ascii	"_Loc_init\000"
-.LASF259:
-	.ascii	"find\000"
-.LASF301:
-	.ascii	"IW_TYPE_INT16\000"
-.LASF700:
-	.ascii	"_ZN13CIwResManager13ResolveResPtrERP10CIwManagedPKc"
-	.ascii	"\000"
-.LASF750:
-	.ascii	"~CIwResManager\000"
-.LASF684:
-	.ascii	"_ZNK13CIwResManager18GetLastSearchGroupEv\000"
-.LASF158:
-	.ascii	"_ZNK8CIwSVec23DotERKS_\000"
-.LASF805:
+.LASF403:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
+	.ascii	"back_qtyERKS1_i\000"
+.LASF983:
+	.ascii	"ReallocateDefault<CIwResManager::CRemovedGroup, CIw"
+	.ascii	"Allocator<CIwResManager::CRemovedGroup, CIwMallocRo"
+	.ascii	"uter<CIwResManager::CRemovedGroup> > >\000"
+.LASF910:
+	.ascii	"wcsxfrm\000"
+.LASF691:
+	.ascii	"ReloadGroup\000"
+.LASF410:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9CanRes"
+	.ascii	"izeEv\000"
+.LASF903:
+	.ascii	"wcslen\000"
+.LASF637:
+	.ascii	"m_RemovedGroups\000"
+.LASF225:
+	.ascii	"_ZN8CIwFVec29NormaliseEv\000"
+.LASF244:
+	.ascii	"_ZNK8CIwFVec2ixEi\000"
+.LASF96:
+	.ascii	"float\000"
+.LASF719:
+	.ascii	"_ZN13CIwResManager17DebugAddMenuItemsEP7CIwMenu\000"
+.LASF213:
+	.ascii	"_ZNK7CIwVec2dvEi\000"
+.LASF130:
+	.ascii	"_ZN8CIwSVec2aSERK7CIwVec2\000"
+.LASF408:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5ShareE"
+	.ascii	"PS1_ii\000"
+.LASF553:
+	.ascii	"CIwAllocator<CIwResGroup*, CIwMallocRouter<CIwResGr"
+	.ascii	"oup*> >\000"
+.LASF789:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE4backEv\000"
+.LASF71:
+	.ascii	"__digit_val_table\000"
+.LASF627:
+	.ascii	"m_Handlers\000"
+.LASF507:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4d"
+	.ascii	"ataEv\000"
+.LASF732:
+	.ascii	"ClearAtlasOwner\000"
+.LASF167:
+	.ascii	"_ZNK8CIwSVec2neERKS_\000"
+.LASF57:
+	.ascii	"skipws\000"
+.LASF433:
+	.ascii	"_ZN14CIwManagedList16OptimizeCapacityEv\000"
+.LASF811:
+	.ascii	"_ZN7CIwRect4MakeEssss\000"
+.LASF112:
+	.ascii	"_ZNK9CIwColoureqEj\000"
+.LASF542:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
+	.ascii	"ush_backEv\000"
+.LASF159:
+	.ascii	"_ZN8CIwSVec2aSERKS_\000"
+.LASF362:
+	.ascii	"resize_quick\000"
+.LASF496:
+	.ascii	"CIwTextParserITX\000"
+.LASF782:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE8truncateEj\000"
-.LASF37:
-	.ascii	"exception\000"
-.LASF818:
-	.ascii	"getenv\000"
-.LASF949:
+	.ascii	"ultIS1_S5_EE10erase_fastEPS1_S9_\000"
+.LASF762:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE15SerialiseHeaderEv\000"
+.LASF784:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5eraseEjj\000"
+.LASF966:
 	.ascii	"__priority\000"
-.LASF192:
-	.ascii	"_ZNK7CIwVec225GetLengthSquaredUnshiftedEv\000"
-.LASF390:
-	.ascii	"back\000"
-.LASF378:
+.LASF488:
+	.ascii	"IW_EVENT_NULL\000"
+.LASF660:
+	.ascii	"GetGroupHashed\000"
+.LASF459:
+	.ascii	"_ZN14CIwManagedList9EraseFastEj\000"
+.LASF774:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE8containsERKS1_\000"
+.LASF484:
+	.ascii	"Reallocate\000"
+.LASF950:
+	.ascii	"drawWidth\000"
+.LASF491:
+	.ascii	"IW_EVENT_ANIM\000"
+.LASF884:
+	.ascii	"fwscanf\000"
+.LASF895:
+	.ascii	"wcsftime\000"
+.LASF417:
+	.ascii	"swap\000"
+.LASF155:
+	.ascii	"IsZero\000"
+.LASF858:
+	.ascii	"setbuf\000"
+.LASF132:
+	.ascii	"GetLength\000"
+.LASF740:
+	.ascii	"_TempRemoveGroup\000"
+.LASF513:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16"
+	.ascii	"resize_optimisedEj\000"
+.LASF989:
+	.ascii	"IwResGroupCollisionHandling\000"
+.LASF930:
+	.ascii	"GetMaterial\000"
+.LASF692:
+	.ascii	"_ZN13CIwResManager11ReloadGroupEPKcb\000"
+.LASF406:
+	.ascii	"Share\000"
+.LASF540:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6a"
+	.ascii	"ppendERS8_\000"
+.LASF230:
+	.ascii	"_ZNK8CIwFVec23DotERKS_\000"
+.LASF545:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEi"
+	.ascii	"xEi\000"
+.LASF316:
+	.ascii	"size_type\000"
+.LASF857:
+	.ascii	"rewind\000"
+.LASF953:
+	.ascii	"radius2\000"
+.LASF666:
+	.ascii	"GetHandler\000"
+.LASF679:
+	.ascii	"SetCurrentGroup\000"
+.LASF616:
+	.ascii	"IW_RES_GROUP_COLLISION_REPLACE_F\000"
+.LASF714:
+	.ascii	"_ZNK13CIwResManager11GetPathNameEv\000"
+.LASF956:
+	.ascii	"radiushalf\000"
+.LASF333:
+	.ascii	"iterator\000"
+.LASF430:
+	.ascii	"SerialisePtrs\000"
+.LASF164:
+	.ascii	"_ZN8CIwSVec2mIERKS_\000"
+.LASF817:
+	.ascii	"atexit\000"
+.LASF217:
+	.ascii	"_ZN7CIwVec2lSEi\000"
+.LASF645:
+	.ascii	"AddHandler\000"
+.LASF469:
+	.ascii	"_ZNK14CIwManagedList11GetCapacityEv\000"
+.LASF485:
+	.ascii	"_ZN17ReallocateDefaultIP10CIwManaged12CIwAllocatorI"
+	.ascii	"S1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1_RS5_"
+	.ascii	"\000"
+.LASF197:
+	.ascii	"_ZNK7CIwVec217GetNormalisedSafeEv\000"
+.LASF897:
+	.ascii	"wcscat\000"
+.LASF543:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13"
+	.ascii	"push_back_qtyERKS1_i\000"
+.LASF849:
+	.ascii	"ftell\000"
+.LASF29:
+	.ascii	"va_list\000"
+.LASF439:
+	.ascii	"Clear\000"
+.LASF809:
+	.ascii	"CIwRect\000"
+.LASF355:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
-	.ascii	"_fastEi\000"
-.LASF9:
-	.ascii	"long unsigned int\000"
-.LASF238:
-	.ascii	"_ZNK8CIwFVec2neERKS_\000"
-.LASF82:
-	.ascii	"__va_list\000"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16resiz"
+	.ascii	"e_optimisedEj\000"
+.LASF738:
+	.ascii	"GetUniqueRunStamp\000"
+.LASF957:
+	.ascii	"pt1x\000"
+.LASF958:
+	.ascii	"pt1y\000"
+.LASF397:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
+	.ascii	"ERKS1_\000"
+.LASF641:
+	.ascii	"SetMode\000"
+.LASF750:
+	.ascii	"~CIwResManager\000"
+.LASF368:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8conta"
+	.ascii	"insERKS1_\000"
+.LASF387:
+	.ascii	"insert_slow\000"
+.LASF643:
+	.ascii	"GetMode\000"
+.LASF251:
+	.ascii	"size\000"
+.LASF189:
+	.ascii	"_ZNK7CIwVec216GetLengthSquaredEv\000"
+.LASF279:
+	.ascii	"_ZNK9CIwStringILi160EE6lengthEv\000"
+.LASF472:
+	.ascii	"GetTop\000"
+.LASF304:
+	.ascii	"IW_TYPE_UINT32\000"
+.LASF923:
+	.ascii	"Iw2DSceneGraph\000"
+.LASF30:
+	.ascii	"FILE\000"
+.LASF49:
+	.ascii	"right\000"
+.LASF959:
+	.ascii	"pt2x\000"
+.LASF960:
+	.ascii	"pt2y\000"
+.LASF348:
+	.ascii	"clear\000"
+.LASF493:
+	.ascii	"IW_EVENT_USER\000"
+.LASF860:
+	.ascii	"tmpfile\000"
+.LASF549:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8L"
+	.ascii	"ockSizeEb\000"
+.LASF436:
+	.ascii	"_ZN14CIwManagedList15SerialiseHeaderEv\000"
+.LASF375:
+	.ascii	"pop_back_get\000"
+.LASF26:
+	.ascii	"size_t\000"
+.LASF778:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE12pop_back_getEv\000"
+.LASF997:
+	.ascii	"_GLOBAL__sub_I_MazeDrawer.cpp\000"
+.LASF552:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4s"
+	.ascii	"wapERS8_\000"
+.LASF609:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4swapE"
+	.ascii	"RS8_\000"
+.LASF32:
+	.ascii	"quot\000"
+.LASF961:
+	.ascii	"pt3x\000"
+.LASF393:
+	.ascii	"front\000"
+.LASF707:
+	.ascii	"LoadRes\000"
+.LASF46:
+	.ascii	"~Init\000"
+.LASF260:
+	.ascii	"_ZN9CIwStringILi32EE4findEPKc\000"
+.LASF854:
+	.ascii	"perror\000"
 .LASF587:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
 	.ascii	"Ejj\000"
-.LASF458:
-	.ascii	"EraseFast\000"
-.LASF185:
-	.ascii	"CIwVec2\000"
+.LASF734:
+	.ascii	"SetAltasOwner\000"
+.LASF452:
+	.ascii	"RemoveSlow\000"
+.LASF67:
+	.ascii	"__hex_char_table_lo\000"
 .LASF661:
 	.ascii	"_ZNK13CIwResManager14GetGroupHashedEjj\000"
+.LASF307:
+	.ascii	"IW_TYPE_STRING\000"
+.LASF796:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE9push_backEv\000"
+.LASF300:
+	.ascii	"IW_TYPE_UINT8\000"
+.LASF297:
+	.ascii	"IW_TYPE_CHAR\000"
+.LASF795:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE9push_backERKS1_\000"
+.LASF806:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE4swapERS8_\000"
+.LASF864:
+	.ascii	"IW_GX_ORIENT_NONE\000"
+.LASF105:
+	.ascii	"_ZN9CIwColour9SerialiseEv\000"
+.LASF40:
+	.ascii	"bad_typeid\000"
+.LASF379:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
+	.ascii	"_fastEii\000"
+.LASF650:
+	.ascii	"_ZN13CIwResManager8AddGroupEP11CIwResGroup\000"
+.LASF311:
+	.ascii	"IW_TYPE_PAD_F\000"
+.LASF915:
+	.ascii	"wctob\000"
+.LASF883:
+	.ascii	"fwprintf\000"
+.LASF56:
+	.ascii	"showpos\000"
+.LASF963:
+	.ascii	"first\000"
+.LASF367:
+	.ascii	"contains\000"
+.LASF747:
+	.ascii	"_ZN13CIwResManager25GetGroupCollisionHandlingEv\000"
+.LASF76:
+	.ascii	"_IosInit\000"
+.LASF812:
+	.ascii	"Rotate\000"
+.LASF823:
+	.ascii	"mblen\000"
+.LASF892:
+	.ascii	"vfwprintf\000"
+.LASF669:
+	.ascii	"_ZNK13CIwResManager10GetResTypeEPKcj\000"
+.LASF787:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE11insert_slowERKS1_j\000"
+.LASF492:
+	.ascii	"IW_EVENT_GUI\000"
+.LASF220:
+	.ascii	"CIwFVec2\000"
+.LASF993:
+	.ascii	"__vtbl_ptr_type\000"
+.LASF294:
+	.ascii	"_ZNK9CIwStringILi160EEeqERKS0_\000"
+.LASF463:
+	.ascii	"_ZNK14CIwManagedList4FindERKP10CIwManaged\000"
+.LASF240:
+	.ascii	"_ZNK8CIwFVec2mlEf\000"
+.LASF482:
+	.ascii	"_AddHashAsPointer\000"
+.LASF518:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6r"
+	.ascii	"esizeEj\000"
+.LASF955:
+	.ascii	"leftpt\000"
+.LASF716:
+	.ascii	"_ZN14CIwManagedList17_AddHashAsPointerEj\000"
+.LASF154:
+	.ascii	"_ZN8CIwSVec29SerialiseEv\000"
+.LASF293:
+	.ascii	"_ZNK9CIwStringILi160EEeqEPKc\000"
+.LASF93:
+	.ascii	"versionUser\000"
+.LASF880:
+	.ascii	"fputwc\000"
+.LASF402:
+	.ascii	"push_back_qty\000"
+.LASF201:
+	.ascii	"_ZNK7CIwVec23DotERKS_\000"
+.LASF550:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
+	.ascii	"set_capacityEj\000"
+.LASF881:
+	.ascii	"fputws\000"
+.LASF709:
+	.ascii	"AddLoadPath\000"
+.LASF200:
+	.ascii	"_ZNK7CIwVec26IsZeroEv\000"
+.LASF407:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5ShareE"
+	.ascii	"RKS8_\000"
+.LASF116:
+	.ascii	"_ZNK9CIwColourneERKS_\000"
+.LASF505:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
+	.ascii	"sizeEv\000"
+.LASF752:
+	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
+	.ascii	"5CIwMallocRouterIS1_EE8allocateEj\000"
+.LASF632:
+	.ascii	"m_GroupPathNameCurr\000"
+.LASF102:
+	.ascii	"_ZN9CIwColour3SetEhhh\000"
+.LASF158:
+	.ascii	"_ZNK8CIwSVec23DotERKS_\000"
+.LASF478:
+	.ascii	"_ZNK14CIwManagedList6GetEndEv\000"
+.LASF443:
+	.ascii	"GetObjNamed\000"
+.LASF156:
+	.ascii	"_ZNK8CIwSVec26IsZeroEv\000"
+.LASF908:
+	.ascii	"wcschr\000"
+.LASF979:
+	.ascii	"CIwMallocRouter<CIwString<160> >\000"
+.LASF229:
+	.ascii	"_ZNK8CIwFVec26IsZeroEv\000"
+.LASF259:
+	.ascii	"find\000"
+.LASF163:
+	.ascii	"_ZNK8CIwSVec2miERKS_\000"
+.LASF710:
+	.ascii	"_ZN13CIwResManager11AddLoadPathERK9CIwStringILi160E"
+	.ascii	"E\000"
+.LASF449:
+	.ascii	"_ZN14CIwManagedList3AddEP10CIwManagedb\000"
+.LASF21:
+	.ascii	"S3E_ERROR_SHOW_STOP\000"
+.LASF934:
+	.ascii	"ReallocateDefault<CIwString<160>, CIwAllocator<CIwS"
+	.ascii	"tring<160>, CIwMallocRouter<CIwString<160> > > >\000"
+.LASF461:
+	.ascii	"_ZNK14CIwManagedList8ContainsEP10CIwManaged\000"
+.LASF377:
+	.ascii	"erase_fast\000"
+.LASF614:
+	.ascii	"MODE_LOAD\000"
+.LASF70:
+	.ascii	"_ZN4_STL19__hex_char_table_hiE\000"
+.LASF218:
+	.ascii	"_ZN7CIwVec2ixEi\000"
+.LASF239:
+	.ascii	"_ZNK8CIwFVec2ngEv\000"
+.LASF228:
+	.ascii	"_ZN8CIwFVec29SerialiseEv\000"
+.LASF644:
+	.ascii	"_ZNK13CIwResManager7GetModeEv\000"
+.LASF623:
+	.ascii	"m_DebugGroupBinCopyPath\000"
+.LASF994:
+	.ascii	"this\000"
+.LASF445:
+	.ascii	"GetObjHashed\000"
+.LASF115:
+	.ascii	"_ZNK9CIwColourneEj\000"
+.LASF98:
+	.ascii	"CIwColour\000"
+.LASF837:
+	.ascii	"fclose\000"
+.LASF312:
+	.ascii	"IW_TYPE_FREE_BIT\000"
+.LASF828:
+	.ascii	"strtoul\000"
+.LASF951:
+	.ascii	"avgWidth\000"
+.LASF336:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3endEv"
+	.ascii	"\000"
+.LASF590:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inse"
+	.ascii	"rt_slowERKS1_j\000"
+.LASF814:
+	.ascii	"strerror\000"
+.LASF181:
+	.ascii	"operator[]\000"
+.LASF816:
+	.ascii	"strxfrm\000"
+.LASF731:
+	.ascii	"_ZNK13CIwResManager13DumpCatalogueEPKc\000"
+.LASF535:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
+	.ascii	"backEv\000"
+.LASF711:
+	.ascii	"ClearLoadPaths\000"
+.LASF580:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8pop_b"
+	.ascii	"ackEv\000"
+.LASF65:
+	.ascii	"eofbit\000"
+.LASF160:
+	.ascii	"_ZNK8CIwSVec2plERKS_\000"
+.LASF830:
+	.ascii	"wcstombs\000"
+.LASF761:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE4dataEv\000"
+.LASF193:
+	.ascii	"_ZN7CIwVec213NormaliseSlowEv\000"
+.LASF474:
+	.ascii	"_ZNK14CIwManagedListixEi\000"
+.LASF146:
+	.ascii	"GetNormalised\000"
+.LASF737:
+	.ascii	"_ZN13CIwResManager13GetAtlasOwnerEv\000"
+.LASF526:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
+	.ascii	"erase_fastEii\000"
+.LASF578:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find"
+	.ascii	"_and_removeERKS1_\000"
+.LASF291:
+	.ascii	"_ZN9CIwStringILi160EEplERKS0_\000"
+.LASF378:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
+	.ascii	"_fastEi\000"
+.LASF126:
+	.ascii	"CIwSVec2\000"
+.LASF682:
+	.ascii	"_ZNK13CIwResManager15GetCurrentGroupEv\000"
+.LASF169:
+	.ascii	"_ZNK8CIwSVec2mlEi\000"
+.LASF168:
+	.ascii	"_ZNK8CIwSVec2ngEv\000"
+.LASF41:
+	.ascii	"bad_cast\000"
+.LASF172:
+	.ascii	"_ZNK8CIwSVec2dvEi\000"
+.LASF797:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE13push_back_qtyERKS1_i\000"
+.LASF500:
+	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
+	.ascii	"erIS1_EE10deallocateEPS1_j\000"
+.LASF751:
+	.ascii	"CIwAllocator<CIwResManager::CRemovedGroup, CIwMallo"
+	.ascii	"cRouter<CIwResManager::CRemovedGroup> >\000"
+.LASF780:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE10erase_fastEii\000"
+.LASF712:
+	.ascii	"_ZN13CIwResManager14ClearLoadPathsEv\000"
+.LASF166:
+	.ascii	"_ZNK8CIwSVec2eqERKS_\000"
+.LASF891:
+	.ascii	"swscanf\000"
+.LASF655:
+	.ascii	"_ZN13CIwResManager13ReserveGroupsEi\000"
+.LASF742:
+	.ascii	"SetGroupCollisionHandling\000"
+.LASF906:
+	.ascii	"wcsncpy\000"
+.LASF147:
+	.ascii	"_ZNK8CIwSVec213GetNormalisedEv\000"
+.LASF754:
+	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
+	.ascii	"5CIwMallocRouterIS1_EE10deallocateEPS1_j\000"
+.LASF863:
+	.ascii	"IwGxScreenOrient\000"
+.LASF148:
+	.ascii	"NormaliseSafe\000"
+.LASF339:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4sizeE"
+	.ascii	"v\000"
+.LASF42:
+	.ascii	"_STL\000"
+.LASF74:
+	.ascii	"_ZN4_STL14__narrow_atomsE\000"
+.LASF836:
+	.ascii	"clearerr\000"
+.LASF373:
+	.ascii	"pop_back\000"
+.LASF287:
+	.ascii	"_ZN9CIwStringILi160EEaSERKS0_\000"
+.LASF221:
+	.ascii	"_ZN8CIwFVec2aSERK8CIwSVec2\000"
+.LASF278:
+	.ascii	"_ZNK9CIwStringILi160EE4sizeEv\000"
+.LASF114:
+	.ascii	"operator!=\000"
+.LASF862:
+	.ascii	"ungetc\000"
+.LASF802:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE9CanResizeEv\000"
+.LASF202:
+	.ascii	"_ZN7CIwVec2aSERKS_\000"
+.LASF516:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17"
+	.ascii	"reserve_optimisedEi\000"
+.LASF918:
+	.ascii	"wprintf\000"
+.LASF869:
+	.ascii	"tm_min\000"
+.LASF354:
+	.ascii	"resize_optimised\000"
+.LASF238:
+	.ascii	"_ZNK8CIwFVec2neERKS_\000"
+.LASF38:
+	.ascii	"bad_exception\000"
+.LASF835:
+	.ascii	"srand\000"
+.LASF899:
+	.ascii	"wcscmp\000"
+.LASF231:
+	.ascii	"_ZN8CIwFVec2aSERKS_\000"
+.LASF315:
+	.ascii	"CIwAllocator<CIwManaged*, CIwMallocRouter<CIwManage"
+	.ascii	"d*> >\000"
+.LASF319:
+	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
+	.ascii	"_EE8allocateEj\000"
+.LASF667:
+	.ascii	"_ZNK13CIwResManager10GetHandlerEPKcj\000"
+.LASF425:
+	.ascii	"_ZNK14CIwManagedList9_CheckGetEjb\000"
+.LASF328:
+	.ascii	"CIwArray<CIwManaged*, CIwAllocator<CIwManaged*, CIw"
+	.ascii	"MallocRouter<CIwManaged*> >, ReallocateDefault<CIwM"
+	.ascii	"anaged*, CIwAllocator<CIwManaged*, CIwMallocRouter<"
+	.ascii	"CIwManaged*> > > >\000"
+.LASF695:
+	.ascii	"SetBuildGroupCallbackPost\000"
+.LASF687:
+	.ascii	"LoadGroupFromMemory\000"
+.LASF841:
+	.ascii	"fgetc\000"
+.LASF331:
+	.ascii	"block_delete\000"
+.LASF317:
+	.ascii	"pointer\000"
+.LASF592:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4back"
+	.ascii	"Ev\000"
+.LASF415:
+	.ascii	"truncate\000"
+.LASF501:
+	.ascii	"CIwArray<CIwString<160>, CIwAllocator<CIwString<160"
+	.ascii	">, CIwMallocRouter<CIwString<160> > >, ReallocateDe"
+	.ascii	"fault<CIwString<160>, CIwAllocator<CIwString<160>, "
+	.ascii	"CIwMallocRouter<CIwString<160> > > > >\000"
+.LASF875:
+	.ascii	"tm_yday\000"
+.LASF843:
+	.ascii	"fgets\000"
+.LASF27:
+	.ascii	"sizetype\000"
+.LASF975:
+	.ascii	"level\000"
+.LASF111:
+	.ascii	"_ZN9CIwColouraSEj\000"
+.LASF597:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6appen"
+	.ascii	"dERS8_\000"
+.LASF829:
+	.ascii	"system\000"
+.LASF12:
+	.ascii	"int16_t\000"
+.LASF391:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
+	.ascii	"v\000"
+.LASF988:
+	.ascii	"_ZN14CIwManagedList3PopEv\000"
+.LASF2:
+	.ascii	"short unsigned int\000"
+.LASF1:
+	.ascii	"signed char\000"
+.LASF483:
+	.ascii	"ReallocateDefault<CIwManaged*, CIwAllocator<CIwMana"
+	.ascii	"ged*, CIwMallocRouter<CIwManaged*> > >\000"
+.LASF980:
+	.ascii	"CIwMallocRouter<CIwResGroup*>\000"
+.LASF607:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12set_"
+	.ascii	"capacityEj\000"
+.LASF143:
+	.ascii	"_ZN8CIwSVec213NormaliseSlowEv\000"
+.LASF119:
+	.ascii	"_ZN9CIwColourmLERKS_\000"
+.LASF746:
+	.ascii	"_ZN13CIwResManager13GetBinaryPathEPKc\000"
+.LASF63:
+	.ascii	"goodbit\000"
+.LASF284:
+	.ascii	"_ZN9CIwStringILi160EEixEi\000"
+.LASF24:
+	.ascii	"ptrdiff_t\000"
+.LASF771:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE12resize_quickEj\000"
+.LASF252:
+	.ascii	"_ZNK9CIwStringILi32EE4sizeEv\000"
+.LASF890:
+	.ascii	"swprintf\000"
+.LASF657:
+	.ascii	"_ZN13CIwResManager15ReserveHandlersEi\000"
+.LASF576:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4find"
+	.ascii	"ERKS1_\000"
+.LASF432:
+	.ascii	"OptimizeCapacity\000"
+.LASF390:
+	.ascii	"back\000"
+.LASF87:
+	.ascii	"filename\000"
+.LASF991:
+	.ascii	"_ZN7CIwRect6RotateE16IwGxScreenOrientii\000"
+.LASF101:
+	.ascii	"_ZN9CIwColour3SetEhhhh\000"
+.LASF810:
+	.ascii	"Make\000"
+.LASF798:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE13push_back_qtyEi\000"
+.LASF332:
+	.ascii	"no_grow\000"
+.LASF943:
+	.ascii	"curLevel\000"
+.LASF927:
+	.ascii	"GetHeight\000"
+.LASF447:
+	.ascii	"GetObjHashedNextIt\000"
+.LASF901:
+	.ascii	"wcscpy\000"
+.LASF668:
+	.ascii	"GetResType\000"
+.LASF19:
+	.ascii	"wchar_t\000"
+.LASF894:
+	.ascii	"vswprintf\000"
+.LASF174:
+	.ascii	"_ZNK8CIwSVec2rsEi\000"
+.LASF888:
+	.ascii	"putwc\000"
+.LASF736:
+	.ascii	"GetAtlasOwner\000"
+.LASF548:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9C"
+	.ascii	"anResizeEv\000"
+.LASF104:
+	.ascii	"SetOpaque\000"
+.LASF4:
+	.ascii	"s3e_int16_t\000"
+.LASF585:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
+	.ascii	"e_fastEPS1_S9_\000"
+.LASF250:
+	.ascii	"_ZNK9CIwStringILi32EE5c_strEv\000"
+.LASF364:
+	.ascii	"resize\000"
+.LASF683:
+	.ascii	"GetLastSearchGroup\000"
+.LASF306:
+	.ascii	"IW_TYPE_DOUBLE\000"
+.LASF404:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
+	.ascii	"back_qtyEi\000"
+.LASF824:
+	.ascii	"mbstowcs\000"
+.LASF871:
+	.ascii	"tm_mday\000"
+.LASF877:
+	.ascii	"mbstate_t\000"
+.LASF438:
+	.ascii	"_ZN14CIwManagedList6DeleteEv\000"
+.LASF343:
+	.ascii	"CIwArray\000"
+.LASF874:
+	.ascii	"tm_wday\000"
+.LASF914:
+	.ascii	"wmemchr\000"
+.LASF94:
+	.ascii	"callback\000"
+.LASF902:
+	.ascii	"wcscspn\000"
+.LASF476:
+	.ascii	"_ZNK14CIwManagedList8GetBeginEv\000"
+.LASF760:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE8capacityEv\000"
+.LASF690:
+	.ascii	"_ZN13CIwResManager10MountGroupEPKcb\000"
+.LASF503:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3"
+	.ascii	"endEv\000"
+.LASF977:
+	.ascii	"__dso_handle\000"
+.LASF78:
+	.ascii	"stlport\000"
+.LASF720:
+	.ascii	"DebugSetGroupBinCopyPath\000"
 .LASF967:
+	.ascii	"g_IwSerialiseContext\000"
+.LASF299:
+	.ascii	"IW_TYPE_INT8\000"
+.LASF396:
+	.ascii	"append\000"
+.LASF606:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8LockS"
+	.ascii	"izeEb\000"
+.LASF872:
+	.ascii	"tm_mon\000"
+.LASF420:
+	.ascii	"CIwManagedList\000"
+.LASF763:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EEaSERKS8_\000"
+.LASF444:
+	.ascii	"_ZNK14CIwManagedList11GetObjNamedEPKcb\000"
+.LASF533:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11"
+	.ascii	"insert_slowERKS1_j\000"
+.LASF276:
+	.ascii	"CIwString<160>\000"
+.LASF281:
+	.ascii	"_ZN9CIwStringILi160EE9setLengthEi\000"
+.LASF44:
+	.ascii	"_Loc_init\000"
+.LASF471:
+	.ascii	"_ZN14CIwManagedList4PushEP10CIwManagedb\000"
+.LASF10:
+	.ascii	"long int\000"
+.LASF842:
+	.ascii	"fgetpos\000"
+.LASF140:
+	.ascii	"GetLengthSquaredUnshifted\000"
+.LASF275:
+	.ascii	"CIwStringL\000"
+.LASF361:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17reser"
+	.ascii	"ve_optimisedEi\000"
+.LASF636:
+	.ascii	"m_LoadingPatch\000"
+.LASF245:
+	.ascii	"CIwStringS\000"
+.LASF60:
+	.ascii	"adjustfield\000"
+.LASF893:
+	.ascii	"vwprintf\000"
+.LASF743:
+	.ascii	"_ZN13CIwResManager25SetGroupCollisionHandlingENS_27"
+	.ascii	"IwResGroupCollisionHandlingE\000"
+.LASF344:
+	.ascii	"~CIwArray\000"
+.LASF441:
+	.ascii	"ClearAndFree\000"
+.LASF873:
+	.ascii	"tm_year\000"
+.LASF698:
+	.ascii	"_ZN13CIwResManager15SerialiseResPtrERP10CIwManagedP"
+	.ascii	"Kcb\000"
+.LASF688:
+	.ascii	"_ZN13CIwResManager19LoadGroupFromMemoryEPKhj\000"
+.LASF536:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4b"
+	.ascii	"ackEv\000"
+.LASF457:
+	.ascii	"_ZN14CIwManagedList5EraseEPP10CIwManaged\000"
+.LASF850:
+	.ascii	"getc\000"
+.LASF211:
+	.ascii	"_ZNK7CIwVec2mlEi\000"
+.LASF210:
+	.ascii	"_ZNK7CIwVec2ngEv\000"
+.LASF194:
+	.ascii	"_ZN7CIwVec29NormaliseEv\000"
+.LASF853:
+	.ascii	"gets\000"
+.LASF866:
+	.ascii	"IW_GX_ORIENT_180\000"
+.LASF819:
+	.ascii	"atof\000"
+.LASF499:
+	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
+	.ascii	"erIS1_EE10reallocateEPS1_j\000"
+.LASF522:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20"
+	.ascii	"find_and_remove_fastERKS1_\000"
+.LASF359:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7reserv"
+	.ascii	"eEj\000"
+.LASF89:
+	.ascii	"callbackPeriod\000"
+.LASF721:
+	.ascii	"_ZN13CIwResManager24DebugSetGroupBinCopyPathEPKc\000"
+.LASF611:
+	.ascii	"CIwResManager\000"
+.LASF13:
+	.ascii	"intptr_t\000"
+.LASF717:
+	.ascii	"_ZN13CIwResManager15ChangeExtensionER9CIwStringILi1"
+	.ascii	"60EEPKc\000"
+.LASF539:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6a"
+	.ascii	"ppendERKS1_\000"
+.LASF573:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17rese"
+	.ascii	"rve_optimisedEi\000"
+.LASF531:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
+	.ascii	"raseEPS1_\000"
+.LASF113:
+	.ascii	"_ZNK9CIwColoureqERKS_\000"
+.LASF946:
+	.ascii	"Circle\000"
+.LASF826:
+	.ascii	"strtod\000"
+.LASF117:
+	.ascii	"operator*=\000"
+.LASF941:
+	.ascii	"_Z8printallv\000"
+.LASF815:
+	.ascii	"strtok\000"
+.LASF827:
+	.ascii	"strtol\000"
+.LASF684:
+	.ascii	"_ZNK13CIwResManager18GetLastSearchGroupEv\000"
+.LASF209:
+	.ascii	"_ZNK7CIwVec2neERKS_\000"
+.LASF358:
+	.ascii	"reserve\000"
+.LASF258:
+	.ascii	"_ZN9CIwStringILi32EE9setLengthEi\000"
+.LASF765:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE15clear_optimisedEv\000"
+.LASF566:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaSERKS"
+	.ascii	"8_\000"
+.LASF670:
+	.ascii	"SplitPathName\000"
+.LASF17:
+	.ascii	"uint16\000"
+.LASF409:
+	.ascii	"CanResize\000"
+.LASF323:
+	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
+	.ascii	"_EE10deallocateEPS1_j\000"
+.LASF656:
+	.ascii	"ReserveHandlers\000"
+.LASF969:
+	.ascii	"g_SqrtTable\000"
+.LASF715:
+	.ascii	"ChangeExtension\000"
+.LASF9:
+	.ascii	"long unsigned int\000"
+.LASF388:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inser"
+	.ascii	"t_slowERKS1_j\000"
+.LASF467:
+	.ascii	"_ZNK14CIwManagedList7GetSizeEv\000"
+.LASF128:
+	.ascii	"g_AxisX\000"
+.LASF129:
+	.ascii	"g_AxisY\000"
+.LASF149:
+	.ascii	"_ZN8CIwSVec213NormaliseSafeEv\000"
+.LASF123:
+	.ascii	"operator+=\000"
+.LASF749:
+	.ascii	"_ZN13CIwResManager22OptimisedMountedGroupsEv\000"
+.LASF801:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5ShareEPS1_ii\000"
+.LASF861:
+	.ascii	"tmpnam\000"
+.LASF653:
+	.ascii	"_ZN13CIwResManager12DestroyGroupEP11CIwResGroup\000"
+.LASF178:
+	.ascii	"_ZNK8CIwSVec2lsEi\000"
+.LASF514:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17"
+	.ascii	"optimise_capacityEv\000"
+.LASF234:
+	.ascii	"_ZNK8CIwFVec2miERKS_\000"
+.LASF718:
+	.ascii	"DebugAddMenuItems\000"
+.LASF748:
+	.ascii	"OptimisedMountedGroups\000"
+.LASF944:
+	.ascii	"Color\000"
+.LASF638:
+	.ascii	"m_GroupsMounted\000"
+.LASF599:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_"
+	.ascii	"backEv\000"
+.LASF427:
+	.ascii	"_ZN14CIwManagedList9SerialiseEv\000"
+.LASF652:
+	.ascii	"_ZN13CIwResManager12DestroyGroupEPKc\000"
+.LASF28:
+	.ascii	"char\000"
+.LASF703:
+	.ascii	"SetBuildStyle\000"
+.LASF992:
+	.ascii	"CIw2DImage\000"
+.LASF399:
+	.ascii	"push_back\000"
+.LASF366:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4findE"
+	.ascii	"RKS1_\000"
+.LASF579:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20find"
+	.ascii	"_and_remove_fastERKS1_\000"
+.LASF962:
+	.ascii	"pt3y\000"
+.LASF138:
+	.ascii	"GetLengthSquaredSafe\000"
+.LASF15:
+	.ascii	"uint32\000"
+.LASF335:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5begin"
+	.ascii	"Ev\000"
+.LASF663:
+	.ascii	"_ZNK13CIwResManager12GetNumGroupsEv\000"
+.LASF480:
+	.ascii	"_ZN14CIwManagedList7ReserveEj\000"
+.LASF725:
+	.ascii	"_ZNK13CIwResManager18GetBuildStyleNamedEPKc\000"
+.LASF314:
+	.ascii	"CIwMenuManager\000"
+.LASF741:
+	.ascii	"_ZN13CIwResManager16_TempRemoveGroupEP11CIwResGroup"
+	.ascii	"\000"
+.LASF371:
+	.ascii	"find_and_remove_fast\000"
+.LASF324:
+	.ascii	"ios_base\000"
+.LASF374:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8pop_ba"
+	.ascii	"ckEv\000"
+.LASF270:
+	.ascii	"_ZN9CIwStringILi32EEplERKS0_\000"
+.LASF559:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5begi"
+	.ascii	"nEv\000"
+.LASF781:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE10erase_fastEPS1_\000"
+.LASF654:
+	.ascii	"ReserveGroups\000"
+.LASF125:
+	.ascii	"operator-=\000"
+.LASF310:
+	.ascii	"IW_TYPE_MAX_BIT\000"
+.LASF995:
+	.ascii	"_ZN8CIwFVec2C2Eff\000"
+.LASF274:
+	.ascii	"_ZN9CIwStringILi32EE9SerialiseEv\000"
+.LASF389:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inser"
+	.ascii	"t_slowERS8_j\000"
+.LASF232:
+	.ascii	"_ZNK8CIwFVec2plERKS_\000"
+.LASF530:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
+	.ascii	"raseEjj\000"
+.LASF184:
+	.ascii	"_ZNK8CIwSVec2ixEi\000"
+.LASF730:
+	.ascii	"DumpCatalogue\000"
+.LASF515:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7r"
+	.ascii	"eserveEj\000"
+.LASF448:
+	.ascii	"_ZNK14CIwManagedList18GetObjHashedNextItEjPP10CIwMa"
+	.ascii	"nagedb\000"
+.LASF142:
+	.ascii	"NormaliseSlow\000"
+.LASF867:
+	.ascii	"IW_GX_ORIENT_270\000"
+.LASF338:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5empty"
+	.ascii	"Ev\000"
+.LASF727:
+	.ascii	"_ZNK13CIwResManager17GetBuildStyleCurrEv\000"
+.LASF3:
+	.ascii	"s3e_uint16_t\000"
+.LASF214:
+	.ascii	"_ZNK7CIwVec2rsEi\000"
+.LASF593:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
+	.ascii	"v\000"
+.LASF369:
+	.ascii	"find_and_remove\000"
+.LASF350:
+	.ascii	"clear_optimised\000"
+.LASF870:
+	.ascii	"tm_hour\000"
+.LASF380:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
+	.ascii	"_fastEPS1_\000"
+.LASF23:
+	.ascii	"S3E_ERROR_SHOW_AGAIN\000"
+.LASF431:
+	.ascii	"_ZN14CIwManagedList13SerialisePtrsEv\000"
+.LASF700:
+	.ascii	"_ZN13CIwResManager13ResolveResPtrERP10CIwManagedPKc"
+	.ascii	"\000"
+.LASF412:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8LockSi"
+	.ascii	"zeEb\000"
+.LASF561:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5empt"
+	.ascii	"yEv\000"
+.LASF509:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaS"
+	.ascii	"ERKS8_\000"
+.LASF551:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8t"
+	.ascii	"runcateEj\000"
+.LASF266:
+	.ascii	"_ZN9CIwStringILi32EEaSERKS0_\000"
+.LASF847:
+	.ascii	"fseek\000"
+.LASF591:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inse"
+	.ascii	"rt_slowERS8_j\000"
+.LASF237:
+	.ascii	"_ZNK8CIwFVec2eqERKS_\000"
+.LASF659:
+	.ascii	"_ZNK13CIwResManager13GetGroupNamedEPKcj\000"
+.LASF832:
+	.ascii	"bsearch\000"
+.LASF405:
+	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EEixEi\000"
+.LASF649:
+	.ascii	"AddGroup\000"
+.LASF465:
+	.ascii	"_ZN14CIwManagedList8CopyListERKS_\000"
+.LASF133:
+	.ascii	"_ZNK8CIwSVec29GetLengthEv\000"
+.LASF885:
+	.ascii	"getwchar\000"
+.LASF803:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE8LockSizeEb\000"
+.LASF90:
+	.ascii	"buffer\000"
+.LASF120:
+	.ascii	"_ZN9CIwColourmlEi\000"
+.LASF51:
+	.ascii	"fixed\000"
+.LASF971:
+	.ascii	"g_IwGxColours\000"
+.LASF764:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5clearEv\000"
+.LASF942:
+	.ascii	"_Z8DrawMazeiPP10CIw2DImageS0_S0_\000"
+.LASF793:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE6appendERKS1_\000"
+.LASF249:
+	.ascii	"c_str\000"
+.LASF575:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6resiz"
+	.ascii	"eEj\000"
+.LASF301:
+	.ascii	"IW_TYPE_INT16\000"
+.LASF600:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push"
+	.ascii	"_back_qtyERKS1_i\000"
+.LASF528:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
+	.ascii	"erase_fastEPS1_S9_\000"
+.LASF107:
+	.ascii	"SetGrey\000"
+.LASF456:
+	.ascii	"Erase\000"
+.LASF972:
+	.ascii	"g_IwMenuManager\000"
+.LASF978:
+	.ascii	"CIwMallocRouter<CIwManaged*>\000"
+.LASF554:
+	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
+	.ascii	"1_EE8allocateEj\000"
+.LASF423:
+	.ascii	"_ZNK14CIwManagedList9_CheckAddEP10CIwManagedb\000"
+.LASF222:
+	.ascii	"_ZN8CIwFVec2aSERK7CIwVec2\000"
+.LASF188:
+	.ascii	"_ZNK7CIwVec29GetLengthEv\000"
+.LASF848:
+	.ascii	"fsetpos\000"
+.LASF604:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5Share"
+	.ascii	"EPS1_ii\000"
+.LASF673:
+	.ascii	"GetResNamed\000"
+.LASF131:
+	.ascii	"_ZN8CIwSVec2aSERK8CIwFVec2\000"
+.LASF785:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5eraseEPS1_\000"
+.LASF620:
+	.ascii	"m_Flags\000"
+.LASF724:
+	.ascii	"GetBuildStyleNamed\000"
+.LASF792:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5frontEv\000"
+.LASF630:
+	.ascii	"m_GroupCurr\000"
+.LASF345:
+	.ascii	"SerialiseHeader\000"
+.LASF777:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE8pop_backEv\000"
+.LASF255:
+	.ascii	"capacity\000"
+.LASF833:
+	.ascii	"ldiv\000"
+.LASF612:
+	.ascii	"GlobalMode\000"
+.LASF223:
+	.ascii	"_ZNK8CIwFVec29GetLengthEv\000"
+.LASF66:
+	.ascii	"failbit\000"
+.LASF622:
+	.ascii	"m_OwnerResName\000"
+.LASF382:
+	.ascii	"erase\000"
+.LASF820:
+	.ascii	"double\000"
+.LASF349:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5clearE"
+	.ascii	"v\000"
+.LASF984:
 	.ascii	"GNU C++ 4.8.3 20140228 (release) [ARM/embedded-4_8-"
 	.ascii	"branch revision 208322] -fpreprocessed -mstructure-"
 	.ascii	"size-boundary=8 -march=armv6 -mfloat-abi=soft -mthu"
@@ -16374,1350 +17821,541 @@ _GLOBAL__sub_I_MazeDrawer.cpp:
 	.ascii	"inter -fmessage-length=0 -ffunction-sections -fvisi"
 	.ascii	"bility=hidden -fPIC -fvisibility-inlines-hidden -fn"
 	.ascii	"o-exceptions\000"
-.LASF648:
-	.ascii	"_ZN13CIwResManager13RemoveHandlerEPKc\000"
-.LASF551:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8t"
-	.ascii	"runcateEj\000"
-.LASF591:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11inse"
-	.ascii	"rt_slowERS8_j\000"
-.LASF46:
-	.ascii	"~Init\000"
-.LASF900:
-	.ascii	"wcscoll\000"
-.LASF203:
-	.ascii	"_ZNK7CIwVec2plERKS_\000"
-.LASF35:
-	.ascii	"6ldiv_t\000"
-.LASF110:
-	.ascii	"operator==\000"
-.LASF970:
-	.ascii	"__ap\000"
-.LASF451:
-	.ascii	"_ZN14CIwManagedList6InsertEP10CIwManagedjb\000"
-.LASF221:
-	.ascii	"_ZN8CIwFVec2aSERK8CIwSVec2\000"
-.LASF772:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE6resizeEj\000"
-.LASF839:
-	.ascii	"ferror\000"
-.LASF198:
-	.ascii	"_ZNK7CIwVec212IsNormalisedEv\000"
-.LASF892:
-	.ascii	"vfwprintf\000"
-.LASF399:
-	.ascii	"push_back\000"
-.LASF113:
-	.ascii	"_ZNK9CIwColoureqERKS_\000"
-.LASF644:
-	.ascii	"_ZNK13CIwResManager7GetModeEv\000"
-.LASF275:
-	.ascii	"CIwStringL\000"
-.LASF976:
-	.ascii	"this\000"
-.LASF245:
-	.ascii	"CIwStringS\000"
-.LASF688:
-	.ascii	"_ZN13CIwResManager19LoadGroupFromMemoryEPKhj\000"
-.LASF549:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8L"
-	.ascii	"ockSizeEb\000"
-.LASF421:
-	.ascii	"m_List\000"
-.LASF642:
-	.ascii	"_ZN13CIwResManager7SetModeENS_10GlobalModeE\000"
-.LASF487:
-	.ascii	"IW_EVENT_TABLE_GLOBAL\000"
-.LASF363:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12resiz"
-	.ascii	"e_quickEj\000"
-.LASF639:
-	.ascii	"BuildGroupCallbackPre\000"
-.LASF355:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16resiz"
-	.ascii	"e_optimisedEj\000"
-.LASF562:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4size"
-	.ascii	"Ev\000"
-.LASF294:
-	.ascii	"_ZNK9CIwStringILi160EEeqERKS0_\000"
-.LASF530:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
-	.ascii	"raseEjj\000"
-.LASF571:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17opti"
-	.ascii	"mise_capacityEv\000"
-.LASF720:
-	.ascii	"DebugSetGroupBinCopyPath\000"
-.LASF471:
-	.ascii	"_ZN14CIwManagedList4PushEP10CIwManagedb\000"
-.LASF486:
-	.ascii	"s3eErrorShowResult\000"
-.LASF515:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7r"
-	.ascii	"eserveEj\000"
-.LASF230:
-	.ascii	"_ZNK8CIwFVec23DotERKS_\000"
-.LASF566:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaSERKS"
-	.ascii	"8_\000"
-.LASF395:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5frontE"
-	.ascii	"v\000"
-.LASF656:
-	.ascii	"ReserveHandlers\000"
-.LASF670:
-	.ascii	"SplitPathName\000"
-.LASF173:
-	.ascii	"operator>>\000"
-.LASF816:
-	.ascii	"strxfrm\000"
-.LASF134:
-	.ascii	"GetLengthSquared\000"
-.LASF785:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5eraseEPS1_\000"
-.LASF320:
-	.ascii	"reallocate\000"
-.LASF593:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backE"
-	.ascii	"v\000"
-.LASF621:
-	.ascii	"m_LoadPaths\000"
-.LASF848:
-	.ascii	"fsetpos\000"
-.LASF565:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15Seri"
-	.ascii	"aliseHeaderEv\000"
-.LASF800:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5ShareERKS8_\000"
-.LASF232:
-	.ascii	"_ZNK8CIwFVec2plERKS_\000"
-.LASF953:
-	.ascii	"g_InverseSqrtTable\000"
-.LASF133:
-	.ascii	"_ZNK8CIwSVec29GetLengthEv\000"
-.LASF243:
-	.ascii	"_ZN8CIwFVec2ixEi\000"
-.LASF401:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_b"
-	.ascii	"ackEv\000"
-.LASF432:
-	.ascii	"OptimizeCapacity\000"
-.LASF601:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push"
-	.ascii	"_back_qtyEi\000"
-.LASF948:
-	.ascii	"__initialize_p\000"
-.LASF274:
-	.ascii	"_ZN9CIwStringILi32EE9SerialiseEv\000"
-.LASF531:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5e"
-	.ascii	"raseEPS1_\000"
-.LASF489:
-	.ascii	"IW_EVENT_GX\000"
-.LASF787:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE11insert_slowERKS1_j\000"
-.LASF802:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE9CanResizeEv\000"
-.LASF77:
-	.ascii	"__std_alias\000"
-.LASF49:
-	.ascii	"right\000"
-.LASF306:
-	.ascii	"IW_TYPE_DOUBLE\000"
-.LASF8:
-	.ascii	"long long int\000"
-.LASF305:
-	.ascii	"IW_TYPE_FLOAT\000"
-.LASF899:
-	.ascii	"wcscmp\000"
-.LASF29:
-	.ascii	"va_list\000"
-.LASF219:
-	.ascii	"_ZNK7CIwVec2ixEi\000"
-.LASF692:
-	.ascii	"_ZN13CIwResManager11ReloadGroupEPKcb\000"
-.LASF657:
-	.ascii	"_ZN13CIwResManager15ReserveHandlersEi\000"
-.LASF438:
-	.ascii	"_ZN14CIwManagedList6DeleteEv\000"
-.LASF525:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
-	.ascii	"erase_fastEi\000"
-.LASF691:
-	.ascii	"ReloadGroup\000"
-.LASF585:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
-	.ascii	"e_fastEPS1_S9_\000"
-.LASF178:
-	.ascii	"_ZNK8CIwSVec2lsEi\000"
-.LASF928:
-	.ascii	"leveler\000"
-.LASF955:
-	.ascii	"g_IwMenuManager\000"
-.LASF570:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16resi"
-	.ascii	"ze_optimisedEj\000"
-.LASF114:
-	.ascii	"operator!=\000"
-.LASF212:
-	.ascii	"_ZN7CIwVec2mLEi\000"
-.LASF502:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
-	.ascii	"beginEv\000"
-.LASF226:
-	.ascii	"_ZNK8CIwFVec213GetNormalisedEv\000"
-.LASF752:
-	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
-	.ascii	"5CIwMallocRouterIS1_EE8allocateEj\000"
-.LASF74:
-	.ascii	"_ZN4_STL14__narrow_atomsE\000"
-.LASF820:
-	.ascii	"double\000"
-.LASF50:
-	.ascii	"internal\000"
-.LASF632:
-	.ascii	"m_GroupPathNameCurr\000"
-.LASF825:
-	.ascii	"mbtowc\000"
-.LASF760:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE8capacityEv\000"
-.LASF189:
-	.ascii	"_ZNK7CIwVec216GetLengthSquaredEv\000"
+.LASF990:
+	.ascii	"CRemovedGroup\000"
+.LASF450:
+	.ascii	"Insert\000"
+.LASF613:
+	.ascii	"MODE_BUILD\000"
+.LASF289:
+	.ascii	"_ZN9CIwStringILi160EEpLERKS0_\000"
 .LASF414:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12set_c"
 	.ascii	"apacityEj\000"
-.LASF217:
-	.ascii	"_ZN7CIwVec2lSEi\000"
-.LASF372:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20find_"
-	.ascii	"and_remove_fastERKS1_\000"
-.LASF364:
-	.ascii	"resize\000"
-.LASF781:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE10erase_fastEPS1_\000"
-.LASF475:
-	.ascii	"GetBegin\000"
-.LASF925:
-	.ascii	"ReallocateDefault<CIwString<160>, CIwAllocator<CIwS"
-	.ascii	"tring<160>, CIwMallocRouter<CIwString<160> > > >\000"
-.LASF915:
-	.ascii	"wctob\000"
-.LASF442:
-	.ascii	"_ZN14CIwManagedList12ClearAndFreeEv\000"
-.LASF497:
-	.ascii	"CIwAllocator<CIwString<160>, CIwMallocRouter<CIwStr"
-	.ascii	"ing<160> > >\000"
-.LASF509:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEaS"
-	.ascii	"ERKS8_\000"
-.LASF310:
-	.ascii	"IW_TYPE_MAX_BIT\000"
-.LASF801:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5ShareEPS1_ii\000"
-.LASF256:
-	.ascii	"_ZNK9CIwStringILi32EE8capacityEv\000"
-.LASF746:
-	.ascii	"_ZN13CIwResManager13GetBinaryPathEPKc\000"
-.LASF261:
-	.ascii	"substr\000"
-.LASF604:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5Share"
-	.ascii	"EPS1_ii\000"
-.LASF814:
-	.ascii	"strerror\000"
-.LASF196:
-	.ascii	"_ZN7CIwVec213NormaliseSafeEv\000"
-.LASF685:
-	.ascii	"LoadGroup\000"
-.LASF716:
-	.ascii	"_ZN14CIwManagedList17_AddHashAsPointerEj\000"
-.LASF360:
-	.ascii	"reserve_optimised\000"
-.LASF947:
-	.ascii	"curLevel\000"
-.LASF673:
-	.ascii	"GetResNamed\000"
-.LASF457:
-	.ascii	"_ZN14CIwManagedList5EraseEPP10CIwManaged\000"
-.LASF920:
-	.ascii	"wmemcpy\000"
-.LASF148:
-	.ascii	"NormaliseSafe\000"
-.LASF737:
-	.ascii	"_ZN13CIwResManager13GetAtlasOwnerEv\000"
-.LASF124:
-	.ascii	"_ZN9CIwColourpLERKS_\000"
-.LASF723:
-	.ascii	"_ZN13CIwResManager13AddBuildStyleEP16CIwResBuildSty"
-	.ascii	"le\000"
-.LASF215:
-	.ascii	"_ZN7CIwVec2rSEi\000"
-.LASF84:
-	.ascii	"read\000"
-.LASF919:
-	.ascii	"wscanf\000"
-.LASF910:
-	.ascii	"wcsxfrm\000"
-.LASF331:
-	.ascii	"block_delete\000"
-.LASF79:
-	.ascii	"s3eFile\000"
-.LASF6:
-	.ascii	"unsigned int\000"
-.LASF100:
-	.ascii	"_ZN9CIwColour3SetEj\000"
-.LASF854:
-	.ascii	"perror\000"
-.LASF164:
-	.ascii	"_ZN8CIwSVec2mIERKS_\000"
-.LASF559:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5begi"
-	.ascii	"nEv\000"
-.LASF582:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10eras"
-	.ascii	"e_fastEi\000"
-.LASF101:
-	.ascii	"_ZN9CIwColour3SetEhhhh\000"
-.LASF131:
-	.ascii	"_ZN8CIwSVec2aSERK8CIwFVec2\000"
-.LASF42:
-	.ascii	"_STL\000"
-.LASF909:
-	.ascii	"wcsspn\000"
-.LASF128:
-	.ascii	"g_AxisX\000"
-.LASF129:
-	.ascii	"g_AxisY\000"
-.LASF303:
-	.ascii	"IW_TYPE_INT32\000"
-.LASF413:
-	.ascii	"set_capacity\000"
-.LASF157:
-	.ascii	"_ZNK9CIwColour3GetEv\000"
-.LASF665:
-	.ascii	"_ZNK13CIwResManager8GetGroupEj\000"
-.LASF651:
-	.ascii	"DestroyGroup\000"
-.LASF847:
-	.ascii	"fseek\000"
-.LASF830:
-	.ascii	"wcstombs\000"
-.LASF93:
-	.ascii	"versionUser\000"
-.LASF859:
-	.ascii	"setvbuf\000"
-.LASF260:
-	.ascii	"_ZN9CIwStringILi32EE4findEPKc\000"
-.LASF776:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE20find_and_remove_fastERKS1_\000"
-.LASF443:
-	.ascii	"GetObjNamed\000"
-.LASF663:
-	.ascii	"_ZNK13CIwResManager12GetNumGroupsEv\000"
-.LASF627:
-	.ascii	"m_Handlers\000"
-.LASF713:
-	.ascii	"GetPathName\000"
-.LASF420:
-	.ascii	"CIwManagedList\000"
-.LASF506:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8"
-	.ascii	"capacityEv\000"
-.LASF799:
-	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
-	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EEixEi\000"
-.LASF495:
-	.ascii	"CIwResource\000"
-.LASF683:
-	.ascii	"GetLastSearchGroup\000"
-.LASF235:
-	.ascii	"_ZN8CIwFVec2mIERKS_\000"
-.LASF54:
-	.ascii	"showbase\000"
-.LASF581:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12pop_"
-	.ascii	"back_getEv\000"
-.LASF464:
-	.ascii	"CopyList\000"
-.LASF856:
-	.ascii	"rename\000"
-.LASF540:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6a"
-	.ascii	"ppendERS8_\000"
-.LASF276:
-	.ascii	"CIwString<160>\000"
-.LASF143:
-	.ascii	"_ZN8CIwSVec213NormaliseSlowEv\000"
-.LASF45:
-	.ascii	"_S_count\000"
-.LASF169:
-	.ascii	"_ZNK8CIwSVec2mlEi\000"
-.LASF714:
-	.ascii	"_ZNK13CIwResManager11GetPathNameEv\000"
-.LASF494:
-	.ascii	"IW_EVENT_ALLOCATION_MASK\000"
-.LASF595:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5front"
-	.ascii	"Ev\000"
-.LASF210:
-	.ascii	"_ZNK7CIwVec2ngEv\000"
-.LASF952:
-	.ascii	"g_SqrtTable\000"
-.LASF480:
-	.ascii	"_ZN14CIwManagedList7ReserveEj\000"
-.LASF43:
-	.ascii	"Init\000"
-.LASF251:
-	.ascii	"size\000"
-.LASF702:
-	.ascii	"_ZN13CIwResManager16GetAtlasMaterialEP11CIwMaterial"
-	.ascii	"R7CIwRect\000"
-.LASF338:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5empty"
-	.ascii	"Ev\000"
-.LASF930:
-	.ascii	"block\000"
-.LASF325:
-	.ascii	"CIwManaged\000"
-.LASF445:
-	.ascii	"GetObjHashed\000"
-.LASF0:
-	.ascii	"unsigned char\000"
-.LASF512:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE1"
-	.ascii	"1MemoryUsageEv\000"
-.LASF852:
-	.ascii	"getchar\000"
-.LASF402:
-	.ascii	"push_back_qty\000"
-.LASF398:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
-	.ascii	"ERS8_\000"
-.LASF277:
-	.ascii	"_ZNK9CIwStringILi160EE5c_strEv\000"
-.LASF75:
-	.ascii	"_LocInit\000"
-.LASF749:
-	.ascii	"_ZN13CIwResManager22OptimisedMountedGroupsEv\000"
-.LASF95:
-	.ascii	"bool\000"
-.LASF838:
-	.ascii	"feof\000"
-.LASF73:
-	.ascii	"_ZN4_STL17__digit_val_tableE\000"
-.LASF430:
-	.ascii	"SerialisePtrs\000"
-.LASF397:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6append"
-	.ascii	"ERKS1_\000"
-.LASF624:
-	.ascii	"m_GroupBuildData\000"
-.LASF254:
-	.ascii	"_ZNK9CIwStringILi32EE6lengthEv\000"
-.LASF783:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5eraseEi\000"
-.LASF667:
-	.ascii	"_ZNK13CIwResManager10GetHandlerEPKcj\000"
-.LASF539:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6a"
-	.ascii	"ppendERKS1_\000"
-.LASF373:
-	.ascii	"pop_back\000"
-.LASF834:
-	.ascii	"qsort\000"
-.LASF748:
-	.ascii	"OptimisedMountedGroups\000"
-.LASF122:
-	.ascii	"_ZN9CIwColourplES_\000"
-.LASF88:
-	.ascii	"bytesRead\000"
-.LASF951:
-	.ascii	"g_IwSerialiseContextValid\000"
-.LASF707:
-	.ascii	"LoadRes\000"
-.LASF202:
-	.ascii	"_ZN7CIwVec2aSERKS_\000"
-.LASF284:
-	.ascii	"_ZN9CIwStringILi160EEixEi\000"
-.LASF449:
-	.ascii	"_ZN14CIwManagedList3AddEP10CIwManagedb\000"
-.LASF272:
-	.ascii	"_ZNK9CIwStringILi32EEeqEPKc\000"
-.LASF888:
-	.ascii	"putwc\000"
-.LASF863:
-	.ascii	"IwGxScreenOrient\000"
-.LASF492:
-	.ascii	"IW_EVENT_GUI\000"
-.LASF340:
-	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8capac"
-	.ascii	"ityEv\000"
-.LASF30:
-	.ascii	"FILE\000"
-.LASF132:
-	.ascii	"GetLength\000"
-.LASF676:
-	.ascii	"_ZNK13CIwResManager12GetResHashedEjPKcj\000"
-.LASF207:
-	.ascii	"_ZNK7CIwVec2mlERKS_\000"
-.LASF629:
-	.ascii	"m_ReplacingGroups\000"
-.LASF733:
-	.ascii	"_ZN13CIwResManager15ClearAtlasOwnerEv\000"
-.LASF370:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find_"
-	.ascii	"and_removeERKS1_\000"
-.LASF56:
-	.ascii	"showpos\000"
-.LASF527:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
-	.ascii	"erase_fastEPS1_\000"
-.LASF808:
-	.ascii	"CIwMaterial\000"
-.LASF344:
-	.ascii	"~CIwArray\000"
-.LASF228:
-	.ascii	"_ZN8CIwFVec29SerialiseEv\000"
+.LASF141:
+	.ascii	"_ZNK8CIwSVec225GetLengthSquaredUnshiftedEv\000"
 .LASF381:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
 	.ascii	"_fastEPS1_S9_\000"
-.LASF429:
-	.ascii	"_ZN14CIwManagedList7ResolveEv\000"
-.LASF316:
-	.ascii	"size_type\000"
-.LASF832:
-	.ascii	"bsearch\000"
-.LASF943:
-	.ascii	"pt1x\000"
-.LASF944:
-	.ascii	"pt1y\000"
-.LASF575:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6resiz"
-	.ascii	"eEj\000"
-.LASF569:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11Mem"
-	.ascii	"oryUsageEv\000"
-.LASF726:
-	.ascii	"GetBuildStyleCurr\000"
-.LASF13:
-	.ascii	"intptr_t\000"
-.LASF375:
-	.ascii	"pop_back_get\000"
-.LASF127:
-	.ascii	"g_Zero\000"
-.LASF978:
-	.ascii	"__static_initialization_and_destruction_0\000"
-.LASF641:
-	.ascii	"SetMode\000"
-.LASF231:
-	.ascii	"_ZN8CIwFVec2aSERKS_\000"
-.LASF417:
-	.ascii	"swap\000"
-.LASF615:
-	.ascii	"IW_RES_GROUP_COLLISION_ERROR_F\000"
-.LASF7:
-	.ascii	"long long unsigned int\000"
+.LASF767:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE16resize_optimisedEj\000"
 .LASF567:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5clear"
 	.ascii	"Ev\000"
-.LASF580:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8pop_b"
-	.ascii	"ackEv\000"
-.LASF536:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4b"
-	.ascii	"ackEv\000"
-.LASF278:
-	.ascii	"_ZNK9CIwStringILi160EE4sizeEv\000"
-.LASF537:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
-	.ascii	"frontEv\000"
-.LASF602:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEixEi\000"
-.LASF253:
-	.ascii	"length\000"
-.LASF11:
-	.ascii	"uint16_t\000"
-.LASF674:
-	.ascii	"_ZNK13CIwResManager11GetResNamedEPKcS1_j\000"
-.LASF913:
-	.ascii	"wcsstr\000"
-.LASF314:
-	.ascii	"CIwMenuManager\000"
-.LASF538:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5f"
-	.ascii	"rontEv\000"
-.LASF727:
-	.ascii	"_ZNK13CIwResManager17GetBuildStyleCurrEv\000"
-.LASF263:
-	.ascii	"_ZN9CIwStringILi32EEixEi\000"
-.LASF422:
-	.ascii	"_CheckAdd\000"
-.LASF76:
-	.ascii	"_IosInit\000"
-.LASF858:
-	.ascii	"setbuf\000"
-.LASF868:
-	.ascii	"tm_sec\000"
-.LASF945:
-	.ascii	"pt2x\000"
-.LASF946:
-	.ascii	"pt2y\000"
-.LASF98:
-	.ascii	"CIwColour\000"
-.LASF518:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6r"
-	.ascii	"esizeEj\000"
-.LASF367:
-	.ascii	"contains\000"
-.LASF60:
-	.ascii	"adjustfield\000"
-.LASF874:
-	.ascii	"tm_wday\000"
-.LASF36:
-	.ascii	"ldiv_t\000"
-.LASF867:
-	.ascii	"IW_GX_ORIENT_270\000"
-.LASF91:
-	.ascii	"headBit\000"
-.LASF240:
-	.ascii	"_ZNK8CIwFVec2mlEf\000"
-.LASF380:
+.LASF834:
+	.ascii	"qsort\000"
+.LASF392:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10erase"
-	.ascii	"_fastEPS1_\000"
-.LASF731:
-	.ascii	"_ZNK13CIwResManager13DumpCatalogueEPKc\000"
-.LASF671:
-	.ascii	"_ZN13CIwResManager13SplitPathNameEPKcR9CIwStringILi"
-	.ascii	"160EES4_RS2_ILi32EE\000"
-.LASF62:
-	.ascii	"floatfield\000"
-.LASF718:
-	.ascii	"DebugAddMenuItems\000"
-.LASF875:
-	.ascii	"tm_yday\000"
-.LASF287:
-	.ascii	"_ZN9CIwStringILi160EEaSERKS0_\000"
-.LASF596:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6appen"
-	.ascii	"dERKS1_\000"
-.LASF911:
-	.ascii	"wcstod\000"
-.LASF722:
-	.ascii	"AddBuildStyle\000"
-.LASF416:
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4backEv"
+	.ascii	"\000"
+.LASF341:
+	.ascii	"data\000"
+.LASF916:
+	.ascii	"wmemcmp\000"
+.LASF851:
+	.ascii	"rand\000"
+.LASF183:
+	.ascii	"_ZN9CIwColourmIERKS_\000"
+.LASF395:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8trunca"
-	.ascii	"teEj\000"
-.LASF896:
-	.ascii	"wcstok\000"
-.LASF912:
-	.ascii	"wcstol\000"
-.LASF426:
-	.ascii	"~CIwManagedList\000"
-.LASF423:
-	.ascii	"_ZNK14CIwManagedList9_CheckAddEP10CIwManagedb\000"
-.LASF174:
-	.ascii	"_ZNK8CIwSVec2rsEi\000"
-.LASF361:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17reser"
-	.ascii	"ve_optimisedEi\000"
-.LASF154:
-	.ascii	"_ZN8CIwSVec29SerialiseEv\000"
-.LASF579:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE20find"
-	.ascii	"_and_remove_fastERKS1_\000"
-.LASF321:
-	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
-	.ascii	"_EE10reallocateEPS1_j\000"
-.LASF640:
-	.ascii	"BuildGroupCallbackPost\000"
-.LASF32:
-	.ascii	"quot\000"
-.LASF534:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11"
-	.ascii	"insert_slowERS8_j\000"
-.LASF197:
-	.ascii	"_ZNK7CIwVec217GetNormalisedSafeEv\000"
-.LASF634:
-	.ascii	"m_BuildStyleCurr\000"
-.LASF213:
-	.ascii	"_ZNK7CIwVec2dvEi\000"
-.LASF652:
-	.ascii	"_ZN13CIwResManager12DestroyGroupEPKc\000"
-.LASF55:
-	.ascii	"showpoint\000"
-.LASF468:
-	.ascii	"GetCapacity\000"
-.LASF721:
-	.ascii	"_ZN13CIwResManager24DebugSetGroupBinCopyPathEPKc\000"
-.LASF289:
-	.ascii	"_ZN9CIwStringILi160EEpLERKS0_\000"
-.LASF789:
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5frontE"
+	.ascii	"v\000"
+.LASF758:
 	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
 	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
-	.ascii	"aultIS1_S5_EE4backEv\000"
-.LASF740:
-	.ascii	"_TempRemoveGroup\000"
-.LASF938:
-	.ascii	"avgWidth\000"
-.LASF403:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
-	.ascii	"back_qtyERKS1_i\000"
-.LASF147:
-	.ascii	"_ZNK8CIwSVec213GetNormalisedEv\000"
-.LASF884:
-	.ascii	"fwscanf\000"
-.LASF25:
-	.ascii	"wint_t\000"
-.LASF299:
-	.ascii	"IW_TYPE_INT8\000"
-.LASF533:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11"
-	.ascii	"insert_slowERKS1_j\000"
-.LASF175:
-	.ascii	"operator>>=\000"
-.LASF520:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8"
-	.ascii	"containsERKS1_\000"
-.LASF617:
-	.ascii	"IW_RES_GROUP_COLLISION_PATCH_F\000"
-.LASF643:
-	.ascii	"GetMode\000"
-.LASF295:
-	.ascii	"_ZN9CIwStringILi160EE9SerialiseEv\000"
-.LASF194:
-	.ascii	"_ZN7CIwVec29NormaliseEv\000"
-.LASF96:
-	.ascii	"float\000"
-.LASF747:
-	.ascii	"_ZN13CIwResManager25GetGroupCollisionHandlingEv\000"
-.LASF553:
-	.ascii	"CIwAllocator<CIwResGroup*, CIwMallocRouter<CIwResGr"
-	.ascii	"oup*> >\000"
-.LASF159:
-	.ascii	"_ZN8CIwSVec2aSERKS_\000"
-.LASF200:
-	.ascii	"_ZNK7CIwVec26IsZeroEv\000"
-.LASF712:
-	.ascii	"_ZN13CIwResManager14ClearLoadPathsEv\000"
-.LASF64:
-	.ascii	"badbit\000"
-.LASF542:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9p"
-	.ascii	"ush_backEv\000"
-.LASF844:
-	.ascii	"fopen\000"
-.LASF153:
-	.ascii	"_ZNK8CIwSVec212IsNormalisedEv\000"
-.LASF135:
-	.ascii	"_ZNK8CIwSVec216GetLengthSquaredEv\000"
-.LASF146:
-	.ascii	"GetNormalised\000"
-.LASF455:
-	.ascii	"_ZN14CIwManagedList10RemoveFastEP10CIwManaged\000"
-.LASF646:
-	.ascii	"_ZN13CIwResManager10AddHandlerEP13CIwResHandler\000"
-.LASF739:
-	.ascii	"_ZN13CIwResManager17GetUniqueRunStampEv\000"
-.LASF463:
-	.ascii	"_ZNK14CIwManagedList4FindERKP10CIwManaged\000"
-.LASF682:
-	.ascii	"_ZNK13CIwResManager15GetCurrentGroupEv\000"
-.LASF140:
-	.ascii	"GetLengthSquaredUnshifted\000"
-.LASF400:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_b"
-	.ascii	"ackERKS1_\000"
-.LASF606:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8LockS"
-	.ascii	"izeEb\000"
-.LASF65:
-	.ascii	"eofbit\000"
-.LASF823:
-	.ascii	"mblen\000"
-.LASF493:
-	.ascii	"IW_EVENT_USER\000"
-.LASF857:
-	.ascii	"rewind\000"
-.LASF336:
+	.ascii	"aultIS1_S5_EE5emptyEv\000"
+.LASF292:
+	.ascii	"_ZN9CIwStringILi160EEpLEc\000"
+.LASF987:
+	.ascii	"_ZN4_STL3bufE\000"
+.LASF648:
+	.ascii	"_ZN13CIwResManager13RemoveHandlerEPKc\000"
+.LASF282:
+	.ascii	"_ZN9CIwStringILi160EE4findEPKc\000"
+.LASF353:
 	.ascii	"_ZNK8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3endEv"
-	.ascii	"\000"
-.LASF205:
-	.ascii	"_ZNK7CIwVec2miERKS_\000"
-.LASF510:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5c"
-	.ascii	"learEv\000"
-.LASF745:
-	.ascii	"GetGroupCollisionHandling\000"
-.LASF115:
-	.ascii	"_ZNK9CIwColourneEj\000"
-.LASF266:
-	.ascii	"_ZN9CIwStringILi32EEaSERKS0_\000"
-.LASF903:
-	.ascii	"wcslen\000"
-.LASF163:
-	.ascii	"_ZNK8CIwSVec2miERKS_\000"
-.LASF895:
-	.ascii	"wcsftime\000"
-.LASF229:
-	.ascii	"_ZNK8CIwFVec26IsZeroEv\000"
-.LASF182:
-	.ascii	"_ZN8CIwSVec2ixEi\000"
-.LASF14:
-	.ascii	"uint8\000"
-.LASF826:
-	.ascii	"strtod\000"
-.LASF117:
-	.ascii	"operator*=\000"
-.LASF138:
-	.ascii	"GetLengthSquaredSafe\000"
-.LASF152:
-	.ascii	"IsNormalised\000"
-.LASF815:
-	.ascii	"strtok\000"
-.LASF827:
-	.ascii	"strtol\000"
-.LASF607:
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11Memo"
+	.ascii	"ryUsageEv\000"
+.LASF605:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12set_"
-	.ascii	"capacityEj\000"
-.LASF204:
-	.ascii	"_ZN7CIwVec2pLERKS_\000"
-.LASF5:
-	.ascii	"short int\000"
-.LASF695:
-	.ascii	"SetBuildGroupCallbackPost\000"
-.LASF307:
-	.ascii	"IW_TYPE_STRING\000"
-.LASF386:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5eraseE"
-	.ascii	"PS1_S9_\000"
-.LASF507:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4d"
-	.ascii	"ataEv\000"
-.LASF544:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13"
-	.ascii	"push_back_qtyEi\000"
-.LASF866:
-	.ascii	"IW_GX_ORIENT_180\000"
-.LASF521:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15"
-	.ascii	"find_and_removeERKS1_\000"
-.LASF102:
-	.ascii	"_ZN9CIwColour3SetEhhh\000"
-.LASF935:
-	.ascii	"surface_height\000"
-.LASF12:
-	.ascii	"int16_t\000"
-.LASF187:
-	.ascii	"_ZN7CIwVec2aSERK8CIwFVec2\000"
-.LASF817:
-	.ascii	"atexit\000"
-.LASF250:
-	.ascii	"_ZNK9CIwStringILi32EE5c_strEv\000"
-.LASF47:
-	.ascii	"~_Loc_init\000"
-.LASF456:
-	.ascii	"Erase\000"
-.LASF123:
-	.ascii	"operator+=\000"
-.LASF954:
-	.ascii	"g_IwGxColours\000"
-.LASF622:
-	.ascii	"m_OwnerResName\000"
-.LASF526:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE10"
-	.ascii	"erase_fastEii\000"
-.LASF961:
-	.ascii	"CIwMallocRouter<CIwManaged*>\000"
-.LASF535:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4"
-	.ascii	"backEv\000"
-.LASF934:
-	.ascii	"surface_width\000"
-.LASF333:
-	.ascii	"iterator\000"
-.LASF155:
-	.ascii	"IsZero\000"
-.LASF784:
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9CanRe"
+	.ascii	"sizeEv\000"
+.LASF770:
 	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
 	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE5eraseEjj\000"
-.LASF72:
-	.ascii	"__narrow_atoms\000"
-.LASF513:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE16"
-	.ascii	"resize_optimisedEj\000"
-.LASF476:
-	.ascii	"_ZNK14CIwManagedList8GetBeginEv\000"
-.LASF897:
-	.ascii	"wcscat\000"
-.LASF797:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE13push_back_qtyERKS1_i\000"
-.LASF264:
-	.ascii	"_ZNK9CIwStringILi32EEixEi\000"
-.LASF860:
-	.ascii	"tmpfile\000"
-.LASF3:
-	.ascii	"s3e_uint16_t\000"
-.LASF668:
-	.ascii	"GetResType\000"
-.LASF694:
-	.ascii	"_ZN13CIwResManager24SetBuildGroupCallbackPreEPFvvE\000"
-.LASF180:
-	.ascii	"_ZN8CIwSVec2lSEi\000"
-.LASF349:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5clearE"
-	.ascii	"v\000"
-.LASF609:
+	.ascii	"ultIS1_S5_EE17reserve_optimisedEi\000"
+.LASF437:
+	.ascii	"Delete\000"
+.LASF865:
+	.ascii	"IW_GX_ORIENT_90\000"
+.LASF595:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4swapE"
-	.ascii	"RS8_\000"
-.LASF225:
-	.ascii	"_ZN8CIwFVec29NormaliseEv\000"
-.LASF24:
-	.ascii	"ptrdiff_t\000"
-.LASF835:
-	.ascii	"srand\000"
-.LASF318:
-	.ascii	"allocate\000"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5front"
+	.ascii	"Ev\000"
+.LASF85:
+	.ascii	"base\000"
+.LASF48:
+	.ascii	"left\000"
+.LASF859:
+	.ascii	"setvbuf\000"
 .LASF572:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE7reser"
 	.ascii	"veEj\000"
-.LASF346:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15Seria"
-	.ascii	"liseHeaderEv\000"
-.LASF491:
-	.ascii	"IW_EVENT_ANIM\000"
-.LASF654:
-	.ascii	"ReserveGroups\000"
-.LASF106:
-	.ascii	"_ZN9CIwColour9SetOpaqueEj\000"
-.LASF469:
-	.ascii	"_ZNK14CIwManagedList11GetCapacityEv\000"
-.LASF742:
-	.ascii	"SetGroupCollisionHandling\000"
-.LASF862:
-	.ascii	"ungetc\000"
-.LASF592:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4back"
-	.ascii	"Ev\000"
-.LASF290:
-	.ascii	"_ZN9CIwStringILi160EEplEPKc\000"
-.LASF18:
-	.ascii	"int16\000"
-.LASF470:
-	.ascii	"Push\000"
-.LASF950:
-	.ascii	"g_IwSerialiseContext\000"
-.LASF406:
-	.ascii	"Share\000"
-.LASF744:
-	.ascii	"GetBinaryPath\000"
-.LASF382:
-	.ascii	"erase\000"
-.LASF704:
-	.ascii	"_ZN13CIwResManager13SetBuildStyleEPKc\000"
-.LASF594:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5fron"
-	.ascii	"tEv\000"
-.LASF762:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE15SerialiseHeaderEv\000"
-.LASF554:
-	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
-	.ascii	"1_EE8allocateEj\000"
-.LASF404:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13push_"
-	.ascii	"back_qtyEi\000"
-.LASF354:
-	.ascii	"resize_optimised\000"
-.LASF161:
-	.ascii	"_ZN8CIwSVec2pLERKS_\000"
-.LASF484:
-	.ascii	"Reallocate\000"
-.LASF754:
-	.ascii	"_ZN12CIwAllocatorIN13CIwResManager13CRemovedGroupE1"
-	.ascii	"5CIwMallocRouterIS1_EE10deallocateEPS1_j\000"
-.LASF170:
-	.ascii	"_ZN8CIwSVec2mLEi\000"
-.LASF778:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE12pop_back_getEv\000"
-.LASF499:
-	.ascii	"_ZN12CIwAllocatorI9CIwStringILi160EE15CIwMallocRout"
-	.ascii	"erIS1_EE10reallocateEPS1_j\000"
-.LASF904:
-	.ascii	"wcsncat\000"
-.LASF176:
-	.ascii	"_ZN8CIwSVec2rSEi\000"
-.LASF548:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9C"
-	.ascii	"anResizeEv\000"
-.LASF552:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4s"
-	.ascii	"wapERS8_\000"
-.LASF323:
-	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
-	.ascii	"_EE10deallocateEPS1_j\000"
-.LASF611:
-	.ascii	"CIwResManager\000"
-.LASF343:
-	.ascii	"CIwArray\000"
-.LASF960:
-	.ascii	"__dso_handle\000"
-.LASF503:
-	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
-	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE3"
-	.ascii	"endEv\000"
-.LASF636:
-	.ascii	"m_LoadingPatch\000"
-.LASF407:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5ShareE"
-	.ascii	"RKS8_\000"
-.LASF878:
-	.ascii	"fgetwc\000"
-.LASF880:
-	.ascii	"fputwc\000"
-.LASF125:
-	.ascii	"operator-=\000"
-.LASF283:
-	.ascii	"_ZNK9CIwStringILi160EE6substrEii\000"
-.LASF730:
-	.ascii	"DumpCatalogue\000"
-.LASF958:
-	.ascii	"level\000"
-.LASF568:
-	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
-	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15clea"
-	.ascii	"r_optimisedEv\000"
-.LASF357:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17optim"
-	.ascii	"ise_capacityEv\000"
-.LASF881:
-	.ascii	"fputws\000"
-.LASF556:
-	.ascii	"_ZN12CIwAllocatorIP11CIwResGroup15CIwMallocRouterIS"
-	.ascii	"1_EE10deallocateEPS1_j\000"
-.LASF352:
-	.ascii	"MemoryUsage\000"
-.LASF864:
-	.ascii	"IW_GX_ORIENT_NONE\000"
-.LASF769:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE7reserveEj\000"
-.LASF614:
-	.ascii	"MODE_LOAD\000"
-.LASF524:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
-	.ascii	"pop_back_getEv\000"
-.LASF523:
-	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8p"
-	.ascii	"op_backEv\000"
-.LASF410:
-	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
-	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9CanRes"
-	.ascii	"izeEv\000"
-.LASF224:
-	.ascii	"_ZNK8CIwFVec216GetLengthSquaredEv\000"
-.LASF38:
-	.ascii	"bad_exception\000"
+.LASF446:
+	.ascii	"_ZNK14CIwManagedList12GetObjHashedEjb\000"
+.LASF83:
+	.ascii	"IwSerialiseContext\000"
+.LASF205:
+	.ascii	"_ZNK7CIwVec2miERKS_\000"
+.LASF288:
+	.ascii	"_ZN9CIwStringILi160EEpLEPKc\000"
+.LASF34:
+	.ascii	"5div_t\000"
+.LASF216:
+	.ascii	"_ZNK7CIwVec2lsEi\000"
+.LASF629:
+	.ascii	"m_ReplacingGroups\000"
+.LASF80:
+	.ascii	"__XXFILE\000"
 .LASF33:
 	.ascii	"div_t\000"
-.LASF703:
-	.ascii	"SetBuildStyle\000"
-.LASF496:
-	.ascii	"CIwTextParserITX\000"
-.LASF371:
-	.ascii	"find_and_remove_fast\000"
-.LASF271:
-	.ascii	"_ZN9CIwStringILi32EEpLEc\000"
-.LASF873:
-	.ascii	"tm_year\000"
-.LASF427:
-	.ascii	"_ZN14CIwManagedList9SerialiseEv\000"
+.LASF495:
+	.ascii	"CIwResource\000"
+.LASF596:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6appen"
+	.ascii	"dERKS1_\000"
+.LASF165:
+	.ascii	"_ZNK8CIwSVec2mlERKS_\000"
+.LASF739:
+	.ascii	"_ZN13CIwResManager17GetUniqueRunStampEv\000"
+.LASF790:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE4backEv\000"
+.LASF337:
+	.ascii	"empty\000"
+.LASF224:
+	.ascii	"_ZNK8CIwFVec216GetLengthSquaredEv\000"
+.LASF277:
+	.ascii	"_ZNK9CIwStringILi160EE5c_strEv\000"
+.LASF563:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8capa"
+	.ascii	"cityEv\000"
+.LASF825:
+	.ascii	"mbtowc\000"
+.LASF635:
+	.ascii	"m_UniqueRunStamp\000"
+.LASF153:
+	.ascii	"_ZNK8CIwSVec212IsNormalisedEv\000"
+.LASF805:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE8truncateEj\000"
+.LASF502:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
+	.ascii	"beginEv\000"
+.LASF7:
+	.ascii	"long long unsigned int\000"
+.LASF18:
+	.ascii	"int16\000"
+.LASF708:
+	.ascii	"_ZN13CIwResManager7LoadResEPKcS1_j\000"
+.LASF290:
+	.ascii	"_ZN9CIwStringILi160EEplEPKc\000"
+.LASF722:
+	.ascii	"AddBuildStyle\000"
+.LASF920:
+	.ascii	"wmemcpy\000"
+.LASF976:
+	.ascii	"MaxLevel\000"
+.LASF602:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EEixEi\000"
+.LASF241:
+	.ascii	"_ZN8CIwFVec2mLEf\000"
+.LASF702:
+	.ascii	"_ZN13CIwResManager16GetAtlasMaterialEP11CIwMaterial"
+	.ascii	"R7CIwRect\000"
 .LASF628:
 	.ascii	"m_Groups\000"
-.LASF2:
-	.ascii	"short unsigned int\000"
-.LASF181:
-	.ascii	"operator[]\000"
-.LASF577:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8cont"
-	.ascii	"ainsERKS1_\000"
-.LASF188:
-	.ascii	"_ZNK7CIwVec29GetLengthEv\000"
+.LASF54:
+	.ascii	"showbase\000"
+.LASF190:
+	.ascii	"_ZNK7CIwVec213GetLengthSafeEv\000"
+.LASF326:
+	.ascii	"Array\000"
+.LASF203:
+	.ascii	"_ZNK7CIwVec2plERKS_\000"
+.LASF672:
+	.ascii	"_ZN13CIwResManager13SplitPathNameEPKcR9CIwStringILi"
+	.ascii	"160EERS2_ILi32EES6_\000"
+.LASF43:
+	.ascii	"Init\000"
+.LASF464:
+	.ascii	"CopyList\000"
+.LASF510:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5c"
+	.ascii	"learEv\000"
+.LASF557:
+	.ascii	"CIwResGroup\000"
+.LASF264:
+	.ascii	"_ZNK9CIwStringILi32EEixEi\000"
+.LASF757:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE3endEv\000"
+.LASF219:
+	.ascii	"_ZNK7CIwVec2ixEi\000"
+.LASF759:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE4sizeEv\000"
+.LASF422:
+	.ascii	"_CheckAdd\000"
+.LASF904:
+	.ascii	"wcsncat\000"
+.LASF844:
+	.ascii	"fopen\000"
+.LASF807:
+	.ascii	"CIwResBuildStyle\000"
+.LASF671:
+	.ascii	"_ZN13CIwResManager13SplitPathNameEPKcR9CIwStringILi"
+	.ascii	"160EES4_RS2_ILi32EE\000"
+.LASF199:
+	.ascii	"_ZN7CIwVec29SerialiseEv\000"
+.LASF477:
+	.ascii	"GetEnd\000"
+.LASF689:
+	.ascii	"MountGroup\000"
+.LASF804:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE12set_capacityEj\000"
 .LASF589:
 	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
 	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
 	.ascii	"EPS1_S9_\000"
-.LASF85:
-	.ascii	"base\000"
-.LASF145:
-	.ascii	"_ZN8CIwSVec29NormaliseEv\000"
-.LASF845:
-	.ascii	"fread\000"
-.LASF433:
-	.ascii	"_ZN14CIwManagedList16OptimizeCapacityEv\000"
-.LASF465:
-	.ascii	"_ZN14CIwManagedList8CopyListERKS_\000"
+.LASF39:
+	.ascii	"type_info\000"
+.LASF625:
+	.ascii	"m_ChildBuildScale\000"
 .LASF16:
 	.ascii	"int32\000"
-.LASF297:
-	.ascii	"IW_TYPE_CHAR\000"
-.LASF86:
-	.ascii	"handle\000"
-.LASF717:
-	.ascii	"_ZN13CIwResManager15ChangeExtensionER9CIwStringILi1"
-	.ascii	"60EEPKc\000"
-.LASF485:
-	.ascii	"_ZN17ReallocateDefaultIP10CIwManaged12CIwAllocatorI"
-	.ascii	"S1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1_RS5_"
-	.ascii	"\000"
-.LASF488:
-	.ascii	"IW_EVENT_NULL\000"
-.LASF227:
-	.ascii	"_ZNK8CIwFVec212IsNormalisedEv\000"
-.LASF41:
-	.ascii	"bad_cast\000"
-.LASF923:
-	.ascii	"Iw2DSceneGraph\000"
-.LASF190:
-	.ascii	"_ZNK7CIwVec213GetLengthSafeEv\000"
-.LASF836:
-	.ascii	"clearerr\000"
-.LASF68:
-	.ascii	"__hex_char_table_hi\000"
-.LASF738:
-	.ascii	"GetUniqueRunStamp\000"
-.LASF428:
-	.ascii	"Resolve\000"
-.LASF58:
-	.ascii	"unitbuf\000"
-.LASF424:
-	.ascii	"_CheckGet\000"
-.LASF931:
-	.ascii	"DrawMaze\000"
-.LASF675:
-	.ascii	"GetResHashed\000"
-.LASF99:
-	.ascii	"Serialise\000"
-.LASF941:
-	.ascii	"doorsize\000"
-.LASF886:
-	.ascii	"getwc\000"
-.LASF780:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE10erase_fastEii\000"
-.LASF337:
-	.ascii	"empty\000"
-.LASF267:
-	.ascii	"_ZN9CIwStringILi32EEpLEPKc\000"
+.LASF329:
+	.ascii	"num_p\000"
+.LASF936:
+	.ascii	"printall\000"
+.LASF50:
+	.ascii	"internal\000"
+.LASF982:
+	.ascii	"CIwMallocRouter<CIwResManager::CRemovedGroup>\000"
 .LASF208:
 	.ascii	"_ZNK7CIwVec2eqERKS_\000"
-.LASF798:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE13push_back_qtyEi\000"
-.LASF932:
-	.ascii	"_Z8printallv\000"
-.LASF795:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE9push_backERKS1_\000"
-.LASF165:
-	.ascii	"_ZNK8CIwSVec2mlERKS_\000"
-.LASF929:
-	.ascii	"door\000"
-.LASF514:
+.LASF818:
+	.ascii	"getenv\000"
+.LASF878:
+	.ascii	"fgetwc\000"
+.LASF574:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12resi"
+	.ascii	"ze_quickEj\000"
+.LASF675:
+	.ascii	"GetResHashed\000"
+.LASF744:
+	.ascii	"GetBinaryPath\000"
+.LASF924:
+	.ascii	"__ap\000"
+.LASF170:
+	.ascii	"_ZN8CIwSVec2mLEi\000"
+.LASF879:
+	.ascii	"fgetws\000"
+.LASF192:
+	.ascii	"_ZNK7CIwVec225GetLengthSquaredUnshiftedEv\000"
+.LASF157:
+	.ascii	"_ZNK9CIwColour3GetEv\000"
+.LASF933:
+	.ascii	"long double\000"
+.LASF179:
+	.ascii	"operator<<=\000"
+.LASF88:
+	.ascii	"bytesRead\000"
+.LASF206:
+	.ascii	"_ZN7CIwVec2mIERKS_\000"
+.LASF900:
+	.ascii	"wcscoll\000"
+.LASF37:
+	.ascii	"exception\000"
+.LASF624:
+	.ascii	"m_GroupBuildData\000"
+.LASF588:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5erase"
+	.ascii	"EPS1_\000"
+.LASF435:
+	.ascii	"_ZN14CIwManagedList11ResolvePtrsERKS_\000"
+.LASF235:
+	.ascii	"_ZN8CIwFVec2mIERKS_\000"
+.LASF898:
+	.ascii	"wcsrchr\000"
+.LASF665:
+	.ascii	"_ZNK13CIwResManager8GetGroupEj\000"
+.LASF8:
+	.ascii	"long long int\000"
+.LASF726:
+	.ascii	"GetBuildStyleCurr\000"
+.LASF370:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15find_"
+	.ascii	"and_removeERKS1_\000"
+.LASF922:
+	.ascii	"Iw2DSceneGraphCore\000"
+.LASF538:
 	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
-	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17"
-	.ascii	"optimise_capacityEv\000"
-.LASF308:
-	.ascii	"IW_TYPE_COMPOUND\000"
-.LASF108:
-	.ascii	"_ZN9CIwColour7SetGreyEh\000"
-.LASF166:
-	.ascii	"_ZNK8CIwSVec2eqERKS_\000"
-.LASF788:
-	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
-	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
-	.ascii	"ultIS1_S5_EE11insert_slowERS8_j\000"
-.LASF452:
-	.ascii	"RemoveSlow\000"
-.LASF918:
-	.ascii	"wprintf\000"
-.LASF501:
-	.ascii	"CIwArray<CIwString<160>, CIwAllocator<CIwString<160"
-	.ascii	">, CIwMallocRouter<CIwString<160> > >, ReallocateDe"
-	.ascii	"fault<CIwString<160>, CIwAllocator<CIwString<160>, "
-	.ascii	"CIwMallocRouter<CIwString<160> > > > >\000"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5f"
+	.ascii	"rontEv\000"
+.LASF534:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE11"
+	.ascii	"insert_slowERS8_j\000"
+.LASF73:
+	.ascii	"_ZN4_STL17__digit_val_tableE\000"
+.LASF191:
+	.ascii	"_ZNK7CIwVec220GetLengthSquaredSafeEv\000"
 .LASF686:
 	.ascii	"_ZN13CIwResManager9LoadGroupEPKcb\000"
-.LASF613:
-	.ascii	"MODE_BUILD\000"
-.LASF27:
-	.ascii	"sizetype\000"
-.LASF840:
-	.ascii	"fflush\000"
+.LASF401:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_b"
+	.ascii	"ackEv\000"
+.LASF544:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE13"
+	.ascii	"push_back_qtyEi\000"
+.LASF852:
+	.ascii	"getchar\000"
+.LASF305:
+	.ascii	"IW_TYPE_FLOAT\000"
+.LASF615:
+	.ascii	"IW_RES_GROUP_COLLISION_ERROR_F\000"
+.LASF481:
+	.ascii	"_ZN14CIwManagedList8LockSizeEb\000"
+.LASF562:
+	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
+	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4size"
+	.ascii	"Ev\000"
+.LASF564:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4dataE"
+	.ascii	"v\000"
+.LASF357:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17optim"
+	.ascii	"ise_capacityEv\000"
 .LASF376:
 	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
 	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12pop_b"
 	.ascii	"ack_getEv\000"
-.LASF576:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4find"
-	.ascii	"ERKS1_\000"
-.LASF977:
-	.ascii	"_ZN8CIwFVec2C2Eff\000"
-.LASF728:
-	.ascii	"BuildResources\000"
-.LASF285:
-	.ascii	"_ZNK9CIwStringILi160EEixEi\000"
-.LASF17:
-	.ascii	"uint16\000"
-.LASF19:
-	.ascii	"wchar_t\000"
-.LASF649:
-	.ascii	"AddGroup\000"
-.LASF218:
-	.ascii	"_ZN7CIwVec2ixEi\000"
-.LASF561:
-	.ascii	"_ZNK8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIw"
-	.ascii	"MallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5empt"
-	.ascii	"yEv\000"
-.LASF660:
-	.ascii	"GetGroupHashed\000"
-.LASF291:
-	.ascii	"_ZN9CIwStringILi160EEplERKS0_\000"
-.LASF248:
-	.ascii	"CIwString\000"
-.LASF315:
-	.ascii	"CIwAllocator<CIwManaged*, CIwMallocRouter<CIwManage"
-	.ascii	"d*> >\000"
-.LASF966:
-	.ascii	"ReallocateDefault<CIwResManager::CRemovedGroup, CIw"
-	.ascii	"Allocator<CIwResManager::CRemovedGroup, CIwMallocRo"
-	.ascii	"uter<CIwResManager::CRemovedGroup> > >\000"
-.LASF846:
-	.ascii	"freopen\000"
-.LASF626:
-	.ascii	"m_AtlasParentGroup\000"
-.LASF662:
-	.ascii	"GetNumGroups\000"
-.LASF431:
-	.ascii	"_ZN14CIwManagedList13SerialisePtrsEv\000"
-.LASF184:
-	.ascii	"_ZNK8CIwSVec2ixEi\000"
+.LASF618:
+	.ascii	"m_Index\000"
+.LASF442:
+	.ascii	"_ZN14CIwManagedList12ClearAndFreeEv\000"
+.LASF20:
+	.ascii	"S3E_ERROR_SHOW_CONTINUE\000"
+.LASF887:
+	.ascii	"ungetwc\000"
+.LASF460:
+	.ascii	"Contains\000"
+.LASF69:
+	.ascii	"_ZN4_STL19__hex_char_table_loE\000"
+.LASF204:
+	.ascii	"_ZN7CIwVec2pLERKS_\000"
+.LASF808:
+	.ascii	"CIwMaterial\000"
+.LASF486:
+	.ascii	"s3eErrorShowResult\000"
+.LASF603:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5Share"
+	.ascii	"ERKS8_\000"
+.LASF195:
+	.ascii	"_ZNK7CIwVec213GetNormalisedEv\000"
+.LASF487:
+	.ascii	"IW_EVENT_TABLE_GLOBAL\000"
+.LASF233:
+	.ascii	"_ZN8CIwFVec2pLERKS_\000"
+.LASF134:
+	.ascii	"GetLengthSquared\000"
+.LASF263:
+	.ascii	"_ZN9CIwStringILi32EEixEi\000"
+.LASF788:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE11insert_slowERS8_j\000"
+.LASF981:
+	.ascii	"ReallocateDefault<CIwResGroup*, CIwAllocator<CIwRes"
+	.ascii	"Group*, CIwMallocRouter<CIwResGroup*> > >\000"
+.LASF321:
+	.ascii	"_ZN12CIwAllocatorIP10CIwManaged15CIwMallocRouterIS1"
+	.ascii	"_EE10reallocateEPS1_j\000"
+.LASF400:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE9push_b"
+	.ascii	"ackERKS1_\000"
+.LASF196:
+	.ascii	"_ZN7CIwVec213NormaliseSafeEv\000"
+.LASF713:
+	.ascii	"GetPathName\000"
+.LASF365:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE6resize"
+	.ascii	"Ej\000"
+.LASF177:
+	.ascii	"operator<<\000"
+.LASF571:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE17opti"
+	.ascii	"mise_capacityEv\000"
+.LASF651:
+	.ascii	"DestroyGroup\000"
+.LASF694:
+	.ascii	"_ZN13CIwResManager24SetBuildGroupCallbackPreEPFvvE\000"
+.LASF280:
+	.ascii	"_ZNK9CIwStringILi160EE8capacityEv\000"
+.LASF745:
+	.ascii	"GetGroupCollisionHandling\000"
+.LASF769:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE7reserveEj\000"
+.LASF139:
+	.ascii	"_ZNK8CIwSVec220GetLengthSquaredSafeEv\000"
+.LASF755:
+	.ascii	"CIwArray<CIwResManager::CRemovedGroup, CIwAllocator"
+	.ascii	"<CIwResManager::CRemovedGroup, CIwMallocRouter<CIwR"
+	.ascii	"esManager::CRemovedGroup> >, ReallocateDefault<CIwR"
+	.ascii	"esManager::CRemovedGroup, CIwAllocator<CIwResManage"
+	.ascii	"r::CRemovedGroup, CIwMallocRouter<CIwResManager::CR"
+	.ascii	"emovedGroup> > > >\000"
+.LASF62:
+	.ascii	"floatfield\000"
+.LASF110:
+	.ascii	"operator==\000"
+.LASF92:
+	.ascii	"version\000"
+.LASF421:
+	.ascii	"m_List\000"
+.LASF479:
+	.ascii	"Reserve\000"
+.LASF352:
+	.ascii	"MemoryUsage\000"
+.LASF6:
+	.ascii	"unsigned int\000"
+.LASF756:
+	.ascii	"_ZNK8CIwArrayIN13CIwResManager13CRemovedGroupE12CIw"
+	.ascii	"AllocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDef"
+	.ascii	"aultIS1_S5_EE5beginEv\000"
+.LASF697:
+	.ascii	"SerialiseResPtr\000"
+.LASF176:
+	.ascii	"_ZN8CIwSVec2rSEi\000"
+.LASF676:
+	.ascii	"_ZNK13CIwResManager12GetResHashedEjPKcj\000"
+.LASF840:
+	.ascii	"fflush\000"
+.LASF631:
+	.ascii	"m_PathName\000"
+.LASF973:
+	.ascii	"g_IwTextParserITX\000"
+.LASF608:
+	.ascii	"_ZN8CIwArrayIP11CIwResGroup12CIwAllocatorIS1_15CIwM"
+	.ascii	"allocRouterIS1_EE17ReallocateDefaultIS1_S5_EE8trunc"
+	.ascii	"ateEj\000"
+.LASF330:
+	.ascii	"max_p\000"
+.LASF173:
+	.ascii	"operator>>\000"
+.LASF699:
+	.ascii	"ResolveResPtr\000"
+.LASF5:
+	.ascii	"short int\000"
+.LASF334:
+	.ascii	"begin\000"
+.LASF928:
+	.ascii	"_ZN10CIw2DImage8GetWidthEv\000"
+.LASF948:
+	.ascii	"surface_height\000"
+.LASF429:
+	.ascii	"_ZN14CIwManagedList7ResolveEv\000"
+.LASF198:
+	.ascii	"_ZNK7CIwVec212IsNormalisedEv\000"
+.LASF504:
+	.ascii	"_ZNK8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_1"
+	.ascii	"5CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE5"
+	.ascii	"emptyEv\000"
+.LASF680:
+	.ascii	"_ZN13CIwResManager15SetCurrentGroupEP11CIwResGroup\000"
+.LASF351:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE15clear"
+	.ascii	"_optimisedEv\000"
+.LASF646:
+	.ascii	"_ZN13CIwResManager10AddHandlerEP13CIwResHandler\000"
+.LASF935:
+	.ascii	"_ZN17ReallocateDefaultI9CIwStringILi160EE12CIwAlloc"
+	.ascii	"atorIS1_15CIwMallocRouterIS1_EEE10ReallocateEjjjPS1"
+	.ascii	"_RS5_\000"
+.LASF940:
+	.ascii	"DrawMaze\000"
+.LASF658:
+	.ascii	"GetGroupNamed\000"
+.LASF786:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE5eraseEPS1_S9_\000"
+.LASF524:
+	.ascii	"_ZN8CIwArrayI9CIwStringILi160EE12CIwAllocatorIS1_15"
+	.ascii	"CIwMallocRouterIS1_EE17ReallocateDefaultIS1_S5_EE12"
+	.ascii	"pop_back_getEv\000"
+.LASF497:
+	.ascii	"CIwAllocator<CIwString<160>, CIwMallocRouter<CIwStr"
+	.ascii	"ing<160> > >\000"
+.LASF302:
+	.ascii	"IW_TYPE_UINT16\000"
+.LASF267:
+	.ascii	"_ZN9CIwStringILi32EEpLEPKc\000"
+.LASF342:
+	.ascii	"_ZN8CIwArrayIP10CIwManaged12CIwAllocatorIS1_15CIwMa"
+	.ascii	"llocRouterIS1_EE17ReallocateDefaultIS1_S5_EE4dataEv"
+	.ascii	"\000"
+.LASF954:
+	.ascii	"doorsize\000"
+.LASF82:
+	.ascii	"__va_list\000"
+.LASF639:
+	.ascii	"BuildGroupCallbackPre\000"
+.LASF106:
+	.ascii	"_ZN9CIwColour9SetOpaqueEj\000"
+.LASF952:
+	.ascii	"radius\000"
+.LASF262:
+	.ascii	"_ZNK9CIwStringILi32EE6substrEii\000"
+.LASF462:
+	.ascii	"Find\000"
+.LASF775:
+	.ascii	"_ZN8CIwArrayIN13CIwResManager13CRemovedGroupE12CIwA"
+	.ascii	"llocatorIS1_15CIwMallocRouterIS1_EE17ReallocateDefa"
+	.ascii	"ultIS1_S5_EE15find_and_removeERKS1_\000"
+.LASF25:
+	.ascii	"wint_t\000"
 	.hidden	__dso_handle
 	.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.3 20140228 (release) [ARM/embedded-4_8-branch revision 208322]"

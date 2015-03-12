@@ -1,15 +1,29 @@
-﻿Build started 2/25/2015 9:35:15 PM.
+﻿Build started 3/12/2015 12:11:34 AM.
      1>Project "d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\AmazingMaze_vc12.vcxproj" on node 2 (Build target(s)).
-     1>CustomBuild:
-         Performing Custom Build Tools
-         msg: option 'default-buildenv' overridden by command line
-         C:\Marmalade\7.5\s3e\makefile_builder\mkb.py d:/School/cs115/AmazingMaze/AmazingMaze.mkb --buildenv=VC12 --default-buildenv=vc12 --msvc-project
-         Building project: d:/School/cs115/AmazingMaze/AmazingMaze.mkb
-         done
-       ClCompile:
-         C:\Marmalade\7.5\s3e\bin\CL.exe /c /Ic:/marmalade/7.5/modules/iwutil/h /Ic:/marmalade/7.5/modules/third_party/libjpeg/h /Ic:/marmalade/7.5/modules/third_party/zlib/h /Ic:/marmalade/7.5/modules/third_party/libpng/h /Ic:/marmalade/7.5/modules/iw2dscenegraphcore/h /Ic:/marmalade/7.5/modules/iw2dscenegraph/h /Ic:/marmalade/7.5/modules/iw2d/h /Ic:/marmalade/7.5/modules/iwgx/h /Ic:/marmalade/7.5/modules/iwgl/h /Ic:/marmalade/7.5/modules/iwgeom/h /Ic:/marmalade/7.5/modules/iwresmanager/h /Ic:/marmalade/7.5/extensions/pvrtextool/h /Ic:/marmalade/7.5/modules/iwgxfont/h /Ic:/marmalade/7.5/modules/third_party/tiniconv/source /Ic:/marmalade/7.5/modules/iwtween/h /Ic:/marmalade/7.5/s3e/h /Ic:/marmalade/7.5/s3e/h/ext /Ic:/marmalade/7.5/s3e/h/std /Ic:/marmalade/7.5/s3e/h/std/c++ /Ic:/marmalade/7.5/s3e/h/ext_legacy /Ic:/marmalade/7.5/s3e/h/legacy /I. /ZI /nologo /W3 /WX- /MP /Od /Oy- /X /Gm- /EHsc /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug_AmazingMaze_vc12_x86\\" /Fd"Debug_AmazingMaze_vc12_x86\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /S3Eproject /J /FI"d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\temp_defines_debug.h" ..\AmazingMaze.cpp
-         AmazingMaze.cpp
-     1>d:\school\cs115\amazingmaze\amazingmaze.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>ClCompile:
+         C:\Marmalade\7.5\s3e\bin\CL.exe /c /Ic:/marmalade/7.5/modules/iwutil/h /Ic:/marmalade/7.5/modules/third_party/libjpeg/h /Ic:/marmalade/7.5/modules/third_party/zlib/h /Ic:/marmalade/7.5/modules/third_party/libpng/h /Ic:/marmalade/7.5/modules/iw2dscenegraphcore/h /Ic:/marmalade/7.5/modules/iw2dscenegraph/h /Ic:/marmalade/7.5/modules/iw2d/h /Ic:/marmalade/7.5/modules/iwgx/h /Ic:/marmalade/7.5/modules/iwgl/h /Ic:/marmalade/7.5/modules/iwgeom/h /Ic:/marmalade/7.5/modules/iwresmanager/h /Ic:/marmalade/7.5/extensions/pvrtextool/h /Ic:/marmalade/7.5/modules/iwgxfont/h /Ic:/marmalade/7.5/modules/third_party/tiniconv/source /Ic:/marmalade/7.5/modules/iwtween/h /Ic:/marmalade/7.5/s3e/h /Ic:/marmalade/7.5/s3e/h/ext /Ic:/marmalade/7.5/s3e/h/std /Ic:/marmalade/7.5/s3e/h/std/c++ /Ic:/marmalade/7.5/s3e/h/ext_legacy /Ic:/marmalade/7.5/s3e/h/legacy /I. /ZI /nologo /W3 /WX- /MP /Od /Oy- /X /Gm- /EHsc /RTC1 /MTd /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug_AmazingMaze_vc12_x86\\" /Fd"Debug_AmazingMaze_vc12_x86\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt /S3Eproject /J /FI"d:\School\cs115\AmazingMaze\build_amazingmaze_vc12\temp_defines_debug.h" ..\MazeDrawer.cpp
+         MazeDrawer.cpp
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(42): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(72): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(77): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(78): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(79): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(80): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(81): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(82): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(83): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(84): warning C4305: '=' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(92): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(96): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(97): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(106): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(106): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(108): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(109): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(110): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(111): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(112): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>d:\school\cs115\amazingmaze\mazedrawer.cpp(113): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
        Link:
          C:\Marmalade\7.5\s3e\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Debug_AmazingMaze_vc12_x86\AmazingMaze.s86" /INCREMENTAL /NOLOGO /LIBPATH:c:/marmalade/7.5/modules/iwutil/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/third_party/libjpeg/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/third_party/zlib/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/third_party/libpng/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/iw2d/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/iwgx/atitools /LIBPATH:c:/marmalade/7.5/modules/iwgx/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/iwgl/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/iwgeom/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/iwresmanager/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/iwgxfont/lib/x86 /LIBPATH:c:/marmalade/7.5/modules/third_party/tiniconv/lib/x86 /LIBPATH:c:/marmalade/7.5/s3e/lib/x86 vc6_compat.lib iwutil_d.lib jpeg_d.lib z_d.lib png_d.lib iw2d_d.lib ATI_Compress_MT_VC7.lib iwgx_d.lib iwgl_d.lib iwgeom_d.lib iwresmanager_d.lib iwgxfont_d.lib tiniconv_d.lib s3e_cpp_d.lib s3e_d.lib s3e_api_iwgl.lib /NODEFAULTLIB:libcmt /MANIFEST:NO /DEBUG /PDB:"Debug_AmazingMaze_vc12_x86\AmazingMaze.pdb" /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /TLBID:1 /ENTRY:"DllEntryPoint" /DYNAMICBASE /NXCOMPAT /IMPLIB:"Debug_AmazingMaze_vc12_x86\AmazingMaze.lib" /MACHINE:X86  /include:_IwMain /include:_raise /include:_DllEntryPoint@12 /force:multiple /DLL Debug_AmazingMaze_vc12_x86\AmazingMaze.obj
          Debug_AmazingMaze_vc12_x86\Iw2DSceneGraph.obj
@@ -42,4 +56,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.63
+Time Elapsed 00:00:00.95
